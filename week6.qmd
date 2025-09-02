@@ -1,0 +1,7 @@
+---
+title: "week6"
+format: html
+---
+
+
+placeholder for weekly content

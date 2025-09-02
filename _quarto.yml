@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "stat120"
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+  sidebar: 
+    style: "docked"
+    search: true
+    contents: 
+      - index.qmd
+      - week1.qmd
+      - week2.qmd
+      - week3.qmd
+      - week4.qmd
+      - week5.qmd
+      - week6.qmd
+      - week7.qmd
+      - week8.qmd
+      - week9.qmd
+      - week10.qmd
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - custom.scss
+    css: styles.css
+    toc: true
+
+
+
