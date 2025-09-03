@@ -1,0 +1,100 @@
+---
+title: "Notes 13: Hypothesis Testing"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+Hypothesis testing is the "backbone" of science and allows us to make claims about *population parameters* based on *sample statistics*.
+
+1.  Formulate hypotheses in terms of *population parameter*
+2.  Collect data and compute a *sample statistic*
+3.  Use the *sample statistic* to make a claim about the *hypotheses*
+
+We generally form two competing hypotheses:
+
+\vspace{1.75in}
+
+### For our study on F's
+
+Population parameter:
+
+Sample statistic:
+
+$H_0:$
+
+$H_A:$
+
+Sampling Distribution:
+
+```{r}
+sampling_distribution = tibble(
+  xbar = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rnorm(15, 35, 5)
+  sampling_distribution$xbar[ii] = mean(xi)
+}
+```
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2.5
+
+
+sampling_distribution %>%
+  ggplot(aes(x = xbar)) + 
+  geom_histogram(col = "white") + 
+  labs(
+    x = "Sample Mean",
+    y = "Number of Samples"
+  ) + 
+  theme(axis.text.x = element_blank())
+```
+
+**Example:** The National Survey of Family Growth conducted by the Centers for Disease Control gathers information on family life, marriage and divorce, pregnancy, infertility, use of contraception, and men's and women's health. One of the variables collected is the age at first marriage. Among a random sample of 4,534 women taken between 2006 and 2012, the average age at first marriage was 23.44 with a standard deviation of 4.72.
+
+A researcher thinks this value has changed since the survey was taken and plans to conduct a new survey. Below is how she set up her hypotheses. What problems do you see?
+
+$$H_0: \bar{x} \ne 23.44 \text{ years}$$ $$H_A: \bar{x} = 23.44 \text{ years}$$
+
+\vspace{2.5in}
+
+For each scenario, identify (1) The population parameter of interest (2) The sample statistic (3) An appropriate $H_0$ (4) An appropriate $H_A$ (5) How you could tell when the statistic provides evidence for or against $H_0$.
+
+**Example:** For a random sample of households in the greater Twin Cities area, we record annual household income and whether the household is located East or West of the Mississippi River. We're interested in whether there is a difference in income depending on which side of the river households are located.
+
+\vspace{2.5in}
+
+# Group Problems
+
+(a) In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?
+
+\vspace{3in}
+
+(b) The National Center of Education Statistics conducted a survey of high school seniors. In a simple random sample of 200 students from this survey, the mean writing score was 47.9 and the mean reading score was 48.1 We are interested in seeing whether there is a difference in the average writing and reading score.
+
+\vspace{3in}
+
+(c) In a study about Universal Basic Income, the Stockton Economic Empowerment Demonstration (SEED) randomly selected 100 residents and gave them an unrestricted \$500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.3 and among the control group was 29.6. We're interested in whether people who receive UBI payments score higher on the assessment than those who did not.
+
+\vspace{2.5in}
+
+(d) A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$.
+
+\vspace{2.5in}
+
+(e) In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?
+
+\vspace{2.5in}

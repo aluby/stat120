@@ -1,0 +1,156 @@
+---
+title: "Notes 02: Sampling"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(infer)
+options(digits = 4)
+notes_theme = theme_minimal(
+ # base_family = "Montserrat", 
+  base_size = 14)
+theme_set(notes_theme)
+```
+
+# Samples and Populations
+
+::: callout-note
+## Population
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Sample
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Statistical Inference
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Parameters and Statistics
+
+\vspace{.5in}
+:::
+
+Identify the **sample mean** and (claimed) **population mean**
+
+a.  American households spent an average of about \$52 in 2007 on Halloween merchandise such as costumes, decorations, and candy. To see if this number had changed, researchers conducted a new survey in 2008 before industry numbers were reported. The survey included 1,500 households and found that average Halloween spending was \$58 per household.
+
+b.  The average GPA of students in 2001 at a private university was 3.37. A survey on a sample of 203 students from this university yielded an average GPA of 3.59 a decade later.
+
+c.  A recent article in a college newspaper stated that college students get an average of 5.5 hours of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night
+
+# Sampling Bias
+
+**Example:** I'm interested in how satisfied the Carleton community is with the fitness center. I decide I need a sample size of 100, so at 6am one morning, I stand outside the entrance ask the first 100 people who exit whether or not they enjoyed their workout. They all said yes, so I conclude the fitness center is a perfect facility.
+
+\vspace{1in}
+
+**Example:** If 75% of online reviews for a product are negative, does that mean 75% of buyers are dissatisfied with the product? Why or why not?
+
+\vspace{1in}
+
+::: callout-note
+## Simple Random Sample
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Bias
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Undercoverage
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Voluntary Response
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Convenience Sample
+
+\vspace{.5in}
+:::
+
+::: callout-note
+## Non-response bias
+
+\vspace{.5in}
+:::
+
+# Activity
+
+It's natural to think of samples and populations as representing *people*, but this isn't always the case. Carleton College's mission statement is printed below. Our task is to *estimate* the average word length.
+
+> The mission of Carleton College is to provide an exceptional undergraduate liberal arts education. In pursuit of this mission, the College is devoted to academic excellence, distinguished by the creative interplay of teaching, learning, and scholarship, and dedicated to our diverse residential community and extensive international engagements.
+
+> The College’s aspiration is to prepare students to lead lives of learning that are broadly rewarding, professionally satisfying, and of service to humanity. By discovering and sharing exemplary models of undergraduate education, the College seeks to be a leader among those colleges, universities, and professional organizations that share our dedication to this vision.
+
+> Carleton strives to be a collaborative community that encourages curiosity and intellectual adventure of the highest quality. Faculty, staff, and students respect one another for the serious work and the playful humor we share, and we support each other in pursuing a healthy balance of mind, body, and spirit. Quiet reflection and lively engagement are valued as sources of self-understanding and renewal. Carleton honors thoughtful conversations about difficult questions as necessary for individual growth and community strength. The College works to embody the values of freedom of inquiry and expression and is vigilant in protecting these values within a culture of academic integrity, civil deliberation, and ethical action. Carleton aims to be welcoming and hospitable to its neighbors, guests, and the public, and a responsible steward of its resources.
+
+> Carleton’s academic goals focus on developing the critical and creative talents of our students through broad and rigorous studies in the liberal arts disciplines. Mentored by dedicated faculty and staff, students become active members of a learning and living community that promotes the exploration of passionate interests and emerging avocations. Students learn higher order thinking skills: disciplinary inquiry, analysis of evidence, arts of communication and argumentation, and problem-solving strategies. In their chosen fields of study, students strengthen their capabilities for disciplinary and interdisciplinary research and artistic production. Students acquire the knowledge necessary for the continuing study of the world’s peoples, arts, environments, literatures, sciences, and institutions.
+
+> Carleton develops qualities of mind and character that prepare its graduates to become citizens and leaders, capable of finding inventive solutions to local, national, and global challenges.
+
+a.  What is the *population* for this study?
+
+\vspace{.5in}
+
+b.  What is the *sample* for this study?
+
+\vspace{.5in}
+
+c.  Choose a random sample of 10 words that appear to be representative of all the words in the mission statement. Circle the ten words you choose.
+
+d.  Construct your *dataset*
+
+| Word | Length |
+|------|--------|
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+|      |        |
+
+d.  Compute the *sample statistic* for your random sample.
+
+\vspace{.75in}
+
+## Part 2: In R! 
+
+Find the `sampling-activity.rmd` file on moodle and open it in RStudio. Complete the questions within the .rmd document and save it in maize when you are done. 
+
+After finishing the activity in R, answer the following questions. 
+
+1. Why is it important to have a *random* sample? 
+
+\vspace{.75in}
+
+2. Why does it matter if we have a *biased* sample?
+
+\vspace{.75in}
+
+3. Why do we prefer to obtain random samples using software like R? 
+
+
+

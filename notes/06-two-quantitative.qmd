@@ -1,0 +1,142 @@
+---
+title: "Notes 06: Two Quantitative Variables"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(patchwork)
+library(palmerpenguins)
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+When we're interested in the relationship between two quantitative variables, the best visualization is a **scatterplot**. If we want to summarize the relationship in a single number, we'll often choose the **correlation**.
+
+::: callout-note
+Correlation
+\vspace{1in}
+
+:::
+
+```{r, echo = TRUE}
+cor(penguins$body_mass_g, penguins$flipper_length_mm, use = "complete.obs")
+```
+
+If the relationship is **linear**, we can also summarize the relationship with "the line of best fit" or "least squares" line. 
+
+```{r, echo = TRUE}
+#| fig-width: 3
+#| fig-height: 2
+#| fig-align: "center"
+
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point(size = .5) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+```{r, results = 'hide', echo = TRUE}
+lm(flipper_length_mm ~ body_mass_g, data = penguins) 
+```
+```{r}
+lm(flipper_length_mm ~ body_mass_g, data = penguins) %>% coef()
+```
+
+**Interpretation:**
+
+\vspace{2in}
+
+**Two types of outliers:** 
+
+```{r}
+#| fig-width: 6
+#| fig-height: 2
+set.seed(092524)
+data = tibble(
+  x = c(rnorm(100, 85, 5), 110),
+  y = .9*x + rnorm(100, sd = 5) 
+) 
+
+data$y[101] = 80
+
+data_filtered = data[-101,]
+
+p1 = data %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = .5) +
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(
+    title = "With Outlier"
+  ) + 
+  xlim(c(70, 110))
+
+p2 = data_filtered %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = .5) +
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(
+    title = "Without Outlier"
+  ) + 
+  xlim(c(70, 110))
+
+p1 + p2
+
+eq1 = lm(y ~ x, data = data)
+eq2 = lm(y ~ x, data = data_filtered)
+```
+
+```{r, include = FALSE}
+equatiomatic::extract_eq(eq1, use_coefs = TRUE)
+equatiomatic::extract_eq(eq2, use_coefs = TRUE)
+```
+
+Best fit line with outlier: $\operatorname{\widehat{y}} = 7.1 + 0.82\operatorname{x}$ 
+
+Best fit line without outlier: $\operatorname{\widehat{y}} = -8.79 + 1.01\operatorname{x}$
+
+```{r}
+#| fig-width: 6
+#| fig-height: 2
+set.seed(092524)
+data = tibble(
+  x = c(rnorm(100, 85, 5), 85),
+  y = .9*x + rnorm(100, sd = 5) 
+) 
+
+data$y[101] = 105
+
+data_filtered = data[-101,]
+
+p1 = data %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = .5) +
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(
+    title = "With Outlier"
+  ) + 
+  xlim(c(70, 110))
+
+p2 = data_filtered %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = .5) +
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(
+    title = "Without Outlier"
+  ) + 
+  xlim(c(70, 110))
+
+p1 + p2
+
+eq1 = lm(y ~ x, data = data)
+eq2 = lm(y ~ x, data = data_filtered)
+```
+
+```{r, include = FALSE}
+equatiomatic::extract_eq(eq1, use_coefs = TRUE)
+equatiomatic::extract_eq(eq2, use_coefs = TRUE)
+```
+
+Best fit line with outlier: $\operatorname{\widehat{y}} = -8.1 + 1.01\operatorname{x}$ 
+
+Best fit line without outlier: $\operatorname{\widehat{y}} = -8.79 + 1.01\operatorname{x}$

@@ -1,0 +1,30 @@
+---
+title: "20: CLT-based Confidence Intervals for Means"
+---
+
+```{r, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(broom)
+library(patchwork)
+library(CarletonStats)
+```
+
+1.  (Adapted from Exercise 6.128)
+
+> Plastic microparticles contaminate shorelines. Much of the pollution comes from washing fleece clothing. In a recent study, washing a fleece garment discharged on average $\bar{X} = 290$ fibers per liter of wastewater. The standard deviation was $s = 87.6$ fibers and the sample size was $n=120$. 
+
+(a) What is the estimated *standard error* of the average number of fibers discharged per liter of wastewater when washing a fleece garment? 
+
+(b) The table below gives some percentiles of the $t_{119}$ distribution. Use this information to construct a 99% confidence interval for the population mean. Interpret the interval in context.
+
+|  percentage  |  percentile (`qnorm(percentage)`)  |
+|:---------------------:|:------------:|
+|         90%          |     1.3      |
+|         95%          |     1.6      |
+|         97.5%          |     2.0      |
+|         99%          |     2.3      |
+|         99.5%          |     2.6      |
+
+
+(c) What sample size would we need if we wanted this interval to be *no wider* than 20? 
+

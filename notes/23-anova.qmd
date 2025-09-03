@@ -1,0 +1,173 @@
+---
+title: "Notes 23: Inference for >2 Means"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+library(kableExtra)
+library(janitor)
+library(geomtextpath)
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+A biology student tested four different hand-washing methods (water only, washing with regular soap, washing with antibacterial soap, and spraying hands with antibacterial spray) and counted the number of bacteria present after two days of growth. They did this eight times for each of the four treatments. 
+
+```{r}
+#| fig-width: 4
+#| fig-height: 3
+#| fig-align: 'center'
+
+Soap <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Bacterial_Soap.csv")
+Soap = Soap %>%
+  mutate(Method = as.factor(Method))
+ggplot(Soap, aes(x = Method, y = Bacterial.Counts)) +
+  geom_boxplot()
+```
+
+Up until now, we've done something like the following: 
+
+$H_0:$
+
+$H_A:$
+
+What are some potential issues? 
+
+\pagebreak
+
+# ANOVA
+
+ANOVA stands for **ANalysis Of VAriance**, and it's a method we use to compare means of groups when we have more than two groups. 
+
+
+
+Here, the null hypothesis we are interested in is:
+
+$H_0:$
+
+$H_A:$
+
+But, it turns out it's much harder to test multiple means than comparing only two. 
+
+**Idea:** (Visual)
+
+```{r}
+ggplot(Soap, aes(x = Method, y = Bacterial.Counts)) +
+  geom_boxplot() + 
+  geom_jitter() +
+  geom_hline(aes(yintercept = mean(Bacterial.Counts)), col = "darkorange")
+```
+\vspace{2in}
+
+Our test statistic is called an "F" statistic and compares the variance within the groups to the variance across the groups. 
+
+$$ F = \frac{\text{Sample variance of means}}{\text{Pooled estimate of variance within groups}} = \frac{MS_T}{MS_E} $$
+
+In R, we calculate the F-statistic using `aov(Response ~ Explanatory)` and then `summary()`. This is the same syntax that we used for linear regression (`lm()`), we're just using a categorical variable instead of a quantitative variable as our predictor. 
+
+
+```{r}
+soap_aov <- aov(Bacterial.Counts ~ Method, data = Soap)
+summary(soap_aov)
+```
+
+This is called an ANOVA table and was originally designed to organize the calculations needed to compute an F-statistic. 
+
+ > *This table has a long tradition stretching back to when ANOVA calculations were done by hand. Major research labs had rooms full of mechanical calculators operated by women. (Yes, always women) Three women would perform each calculation, and if any two of them agreed on the answer, it was taken as the correct value.*
+
+```
+            Df   Sum Sq   Mean Sq     F value     Pr(>F)   
+Method      k-1  29882    SumSq/df    MS_t/MS_e   
+Residuals   N-k  39484    SumSq/df   
+```
+
+```{r, echo = FALSE}
+#| fig-width: 6
+#| fig-height: 2
+
+ggplot(data.frame(x = c(0, 4)), aes(x)) +
+  stat_function(fun = df,
+                geom = "textpath",
+                col = "darkgrey",
+                label = "F with df1 = 3, df2 = 28",
+                vjust = 1.5,
+                args = list(
+                  df1 = 3,
+                  df2 = 28
+                )) +
+  stat_function(fun = df,
+                geom = "textpath",
+                col = "plum",
+                label = "F with df1 = 10, df2 = 320",
+                vjust = -.5,
+                args = list(
+                  df1 = 10,
+                  df2 = 320
+                )) 
+```
+
+## Assumptions
+
+We need to verify some assumptions whenever we fit an ANOVA model. 
+
+1. Independence
+
+*Have to check based on the data collection process*
+
+2. Equal Variance
+
+  + Do the boxplot "whiskers" look roughly the same length across all groups? 
+  + Check the residual vs fitted plot:
+
+3. Normal residuals:
+
+  + Check histogram of residuals
+
+```{r}
+#| fig-width: 6
+#| fig-height: 2
+
+
+p1 = ggplot(soap_aov, aes(x = .fitted, y = .resid))+
+  geom_point() 
+
+p2 = ggplot(soap_aov, aes(x = .resid))+
+  geom_histogram(bins = 15, col = "white") 
+
+p1 + p2
+```
+
+# Post-hoc Testing
+
+So far we've introduced ANOVA as a method for comparing many means to each other concurrently. Finding a statistically significant result at the end of an ANOVA however only tells us that at least one pair of means are different, but not *which pair(s)* of means are different. 
+
+We won't do a thorough discussion of post-hoc testing in this class, but the R code to do all pairwise tests is: 
+
+
+```{r}
+#| echo: true
+#| eval: false
+pairwise.t.test(x = Soap$Bacterial.Counts, g = Soap$Method, p.adjust.method = "none")
+```
+
+```{r}
+(pairwise.t.test(x = Soap$Bacterial.Counts, g = Soap$Method, p.adjust.method = "none"))$p.value
+```
+
+This approach suffers from a **multiple testing problem**. We can adjust the p-values to get valid results: 
+
+```{r}
+#| echo: true 
+#| eval: false
+pairwise.t.test(x = Soap$Bacterial.Counts, g = Soap$Method, p.adjust.method = "holm")
+```
+
+```{r}
+pairwise.t.test(x = Soap$Bacterial.Counts, g = Soap$Method, p.adjust.method = "holm")$p.value
+```

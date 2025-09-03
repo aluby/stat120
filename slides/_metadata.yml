@@ -1,0 +1,11 @@
+author: "Prof Amanda Luby | Fall 2025"
+callout-appearance: minimal
+engine: knitr
+knitr:
+  opts_chunk: 
+    dev: "ragg_png"
+    echo: false
+    warning: false
+    message: false
+brand: false
+    

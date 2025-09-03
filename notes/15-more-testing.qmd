@@ -1,0 +1,111 @@
+---
+title: "Notes 15: More on Testing"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+## Types of Errors
+
+|                     | $H_0$ True | $H_0$ False |
+|---------------------|:----------:|:-----------:|
+| Reject $H_0$        |            |             |
+| Do not reject $H_0$ |            |             |
+
+::: callout-note
+Type I Error
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Type II Error
+
+\vspace{.5in}
+:::
+
+::: callout-note
+$\alpha$
+
+\vspace{.5in}
+:::
+
+::: callout-note
+$\beta$
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Power
+
+\vspace{.5in}
+:::
+
+**Example:** A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$. Do you think the probability of a Type II error is higher if $\rho = .9$ or $\rho = .1$? 
+
+$H_0: \rho = 0$
+
+$H_A: \rho > 0$
+
+
+
+
+\pagebreak
+**Big Picture** Picture 
+\vspace{.5in}
+
+:::: {layout="[0.33, 0.33, 0.33]"}
+
+:::{#firstcol}
+**Sampling Distribution**
+:::
+
+:::{#secondcol}
+**Bootstrap Distribution**
+:::
+
+:::{#secondcol}
+**Null Distribution**
+:::
+
+::::
+
+\vspace{2in}
+
+## Connection to Confidence Intervals
+
+If the value of $H_0$ is *outside* of the confidence interval, we ___________________________________. 
+
+If the value of $H_0$ is *inside* the confidence interval, we ___________________________________. 
+
+
+**Illustration:** (Social Media Poll Example)
+
+```{r}
+#| fig-height: 1.5
+#| fig-width: 3
+#| layout-nrow: 2
+social_media = tibble(
+  app = c(rep("twitter", 346), rep("instagram", 530)), 
+  visits = c(rep(1, 249), rep(0, 346-249), rep(1, 424), rep(0, 530-424))
+)
+library(CarletonStats)
+test = permTest(visits ~ app, data = social_media)
+ci = boot(visits ~ app, data = social_media)
+
+plot(test) + xlim(c(-.1,.2)) + theme(legend.position = "none") + labs(x = "", y = "")
+plot(ci) + xlim(c(-.1,.2)) + theme(legend.position = "none") + labs(x = "", y = "")
+```
+
+## Statistical vs Practical Significance

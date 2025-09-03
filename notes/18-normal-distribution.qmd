@@ -1,0 +1,106 @@
+---
+title: "Notes 18: The Normal Distribution"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+Three main topics of Stat120: 
+
+1. ______________________: Summarizing data with numbers and graphs
+
+2. ______________________: Using confidence intervals to estimate parameters with uncertainty
+
+3. ______________________: Using p-values to evaluate competing hypotheses
+
+Up until now, we've relied on computer simulations (via StatKey or R) to generate __________________ or __________________ distributions. 
+
+We're now going to begin using ________________________________ to generate these distributions instead
+
+::: callout-note
+**Normal Density Function:** 
+
+$$f(x) = \frac{1}{\sqrt{2\pi\sigma}} e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$$
+
+Notation:
+
+$~$
+
+Area under the curve = 
+
+$~$
+
+:::
+
+**Example 1:** Verbal SAT scores follow a normal distribution with a population mean of $\mu = 580$ and population standard deviation $\sigma = 70$. What proportion of test-takers score above 650? 
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2
+ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 580, sd = 70)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(580 - 2*70, 580 - 70, 580, 580 + 70, 580+2*70), labels = NULL) +
+  labs(y = "density", 
+       x = "")
+```
+
+
+\pagebreak
+
+**Example 2:** What is the SAT score for the 90th percentile?
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2
+ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 580, sd = 70)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(580 - 2*70, 580 - 70, 580, 580 + 70, 580+2*70), labels = NULL) +
+  labs(y = "density", 
+       x = "")
+```
+
+::: callout-note
+**Z-scores:**
+
+\vspace{.5in}
+:::
+
+
+::: callout-note
+**Standard Normal Model**
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+**Central Limit Theorem:** For random samples, if _____ is big enough, the sampling distribution of _______ is approximately ___________________, *regardless of what shape the population distribution is.*
+:::
+
+CLT shortcut for testing: 
+
+\vspace{.5in}
+
+CLT shortcut for confidence intervals: 
+
+\vspace{.5in}
+
+Summary of R commands (sketch normal curves to help you remember)
+
+```{r}
+#| echo: true
+pnorm(650, mean = 580, sd = 70, lower.tail = FALSE)
+qnorm(.9, mean = 0, sd = 1, lower.tail = TRUE)
+```

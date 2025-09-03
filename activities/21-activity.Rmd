@@ -1,0 +1,63 @@
+---
+title: "21.1: CLT-based Inference for Difference in Proportions"
+---
+
+```{r, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(broom)
+library(patchwork)
+library(CarletonStats)
+```
+
+APM Research Lab ran a [survey of 800 likely Minnesota
+    voters](https://www.apmresearchlab.org/minnesota-poll-september-2024#methods)
+    between Sept 16-18 of this year. They reported 48.4% were in support of
+    the Harris/Walz ticket, and 43.3% were in support of the Trump/Vance
+    ticket.
+
+Here's an excerpt from their methodology report:
+
+> *The margin for error, according to standards customarily used by
+> statisticians, is no more than ± 3.5 percentage points. The margin of error is approximately 7 percentage points for the difference between two data points.... The margin of error is higher for any subgroup, such as gender or age grouping.*
+
+(a) What is the *standard error* for the difference in proportions?
+
+\vspace{1in}
+
+(b) Explain why we should *not* use the CLT formula for the difference in proportions between Harris supporters and Trump supporters in this poll
+
+\vspace{1in}
+
+(c) Instead, we'll look at the difference in suppport for Harris between two different levels of education. (We can assume that the poll included 436 in the "no college degree" group and 360 in the "college degree" group). Show two ways that the standard error could have been computed.
+```{r, echo = FALSE}
+knitr::include_graphics("images/poll-ed-breakdown.png")
+```
+
+
+\vspace{2in}
+
+(d) The two ways of computing the standard error should produce similar results. Give two reasons why. 
+
+\vspace{1in}
+
+(e) The following R code makes a confidence interval and performs a hypothesis test for the difference in these two proportions. 
+  i. Where did `x = c(192, 194)` come from?
+  
+  \vspace{1in}
+
+  ii. What is $\alpha$ for the hypothesis test?
+ 
+  \vspace{1in}
+  
+  iii. Provide an in-context interpretation of the confidence interval (it should be clear in your answer which group had more support for Harris)
+  
+  \vspace{1in}
+
+```{r, echo = TRUE}
+prop.test(x = c(192, 194), 
+          n = c(436, 360),
+          correct = FALSE, #tells R not to apply a "continuity correction"
+          conf.level = .90)
+```
+
+(f) What concept or topic is your group *most* confused about? (Some ideas to get you started: `qnorm` vs `pnorm`, normal vs t distribution, choosing a parameter, standard error formulas, when to use confidence intervals vs hypothesis tests)

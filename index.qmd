@@ -2,10 +2,10 @@
 title: "stat120"
 ---
 
-This is a Quarto website.
+You've found the landing page for Amanda Luby's Stat120 course materials
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: callout-important
+## Caution
 
-```{r}
-1 + 1
-```
+Material found here (instead of moodle) may be out of date
+:::

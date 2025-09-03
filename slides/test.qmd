@@ -1,0 +1,18 @@
+---
+title: "My Test Slides"
+subtitle: "A subtitle for testing"
+format: 
+  revealjs: 
+    theme: [white, slides.scss]
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+## First Slide
+
+This is a test slide. This is a [test link](aluby.github.io)
+
+## Second Slide
+
+If this works, the problem is in the YAML of the other `.qmd` file.

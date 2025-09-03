@@ -1,0 +1,155 @@
+---
+title: "Notes 14: P-Values and Significance"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+Last time, we laid out the following steps for setting up a hypothesis test: 
+
+1.  Formulate hypotheses in terms of *population parameter*
+2.  Collect data and compute a *sample statistic*
+3.  Use the *sample statistic* to make a claim about the *hypotheses*
+
+Today, we're diving into step 3:   
+
+> 3a. Construct *null distribution*
+
+> 3b. Compute *p-value*
+
+> 3c. Make a decision about $H_0$
+
+### For our study on F's
+
+Population parameter: $\mu$
+
+Sample statistic: $\bar{x}$
+
+$H_0: \mu = 35$
+
+$H_A: \mu < 35$
+
+Null Distribution:
+
+```{r}
+sampling_distribution = tibble(
+  xbar = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rnorm(15, 35, 5)
+  sampling_distribution$xbar[ii] = mean(xi)
+}
+```
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2
+
+
+sampling_distribution %>%
+  ggplot(aes(x = xbar)) + 
+  geom_histogram(col = "white") + 
+  labs(
+    x = "Sample Mean",
+    y = "Number of Samples"
+  ) 
+```
+
+**How do we construct a null distribution?**
+
+\pagebreak 
+
+**StatKey Example:** In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?
+
+\vspace{2in}
+
+**R "Paper" Example:** A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$.
+
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2
+#| layout-ncol: 2
+#| column: page
+set.seed(101524)
+out <- as.data.frame(MASS::mvrnorm(23, mu = c(0,0), 
+                     Sigma = matrix(c(1,0.037,0.037,1),, ncol = 2), 
+                     empirical = TRUE)) %>% tibble()
+
+icu = tibble(
+  age = (out$V1 - min(out$V1))*15+40,
+  heart_rate = (out$V2 )*15+80
+  )
+
+ggplot(icu, aes(x = age, y = heart_rate)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+
+icu %>% select(age, heart_rate)
+```
+
+```{r}
+#| echo: true
+#| fig-height: 2.5
+
+library(CarletonStats)
+permTestCor(heart_rate ~ age, data = icu, alternative = "greater")
+```
+
+**R Example:** In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?
+
+```{r}
+#| fig-height: 2.5
+social_media = tibble(
+  app = c(rep("twitter", 346), rep("instagram", 530)), 
+  visits = c(rep(1, 249), rep(0, 346-249), rep(1, 424), rep(0, 530-424))
+)
+```
+
+```{r}
+#| echo: true
+#| fig-height: 2.5
+permTest(visits ~ app, data = social_media)
+```
+
+## Statistical Significance
+
+::: callout-note
+Significance Level
+\vspace{.75in}
+:::
+
+::: callout-note
+Statistical Significance
+\vspace{.75in}
+:::
+
+::: callout-note
+Formal Statistical Decisions
+\vspace{.75in}
+:::
+
+## Summary
+
+Whenever performing a hypothesis test, you should: 
+
+(1) Perform an appropriate EDA 
+
+(2) Formulate $H_0$ and $H_A$
+
+(3) Compute a *test statistic*
+(4) Construct a *null distribution* 
+(5) Compare the test statistic to the null distribution and compute a *p-value*
+(6) Make a decision (reject or fail to reject) about $H_0$ 
+(7) Report your conclusion in context

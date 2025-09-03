@@ -1,0 +1,19 @@
+color:
+  palette:
+    dark-blue: "#1F4257"
+    maize: "#F3B61D"
+    light-blue: "#42affa"
+  background: white
+  foreground: black
+  primary: dark-blue
+  
+typography:
+  fonts:
+    - family: Source Sans 3
+      source: google
+    - family: Roboto Slab
+      source: google
+  base: 
+    family: Source Sans 3
+  headings: 
+    family: Roboto Slab

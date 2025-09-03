@@ -1,0 +1,143 @@
+---
+title: "Notes 10: Sampling Distributions"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+library(infer)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+"Big picture" picture:
+
+\vspace{1.5in}
+
+| Quantity | Statistic | Parameter |
+|------|------|------|
+| Mean    |      |      |
+| Proportion     |      |      |
+| Standard Deviation     |      |      |
+| Correlation     |      |      |
+| Regression Coefficient     |      |      |
+
+
+
+Carleton publishes an "at a glance" page with some facts and figures about the student body: https://www.carleton.edu/about/carleton-at-a-glance/
+
+Some highlights: 
+
+- Geographic distribution: 
+    - Midwest 35% 
+    - West 24%
+    - South 12%
+    - Middle States 11%
+    - International/Other 11%
+    - New England 7%
+- 9% report two or more races
+- 16% are among the first generation in their families to attend college
+- 65% graduated in the top 10% of their high school class
+- 75% are involved in community service
+
+In a moment, we're going to do a poll to find one of these quantities for our class. Before we do, what is your *best guess* for each of these quantities? 
+
+**Example:** In this set-up, what is the: 
+
+- Population
+- Sample
+- Parameter
+- Statistic
+
+We know that our class will likely not have **exactly** 35% from the Midwest, but we probably wouldn't expect it to be 0% or 90%. 
+
+::: callout-note
+Sampling variability
+
+\vspace{.5in}
+:::
+
+We might start to ask ourselves, what if a *different* set of 32 students enrolled in this course? 
+
+First, we create a population. 
+
+```{r}
+carls = tibble(
+  student_id = 1:2007,
+  midwest = c(rep("Yes", 702), rep("No", 2007-702))
+) %>% 
+  slice(sample(1:n()))
+carls
+```
+
+Then, we take a random sample: 
+
+```{r, echo = TRUE}
+set.seed(100424)
+sample1 = carls %>%
+  sample_n(32)
+sample1
+```
+
+and calculate the proportion of "yes" responses: 
+
+```{r, echo = TRUE}
+sample1 %>%
+  group_by(midwest) %>%
+  summarize(
+    n = n()
+  ) %>%
+  mutate(p_hat = n/sum(n))
+```
+
+This isn't *super* useful, but if we do it a bunch of times, we can start to see what a range of possible samples could look like. (*Note:* this code requires the `infer` package)
+
+```{r, echo = TRUE}
+many_samples = carls %>%
+  rep_sample_n(35, reps = 1000, replace = TRUE) %>%
+  group_by(replicate, midwest) %>%
+  summarize(
+    n = n()
+  ) %>%
+  mutate(p_hat = n/sum(n)) %>%
+  filter(midwest == "Yes")
+
+many_samples
+```
+
+Looking at this first few rows, we can start to get a sense of the range of possible sample proportions, but there are 990 rows that we can't see. Let's make a graph! 
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(many_samples, aes(x = p_hat)) + 
+  geom_histogram(bins = 12, col = "white")
+```
+
+**Example:** Carleton Mission Statement
+
+\vspace{2in}
+
+*In your own words:* provide explanations for:
+
+::: callout-note
+Population distribution
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Sample distribution
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Sampling distribution
+
+\vspace{.5in}
+:::

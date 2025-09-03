@@ -1,0 +1,203 @@
+---
+title: "02: Sampling"
+format: 
+  revealjs: 
+    theme: [white, slides.scss]
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(patchwork)
+library(tidytext)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+theme_set(theme_minimal(base_size = 18, base_family = "Source Sans 3"))
+```
+
+# test {.maize}
+
+## Today:
+
+1. A pep talk
+1. Meet your groups!
+1. Data Recap
+2. Samples and Populations
+3. Sampling/RStudio Activity
+
+## What makes you nervous about this class?
+
+![](wordcloud-2.png){fig-align="center"}
+
+```{r, echo = FALSE}
+survey = read_csv("../data/survey-anon.csv", 
+                  col_names = c("stats", "cs", "r", "rstudio", "rmarkdown", "nervous"),
+                  skip = 1)
+```
+
+```{r, echo = FALSE}
+#data(stop_words)
+#survey %>%
+#  select(nervous) %>%
+#  mutate(student = 1:n()) %>% 
+#  unnest_tokens(word, nervous, token = "ngrams", n = 1) %>%
+#  anti_join(stop_words) %>%
+#  count(word, sort = TRUE)
+```
+
+## Have you taken a stats class before?
+
+```{r}
+survey %>% 
+  mutate(stats2 = ifelse(str_detect(stats, "Yes"), "Yes", "No")) %>%
+  ggplot(aes(y = stats2, fill = stats2)) +
+  geom_bar() + 
+  labs(x = "",
+       y = "") + 
+  theme(legend.position = "none") + 
+  scale_fill_viridis_d(end = .75)
+```
+
+## How familiar are you with the following tools? 
+
+```{r}
+survey %>% 
+  pivot_longer(cols = 3:5) %>%
+  ggplot(aes(y = name, fill = value)) +
+  geom_bar() + 
+  labs(x = "",
+       y = "",
+       fill = "") + 
+  theme(legend.position = "bottom") + 
+  scale_fill_viridis_d(end = .75)
+```
+
+# Meet your groups! {.maize}
+
+# In your groups: 
+
+1. Try to figure out what shared interest you all listed in the survey
+2. Complete the academic honesty and group expectations worksheet
+3. If you have time, talk about the examples we didn't get to in Notes01. 
+
+# Data Recap {.maize}
+
+# Samples and Populations {.maize}
+
+## Consider the following research questions: 
+
+1. What is the average mercury content of swordfish in the Atlantic Ocean? 
+2. Over the last five years, what is the average time to complete a degree for undergraduates in Minnesota? How does it compare to other states?
+3. Does a new drug reduce the heart attack rate in patients with severe heart disease? 
+
+## 3 Possible Responses: 
+
+1. A man on the news got mercury poisoning from eating swordfish, so it must be dangerously high. 
+2. I met two students who took less than 4 years to graduate, so it must take less time to graduate in Minnesota than in other states.
+3. My friend's father had a heart attack after taking the new drug for six months, so it must not work
+
+## The big picture
+
+The ultimate goal of statistics is to learn about a population using a subset of that population. But, populations are *hard* (sometimes impossible!) to measure. 
+
+## Spectrum of Samples
+
+## 
+
+::: callout-note
+## Population
+
+.
+:::
+
+::: callout-note
+## Sample
+
+.
+:::
+
+::: callout-note
+## Statistical Inference
+
+.
+:::
+
+::: callout-note
+## Parameters and Statistics
+
+.
+:::
+
+# Examples
+
+## Identify the **sample mean** and (claimed) **population mean**
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out}
+American households spent an average of about \$52 in 2007 on Halloween merchandise such as costumes, decorations, and candy. To see if this number had changed, researchers conducted a new survey in 2008 before industry numbers were reported. The survey included 1,500 households and found that average Halloween spending was \$58 per household.
+:::
+
+::: {.fragment .fade-in-then-out}
+The average GPA of students in 2001 at a private university was 3.37. A survey on a sample of 203 students from this university yielded an average GPA of 3.59 a decade later.
+:::
+
+::: {.fragment .fade-in-then-out}
+A recent article in a college newspaper stated that college students get an average of 5.5 hours of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night
+:::
+
+:::
+
+## What's wrong?
+
+I'm interested in how satisfied the Carleton community is with the fitness center. I decide I need a sample size of 100, so at 6am one morning, I stand outside the entrance ask the first 100 people who exit whether or not they enjoyed their workout. They all said yes, so I conclude the fitness center is a perfect facility.
+
+## What's wrong?
+
+75% of online reviews for a product are negative, so 75% of buyers are dissatisfied with the product. 
+
+## 
+
+::: callout-note
+## Simple Random Sample
+
+.
+:::
+
+::: callout-note
+## Bias
+
+.
+:::
+
+## 
+
+::: callout-note
+## Undercoverage
+
+.
+:::
+
+::: callout-note
+## Voluntary Response
+
+.
+:::
+
+::: callout-note
+## Convenience Sample
+
+.
+:::
+
+::: callout-note
+## Non-response bias
+
+.
+:::
+
+# Activity: Mission Statement {.maize}
+
+# Activity: Mission Statement in R {.maize}
+

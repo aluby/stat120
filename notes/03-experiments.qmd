@@ -1,0 +1,90 @@
+---
+title: "Notes 03: Experiments & Observational Studies"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+# Video Recap
+
+::: callout-note
+Observational Study
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Experiment
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Confounding Variable
+
+\vspace{.5in}
+:::
+
+**Table of Conclusions:**
+
+\vspace{2in}
+
+# Experimental Design Principles
+
+1. **Control** aspects of the experiment that we know may have an impact on the response, but are not the factors being studied
+2. **Randomize** subjects to treatments to even out effects that we cannot control
+3. **Replicate** over many subjects, or perhaps a different group of subjects
+
+There are lots of different ways to design experiments following the **randomize** and **replicate** approach. Two that we'll see on in this class are: 
+
+::: callout-note
+Complete randomized design
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+Matched Pairs design
+
+\vspace{.5in}
+
+:::
+
+
+Some other (optional) things that can reduce *bias* in experiments:
+
+::: callout-note
+Control group
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+Placebo group
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Single-blind
+
+\vspace{.5in}
+:::
+
+::: callout-note
+Double-blind
+
+\vspace{.5in}
+:::
+
+
+
+# Activity
+
+On moodle, navigate to the "Communicating Results Activity" and open the google slides presentation for further instructions.

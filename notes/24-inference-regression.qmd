@@ -1,0 +1,163 @@
+---
+title: "Notes 24: Inference for Regression"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+library(kableExtra)
+library(janitor)
+library(geomtextpath)
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+When we fit linear regression models earlier in this class, we used them to describe the relationship between the variables and interpreted the slope and the intercept as descriptions of the data. Now, we'd like to understand what the regression model can tell us about the relationship of the variables *in the population*.
+
+We're going to return to the `palmerpenguins` dataset from earlier in the class and restrict our analysis today to `Adelie` penguins. We we want to predict `flipper_length_mm` using `body_mass_g`. 
+
+```{r}
+adelie = penguins %>%
+  filter(species == "Adelie")
+```
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+#| layout-ncol: 2
+
+ggplot(adelie, aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point(size = .5) +
+  geom_smooth(method = "lm", se = FALSE)
+
+adelie_lm = lm(flipper_length_mm ~ body_mass_g, data = adelie)
+adelie_lm
+```
+
+**Warm up:** Write out the regression equation and provide an interpretation for the slope
+
+
+\vspace{3in}
+
+::: callout-note
+The **population model** for the regression line is: 
+
+\vspace{1in}
+
+:::
+
+**Idea:**
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+#| layout-ncol: 2
+ggplot(adelie, aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point(size = .5) 
+
+ ggplot(broom::augment(adelie_lm, interval = "prediction"), aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point(size = .5) +
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_line(aes(y=.lower), color = "darkorange", linetype = "dashed") +
+  geom_line(aes(y=.upper), color = "darkorange", linetype = "dashed")
+
+```
+
+To check if this population model is reasonable, use the "LINE" mnemonic: 
+
+1. **L**_______________________
+
+\vspace{.5in}
+
+2. **I**_______________________
+
+\vspace{.5in}
+
+3. **N**_______________________
+
+\vspace{.5in}
+
+4. **E**_______________________
+
+\vspace{.5in}
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+#| layout-ncol: 2
+ggplot(broom::augment(adelie_lm, interval = "prediction"), aes(x = .resid)) + 
+  geom_histogram(col = "white", bins = 20)
+
+ ggplot(broom::augment(adelie_lm, interval = "prediction"), aes(x = .fitted, y = .resid)) + 
+  geom_point(size = .5) +
+  geom_smooth(se = FALSE)
+
+```
+
+::: callout-note
+The **sampling distribution** for $b_1$ is: 
+
+\vspace{1in}
+
+:::
+
+```{r}
+#| echo: true
+summary(adelie_lm)
+```
+
+
+::: callout-note
+**CLT-based confidence interval for $\beta_1$:** 
+
+$$b_1 \pm t^*_{n-2} \times SE_{b_1}$$
+
+:::
+
+::: callout-note
+**CLT-based test for $H_0: \beta_1 = 0$:** 
+
+$$t_{n-2} = \frac{b_1 - 0}{SE_{b_1}}$$
+
+:::
+
+
+**Example:** Using the summary() output, along with the sampling distribution information above, how would you compute a 95\% confidence interval for $\beta_1$?
+
+
+\vspace{3in}
+
+
+# Inference for Predictions (Ch 9.3)
+
+**Example:** We measure a new Adelie penguin that weighs 4000g. What is (a) the predicted *mean* flipper length among all 4000g penguins and (b) the predicted flipper length for *any* 4000g penguin?
+
+
+```{r}
+#| echo: true
+
+augment(adelie_lm, newdata = tibble(body_mass_g = 4000))
+augment(adelie_lm, newdata = tibble(body_mass_g = 4000), interval = "confidence")
+augment(adelie_lm, newdata = tibble(body_mass_g = 4000), interval = "prediction")
+```
+
+We usually rely on R to make confidence and prediction intervals, but the formulas for these intervals are: 
+
+::: callout-note
+A **_______________________ interval for the mean response** when the predictor is $x^*$ is: 
+
+$$\hat{y} \pm t^*_{n-2} \times s_\epsilon \sqrt{\frac{1}{n} + \frac{(x^* - \bar{x})^2}{(n-1)s_x^2}}$$
+
+:::
+
+::: callout-note
+A **_______________________ interval for an individual response** when the predictor is $x^*$ is: 
+
+$$\hat{y} \pm t^*_{n-2} \times s_\epsilon \sqrt{1 + \frac{1}{n} + \frac{(x^* - \bar{x})^2}{(n-1)s_x^2}}$$
+
+:::

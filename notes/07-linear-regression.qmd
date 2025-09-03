@@ -1,0 +1,108 @@
+---
+title: "Notes 07: Linear Regression"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+:::: {layout-ncol="2"}
+::: {}
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point(size = .5) + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+:::
+
+::: {}
+```{r}
+penguins_lm = lm(flipper_length_mm ~ body_mass_g, data = penguins)
+equatiomatic::extract_eq(penguins_lm, use_coefs = TRUE)
+```
+:::
+
+::::
+
+::: callout-note
+Observation
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+Prediction
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+Residual
+
+\vspace{.5in}
+
+:::
+
+**Example:** I grab a penguin with a flipper length of 193mm and a body mass of 3475g. What is the **observation**, **prediction**, and **residual** in this case?
+
+\vspace{1in}
+
+```{r}
+#penguin_dives = read_csv("http://www.math.carleton.edu/aluby/stat120/penguin_dives.csv")
+penguin_dives = read_csv("../data/penguin_dives.csv") # update data on server!! 
+```
+
+It can be helpful to look at a *residual scatterplot* when checking for linearity and outliers. 
+
+```{r}
+#| echo: true
+#| fig-width: 3
+#| fig-height: 2
+dives_lm = lm(DiveHeartRate ~ Duration, data = penguin_dives)
+dives_aug = augment(dives_lm)
+p1 = ggplot(dives_aug, aes(x = .fitted, y = .resid)) + 
+  geom_point(size = .5) + 
+  geom_hline(yintercept =0)
+```
+
+
+```{r}
+#| fig-width: 6
+#| fig-height: 2
+p2 = ggplot(dives_aug, aes(x = .fitted, y = .resid)) + 
+  geom_hline(yintercept =0) + 
+  ylim(c(-25, 25)) + 
+  xlim(c(0,100)) + 
+  labs(title = "What would an ideal residual plot look like?") + 
+  theme(plot.title = element_text(size = 8))
+
+p1 + p2
+```
+
+Below is the slope and intercept for the transformed model. Write out the linear regression equation and provide an in-context interpretation of the intercept and slope. 
+
+```{r}
+dives_lm2 = lm(-1/DiveHeartRate ~ Duration, data = penguin_dives)
+coef(dives_lm2)
+```
+
+\vspace{1in}
+
+When do we do **transformations**? 
+
+\vspace{1in}
+
+Why is it important that we have a **linear relationship**? 
+
+\vspace{1in}
+
+What is the point of fitting a **linear regression**? 

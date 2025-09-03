@@ -1,0 +1,91 @@
+---
+title: "18: The Normal Distribution"
+---
+
+```{r, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(broom)
+library(patchwork)
+library(CarletonStats)
+```
+
+Suppose weights of newborn babies in one community are normally distributed with a mean of 7.7 pounds and a standard deviation of 1.25 pounds
+
+**1.** Use the 95\% rule to sketch a graph of this normal density curve. Include a scale with at least three values on the horizontal axis.
+
+\vspace{2in}
+
+**2.** Suppose I wanted to know the percent of newborns weighing less than 4.5 pounds. 
+
+  (a) Use StatKey to answer this question
+  (b) Use the `pnorm` function to answer this question.
+
+Answer: ________________
+
+**3.** Suppose I wanted to know the 15th percentile of the distribution. 
+
+  (a) Use StatKey to answer this question
+  (b) Use the `qnorm` function to answer this question.
+  
+Answer: ________________
+
+**4.** APM Research Lab ran a [survey of likely Minnesota voters](https://www.apmresearchlab.org/minnesota-poll-september-2024#methods) between Sept 16-18 of this year. Here's an excerpt from their methodology report: 
+
+> *The margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the "true" figure would fall within that range if all voters were surveyed. The margin for error is higher for any subgroup, such as a gender or age grouping.*
+
+They reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket. 
+
+(a) How do you feel about this summary of a confidence interval (for a public/non-statistician audience)?
+
+\vspace{1in}
+
+(b) What is the standard error for each of these estimates? 
+
+\vspace{1in}
+
+(c) Build a 95% confidence interval for one of these proportions
+
+\vspace{2in}
+
+(d) Use the normal distribution to instead build a 99% confidence interval for one of these proportions
+
+\vspace{2in}
+
+The report also says: 
+
+> *Overall margin of error = 3.5 percentage points (and therefore approximately 7 percentage points for the difference between two data points)*
+
+(d) Use this information to build a 90% confidence interval for the *difference in proportions* between the Harris/Walz supporters and the Trump/Vance supporters.
+
+\vspace{2in}
+
+**5.** True or False? 
+
+(a) The central limit theorem says that the population distribution is approximately normal if the population is big enough.
+
+(b) The central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.
+
+(c) The central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.
+
+(d) The central limit theorem says that any statistic is normally distributed if the sample size is big enough.
+
+(e) The central limit theorem applies to proportions and means
+
+**5.** Using `pnorm` or `qnorm`, find the following quantities. 
+
+(a) $P(Z < .25)$
+
+(b) $P(Z > 1.5)$
+
+(c) $P(-.5 < Z  < 1.5)$
+
+(d) $z^*$ where $P(Z < z^*) = .33$
+
+(e) $z^*$ where $P(Z > z^*) = .33$
+
+(f) $P(X < 10)$ where $X \sim N(15, 22)$
+
+(g) $P(X > 40)$ where $X \sim(15,22)$
+
+
+

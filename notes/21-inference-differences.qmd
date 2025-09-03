@@ -1,0 +1,178 @@
+---
+title: "Notes 21: CLT-Based Inference for Differences"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+\vspace{-.5in}
+
+## CLT Recap
+
+::: callout-note
+**CLT for 1 Proportion**
+
+$$\hat{p} \sim N(\rule{2cm}{0.15mm},\rule{2cm}{0.15mm})$$ $$SE_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$$ But, we don't know $p$, so plug in \_\_\_\_\_\_\_\_\_\_ (CI's), \_\_\_\_\_\_\_\_\_\_ (HT's), \_\_\_\_\_\_\_\_\_\_ (conservative)
+:::
+
+::: callout-note
+**CLT for 1 Mean**
+
+$$\bar{X} \sim N(\rule{2cm}{0.15mm},\rule{2cm}{0.15mm})$$
+
+where $SE_{\bar{X}}=$ \_\_\_\_\_\_\_\_\_\_. But, we don't know $\sigma$, so we plug in $s$. Then,
+
+$$\frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}} \sim t_{n-1}$$
+:::
+
+**Example** We want to build a 99% confidence interval for $\mu$, where $\bar{X} = 290$, $n = 120$ and $s=87.6$. The correct form for the CI is:
+
+\vspace{1in}
+
+## CLT for a difference in proportions
+
+Idea:
+
+Population parameter:
+
+Sample statistic:
+
+CLT: $$\hat{p}_1 - \hat{p}_2 \sim N(\rule{2cm}{0.15mm},\rule{2cm}{0.15mm})$$
+
+How big is "big enough?"
+
+-   $n_1p_1 >$ \_\_\_\_\_\_\_\_\_\_\_
+-   $n_2p_2 >$ \_\_\_\_\_\_\_\_\_\_\_
+
+What is the SE?
+
+$$ SE_{\hat{p}_1 - \hat{p}_2} = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$$
+
+but, we don't know $p_1$ or $p_2$. Three options:
+
+1.  "Plug-in" $\hat{p}_1$ and $\hat{p}_2$
+
+2.  Use $\hat{p}_{pooled} =$ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+3.  "Conservative" SE: assume $p=$ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+::: callout-note
+**CLT-based confidence interval for a difference in proportions:**
+
+$$\hat{p}_1 - \hat{p}_2 \pm z^* \times SE_{plug-in}$$
+:::
+
+::: callout-note
+**CLT-based test for a difference in proportions:**
+
+$H_0: p_1 - p_2 = 0$
+
+$$ z = \frac{(\hat{p}_1 - \hat{p}_2) - 0}{SE_{pooled}}$$
+:::
+
+## CLT for a difference in means
+
+Idea:
+
+Population parameter:
+
+Sample statistic:
+
+CLT: $$\bar{x}_1 - \bar{x}_2 \sim N(\mu_1 - \mu_2, SE_{\bar{x}_1 - \bar{x}_2})$$
+
+How big is "big enough?"
+
+::: {layout="[0.45, 0.1, 0.45]"}
+::: {#firstcol}
+::: callout-note
+Case 1:
+
+-   $n_1 >$ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+-   $n_2 >$ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+$~$
+
+:::
+:::
+
+::: {#secondcol}
+$~$
+:::
+
+::: {#thirdcol}
+::: callout-note
+Case 2:
+
+-   $n_1 \le$ _____ or $n_2 \le$ _____
+
+-   AND 
+
+$~$
+
+:::
+:::
+
+:::
+
+\pagebreak
+
+What is the SE?
+
+$$ SE_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
+
+but, we don't know $\sigma_1$ or $\sigma_2$, so we plug in $s_1$ and $s_2$ instead:
+
+$$ SE_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
+
+the sampling distribution is no longer a normal distribution, but becomes a \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+::: callout-note
+**CLT-based confidence interval for a difference in means:**
+
+$$\bar{x}_1 - \bar{x}_2 \pm t_{df}^* \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
+:::
+
+::: callout-note
+**CLT-based test for a difference in means:** $H_0: \mu_1 - \mu_2 = 0$
+
+$$ t_{df} = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
+:::
+
+where $df =$ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+## CLT for Matched Pairs
+
+Idea:
+
+Population parameter:
+
+Sample statistic:
+
+CLT: $$~$$
+
+How big is "big enough"?
+
+What is the SE? \vspace{1in}
+
+::: callout-note
+**CLT-based confidence interval for a matched pairs difference:**
+
+\vspace{1in}
+:::
+
+::: callout-note
+**CLT-based test for a matched pairs difference:** $H_0: \mu_d = 0$
+
+\vspace{1in}
+:::

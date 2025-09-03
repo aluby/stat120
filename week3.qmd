@@ -1,6 +1,0 @@
----
-title: "week3"
-format: html
----
-
-placeholder for week 3 content

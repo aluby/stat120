@@ -1,0 +1,64 @@
+---
+title: "Notes 01: Data"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(patchwork)
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+# The Structure of Data
+
+::: callout-note
+## Cases
+
+\vspace{.5in}
+
+:::
+
+
+::: callout-note
+## Variables
+
+\vspace{.5in}
+:::
+
+# Types of Variables
+
+\vspace{2in}
+
+
+# Examples
+
+For each of the following, label the *cases* and *variables*. For each variable, state whether it is *categorical* or *quantitative*. 
+
+## Penguins
+
+```{r, echo = FALSE}
+palmerpenguins::penguins 
+```
+
+## Price of diamonds by carat and cut quality
+
+```{r, echo = FALSE}
+#| fig-align: left
+#| fig-height: 2
+#| fig-width: 4
+
+ggplot(diamonds %>% filter(cut %in% c("Good", "Ideal")) %>% sample_n(500), aes(x = carat, y = price, col = cut)) + 
+  geom_point(size = .5) + 
+  labs(
+    x = "Weight (in carats)",
+    y = "Price (in USD)",
+    color = "Cut Quality"
+  )
+```
+
+## Is there a "Sprinting Gene"?
+
+A gene called `ACTN3` encodes a protein which functions in fast-twitch muscles. Some people have a variant of this gene that cannot yield this protein. To address the question of whether this gene is associated with sprinting ability, geneticists tested people from three different groups: world-class sprinters, world-class marathon runners, and a control group of non-athletes. In the sames tested, 6% of the sprinters had the gene variant, compared with 18% of non-athletes and 24% of the marathon runners. 
+
+Sketch out a possible dataset, and then answer the questions. 

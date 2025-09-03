@@ -1,0 +1,86 @@
+---
+title: "Notes 19: CLT-Based Inference for Proportions"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+**CLT:** The Central Limit Theorem (CLT) tells us that if the sample size is big enough and the sample is random, 
+
+$$ \bar{X} \sim N(\rule{1cm}{0.15mm}, \rule{1cm}{0.15mm}) $$
+
+$$ \hat{p}\sim N(\rule{1cm}{0.15mm}, \rule{1cm}{0.15mm}) $$
+
+The general form for a **confidence interval** is: 
+
+\vspace{1in}
+
+**Example:** Finding $z^*$
+
+- 95% confidence interval 
+- 68% confidence interval
+- 99% confidence interval
+- 90% confidence interval
+
+## How big is big enough? 
+
+**Example 1:** $\hat{p} = .5$
+
+\vspace{.5in}
+
+**Example 1:** $\hat{p} = .05$
+
+\vspace{.5in}
+
+::: callout-note
+**Rule of Thumb for Proportions**: 
+
+- Expected count in each category (Yes/No) should be > ____
+- $np > $ ____ and $n(1-p) > $ ____
+
+:::
+
+## How do we find the SE?
+
+::: callout-note
+**Standard Error for Proportions**: 
+
+\vspace{1in}
+
+:::
+
+**Idea:** As $n$ gets bigger, the SE gets ________________. If $\hat p$ is close to .5, the SE is  ________________ than if $\hat p$ is close to 0 or 1
+
+**Example:** ESP Example Again
+
+n = 14
+
+```{r}
+#| echo: true
+
+p_hat = 3/14
+n = 14
+SE_p = sqrt((p_hat*(1-p_hat))/n)
+z_score = (p_hat - .2)/SE_p
+p_val = pnorm(z_score, lower.tail = FALSE)
+p_val
+```
+
+n=1400:
+
+
+n=14000:
+
+**Big Picture** Picture
+
+

@@ -1,0 +1,157 @@
+---
+title: "Notes 11: Confidence Intervals + Intro to the Bootstrap"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+library(infer)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+Let's begin with the class proportion from last time: 35% of Carleton students are "from the Midwest", while 21% of our class (who were in attendance) are from the Midwest. 
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+
+set.seed(100424)
+
+carls = tibble(
+  student_id = 1:2007,
+  midwest = c(rep("Yes", 702), rep("No", 2007-702))
+) %>% 
+  slice(sample(1:n()))
+
+many_samples = carls %>%
+  rep_sample_n(32, reps = 1000, replace = TRUE) %>%
+  group_by(replicate, midwest) %>%
+  summarize(
+    n = n()
+  ) %>%
+  mutate(p_hat = n/sum(n)) %>%
+  filter(midwest == "Yes")
+
+ggplot(many_samples, aes(x = p_hat)) + 
+  geom_histogram(bins = 10, col = "white")
+```
+
+The mean and standard deviation of the sampling distribution are:
+
+```{r}
+many_samples %>%
+  ungroup() %>%
+  summarize(
+    xbar = mean(p_hat),
+    se = sd(p_hat)
+  )
+```
+
+::: callout-note
+Standard Error:
+
+\vspace{.5in}
+:::
+
+In a random class of 32 students, how many would we expect to be from the Midwest?
+
+\vspace{2in}
+
+::: callout-note
+Confidence Interval
+
+\vspace{.5in}
+:::
+
+95% confidence interval using the standard error:
+
+\vspace{1in}
+
+::: callout-note
+Margin of Error
+
+\vspace{.5in}
+:::
+
+Example: Percent of each country with internet access (StatKey)
+
+\vspace{2in}
+
+::: {.callout-warning appearance="simple"}
+CI Misinterpretations
+
+\vspace{2in}
+:::
+
+Structure of a CI:
+
+1.  I am \_\_\_ % confident
+2.  that the \[population parameter in context\]
+3.  is between \_\_\_\_ and \_\_\_\_ \[units\]
+
+# The Bootstrap
+
+So far, we've used the *population* to generate samples and construct sampling distributions. For most situations, this is unrealistic.
+
+**Example:** Let's consider our `penguin` friends. I'm interested in finding a 95% confidence interval for the mean flipper length of *all* Palmer Archipelago penguins. The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` and the standard deviation is `r sd(penguins$flipper_length_mm, na.rm = TRUE)`.
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(col = "white", bins = 20)
+```
+
+**Idea:**
+
+![](images/BootstrapPopulation.png){width="60%"}
+
+
+\pagebreak
+
+Let's return to our penguins. I've made 100 bootstrap samples and found the mean for each one: 
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+
+bootstrap_sampling_dist = penguins %>%
+  select(species, flipper_length_mm) %>%
+  rep_sample_n(size = nrow(penguins), reps = 100, replace = TRUE) %>%
+  summarize(xbar = mean(flipper_length_mm, na.rm = TRUE)) 
+  
+bootstrap_sampling_dist %>%
+  ggplot(., aes(x = xbar)) + 
+  geom_dotplot() +
+  labs(title = "Bootstrap Means")
+```
+
+The mean of this distribution is `r mean(bootstrap_sampling_dist$xbar)` and the standard deviation is `r sd(bootstrap_sampling_dist$xbar)`.
+
+\vspace{1in}
+
+::: callout-note 
+Bootstrap confidence interval:
+
+\vspace{.5in}
+:::
+
+The magic of the bootstrap is that it works for any statistic we can compute from our sample! We simply have to follow these steps: 
+
+1. Generate *bootstrap samples*: 
+    - Sample from the original sample with replacement
+    - Use the same sample size as original sample
+2. Compute the statistic of interest for each bootstrap sample
+3. Collect the statistics for many bootstrap samples to create the *bootstrap distribution*
+4. Treat the *bootstrap distribution* as the *sampling distribution* to estimate the standard error
+
+::: {.callout-warning appearance="simple"}
+What happens when the bootstrap distribution is not symmetric? 
+
+:::

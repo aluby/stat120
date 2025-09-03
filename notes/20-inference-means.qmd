@@ -1,0 +1,174 @@
+---
+title: "Notes 20: CLT-Based Inference for Means"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+**CLT:** The Central Limit Theorem (CLT) tells us that if the sample size is big enough and the sample is random, 
+
+$$ \bar{X} \sim N(\rule{1cm}{0.15mm}, \rule{1cm}{0.15mm}) $$
+
+**Example:** Finding $z^*$ with a table. What could you say about the value of the p-value for a z-score of 2.917?
+
+|  percentage  |  percentile (`qnorm(percentage)`)  |
+|:---------------------:|:------------:|
+|         90%          |     1.3      |
+|         95%          |     1.6      |
+|         97.5%          |     2.0      |
+|         99%          |     2.3      |
+|         99.5%          |     2.6      |
+
+
+```{r}
+#| fig-height: 2
+#| fig-width: 8
+p1 = ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 580, sd = 70)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(580 - 2*70, 580 - 70, 580, 580 + 70, 580+2*70), labels = NULL) +
+  labs(y = "density", 
+       x = "") 
+p1 + p1 + p1
+```
+
+\vspace{.5in}
+
+## How big is big enough? 
+
+::: callout-note
+**Rule of Thumb for Means**: 
+
+\vspace{1in}
+
+:::
+
+## How do we find the SE?
+
+::: callout-note
+**Standard Error for Means**: 
+
+\vspace{.5in}
+
+**Idea:** As $n$ gets bigger, the SE gets ________________. If ________________ is small, the SE is also  ________________.
+:::
+
+**Example:** Florida Lakes
+
+$H_0:$
+
+$H_A:$
+
+$\bar{X}=$
+
+$s=$
+
+Test stat: 
+
+\vspace{.5in}
+
+p-value: 
+
+\vspace{.5in}
+
+**Example:** Guinness Beer Acidity
+
+$H_0:$
+
+
+$H_A:$
+
+$\bar{X}=$
+
+$s =$
+
+Test stat: 
+
+\vspace{.5in}
+
+p-value: 
+
+\vspace{.5in}
+
+p-value (t-distribution): 
+
+\vspace{.5in}
+
+\pagebreak
+
+## The t-distribution
+\vspace{-.25in}
+
+```{r}
+#| echo: false 
+#| fig-width: 6
+#| fig-height: 4
+cols = viridis::viridis(4)
+curve(dnorm(x), -4, 4, lty = 2, lwd = 2, ylab = "")
+curve(dt(x, df = 1), add = TRUE, col = cols[1], lwd = 2)
+curve(dt(x, df = 3), add = TRUE, col = cols[2], lwd = 2)
+curve(dt(x, df = 10), add = TRUE, col = cols[3], lwd = 2)
+curve(dt(x, df = 30), add = TRUE, col = cols[4], lwd = 2)
+labels <- c("normal", "df=1", "df=3", "df=10", "df=30")
+legend("topright", inset=.05, title="Distributions",
+  labels, lwd=2, lty = c(2, 1, 1, 1, 1), col=c(1,cols))
+```
+
+- When we divide by ____________________, the test stat has a t-distribution instead of a N(0,1)
+- The t-distribution depends on the "degrees of freedom" (________________)
+- When $df$ is ________________, t-distribution has "heavier tails" than N(0,1)
+- When $df$ is ________________, the t-distribution is approximately equal to N(0,1)
+
+**Example:** Florida Lakes (again)
+
+```{r}
+#| echo: true
+t = -1.75
+pt(t, df = 52)
+```
+
+## Summary
+
+- Test stat for means: ___________________
+- SE: ________________
+- Can "safely" use the CLT if ________________
+- If ________________, we can still use the CLT if there are no outliers or extreme skew 
+- t-distribution is better to use, but for large sample sizes it will be close to the normal distribution
+- Percentage of t-distribution below $t$-score: `pt(t-score, df = n-1)`
+- Percentile $t^*$ for a specific percentage: `qt(percentage, df = n-1)`
+
+## Group Problems
+
+1.  (Adapted from Exercise 6.128)
+
+> Plastic microparticles contaminate shorelines. Much of the pollution comes from washing fleece clothing. In a recent study, washing a fleece garment discharged on average $\bar{X} = 290$ fibers per liter of wastewater. The standard deviation was $s = 87.6$ fibers and the sample size was $n=120$. 
+
+(a) What is the estimated *standard error* of the average number of fibers discharged per liter of wastewater when washing a fleece garment? 
+
+\vspace{.5in}
+
+(b) The table below gives some percentiles of the $t_{119}$ distribution. Use this information to construct a 99% confidence interval for the population mean. Interpret the interval in context.
+
+|  percentage  |  percentile (`qnorm(percentage)`)  |
+|:---------------------:|:------------:|
+|         90%          |     1.3      |
+|         95%          |     1.6      |
+|         97.5%          |     2.0      |
+|         99%          |     2.3      |
+|         99.5%          |     2.6      |
+
+
+\vspace{2in}
+
+(c) What sample size would we need if we wanted this interval to be *no wider* than 20? 
+

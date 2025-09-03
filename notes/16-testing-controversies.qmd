@@ -1,0 +1,100 @@
+---
+title: "Notes 16: Hypothesis Test Controversies"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+**ESP Example:** subjects draw a card at random and telepathically communicate this to someone who then guesses the symbol. 
+
+Population parameter:
+
+Sample statistic: 
+
+$H_0$: 
+
+$H_A$:
+
+Results 1: 
+
+\vspace{1.5in}
+
+Results 2: 
+
+\vspace{1.5in}
+
+
+Results 3
+
+\vspace{1.5in}
+
+With *small samples* even _______________ effects might not be statistically significant
+
+With *large samples* even _______________ effects might be statistically significant
+
+\pagebreak
+
+Which is the *bootstrap distribution* and which is the *null distribution*?
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2
+set.seed(102324)
+sim_ps = tibble(
+  boot_ps = rnorm(1000, mean = .214, sd = .01),
+  null_ps = rnorm(1000, mean = .2, sd = .01)
+) 
+
+sim_ps %>%
+  pivot_longer(everything()) %>%
+  ggplot(aes(x = value, fill = name)) + 
+  geom_histogram(col = "white") + 
+  facet_wrap(vars(name)) + 
+  theme(legend.position = "none",
+        strip.text = element_blank()) + 
+  labs(x = "") + 
+  scale_fill_viridis_d(option = "plasma", end = .75)
+```
+
+Sketch out the *confidence interval* and the *rejection region* for the hypothesis test
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2
+sim_ps %>%
+  pivot_longer(everything()) %>%
+  ggplot(aes(x = value, fill = name)) + 
+  geom_histogram(col = "white", position = position_dodge())  + 
+  scale_fill_viridis_d(option = "plasma", end = .75) + 
+  theme(legend.position = "none") + 
+  labs(x = "")
+```
+
+## Multiple Testing
+
+When you do a single hypothesis test, your Type I error rate is:
+
+If you do many hypothesis tests, your Type I Error rate is:
+
+If you do 10 tests, your overall Type I Error rate is:
+
+If you do 100 tests, your overall Type I Error rate is:
+
+## Six principles from ASA statement
+
+1. P-values can indicate how incompatible the data are with a specified statistical model.
+2. P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.
+3. Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.
+4. Proper inference requires full reporting and transparency.
+5. A p-value, or statistical significance, does not measure the size of an effect or the importance of a result.
+6. By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis. 

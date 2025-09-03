@@ -1,7 +1,0 @@
----
-title: "week7"
-format: html
----
-
-
-placeholder for weekly content

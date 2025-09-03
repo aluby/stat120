@@ -1,0 +1,175 @@
+---
+title: "Notes 22: Inference for >2 Proportions"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+library(kableExtra)
+library(janitor)
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+
+What happens when we have *more* than two categories within a variable? (so response is not Yes/No or True/False)
+
+**Example:** Some people think that children who are the older ones in their class at school naturally perform better in sports and that these children then get more coaching and encouragement. Could that make a difference in who makes it to the professional level in sports? Below is the birth month of 1478 major league players born since 1975, along with the national birth percentage across the same years. 
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllllllllllll@{}}
+\toprule
+Month    & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 10    & 11    & 12    \\ \midrule
+Obs      & 137   & 121   & 116   & 121   & 126   & 114   & 102   & 165   & 134   & 115   & 105   & 122   \\
+Birth \% & 8\%   & 7\%   & 8\%   & 8\%   & 8\%   & 8\%   & 9\%   & 9\%   & 9\%   & 9\%   & 8\%   & 9\%   \\
+Exp      & 118.2 & 103.4 & 118.2 & 118.2 & 118.2 & 118.2 & 133.0 & 133.0 & 133.0 & 133.0 & 118.2 & 133.0 \\ \bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+**How did I find the Expected Count?**
+
+$~$
+
+$~$
+
+Let's walk through an appropriate hypothesis test for this data
+
+$~$
+
+(1) Hypotheses
+
+\vspace{1in}
+
+(2) Conditions/Assumptions
+
+\vspace{1in}
+
+(3) Test statistic:
+
+$$ \chi^2 = \sum_{\text{all cells}} \frac{(Obs - Exp)^2}{Exp} $$
+
+\vspace{3in}
+
+(4) p-value:
+
+The $\chi^2$ distribution looks like: 
+
+```{r, echo = FALSE, fig.height =3}
+data.frame(chisq = 0:3000 / 100) %>% 
+           mutate(`df=5` = dchisq(x = chisq, df = 5),
+                  `df=2` = dchisq(x = chisq, df = 2),
+                  `df=10` = dchisq(x = chisq, df = 10),
+                  `df=15` = dchisq(x = chisq, df = 15)) %>%
+  gather(key = "df", value = "density", -chisq) %>%
+  ggplot() +
+  geom_line(aes(x = chisq, y = density, color = df)) +
+  labs(title = expression(chi[df]^2~" distributions"),
+       x = "",
+       y = "",
+       col = "") +
+  scale_color_viridis_d(option = "plasma", end = .75) +
+  theme_minimal()
+```
+
+For $\chi^2$ tests, we **always** calculate the p value as
+
+$$ P(\chi^2_{n-1} > 26.48) = \texttt{pchisq(26.48, df = 11, lower.tail = FALSE)} = .0055 $$
+
+This is a $\chi^2$ **Goodness of Fit** test. 
+
+## Two Categorical Variables
+
+When we have two categorical variables, each that could have 2 or more levels, the only thing that changes is how we compute the *expected* counts within each cell. 
+
+**Example:**
+
+|        | Condition Improved | Did Not Improve |     |
+|--------|--------------------|-----------------|-----|
+| Drug A |                    |                 | 70  |
+| Drug B |                    |                 | 100 |
+| Drug C |                    |                 | 150 |
+|        | 180                | 140             | 320 |
+
+\vspace{.5in}
+
+(1) Hypotheses
+
+\vspace{1in}
+
+(2) Conditions/Assumptions
+
+\vspace{1in}
+
+(3) Test Statistic
+
+\vspace{1in}
+
+(4) P-value
+
+\vspace{1in}
+
+This is a $\chi^2$ **Test for Association**
+
+\vspace{1in}
+
+## Group Problems 
+
+1. Below is a sample of sauces. Does Taco Bell distribute sauce packets with equal probability?
+
+```{r}
+#| out-height: 2in
+#| out-width: 3in
+#| echo: false
+
+knitr::include_graphics("images/sauce-tweet.png")
+```
+
+\vspace{1in}
+
+2. In order to assess whether habitat conditions are related to the sunlight choices a lizard makes for resting, Western fence lizard (Sceloporus occidentalis) were observed across three different microhabitats. The results are shown below: 
+
+```{r}
+   openintro::lizard_habitat |>
+      count(site, sunlight) |>
+      pivot_wider(names_from = sunlight, values_from = n) |>
+      adorn_totals(where = c("row", "col")) |>
+      kbl(align = "lrrrr", booktabs = TRUE) |>
+      kable_styling(bootstrap_options = c("striped", "condensed"), 
+                    latex_options = "HOLD_position",
+                    full_width = FALSE) |>
+      add_header_above(c(" "=1, "sunlight" = 3, " " = 1)) 
+```
+
+  a.  If the variables describing the habitat and the amount of sunlight are independent, what proportion of lizards (total) would be expected in each of the three sunlight categories?
+
+\vspace{.5in}
+
+  b.  Given the proportions of each sunlight condition, how many lizards of each type would you expect to see in the sun?
+        in the partial sun?
+        in the shade?
+        
+|          | sun | partial | shade | Total |
+|----------|-----|---------|-------|-------|
+| desert   |     |         |       | 119   |
+| mountain |     |         |       | 107   |
+| valley   |     |         |       | 106   |
+| Total    | 114 | 108     | 110   | 332   |
+
+
+  c.  Compare the observed (original data) and expected (part b.) tables.
+        From a first glance, does it seem as though the habitat and choice of sunlight may be associated?
+
+\vspace{1in}
+
+  d.  Perform a $\chi^2$ test to formally test for an association between habitat and choice of sunlight. Write out the appropriate hypotheses, check conditions, compute the test statistic, find the p-value, and interpret your result in context.
+
+ 
+

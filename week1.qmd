@@ -1,6 +1,0 @@
----
-title: "week1"
-format: html
----
-
-placeholder for week 1 content

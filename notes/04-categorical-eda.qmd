@@ -1,0 +1,68 @@
+---
+title: "Notes 04: Categorical Variables"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+options(digits = 4)
+notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
+theme_set(notes_theme)
+```
+
+# Categorical Variables
+
+Categorical variables are best summarized with a **frequency table** and visualized using a **barplot**. When we want to summarize a categorical variable with a single number, we often use a **proportion**.
+
+::: callout-note
+Proportion \vspace{.5in}
+:::
+
+When we have two categorical variables, we often use a **two-way table** to summarize them at the same time (also called the **joint distribution**). We might also care about the **marginal distribution** (the margins) or **conditional distribution** (a specific row/column).
+
+**Example:** Below is the two-way table for our class representing the answers to "Have you taken a CS class before?" and whether the "Environmental Issues" interest box was checked.
+
+|       | No  | Yes - CS 111 | Yes - Other |
+|-------|-----|--------------|-------------|
+| FALSE | 10  | 9            | 3           |
+| TRUE  | 6   | 4            | 1           |
+
+a. What is the marginal distribution of *environmental interest*? 
+\vspace{.5in}
+b. What is the conditional distribution of *environmental interest* among those who *have not taken a CS course*?
+\vspace{.5in}
+c. What is the conditional distribution of *prior CS courses* among those who *are not interested in environmental issues*? 
+\vspace{.5in}
+d. What is the proportion of students who have taken a prior CS course? 
+\vspace{.5in}
+e. Does *interest in environmental issues* appear to be independent of *prior CS experience*? 
+
+
+# Quantitative Variables
+
+Quantitative variables are best visualized with a **histogram** or **dotplot** (depending on sample size)
+
+\vspace{1in}
+
+When describing quantitative variables, we typically care most about the **shape** and **center**. When we want to summarize a quantitative variable with a single number, we often choose the **mean**, **median**, or **mode**.
+
++---------------------------+------------------------+--------------------------+
+| Skewed Right \hspace{1in} | Symmetric \hspace{1in} | Skewed Left \hspace{1in} |
++===========================+========================+==========================+
+| \vspace{1.5in}            |                        |                          |
+|                           |                        |                          |
+| .                         |                        |                          |
++---------------------------+------------------------+--------------------------+
+
+There are various ways to describe the center of the distribution. The three most common are:
+
+::: callout-note
+Mean \vspace{.75in}
+:::
+
+::: callout-note
+Median \vspace{.75in}
+:::
+
+::: callout-note
+Mode \vspace{.75in}
+:::
