@@ -12,11 +12,6 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-  sidebar: 
-    contents: 
-      - auto: notes
-      - auto: activities
-      - auto: slides
 
 format:
   html:

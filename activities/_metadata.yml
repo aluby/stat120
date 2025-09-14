@@ -5,7 +5,7 @@ engine: knitr
 knitr:
     opts_chunk: 
       dev: "ragg_png"
-      echo: false
+      echo: true
       warning: false
       message: false
 execute:
