@@ -4,516 +4,301 @@
     "href": "activities/19-activity.html",
     "title": "19: CLT-based Inference for Proportions",
     "section": "",
-    "text": "APM Research Lab ran a survey of likely Minnesota voters between Sept 16-18 of this year. They reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket.\n\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the “true” figure would fall within that range if all voters were surveyed.\n\n\nShow how the margin of error was computed\n\n\nIs it OK to use the normal distribution as a model for the sampling distribution of a proportion in this case?\n\n\nIn a random sample of 100 moviegoers in January 2013, 64 of them said they are more likely to wait and watch a new movie in the comfort of their own home.\n\n\nIs it ok to use the normal distribution as a model for the sampling distribution of the proportion of moviegoers preferring to wait and watch at home?\n\n\nSuppose I want to know if more than 50% of moviegoers in the population prefer to wait and watch at home. Write down the corresponding null and alternative hypotheses.\n\n\nFor the hypothesis test in part (b), find the standardized test statistic (i.e., the Z-score).\n\n\nCalculate the p-value and state a conclusion in context\n\n\nThe table below gives some of the percentiles of the N(0,1) distribution. If you were given this table (for example on an exam, where you do not have access to R), what could you say about the value of the p-value?\n\n\n\n\npercentage\npercentile (qnorm(percentage))\n\n\n\n\n90%\n1.3\n\n\n95%\n1.6\n\n\n97.5%\n2.0\n\n\n99%\n2.3\n\n\n99.5%\n2.6\n\n\n\n\nCompute and interpret a 90% confidence interval for the population proportion of moviegoers who believe they are more likely to watch a new movie from home. (Use the information from the previous table to find the critical value needed.)\n\n\nHow big of a sample size would you need if you wanted the margin of error for a 90% confidence interval to be no more than 2%? To answer this question, assume that the true proportion is \\(p=0.5\\), which would result in the biggest margin of error for a given sample size.",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "19: CLT-based Inference for Proportions"
-    ]
+    "text": "APM Research Lab ran a survey of likely Minnesota voters between Sept 16-18 of this year. They reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket.\n\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the “true” figure would fall within that range if all voters were surveyed.\n\n\nShow how the margin of error was computed\n\n\nIs it OK to use the normal distribution as a model for the sampling distribution of a proportion in this case?\n\n\nIn a random sample of 100 moviegoers in January 2013, 64 of them said they are more likely to wait and watch a new movie in the comfort of their own home.\n\n\nIs it ok to use the normal distribution as a model for the sampling distribution of the proportion of moviegoers preferring to wait and watch at home?\n\n\nSuppose I want to know if more than 50% of moviegoers in the population prefer to wait and watch at home. Write down the corresponding null and alternative hypotheses.\n\n\nFor the hypothesis test in part (b), find the standardized test statistic (i.e., the Z-score).\n\n\nCalculate the p-value and state a conclusion in context\n\n\nThe table below gives some of the percentiles of the N(0,1) distribution. If you were given this table (for example on an exam, where you do not have access to R), what could you say about the value of the p-value?\n\n\n\n\npercentage\npercentile (qnorm(percentage))\n\n\n\n\n90%\n1.3\n\n\n95%\n1.6\n\n\n97.5%\n2.0\n\n\n99%\n2.3\n\n\n99.5%\n2.6\n\n\n\n\nCompute and interpret a 90% confidence interval for the population proportion of moviegoers who believe they are more likely to watch a new movie from home. (Use the information from the previous table to find the critical value needed.)\n\n\nHow big of a sample size would you need if you wanted the margin of error for a 90% confidence interval to be no more than 2%? To answer this question, assume that the true proportion is \\(p=0.5\\), which would result in the biggest margin of error for a given sample size."
   },
   {
     "objectID": "activities/15-activity.html",
     "href": "activities/15-activity.html",
     "title": "15: Hypothesis Tests",
     "section": "",
-    "text": "Do heart attack victims have higher cholesterol levels than non-heart attack victims? The dataset Cholesterol.csv has cholesterol measurements (mg/dL) for a sample of heart attack victims (4 days after the heart attack) and a sample of non-heart attack victims.\n0. Load the data and check the “spreadsheet view”. What is each case? How many variables are there?\n1. Create an appropriate graph to answer the research question.\n2. Without performing a formal statistical test Does there appear to be evidence of a difference in cholesterol levels between the control group and the heart attack group?\n3. Write out appropriate null and alternative hypotheses using the original research question.\n4. Use the permTest() command in R to test your hypotheses. (Make sure to include seed()!)\n5. Report the test statistic and p-value from the R output.\n6. Make a formal statistical decision and report your conclusion in context.\n7. What type of error could you have made in (6)? Do you know the probability that an error occurred?\nWhen you’re done: Let Amanda know.\nNote: This is based on Lab Manual Ch5 #7\n8. True or False? If false, explain why or correct the statement.\n\nIf a p-value is 10%, there is a 1 in 10 chance the null hypothesis is correct\nWhen a p-value is extremely small, the result is extremely important\nA small p-value means that the result could not possibly have been due to chance\nA big p-value means that you do not have strong evidence against the null hypothesis\nA p-value is the probability of getting a result more in favor of the alternative hypothesis than the result that you observed, assuming the null hypothesis is true\nA p-value is the probability of getting a result more in favor of the alternative hypothesis than the result that you observed, assuming the alternative hypothesis is true",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "15: Hypothesis Tests"
-    ]
+    "text": "Do heart attack victims have higher cholesterol levels than non-heart attack victims? The dataset Cholesterol.csv has cholesterol measurements (mg/dL) for a sample of heart attack victims (4 days after the heart attack) and a sample of non-heart attack victims.\n0. Load the data and check the “spreadsheet view”. What is each case? How many variables are there?\n1. Create an appropriate graph to answer the research question.\n2. Without performing a formal statistical test Does there appear to be evidence of a difference in cholesterol levels between the control group and the heart attack group?\n3. Write out appropriate null and alternative hypotheses using the original research question.\n4. Use the permTest() command in R to test your hypotheses. (Make sure to include seed()!)\n5. Report the test statistic and p-value from the R output.\n6. Make a formal statistical decision and report your conclusion in context.\n7. What type of error could you have made in (6)? Do you know the probability that an error occurred?\nWhen you’re done: Let Amanda know.\nNote: This is based on Lab Manual Ch5 #7\n8. True or False? If false, explain why or correct the statement.\n\nIf a p-value is 10%, there is a 1 in 10 chance the null hypothesis is correct\nWhen a p-value is extremely small, the result is extremely important\nA small p-value means that the result could not possibly have been due to chance\nA big p-value means that you do not have strong evidence against the null hypothesis\nA p-value is the probability of getting a result more in favor of the alternative hypothesis than the result that you observed, assuming the null hypothesis is true\nA p-value is the probability of getting a result more in favor of the alternative hypothesis than the result that you observed, assuming the alternative hypothesis is true"
   },
   {
     "objectID": "activities/07-activity.html",
     "href": "activities/07-activity.html",
     "title": "07: Transformations for Regression and Residual Plots",
     "section": "",
-    "text": "Kathleen Vongasthorn (2007) compiled data on the top 100 films released in 2004 with the highest domestic gross over the course of its theatrical release (in US dollars). The variables in her dataset (called Movies2004.csv) are:\n\nscreens: total number of screens on which these films played in the US\nopening: total profit made during opening weekend in the US\ndomestic: total domestic gross\nworldwide: total worldwide gross\noscar: whether the film was nominated for an Academy Award\nglobe: whether the film was nominated for a Golden Globe\n\n0. Load libraries and data. Check that you can view the data and that all the variables mentioned above are there. What does each row represent?\n1. Create a scatterplot of worldwide against domestic. Does the relationship appear to be linear?\n2. Perform the linear regression of worldwide against domestic. Interpret the slope and intercept.\n3. Create the residual plot with the reference line. Do you think a linear model is appropriate?\n\n\n\n\n\n\n\n\n\n4. Make a histogram of worldwide and domestic and describe their distribution.\n5. You should have noticed that both variables have a strong right skew. (Your answer should also include roughly where the center of the distribution is). Skew is common in variables involving money, and we commonly transform them using log(). The code below creates those transformed variables in Movies2004. Check the distribution of the transformed variables using a histogram. Did the transformation “lessen” the skewness?\n6. Create a scatterplot of logworld against logdomestic. Does the relationship appear to be linear?\n7. Perform the least-squares regression of the log of worldwide gross against the log of domestic gross and call this model movies_lm2. Provide interpretations of the slope and intercept.\n8. Check the residual plot. Do you have any concerns about the new model?\nWhen you’re done, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present).\nNote: This activity is adapted from the Lab Manual Ch3.5. Some code differs (e.g. using _ instead of . in variable names, using mutate(), using .fitted in the residual plot) because of my personal code preference, but you can use whichever makes the most sense to you!",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "07: Transformations for Regression and Residual Plots"
-    ]
+    "text": "Kathleen Vongasthorn (2007) compiled data on the top 100 films released in 2004 with the highest domestic gross over the course of its theatrical release (in US dollars). The variables in her dataset (called Movies2004.csv) are:\n\nscreens: total number of screens on which these films played in the US\nopening: total profit made during opening weekend in the US\ndomestic: total domestic gross\nworldwide: total worldwide gross\noscar: whether the film was nominated for an Academy Award\nglobe: whether the film was nominated for a Golden Globe\n\n0. Load libraries and data. Check that you can view the data and that all the variables mentioned above are there. What does each row represent?\n1. Create a scatterplot of worldwide against domestic. Does the relationship appear to be linear?\n2. Perform the linear regression of worldwide against domestic. Interpret the slope and intercept.\n3. Create the residual plot with the reference line. Do you think a linear model is appropriate?\n\n\n\n\n\n\n\n\n\n4. Make a histogram of worldwide and domestic and describe their distribution.\n5. You should have noticed that both variables have a strong right skew. (Your answer should also include roughly where the center of the distribution is). Skew is common in variables involving money, and we commonly transform them using log(). The code below creates those transformed variables in Movies2004. Check the distribution of the transformed variables using a histogram. Did the transformation “lessen” the skewness?\n6. Create a scatterplot of logworld against logdomestic. Does the relationship appear to be linear?\n7. Perform the least-squares regression of the log of worldwide gross against the log of domestic gross and call this model movies_lm2. Provide interpretations of the slope and intercept.\n8. Check the residual plot. Do you have any concerns about the new model?\nWhen you’re done, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present).\nNote: This activity is adapted from the Lab Manual Ch3.5. Some code differs (e.g. using _ instead of . in variable names, using mutate(), using .fitted in the residual plot) because of my personal code preference, but you can use whichever makes the most sense to you!"
   },
   {
     "objectID": "activities/23-activity.html",
     "href": "activities/23-activity.html",
     "title": "23: ANOVA in R",
     "section": "",
-    "text": "When we are performing an ANOVA test for a difference in means, we can use the aov() function in R. Here is a template:\naov(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "23: ANOVA in R"
-    ]
+    "text": "When we are performing an ANOVA test for a difference in means, we can use the aov() function in R. Here is a template:\naov(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set"
   },
   {
     "objectID": "activities/23-activity.html#anova-in-r",
     "href": "activities/23-activity.html#anova-in-r",
     "title": "23: ANOVA in R",
     "section": "",
-    "text": "When we are performing an ANOVA test for a difference in means, we can use the aov() function in R. Here is a template:\naov(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "23: ANOVA in R"
-    ]
+    "text": "When we are performing an ANOVA test for a difference in means, we can use the aov() function in R. Here is a template:\naov(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set"
   },
   {
     "objectID": "activities/14-activity.html",
     "href": "activities/14-activity.html",
     "title": "14: Hypothesis Tests",
     "section": "",
-    "text": "Note: This is the same data that you looked at in the last in-class activity. Before starting, I recommend reviewing the question of interest and EDA that you created last time.\nThe data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nWe want to formally test if this differs based on whether the respondent is 50 years or older or not.\n1. Write out appropriate null and alternative hypotheses.\n2. Use the permTest() command in R to test your hypotheses. (Make sure to include seed()!) You should be able to report the test statistic and p-value from the R output. Then, make a formal statistical decision and report your conclusion in context.\n3. Is this consistent with your results from last time?\n4. We could have instead stated “We want to formally test if people under 50 have a more favorable view of the internet than people over 50”. How would the null and alternative hypothesis change?\n5. The code below runs a one sided test. Talk with your group to figure out if this is the correct test for your hypotheses in (4).\n\n\n\n    ** Permutation test **\n\n Permutation test with alternative: less \n Observed statistic\n  over50 :  0.7808219    under50 :  0.8187311 \n Observed difference: -0.03791 \n\n Mean of permutation distribution: 7e-05 \n Standard error of permutation distribution: 0.03043 \n P-value:  0.1252 \n\n    *-------------*\n\n\n\n\n\n\n\n\n\nWhen you’re done, please let me know!\nIf you have time, try replicating these results with StatKey.",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "14: Hypothesis Tests"
-    ]
+    "text": "Note: This is the same data that you looked at in the last in-class activity. Before starting, I recommend reviewing the question of interest and EDA that you created last time.\nThe data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nWe want to formally test if this differs based on whether the respondent is 50 years or older or not.\n1. Write out appropriate null and alternative hypotheses.\n2. Use the permTest() command in R to test your hypotheses. (Make sure to include seed()!) You should be able to report the test statistic and p-value from the R output. Then, make a formal statistical decision and report your conclusion in context.\n3. Is this consistent with your results from last time?\n4. We could have instead stated “We want to formally test if people under 50 have a more favorable view of the internet than people over 50”. How would the null and alternative hypothesis change?\n5. The code below runs a one sided test. Talk with your group to figure out if this is the correct test for your hypotheses in (4).\n\n\n\n    ** Permutation test **\n\n Permutation test with alternative: less \n Observed statistic\n  over50 :  0.7808219    under50 :  0.8187311 \n Observed difference: -0.03791 \n\n Mean of permutation distribution: 7e-05 \n Standard error of permutation distribution: 0.03043 \n P-value:  0.1252 \n\n    *-------------*\n\n\n\n\n\n\n\n\n\nWhen you’re done, please let me know!\nIf you have time, try replicating these results with StatKey."
   },
   {
     "objectID": "activities/20-activity.html",
     "href": "activities/20-activity.html",
     "title": "20: CLT-based Confidence Intervals for Means",
     "section": "",
-    "text": "(Adapted from Exercise 6.128)\n\n\nPlastic microparticles contaminate shorelines. Much of the pollution comes from washing fleece clothing. In a recent study, washing a fleece garment discharged on average \\(\\bar{X} = 290\\) fibers per liter of wastewater. The standard deviation was \\(s = 87.6\\) fibers and the sample size was \\(n=120\\).\n\n\nWhat is the estimated standard error of the average number of fibers discharged per liter of wastewater when washing a fleece garment?\nThe table below gives some percentiles of the \\(t_{119}\\) distribution. Use this information to construct a 99% confidence interval for the population mean. Interpret the interval in context.\n\n\n\n\npercentage\npercentile (qnorm(percentage))\n\n\n\n\n90%\n1.3\n\n\n95%\n1.6\n\n\n97.5%\n2.0\n\n\n99%\n2.3\n\n\n99.5%\n2.6\n\n\n\n\nWhat sample size would we need if we wanted this interval to be no wider than 20?",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "20: CLT-based Confidence Intervals for Means"
-    ]
+    "text": "(Adapted from Exercise 6.128)\n\n\nPlastic microparticles contaminate shorelines. Much of the pollution comes from washing fleece clothing. In a recent study, washing a fleece garment discharged on average \\(\\bar{X} = 290\\) fibers per liter of wastewater. The standard deviation was \\(s = 87.6\\) fibers and the sample size was \\(n=120\\).\n\n\nWhat is the estimated standard error of the average number of fibers discharged per liter of wastewater when washing a fleece garment?\nThe table below gives some percentiles of the \\(t_{119}\\) distribution. Use this information to construct a 99% confidence interval for the population mean. Interpret the interval in context.\n\n\n\n\npercentage\npercentile (qnorm(percentage))\n\n\n\n\n90%\n1.3\n\n\n95%\n1.6\n\n\n97.5%\n2.0\n\n\n99%\n2.3\n\n\n99.5%\n2.6\n\n\n\n\nWhat sample size would we need if we wanted this interval to be no wider than 20?"
   },
   {
     "objectID": "activities/05-activity.html",
     "href": "activities/05-activity.html",
     "title": "05: EDA for Quantitative Variables",
     "section": "",
-    "text": "The lab manual data Pew contains data from a January 2014 Pew Research Center survey about the Internet. We’ll consider three variables from this survey:\n\nage: the person’s age, in years\nincome: the person’s yearly income, grouped into four categories\nvalues: an answer to the question asking if the Internet has been a “good thing”\n\n-1. Run the code chunk below to load the libraries we need for this activity.\n0. Import the data into R by running the following code chunk. This chunk also includes a line to redefine the levels of the income variable so that they show up in the right order. Click on the dataset in the environment pane to pull up the data viewer. Can you see the “spreadsheet view” of the data?\n1. If you haven’t already, create a histogram of the age variable using esquisse. Make sure to copy your code to the chunk below.\n2. In the empty code chunk below, run mean(pew$age) and median(pew$age). Now try mode(pew$age). What happened?\n3. Compute the standard deviation of age. Does the 68/95/99 rule apply? Find the interval where 95% of the cases should fall.\n4. Let’s see if you’re right! The chunk of code below filters the data to only include values where age is greater or equal to 18 and less than or equal to 99 and then spits out how many cases are in the filtered dataset. These are the minimum and maximum values, so the entire dataset is included. Edit this chunk so it corresponds to your interval values above. How close to 95% is it?\n\n\n# A tibble: 1 × 1\n      n\n  &lt;int&gt;\n1   696\n\n\n4. Are people who think the internet has been a “good thing” younger than those that don’t? Create side-by-side boxplots to answer the question. (You can use ggplot, base R, or esquisse to create your boxplots)\n5. Another way to look at the distribution of a quantitative variable across different levels of a categorical variable is using facets. Facets create a different graph for each level of a categorical variable. Choose one method below. + In esquisse, create a histogram of age and then drag values into the facet box (far right) + If using ggplot directly, create a histogram of age and then add facet_wrap(vars(values)) What can you see using the histogram approach that you cannot see with the side-by-side boxplots?\n6. We also often want summary statistics per group. The code below groups the data by values, and then computes the mean and median for each group. Add a line of code to compute the sd() for each group. (You may also need to add a comma at the end of a line) Do these quantities align with the visualizations that you made above?\n\n\n# A tibble: 2 × 3\n  values mean_age median_age\n  &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 bad        49.0         51\n2 good       48.2         50\n\n\nStop here. and let Amanda know that you’ve finished with the pew data portion.\n\nPart 2: Outliers and Log Transformations\nFor the part of the activity, we’re going to be looking at the CEO salaries for S&P 500 companies. This data was gathered by AFL-CIO and more information about the data is available on their website.\n0. Import the data into R by running the following code chunk. Click on the dataset in the environment pane to pull up the data viewer. Can you see the “spreadsheet view” of the data? List the variables and whether they are categorical or quantitative. Note any ID variables.\n1. Using esquisse, ggplot, or base R, create a histogram of the Pay variable\n2. Compute the mean,median, and sd of the Pay variable and describe the distribution. (You should focus on the shape, center, and spread.).\n3. You should have noted that the distribution is right-skewed (it has a long right tail). The code below demonstrates one way to remove outliers by filtering the very large observations and saving it to a new dataset called ceo_salaries_outliers. Run the code below, and then view the new dataset. Which companies have the highest CEO pay?\n4. Next, create a dataset called ceo_salaries_filtered that includes all cases where Pay is less than $100,000,000. Create a histogram of the Pay variable for this filtered dataset and compute the mean and median.\n5. Alternatively, we can visualize and work with a transformation of our dataset. This is especially useful when we have a “long-tailed” dataset. Explain what the next few lines of code do.\n\n\n# A tibble: 1 × 2\n   mean median\n  &lt;dbl&gt;  &lt;dbl&gt;\n1  16.4   16.6\n\n\n6. Create a histogram of the log_pay variable and describe the shape of the distribution.\n7. Your answer to 6 should note that there’s now low outlier(s)! Find these outlier(s). Which companies are they? What do they pay their CEOs? (Note: you should do this using code, but can check your answer with the “spreadsheet view” of the data.)\nWhen you’re done, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present).",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "05: EDA for Quantitative Variables"
-    ]
+    "text": "The lab manual data Pew contains data from a January 2014 Pew Research Center survey about the Internet. We’ll consider three variables from this survey:\n\nage: the person’s age, in years\nincome: the person’s yearly income, grouped into four categories\nvalues: an answer to the question asking if the Internet has been a “good thing”\n\n-1. Run the code chunk below to load the libraries we need for this activity.\n0. Import the data into R by running the following code chunk. This chunk also includes a line to redefine the levels of the income variable so that they show up in the right order. Click on the dataset in the environment pane to pull up the data viewer. Can you see the “spreadsheet view” of the data?\n1. If you haven’t already, create a histogram of the age variable using esquisse. Make sure to copy your code to the chunk below.\n2. In the empty code chunk below, run mean(pew$age) and median(pew$age). Now try mode(pew$age). What happened?\n3. Compute the standard deviation of age. Does the 68/95/99 rule apply? Find the interval where 95% of the cases should fall.\n4. Let’s see if you’re right! The chunk of code below filters the data to only include values where age is greater or equal to 18 and less than or equal to 99 and then spits out how many cases are in the filtered dataset. These are the minimum and maximum values, so the entire dataset is included. Edit this chunk so it corresponds to your interval values above. How close to 95% is it?\n\n\n# A tibble: 1 × 1\n      n\n  &lt;int&gt;\n1   696\n\n\n4. Are people who think the internet has been a “good thing” younger than those that don’t? Create side-by-side boxplots to answer the question. (You can use ggplot, base R, or esquisse to create your boxplots)\n5. Another way to look at the distribution of a quantitative variable across different levels of a categorical variable is using facets. Facets create a different graph for each level of a categorical variable. Choose one method below. + In esquisse, create a histogram of age and then drag values into the facet box (far right) + If using ggplot directly, create a histogram of age and then add facet_wrap(vars(values)) What can you see using the histogram approach that you cannot see with the side-by-side boxplots?\n6. We also often want summary statistics per group. The code below groups the data by values, and then computes the mean and median for each group. Add a line of code to compute the sd() for each group. (You may also need to add a comma at the end of a line) Do these quantities align with the visualizations that you made above?\n\n\n# A tibble: 2 × 3\n  values mean_age median_age\n  &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 bad        49.0         51\n2 good       48.2         50\n\n\nStop here. and let Amanda know that you’ve finished with the pew data portion.\n\nPart 2: Outliers and Log Transformations\nFor the part of the activity, we’re going to be looking at the CEO salaries for S&P 500 companies. This data was gathered by AFL-CIO and more information about the data is available on their website.\n0. Import the data into R by running the following code chunk. Click on the dataset in the environment pane to pull up the data viewer. Can you see the “spreadsheet view” of the data? List the variables and whether they are categorical or quantitative. Note any ID variables.\n1. Using esquisse, ggplot, or base R, create a histogram of the Pay variable\n2. Compute the mean,median, and sd of the Pay variable and describe the distribution. (You should focus on the shape, center, and spread.).\n3. You should have noted that the distribution is right-skewed (it has a long right tail). The code below demonstrates one way to remove outliers by filtering the very large observations and saving it to a new dataset called ceo_salaries_outliers. Run the code below, and then view the new dataset. Which companies have the highest CEO pay?\n4. Next, create a dataset called ceo_salaries_filtered that includes all cases where Pay is less than $100,000,000. Create a histogram of the Pay variable for this filtered dataset and compute the mean and median.\n5. Alternatively, we can visualize and work with a transformation of our dataset. This is especially useful when we have a “long-tailed” dataset. Explain what the next few lines of code do.\n\n\n# A tibble: 1 × 2\n   mean median\n  &lt;dbl&gt;  &lt;dbl&gt;\n1  16.4   16.6\n\n\n6. Create a histogram of the log_pay variable and describe the shape of the distribution.\n7. Your answer to 6 should note that there’s now low outlier(s)! Find these outlier(s). Which companies are they? What do they pay their CEOs? (Note: you should do this using code, but can check your answer with the “spreadsheet view” of the data.)\nWhen you’re done, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present)."
   },
   {
     "objectID": "activities/21-activity.html",
     "href": "activities/21-activity.html",
     "title": "21.1: CLT-based Inference for Difference in Proportions",
     "section": "",
-    "text": "APM Research Lab ran a survey of 800 likely Minnesota voters between Sept 16-18 of this year. They reported 48.4% were in support of the Harris/Walz ticket, and 43.3% were in support of the Trump/Vance ticket.\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. The margin of error is approximately 7 percentage points for the difference between two data points…. The margin of error is higher for any subgroup, such as gender or age grouping.\n\n\nWhat is the standard error for the difference in proportions?\n\n\nExplain why we should not use the CLT formula for the difference in proportions between Harris supporters and Trump supporters in this poll\n\n\nInstead, we’ll look at the difference in suppport for Harris between two different levels of education. (We can assume that the poll included 436 in the “no college degree” group and 360 in the “college degree” group). Show two ways that the standard error could have been computed.\n\n\n\n\n\n\n\n\n\n\n\nThe two ways of computing the standard error should produce similar results. Give two reasons why.\n\n\nThe following R code makes a confidence interval and performs a hypothesis test for the difference in these two proportions.\n\n\nWhere did x = c(192, 194) come from?\n\n\n\nWhat is \\(\\alpha\\) for the hypothesis test?\n\n\n\nProvide an in-context interpretation of the confidence interval (it should be clear in your answer which group had more support for Harris)\n\n\n\nprop.test(x = c(192, 194), \n          n = c(436, 360),\n          correct = FALSE, #tells R not to apply a \"continuity correction\"\n          conf.level = .90)\n\n\n    2-sample test for equality of proportions without continuity correction\n\ndata:  c(192, 194) out of c(436, 360)\nX-squared = 7.663, df = 1, p-value = 0.005637\nalternative hypothesis: two.sided\n90 percent confidence interval:\n -0.15680365 -0.04024018\nsample estimates:\n   prop 1    prop 2 \n0.4403670 0.5388889 \n\n\n\nWhat concept or topic is your group most confused about? (Some ideas to get you started: qnorm vs pnorm, normal vs t distribution, choosing a parameter, standard error formulas, when to use confidence intervals vs hypothesis tests)",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "21.1: CLT-based Inference for Difference in Proportions"
-    ]
+    "text": "APM Research Lab ran a survey of 800 likely Minnesota voters between Sept 16-18 of this year. They reported 48.4% were in support of the Harris/Walz ticket, and 43.3% were in support of the Trump/Vance ticket.\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. The margin of error is approximately 7 percentage points for the difference between two data points…. The margin of error is higher for any subgroup, such as gender or age grouping.\n\n\nWhat is the standard error for the difference in proportions?\n\n\nExplain why we should not use the CLT formula for the difference in proportions between Harris supporters and Trump supporters in this poll\n\n\nInstead, we’ll look at the difference in suppport for Harris between two different levels of education. (We can assume that the poll included 436 in the “no college degree” group and 360 in the “college degree” group). Show two ways that the standard error could have been computed.\n\n\n\n\n\n\n\n\n\n\n\nThe two ways of computing the standard error should produce similar results. Give two reasons why.\n\n\nThe following R code makes a confidence interval and performs a hypothesis test for the difference in these two proportions.\n\n\nWhere did x = c(192, 194) come from?\n\n\n\nWhat is \\(\\alpha\\) for the hypothesis test?\n\n\n\nProvide an in-context interpretation of the confidence interval (it should be clear in your answer which group had more support for Harris)\n\n\n\nprop.test(x = c(192, 194), \n          n = c(436, 360),\n          correct = FALSE, #tells R not to apply a \"continuity correction\"\n          conf.level = .90)\n\n\n    2-sample test for equality of proportions without continuity correction\n\ndata:  c(192, 194) out of c(436, 360)\nX-squared = 7.663, df = 1, p-value = 0.005637\nalternative hypothesis: two.sided\n90 percent confidence interval:\n -0.15680365 -0.04024018\nsample estimates:\n   prop 1    prop 2 \n0.4403670 0.5388889 \n\n\n\nWhat concept or topic is your group most confused about? (Some ideas to get you started: qnorm vs pnorm, normal vs t distribution, choosing a parameter, standard error formulas, when to use confidence intervals vs hypothesis tests)"
   },
   {
     "objectID": "slides/test.html#first-slide",
     "href": "slides/test.html#first-slide",
     "title": "My Test Slides",
     "section": "First Slide",
-    "text": "First Slide\nThis is a test slide. This is a test link",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "My Test Slides"
-    ]
+    "text": "First Slide\nThis is a test slide. This is a test link"
   },
   {
     "objectID": "slides/test.html#second-slide",
     "href": "slides/test.html#second-slide",
     "title": "My Test Slides",
     "section": "Second Slide",
-    "text": "Second Slide\nIf this works, the problem is in the YAML of the other .qmd file.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "My Test Slides"
-    ]
+    "text": "Second Slide\nIf this works, the problem is in the YAML of the other .qmd file."
   },
   {
     "objectID": "slides/01-welcome-slides.html#plan-for-today",
     "href": "slides/01-welcome-slides.html#plan-for-today",
     "title": "Welcome to Stat120!",
     "section": "Plan for today",
-    "text": "Plan for today\n\nSyllabus/About the Course\nIntro to Data",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Plan for today\n\nSyllabus/About the Course\nIntro to Data"
   },
   {
     "objectID": "slides/01-welcome-slides.html#a-bit-about-me",
     "href": "slides/01-welcome-slides.html#a-bit-about-me",
     "title": "Welcome to Stat120!",
     "section": "A bit about me",
-    "text": "A bit about me\n\nThis is my first year at Carleton!\nI live near campus and you may see me walking with my dog (Pearl), my child (Ellis), and my spouse (Bret)\nI have a PhD in Statistics & Data Science from Carnegie Mellon in Pittsburgh, and I taught for 5 years at Swarthmore College before joining the faculty here\nI’m a first gen college student!\nMy research area is models for decision-making, particularly applied to forensic science\nMy office is downstairs in the Math/Stat wing at the end of the hallway (with the giant windows!)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "A bit about me\n\nThis is my first year at Carleton!\nI live near campus and you may see me walking with my dog (Pearl), my child (Ellis), and my spouse (Bret)\nI have a PhD in Statistics & Data Science from Carnegie Mellon in Pittsburgh, and I taught for 5 years at Swarthmore College before joining the faculty here\nI’m a first gen college student!\nMy research area is models for decision-making, particularly applied to forensic science\nMy office is downstairs in the Math/Stat wing at the end of the hallway (with the giant windows!)"
   },
   {
     "objectID": "slides/01-welcome-slides.html#a-bit-about-me-1",
     "href": "slides/01-welcome-slides.html#a-bit-about-me-1",
     "title": "Welcome to Stat120!",
     "section": "A bit about me",
-    "text": "A bit about me\n\nSomething I’m proud of\nSomething I’m nervous about",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "A bit about me\n\nSomething I’m proud of\nSomething I’m nervous about"
   },
   {
     "objectID": "slides/01-welcome-slides.html#section",
     "href": "slides/01-welcome-slides.html#section",
     "title": "Welcome to Stat120!",
     "section": "",
-    "text": "Statistical Literacy is a key skill for many different courses and majors, and becoming necessary to be a responsible citizen in “the real world”. In this course, we’ll lay the foundations for statistical literacy and learn basic data analysis skills. Upon completion of the course, I expect you to be able to:\n\nWork with and describe various types of data\nUnderstand the role of variation and randomness and the principles of statistical inference\nChoose the appropriate statistical analysis for a given task and recognize when certain statistical analyses are not appropriate\nAnalyze data and apply statistical methods using R and interpret results\nCritically examine analyses of data and interpretations of results from statistical methods\nThere are no prerequisites for this course, and you do need to have any background in statistics, mathematics, or computer science to do well. If you’ve already taken Math 211, Psych 200, Psych 201, SOAN 239, or Stat 250, a different statistics class may be more appropriate for you. Please see me if this is the case.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Statistical Literacy is a key skill for many different courses and majors, and becoming necessary to be a responsible citizen in “the real world”. In this course, we’ll lay the foundations for statistical literacy and learn basic data analysis skills. Upon completion of the course, I expect you to be able to:\n\nWork with and describe various types of data\nUnderstand the role of variation and randomness and the principles of statistical inference\nChoose the appropriate statistical analysis for a given task and recognize when certain statistical analyses are not appropriate\nAnalyze data and apply statistical methods using R and interpret results\nCritically examine analyses of data and interpretations of results from statistical methods\nThere are no prerequisites for this course, and you do need to have any background in statistics, mathematics, or computer science to do well. If you’ve already taken Math 211, Psych 200, Psych 201, SOAN 239, or Stat 250, a different statistics class may be more appropriate for you. Please see me if this is the case."
   },
   {
     "objectID": "slides/01-welcome-slides.html#general-flow-of-the-course",
     "href": "slides/01-welcome-slides.html#general-flow-of-the-course",
     "title": "Welcome to Stat120!",
     "section": "General Flow of the Course",
-    "text": "General Flow of the Course\n\nData\n\nCollecting Data\nExploratory Data Analysis\nUni- and Multi-variate\n\nIntroduction to Statistical Inference\n\nSampling Uncertainty\nConfidence Intervals\nHypothesis Tests\n\nFormal Inference\n\nSpecific settings\nWorking on projects",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "General Flow of the Course\n\nData\n\nCollecting Data\nExploratory Data Analysis\nUni- and Multi-variate\n\nIntroduction to Statistical Inference\n\nSampling Uncertainty\nConfidence Intervals\nHypothesis Tests\n\nFormal Inference\n\nSpecific settings\nWorking on projects"
   },
   {
     "objectID": "slides/01-welcome-slides.html#textbook",
     "href": "slides/01-welcome-slides.html#textbook",
     "title": "Welcome to Stat120!",
     "section": "Textbook:",
-    "text": "Textbook:\n\nStatistics: Unlocking the Power of Data by Lock, Lock, Lock, Lock, and Lock. (3rd Edition)\n\nOn reserve at the library if you are not able to purchase it.\nHomework will be assigned from the chapter, so please make sure you’re working out of the right edition\nSome days I’ll ask you to skim chapters before class; other times I’ll ask you to read them after class.\n\nStat 120 Lab Manual by Chihara & Loy\n\nFreely available online\nReference for using R",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Textbook:\n\nStatistics: Unlocking the Power of Data by Lock, Lock, Lock, Lock, and Lock. (3rd Edition)\n\nOn reserve at the library if you are not able to purchase it.\nHomework will be assigned from the chapter, so please make sure you’re working out of the right edition\nSome days I’ll ask you to skim chapters before class; other times I’ll ask you to read them after class.\n\nStat 120 Lab Manual by Chihara & Loy\n\nFreely available online\nReference for using R"
   },
   {
     "objectID": "slides/01-welcome-slides.html#what-do-we-do-in-class",
     "href": "slides/01-welcome-slides.html#what-do-we-do-in-class",
     "title": "Welcome to Stat120!",
     "section": "What do we do in class?",
-    "text": "What do we do in class?\n\nDaily attendance is expected\nPlease come to class prepared. Check moodle for any before class tasks and complete the daily check-in on gradescope\nPlease bring a laptop\nFor each class, I’ll post a handout and slides. During class, you should fill in the handout. These become your reference materials for the class. I’ll bring blank printed copies for the first few weeks.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "What do we do in class?\n\nDaily attendance is expected\nPlease come to class prepared. Check moodle for any before class tasks and complete the daily check-in on gradescope\nPlease bring a laptop\nFor each class, I’ll post a handout and slides. During class, you should fill in the handout. These become your reference materials for the class. I’ll bring blank printed copies for the first few weeks."
   },
   {
     "objectID": "slides/01-welcome-slides.html#what-do-i-do-if-im-sick",
     "href": "slides/01-welcome-slides.html#what-do-i-do-if-im-sick",
     "title": "Welcome to Stat120!",
     "section": "What do I do if I’m sick?",
-    "text": "What do I do if I’m sick?\n\nIf you feel a little under the weather, wear a mask\nIf you feel fine but have a cough, wear a mask\nIf you have a stomach bug please do not come to class. Complete the daily check-in, send me an email, and check with a classmate to catch up\nIf you have a more serious sickness, please contact the health center and do not come to class. If you feel well enough, complete the daily check-in, send me an email, and check with a classmate to catch up. If you do not feel well enough to keep up with the material, send me an email. If you need to miss more than 1 day of class due to an illness, please contact me and your class dean to arrange alternative due dates.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "What do I do if I’m sick?\n\nIf you feel a little under the weather, wear a mask\nIf you feel fine but have a cough, wear a mask\nIf you have a stomach bug please do not come to class. Complete the daily check-in, send me an email, and check with a classmate to catch up\nIf you have a more serious sickness, please contact the health center and do not come to class. If you feel well enough, complete the daily check-in, send me an email, and check with a classmate to catch up. If you do not feel well enough to keep up with the material, send me an email. If you need to miss more than 1 day of class due to an illness, please contact me and your class dean to arrange alternative due dates."
   },
   {
     "objectID": "slides/01-welcome-slides.html#assignments",
     "href": "slides/01-welcome-slides.html#assignments",
     "title": "Welcome to Stat120!",
     "section": "Assignments",
-    "text": "Assignments\n\nHomework will be assigned once per week, due on gradescope by midnight on Wednesday (Friday in week 4, 7, 9)\nNo-questions-asked 12 hour grace period if you need it\n\n(grace period = no penalty, but help is generally not available anymore)\n\nAlternative due dates must be arranged in advance\nAssignment submissions should be typeset using rmarkdown OR neatly written and scanned and submitted as a PDF file.\nYou’re responsible for submitting readable work and properly marking your questions on gradescope",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Assignments\n\nHomework will be assigned once per week, due on gradescope by midnight on Wednesday (Friday in week 4, 7, 9)\nNo-questions-asked 12 hour grace period if you need it\n\n(grace period = no penalty, but help is generally not available anymore)\n\nAlternative due dates must be arranged in advance\nAssignment submissions should be typeset using rmarkdown OR neatly written and scanned and submitted as a PDF file.\nYou’re responsible for submitting readable work and properly marking your questions on gradescope"
   },
   {
     "objectID": "slides/01-welcome-slides.html#regrade-request-policy",
     "href": "slides/01-welcome-slides.html#regrade-request-policy",
     "title": "Welcome to Stat120!",
     "section": "Regrade request policy",
-    "text": "Regrade request policy\n\nCan be submitted on gradescope within 2 weekdays after graded homework has been returned\nUse for administrative errors or obvious grading mistakes\n\n“The grader said I didn’t answer this but it’s at the bottom of the page”\n“It said the answer is 4.39 and I put 4.387”\n\nDo not use for anything that applied to the entire class\n\n“I think this mistake should only be worth 1 point instead of 2”\n“I didn’t realize we had to do X”\n\nIf you submit two or more inappropriate regrade requests, I won’t consider any more from you during the term\nCome talk to me with any questions!",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Regrade request policy\n\nCan be submitted on gradescope within 2 weekdays after graded homework has been returned\nUse for administrative errors or obvious grading mistakes\n\n“The grader said I didn’t answer this but it’s at the bottom of the page”\n“It said the answer is 4.39 and I put 4.387”\n\nDo not use for anything that applied to the entire class\n\n“I think this mistake should only be worth 1 point instead of 2”\n“I didn’t realize we had to do X”\n\nIf you submit two or more inappropriate regrade requests, I won’t consider any more from you during the term\nCome talk to me with any questions!"
   },
   {
     "objectID": "slides/01-welcome-slides.html#exams",
     "href": "slides/01-welcome-slides.html#exams",
     "title": "Welcome to Stat120!",
     "section": "Exams",
-    "text": "Exams\n\nWhile I believe most of your learning in this course will happen through working on homework and your project, part of being literate in statistics is being able to recall basic concepts and interpret analyses “on the fly”, without access to other resources\nThere will be three in-class exams, tentatively scheduled for Fridays of Week 3, 6, and 9\nIf I need to reschedule, I’ll give you at least two weeks notice.\nAny conflicts must be communicated to me in writing at least two weeks in advance to be able to schedule a make-up time\nIf an emergency arises and you’re unable to take the exam, please contact me and your class deans as soon as possible.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Exams\n\nWhile I believe most of your learning in this course will happen through working on homework and your project, part of being literate in statistics is being able to recall basic concepts and interpret analyses “on the fly”, without access to other resources\nThere will be three in-class exams, tentatively scheduled for Fridays of Week 3, 6, and 9\nIf I need to reschedule, I’ll give you at least two weeks notice.\nAny conflicts must be communicated to me in writing at least two weeks in advance to be able to schedule a make-up time\nIf an emergency arises and you’re unable to take the exam, please contact me and your class deans as soon as possible."
   },
   {
     "objectID": "slides/01-welcome-slides.html#final-project",
     "href": "slides/01-welcome-slides.html#final-project",
     "title": "Welcome to Stat120!",
     "section": "Final Project",
-    "text": "Final Project\n\nGroup data analysis project\nPoster session on the last day of class\nFinal paper due during finals period\nShort proposal is due before the midterm break",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Final Project\n\nGroup data analysis project\nPoster session on the last day of class\nFinal paper due during finals period\nShort proposal is due before the midterm break"
   },
   {
     "objectID": "slides/01-welcome-slides.html#how-will-my-final-grade-be-calculated",
     "href": "slides/01-welcome-slides.html#how-will-my-final-grade-be-calculated",
     "title": "Welcome to Stat120!",
     "section": "How will my final grade be calculated?",
-    "text": "How will my final grade be calculated?\n\n15% homework\n5% daily check-ins (lowest 3 will be dropped)\n15% each exam (45% total)\n15% final paper\n15% final project\n5% participation and in-class activities\nLetter grades will be assigned based on the usual grading scale (A = 93%+, A- = 90-92.9%, B+ = 88-89.9%, B = 83-87.9, etc.)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "How will my final grade be calculated?\n\n15% homework\n5% daily check-ins (lowest 3 will be dropped)\n15% each exam (45% total)\n15% final paper\n15% final project\n5% participation and in-class activities\nLetter grades will be assigned based on the usual grading scale (A = 93%+, A- = 90-92.9%, B+ = 88-89.9%, B = 83-87.9, etc.)"
   },
   {
     "objectID": "slides/01-welcome-slides.html#advice-from-past-intro-stat-students",
     "href": "slides/01-welcome-slides.html#advice-from-past-intro-stat-students",
     "title": "Welcome to Stat120!",
     "section": "Advice from past intro stat students:",
-    "text": "Advice from past intro stat students:\n\n“Don’t be afraid to ask questions. Even if you think they’re really stupid, asking them could help you understand so many concepts.”\n“Ask questions! Prof. Luby is extremely helpful and approachable”\nStay on top of work, especially homework”\n“Take detailed notes, start homework assignments early and attend office hours if you have any questions.”\n“Use the notes sets to make studying for each exam easier”\n“The second half of the course is intimidating but I promise if you continue to ask clarifying questions about topics that are confusing, you’ll get a good understanding of it by the end! The course is really fun and you can get a lot out if it, so try to enjoy it as well!”\n“Do a lot of practice”\n“i would say to not be afraid of using R. it really isnt as bad as it looks and can be pretty fun to use if you just learn the fundamentals of it”\n“Work with other people in the class, collaboration is key”\n“Be willing to ask lots of questions and don’t be afraid to ask for help!”\n“I would advise for them to attend office hours and the stat clinic since early on to get help and not be worrying about assignments at the last minute.”\n“I would advise future students to reach out and ask questions as soon if they have any confusion. Understanding statistical concepts and working with R can be frustrating at times, but people are here to help you along the way!”\n“Don’t let work snowball! Try to get help early and often and an imperfect problem set is better than no problem set.”\n“lots of R here! Organization is key, and you’ll do well as long as you start homeworks early, communicate with the professor and with your fellow classmates. There’s a good support system.”",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Advice from past intro stat students:\n\n“Don’t be afraid to ask questions. Even if you think they’re really stupid, asking them could help you understand so many concepts.”\n“Ask questions! Prof. Luby is extremely helpful and approachable”\nStay on top of work, especially homework”\n“Take detailed notes, start homework assignments early and attend office hours if you have any questions.”\n“Use the notes sets to make studying for each exam easier”\n“The second half of the course is intimidating but I promise if you continue to ask clarifying questions about topics that are confusing, you’ll get a good understanding of it by the end! The course is really fun and you can get a lot out if it, so try to enjoy it as well!”\n“Do a lot of practice”\n“i would say to not be afraid of using R. it really isnt as bad as it looks and can be pretty fun to use if you just learn the fundamentals of it”\n“Work with other people in the class, collaboration is key”\n“Be willing to ask lots of questions and don’t be afraid to ask for help!”\n“I would advise for them to attend office hours and the stat clinic since early on to get help and not be worrying about assignments at the last minute.”\n“I would advise future students to reach out and ask questions as soon if they have any confusion. Understanding statistical concepts and working with R can be frustrating at times, but people are here to help you along the way!”\n“Don’t let work snowball! Try to get help early and often and an imperfect problem set is better than no problem set.”\n“lots of R here! Organization is key, and you’ll do well as long as you start homeworks early, communicate with the professor and with your fellow classmates. There’s a good support system.”"
   },
   {
     "objectID": "slides/01-welcome-slides.html#getting-help",
     "href": "slides/01-welcome-slides.html#getting-help",
     "title": "Welcome to Stat120!",
     "section": "Getting Help",
-    "text": "Getting Help\nThis course was not designed for you to do on your own in your dorm room every week, and I expect you to need some help on most assignments.\n\nOffice Hours are held in my office (CMC 223). You can come and go as you please! These are open to all students in the class so you may need to wait a little while to have your specific question answered. These are best for homework questions and conceptual questions about material\n\n\nIndividual Appointments will often be available on Mondays (and sometimes other days). Appointment slots open 5 days in advance and close 2 hours in advance. Please use these for in-depth conversations about grade concerns, project consultations, or if you need extra help on a specific concept. You’re welcome to come as a group, but please note that 15 minutes goes by fast!\n\n\nStat Lab is staffed by friendly and knowledgeable student assistants who can help you with R questions that arise on your homework or projects. Please come prepared with your attempt, your class notes, and your lab manual to make the most of your time. See schedule for assistants and availability\n\n\nSlack is an asychronous communication platform where you can also ask homework questions anytime! I’ll respond to messages at least twice per weekday. If you see someone ask a question that you know the answer to, please respond!",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Getting Help\nThis course was not designed for you to do on your own in your dorm room every week, and I expect you to need some help on most assignments.\n\nOffice Hours are held in my office (CMC 223). You can come and go as you please! These are open to all students in the class so you may need to wait a little while to have your specific question answered. These are best for homework questions and conceptual questions about material\n\n\nIndividual Appointments will often be available on Mondays (and sometimes other days). Appointment slots open 5 days in advance and close 2 hours in advance. Please use these for in-depth conversations about grade concerns, project consultations, or if you need extra help on a specific concept. You’re welcome to come as a group, but please note that 15 minutes goes by fast!\n\n\nStat Lab is staffed by friendly and knowledgeable student assistants who can help you with R questions that arise on your homework or projects. Please come prepared with your attempt, your class notes, and your lab manual to make the most of your time. See schedule for assistants and availability\n\n\nSlack is an asychronous communication platform where you can also ask homework questions anytime! I’ll respond to messages at least twice per weekday. If you see someone ask a question that you know the answer to, please respond!"
   },
   {
     "objectID": "slides/01-welcome-slides.html#getting-help-1",
     "href": "slides/01-welcome-slides.html#getting-help-1",
     "title": "Welcome to Stat120!",
     "section": "Getting Help",
-    "text": "Getting Help\nThere are many opportunities for you to get help throughout the week, and you should try to use all of them at some point!\nSunday: Stat Lab 1-5pm and 8-10pm\nMonday: Individual appointments available; Stat Lab 7-11pm\nTuesday: Office Hours 10:30-11:30am; Stat Lab 7-11pm\nWednesday: Office Hours 2-3pm; Stat Lab 7-11pm (Homework due)\nThursday: Stat Lab 7-11pm\nFriday: Office Hours 1-2pm; (Homework due weeks 4, 7, 9)\nSaturday: Stat Lab 2-4pm\nAnytime: Ask questions on slack",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Getting Help\nThere are many opportunities for you to get help throughout the week, and you should try to use all of them at some point!\nSunday: Stat Lab 1-5pm and 8-10pm\nMonday: Individual appointments available; Stat Lab 7-11pm\nTuesday: Office Hours 10:30-11:30am; Stat Lab 7-11pm\nWednesday: Office Hours 2-3pm; Stat Lab 7-11pm (Homework due)\nThursday: Stat Lab 7-11pm\nFriday: Office Hours 1-2pm; (Homework due weeks 4, 7, 9)\nSaturday: Stat Lab 2-4pm\nAnytime: Ask questions on slack"
   },
   {
     "objectID": "slides/01-welcome-slides.html#contacting-me",
     "href": "slides/01-welcome-slides.html#contacting-me",
     "title": "Welcome to Stat120!",
     "section": "Contacting Me",
-    "text": "Contacting Me\nThe best way to get your questions answered is to reach out via slack (you should have received an invitation this morning):\n\nR Help (use r-help channel)\nClarifications and questions about homework (use homework channel)\nLogistical questions (use general channel)\nSetting up a meeting outside of appointment slots (use a private message)\n\n\nIf you have questions about the course material, there’s a good chance others do too! If you ask a question in a private message that I think would be helpful for everybody, I may ask you to post it in a public channel instead.\n\n\nSensitive/private topics, or anything you want a more formal record of, should still come to my email (it just might take me longer to respond)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Contacting Me\nThe best way to get your questions answered is to reach out via slack (you should have received an invitation this morning):\n\nR Help (use r-help channel)\nClarifications and questions about homework (use homework channel)\nLogistical questions (use general channel)\nSetting up a meeting outside of appointment slots (use a private message)\n\n\nIf you have questions about the course material, there’s a good chance others do too! If you ask a question in a private message that I think would be helpful for everybody, I may ask you to post it in a public channel instead.\n\n\nSensitive/private topics, or anything you want a more formal record of, should still come to my email (it just might take me longer to respond)"
   },
   {
     "objectID": "slides/01-welcome-slides.html#my-office",
     "href": "slides/01-welcome-slides.html#my-office",
     "title": "Welcome to Stat120!",
     "section": "My office",
-    "text": "My office\nDrop in for as long as you’d like during office hours!\n\nBlinds and door open = feel free to knock and ask a quick question\n\n\nBlinds open but door shut = I’m working on something or on a call. Feel free to knock if it’s time-sensitive\n\n\nBlinds and door closed = Please check back in 30 minutes or send me a slack message instead",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "My office\nDrop in for as long as you’d like during office hours!\n\nBlinds and door open = feel free to knock and ask a quick question\n\n\nBlinds open but door shut = I’m working on something or on a call. Feel free to knock if it’s time-sensitive\n\n\nBlinds and door closed = Please check back in 30 minutes or send me a slack message instead"
   },
   {
     "objectID": "slides/01-welcome-slides.html#the-genius-myth",
     "href": "slides/01-welcome-slides.html#the-genius-myth",
     "title": "Welcome to Stat120!",
     "section": "The “Genius Myth”",
-    "text": "The “Genius Myth”\nI’ve found that many students buy into the “genius myth” when it comes to math/stat courses: that you need to be a “math person” and have some innate mathematical ability in order to do well or become a statistics major. This could not be further from the truth! The best statisticians don’t necessarily have the “best” math or programming background, but are people that are able to formulate interesting questions and use math and programming to rigorously answer those questions. Many of the best statisticians I know became statisticians because they were initially interested in something else (biology, public health, psychology, neuroscience, physics, etc.) and realized that being able to answer important questions with data was not only valuable but fun and interesting. Being able to perform interesting statistical analyses is a skill that is learned, not an innate ability, and working hard at developing that skill is the point of this course.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "The “Genius Myth”\nI’ve found that many students buy into the “genius myth” when it comes to math/stat courses: that you need to be a “math person” and have some innate mathematical ability in order to do well or become a statistics major. This could not be further from the truth! The best statisticians don’t necessarily have the “best” math or programming background, but are people that are able to formulate interesting questions and use math and programming to rigorously answer those questions. Many of the best statisticians I know became statisticians because they were initially interested in something else (biology, public health, psychology, neuroscience, physics, etc.) and realized that being able to answer important questions with data was not only valuable but fun and interesting. Being able to perform interesting statistical analyses is a skill that is learned, not an innate ability, and working hard at developing that skill is the point of this course."
   },
   {
     "objectID": "slides/01-welcome-slides.html#academic-integrity",
     "href": "slides/01-welcome-slides.html#academic-integrity",
     "title": "Welcome to Stat120!",
     "section": "Academic Integrity",
-    "text": "Academic Integrity\nI encourage you to discuss the homework problems with others and use the resources available to you to try to figure out tough problems. You should code and write up your solutions on your own. Exams must be done by yourself without communicating with others; all work must be your own. The use of textbook solution manuals (physical or online), course materials from other students, or materials from previous versions of this course are not allowed. Large-language models (e.g. ChatGPT, Gemini, etc.) should only be used for coding help after you’ve attempted to solve the problem on your own, and you should never type homework problems directly into a prompt. Copying, paraphrasing, summarizing, or submitting work generated by anyone but yourself without proper attribution is considered academic dishonesty (this includes output from LLMs).\nI also have a few rules in place to protect my intellectual property. You may not record my lectures using tools such as Otter.ai or upload any video or audio recordings to generate transcripts or study notes. You may not upload my course materials (slides, assignment prompts, note sets, etc.) into AI tools or homework help sites (such as chegg).\n“AI” tools are new for all of us and it’s OK to have questions about what is and isn’t appropriate. Please ask if you are unsure of whether or not your actions are complying with the assignment/exam/project instructions. Always default to acknowledging any help received. Cases of suspected academic dishonesty are handled by the Provost’s Office and I am obligated to report any suspected violations of this policy.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Academic Integrity\nI encourage you to discuss the homework problems with others and use the resources available to you to try to figure out tough problems. You should code and write up your solutions on your own. Exams must be done by yourself without communicating with others; all work must be your own. The use of textbook solution manuals (physical or online), course materials from other students, or materials from previous versions of this course are not allowed. Large-language models (e.g. ChatGPT, Gemini, etc.) should only be used for coding help after you’ve attempted to solve the problem on your own, and you should never type homework problems directly into a prompt. Copying, paraphrasing, summarizing, or submitting work generated by anyone but yourself without proper attribution is considered academic dishonesty (this includes output from LLMs).\nI also have a few rules in place to protect my intellectual property. You may not record my lectures using tools such as Otter.ai or upload any video or audio recordings to generate transcripts or study notes. You may not upload my course materials (slides, assignment prompts, note sets, etc.) into AI tools or homework help sites (such as chegg).\n“AI” tools are new for all of us and it’s OK to have questions about what is and isn’t appropriate. Please ask if you are unsure of whether or not your actions are complying with the assignment/exam/project instructions. Always default to acknowledging any help received. Cases of suspected academic dishonesty are handled by the Provost’s Office and I am obligated to report any suspected violations of this policy."
   },
   {
     "objectID": "slides/01-welcome-slides.html#diversity-inclusion",
     "href": "slides/01-welcome-slides.html#diversity-inclusion",
     "title": "Welcome to Stat120!",
     "section": "Diversity & Inclusion",
-    "text": "Diversity & Inclusion\nWe all come to class with different backgrounds and experiences, and this diversity makes our class environment richer. We value diversity and inclusion, and are committed to a climate of mutual respect and full participation in and out of the classroom. This class strives to be a learning environment that is usable, equitable, inclusive and welcoming, regardless of race, ethnicity, religion, gender and gender identities, sexual orientation, ability, socioeconomic background, and nationality. If you anticipate or experience any barriers to learning, please discuss your concerns with me.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Diversity & Inclusion\nWe all come to class with different backgrounds and experiences, and this diversity makes our class environment richer. We value diversity and inclusion, and are committed to a climate of mutual respect and full participation in and out of the classroom. This class strives to be a learning environment that is usable, equitable, inclusive and welcoming, regardless of race, ethnicity, religion, gender and gender identities, sexual orientation, ability, socioeconomic background, and nationality. If you anticipate or experience any barriers to learning, please discuss your concerns with me."
   },
   {
     "objectID": "slides/01-welcome-slides.html#accomodations",
     "href": "slides/01-welcome-slides.html#accomodations",
     "title": "Welcome to Stat120!",
     "section": "Accomodations",
-    "text": "Accomodations\nThe Office of Accessibility Resources (Henry House, 107 Union Street) is the campus office that collaborates with students who have disabilities to provide and/or arrange reasonable accommodations. If you have, or think you may have, a disability, please contact OAR@carleton.edu to arrange a confidential discussion regarding equitable access and reasonable accommodations. You are also welcome to contact me privately to discuss your academic needs. However, all disability-related accommodations must be arranged, in advance, through OAR.\nIf you have an extra time accommodation for exams, please schedule them through OAR.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Accomodations\nThe Office of Accessibility Resources (Henry House, 107 Union Street) is the campus office that collaborates with students who have disabilities to provide and/or arrange reasonable accommodations. If you have, or think you may have, a disability, please contact OAR@carleton.edu to arrange a confidential discussion regarding equitable access and reasonable accommodations. You are also welcome to contact me privately to discuss your academic needs. However, all disability-related accommodations must be arranged, in advance, through OAR.\nIf you have an extra time accommodation for exams, please schedule them through OAR."
   },
   {
     "objectID": "slides/01-welcome-slides.html#title-ix",
     "href": "slides/01-welcome-slides.html#title-ix",
     "title": "Welcome to Stat120!",
     "section": "Title IX",
-    "text": "Title IX\nPlease be aware that all faculty are “responsible employees”, which means that if you tell me about a situation involving sexual harassment, sexual assault, dating violence, domestic violence, or stalking, I must share that information with the Title IX Coordinator. Although I have to make this notification, you will control how your case will be handled, including whether or not you wish to meet with the Title IX coordinator or pursue a formal complaint.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Title IX\nPlease be aware that all faculty are “responsible employees”, which means that if you tell me about a situation involving sexual harassment, sexual assault, dating violence, domestic violence, or stalking, I must share that information with the Title IX Coordinator. Although I have to make this notification, you will control how your case will be handled, including whether or not you wish to meet with the Title IX coordinator or pursue a formal complaint."
   },
   {
     "objectID": "slides/01-welcome-slides.html#take-care-of-yourself",
     "href": "slides/01-welcome-slides.html#take-care-of-yourself",
     "title": "Welcome to Stat120!",
     "section": "Take care of yourself",
-    "text": "Take care of yourself\nDo your best to maintain a healthy lifestyle this term by wearing a mask when you’re sick, eating a vegetable every now and then, exercising, avoiding excessive drug and alcohol use, getting enough sleep, and taking some time to relax. Your physical and mental health is more important than your grade in this course. There are many helpful resources available on campus and an important part of the college experience is learning how to ask for help. For more information, see Student Health and Counseling (SHAC), the Office of Health Promotion, or the Office of the Chaplain. If you are experiencing physical or mental health symptoms as a result of coursework, please speak with me so we can address the problem together.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Take care of yourself\nDo your best to maintain a healthy lifestyle this term by wearing a mask when you’re sick, eating a vegetable every now and then, exercising, avoiding excessive drug and alcohol use, getting enough sleep, and taking some time to relax. Your physical and mental health is more important than your grade in this course. There are many helpful resources available on campus and an important part of the college experience is learning how to ask for help. For more information, see Student Health and Counseling (SHAC), the Office of Health Promotion, or the Office of the Chaplain. If you are experiencing physical or mental health symptoms as a result of coursework, please speak with me so we can address the problem together."
   },
   {
     "objectID": "slides/01-welcome-slides.html#the-palmerpenguins-data",
     "href": "slides/01-welcome-slides.html#the-palmerpenguins-data",
     "title": "Welcome to Stat120!",
     "section": "The palmerpenguins data",
-    "text": "The palmerpenguins data\n\nData were collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "The palmerpenguins data\n\nData were collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network."
   },
   {
     "objectID": "slides/01-welcome-slides.html#data-as-a-spreadsheet",
     "href": "slides/01-welcome-slides.html#data-as-a-spreadsheet",
     "title": "Welcome to Stat120!",
     "section": "Data as a “spreadsheet”",
-    "text": "Data as a “spreadsheet”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n2007\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Data as a “spreadsheet”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n2007\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007"
   },
   {
     "objectID": "slides/01-welcome-slides.html#definitions",
     "href": "slides/01-welcome-slides.html#definitions",
     "title": "Welcome to Stat120!",
     "section": "Definitions",
-    "text": "Definitions\n\n\n\n\nCases\n\n\nAlso called “units” or “observations”. Generally correspond to rows in a dataset. What does each “data point” represent\n\n\n\n\n\n\n\n\nVariables\n\n\nCharacteristics that are recorded for each case. Generally correspond to columns in the dataset",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Definitions\n\n\n\n\nCases\n\n\nAlso called “units” or “observations”. Generally correspond to rows in a dataset. What does each “data point” represent\n\n\n\n\n\n\n\n\nVariables\n\n\nCharacteristics that are recorded for each case. Generally correspond to columns in the dataset"
   },
   {
     "objectID": "slides/01-welcome-slides.html#types-of-variables",
     "href": "slides/01-welcome-slides.html#types-of-variables",
     "title": "Welcome to Stat120!",
     "section": "Types of Variables",
-    "text": "Types of Variables\n\n\n\n\n\nflowchart LR\n  A(Categorical) --&gt; B(Ordered/Ordinal)\n  A --&gt; C(Binary)\n  A --&gt; D(Categorical)\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart LR\n  A(Quantitative) --&gt; B(Discrete)\n  A --&gt; C(Continuous)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Types of Variables\n\n\n\n\n\nflowchart LR\n  A(Categorical) --&gt; B(Ordered/Ordinal)\n  A --&gt; C(Binary)\n  A --&gt; D(Categorical)\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart LR\n  A(Quantitative) --&gt; B(Discrete)\n  A --&gt; C(Continuous)"
   },
   {
     "objectID": "slides/01-welcome-slides.html#example-3.1-penguins",
     "href": "slides/01-welcome-slides.html#example-3.1-penguins",
     "title": "Welcome to Stat120!",
     "section": "Example 3.1: Penguins",
-    "text": "Example 3.1: Penguins\n\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Example 3.1: Penguins\n\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "slides/01-welcome-slides.html#example-3.2-prices-of-diamonds",
     "href": "slides/01-welcome-slides.html#example-3.2-prices-of-diamonds",
     "title": "Welcome to Stat120!",
     "section": "Example 3.2: Prices of diamonds",
-    "text": "Example 3.2: Prices of diamonds",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Example 3.2: Prices of diamonds"
   },
   {
     "objectID": "slides/01-welcome-slides.html#example-3.3-is-there-a-sprinting-gene",
     "href": "slides/01-welcome-slides.html#example-3.3-is-there-a-sprinting-gene",
     "title": "Welcome to Stat120!",
     "section": "Example 3.3: Is there a “Sprinting Gene”?",
-    "text": "Example 3.3: Is there a “Sprinting Gene”?\nA gene called ACTN3 encodes a protein which functions in fast-twitch muscles. Some people have a variant of this gene that cannot yield this protein. To address the question of whether this gene is associated with sprinting ability, geneticists tested people from three different groups: world-class sprinters, world-class marathon runners, and a control group of non-athletes. In the sames tested, 6% of the sprinters had the gene variant, compared with 18% of non-athletes and 24% of the marathon runners.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Example 3.3: Is there a “Sprinting Gene”?\nA gene called ACTN3 encodes a protein which functions in fast-twitch muscles. Some people have a variant of this gene that cannot yield this protein. To address the question of whether this gene is associated with sprinting ability, geneticists tested people from three different groups: world-class sprinters, world-class marathon runners, and a control group of non-athletes. In the sames tested, 6% of the sprinters had the gene variant, compared with 18% of non-athletes and 24% of the marathon runners."
   },
   {
     "objectID": "slides/01-welcome-slides.html#upcoming",
     "href": "slides/01-welcome-slides.html#upcoming",
     "title": "Welcome to Stat120!",
     "section": "Upcoming",
-    "text": "Upcoming\n\nHW1 is posted on moodle (due on Wednesday)\nVideo posted later today to watch before Wednesday’s class",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Welcome to Stat120!"
-    ]
+    "text": "Upcoming\n\nHW1 is posted on moodle (due on Wednesday)\nVideo posted later today to watch before Wednesday’s class"
   },
   {
     "objectID": "index.html",
@@ -527,168 +312,98 @@
     "href": "slides/02-slides.html#today",
     "title": "02: Sampling",
     "section": "Today:",
-    "text": "Today:\n\nA pep talk\nMeet your groups!\nData Recap\nSamples and Populations\nSampling/RStudio Activity",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Today:\n\nA pep talk\nMeet your groups!\nData Recap\nSamples and Populations\nSampling/RStudio Activity"
   },
   {
     "objectID": "slides/02-slides.html#what-makes-you-nervous-about-this-class",
     "href": "slides/02-slides.html#what-makes-you-nervous-about-this-class",
     "title": "02: Sampling",
     "section": "What makes you nervous about this class?",
-    "text": "What makes you nervous about this class?",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "What makes you nervous about this class?"
   },
   {
     "objectID": "slides/02-slides.html#have-you-taken-a-stats-class-before",
     "href": "slides/02-slides.html#have-you-taken-a-stats-class-before",
     "title": "02: Sampling",
     "section": "Have you taken a stats class before?",
-    "text": "Have you taken a stats class before?",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Have you taken a stats class before?"
   },
   {
     "objectID": "slides/02-slides.html#how-familiar-are-you-with-the-following-tools",
     "href": "slides/02-slides.html#how-familiar-are-you-with-the-following-tools",
     "title": "02: Sampling",
     "section": "How familiar are you with the following tools?",
-    "text": "How familiar are you with the following tools?",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "How familiar are you with the following tools?"
   },
   {
     "objectID": "slides/02-slides.html#consider-the-following-research-questions",
     "href": "slides/02-slides.html#consider-the-following-research-questions",
     "title": "02: Sampling",
     "section": "Consider the following research questions:",
-    "text": "Consider the following research questions:\n\nWhat is the average mercury content of swordfish in the Atlantic Ocean?\nOver the last five years, what is the average time to complete a degree for undergraduates in Minnesota? How does it compare to other states?\nDoes a new drug reduce the heart attack rate in patients with severe heart disease?",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Consider the following research questions:\n\nWhat is the average mercury content of swordfish in the Atlantic Ocean?\nOver the last five years, what is the average time to complete a degree for undergraduates in Minnesota? How does it compare to other states?\nDoes a new drug reduce the heart attack rate in patients with severe heart disease?"
   },
   {
     "objectID": "slides/02-slides.html#possible-responses",
     "href": "slides/02-slides.html#possible-responses",
     "title": "02: Sampling",
     "section": "3 Possible Responses:",
-    "text": "3 Possible Responses:\n\nA man on the news got mercury poisoning from eating swordfish, so it must be dangerously high.\nI met two students who took less than 4 years to graduate, so it must take less time to graduate in Minnesota than in other states.\nMy friend’s father had a heart attack after taking the new drug for six months, so it must not work",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "3 Possible Responses:\n\nA man on the news got mercury poisoning from eating swordfish, so it must be dangerously high.\nI met two students who took less than 4 years to graduate, so it must take less time to graduate in Minnesota than in other states.\nMy friend’s father had a heart attack after taking the new drug for six months, so it must not work"
   },
   {
     "objectID": "slides/02-slides.html#the-big-picture",
     "href": "slides/02-slides.html#the-big-picture",
     "title": "02: Sampling",
     "section": "The big picture",
-    "text": "The big picture\nThe ultimate goal of statistics is to learn about a population using a subset of that population. But, populations are hard (sometimes impossible!) to measure.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "The big picture\nThe ultimate goal of statistics is to learn about a population using a subset of that population. But, populations are hard (sometimes impossible!) to measure."
   },
   {
     "objectID": "slides/02-slides.html#spectrum-of-samples",
     "href": "slides/02-slides.html#spectrum-of-samples",
     "title": "02: Sampling",
     "section": "Spectrum of Samples",
-    "text": "Spectrum of Samples",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Spectrum of Samples"
   },
   {
     "objectID": "slides/02-slides.html#section",
     "href": "slides/02-slides.html#section",
     "title": "02: Sampling",
     "section": "",
-    "text": "Population\n\n\n.\n\n\n\n\n\n\nSample\n\n\n.\n\n\n\n\n\n\nStatistical Inference\n\n\n.\n\n\n\n\n\n\nParameters and Statistics\n\n\n.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Population\n\n\n.\n\n\n\n\n\n\nSample\n\n\n.\n\n\n\n\n\n\nStatistical Inference\n\n\n.\n\n\n\n\n\n\nParameters and Statistics\n\n\n."
   },
   {
     "objectID": "slides/02-slides.html#identify-the-sample-mean-and-claimed-population-mean",
     "href": "slides/02-slides.html#identify-the-sample-mean-and-claimed-population-mean",
     "title": "02: Sampling",
     "section": "Identify the sample mean and (claimed) population mean",
-    "text": "Identify the sample mean and (claimed) population mean\n\n\nAmerican households spent an average of about $52 in 2007 on Halloween merchandise such as costumes, decorations, and candy. To see if this number had changed, researchers conducted a new survey in 2008 before industry numbers were reported. The survey included 1,500 households and found that average Halloween spending was $58 per household.\n\n\nThe average GPA of students in 2001 at a private university was 3.37. A survey on a sample of 203 students from this university yielded an average GPA of 3.59 a decade later.\n\n\nA recent article in a college newspaper stated that college students get an average of 5.5 hours of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Identify the sample mean and (claimed) population mean\n\n\nAmerican households spent an average of about $52 in 2007 on Halloween merchandise such as costumes, decorations, and candy. To see if this number had changed, researchers conducted a new survey in 2008 before industry numbers were reported. The survey included 1,500 households and found that average Halloween spending was $58 per household.\n\n\nThe average GPA of students in 2001 at a private university was 3.37. A survey on a sample of 203 students from this university yielded an average GPA of 3.59 a decade later.\n\n\nA recent article in a college newspaper stated that college students get an average of 5.5 hours of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night"
   },
   {
     "objectID": "slides/02-slides.html#whats-wrong",
     "href": "slides/02-slides.html#whats-wrong",
     "title": "02: Sampling",
     "section": "What’s wrong?",
-    "text": "What’s wrong?\nI’m interested in how satisfied the Carleton community is with the fitness center. I decide I need a sample size of 100, so at 6am one morning, I stand outside the entrance ask the first 100 people who exit whether or not they enjoyed their workout. They all said yes, so I conclude the fitness center is a perfect facility.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "What’s wrong?\nI’m interested in how satisfied the Carleton community is with the fitness center. I decide I need a sample size of 100, so at 6am one morning, I stand outside the entrance ask the first 100 people who exit whether or not they enjoyed their workout. They all said yes, so I conclude the fitness center is a perfect facility."
   },
   {
     "objectID": "slides/02-slides.html#whats-wrong-1",
     "href": "slides/02-slides.html#whats-wrong-1",
     "title": "02: Sampling",
     "section": "What’s wrong?",
-    "text": "What’s wrong?\n75% of online reviews for a product are negative, so 75% of buyers are dissatisfied with the product.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "What’s wrong?\n75% of online reviews for a product are negative, so 75% of buyers are dissatisfied with the product."
   },
   {
     "objectID": "slides/02-slides.html#section-1",
     "href": "slides/02-slides.html#section-1",
     "title": "02: Sampling",
     "section": "",
-    "text": "Simple Random Sample\n\n\n.\n\n\n\n\n\n\nBias\n\n\n.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Simple Random Sample\n\n\n.\n\n\n\n\n\n\nBias\n\n\n."
   },
   {
     "objectID": "slides/02-slides.html#section-2",
     "href": "slides/02-slides.html#section-2",
     "title": "02: Sampling",
     "section": "",
-    "text": "Undercoverage\n\n\n.\n\n\n\n\n\n\nVoluntary Response\n\n\n.\n\n\n\n\n\n\nConvenience Sample\n\n\n.\n\n\n\n\n\n\nNon-response bias\n\n\n.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "02: Sampling"
-    ]
+    "text": "Undercoverage\n\n\n.\n\n\n\n\n\n\nVoluntary Response\n\n\n.\n\n\n\n\n\n\nConvenience Sample\n\n\n.\n\n\n\n\n\n\nNon-response bias\n\n\n."
   },
   {
     "objectID": "about.html",
@@ -702,107 +417,62 @@
     "href": "activities/21-2-activity.html",
     "title": "21.2: CLT-based Inference for Difference in Means",
     "section": "",
-    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here).",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "21.2: CLT-based Inference for Difference in Means"
-    ]
+    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here)."
   },
   {
     "objectID": "activities/21-2-activity.html#one-sample-clt-inference-in-r",
     "href": "activities/21-2-activity.html#one-sample-clt-inference-in-r",
     "title": "21.2: CLT-based Inference for Difference in Means",
     "section": "",
-    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here).",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "21.2: CLT-based Inference for Difference in Means"
-    ]
+    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here)."
   },
   {
     "objectID": "activities/21-2-activity.html#two-sample-clt-inference-in-r",
     "href": "activities/21-2-activity.html#two-sample-clt-inference-in-r",
     "title": "21.2: CLT-based Inference for Difference in Means",
     "section": "Two-sample CLT inference in R",
-    "text": "Two-sample CLT inference in R\nWhen we are comparing the mean of two independent groups, we again use the t.test() function in R. Here is a template:\nt.test(y ~ x, data = dataset, mu = null, direction = \"two.sided\", paired = FALSE)\nwhere\n\ny is the column name for the response variable\nx is the column name for the explanatory (grouping) variable\ndataset is the name of the data set\nnull is the value of \\(\\mu_1 - \\mu_2\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\nif x and y represent paired measurements, change paired to TRUE to perform a matched-pairs t-test\n\n\nResearchers Holdgate et al. (2016) studied walking behavior of elephants in North American zoos to see whether there is a difference in average distance traveled by African and Asian elephants in captivity. They put GPS loggers on 33 African elephants and 23 Asian elephants, and measured the distance (in kilometers) the elephants walked per day.\n\n\nUsing EDA, compare the distribution of distance for each species. What do you learn?\nDetermine the sample sizes, sample means, and the sample standard deviations for each group. Some starter code is below (you will need to remove the line that says eval = FALSE)\n\n\nAre the conditions met for the t-procedures to be valid for these data?\nUse R to construct a 90% confidence interval for the difference between the average walking distance of the African and Asian elephant populations. Include one-sentence interpretation of your interval. (When interpreting a confidence interval for the difference, you should always clarify the direction of subtraction and which population parameter is larger.)",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "21.2: CLT-based Inference for Difference in Means"
-    ]
+    "text": "Two-sample CLT inference in R\nWhen we are comparing the mean of two independent groups, we again use the t.test() function in R. Here is a template:\nt.test(y ~ x, data = dataset, mu = null, direction = \"two.sided\", paired = FALSE)\nwhere\n\ny is the column name for the response variable\nx is the column name for the explanatory (grouping) variable\ndataset is the name of the data set\nnull is the value of \\(\\mu_1 - \\mu_2\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\nif x and y represent paired measurements, change paired to TRUE to perform a matched-pairs t-test\n\n\nResearchers Holdgate et al. (2016) studied walking behavior of elephants in North American zoos to see whether there is a difference in average distance traveled by African and Asian elephants in captivity. They put GPS loggers on 33 African elephants and 23 Asian elephants, and measured the distance (in kilometers) the elephants walked per day.\n\n\nUsing EDA, compare the distribution of distance for each species. What do you learn?\nDetermine the sample sizes, sample means, and the sample standard deviations for each group. Some starter code is below (you will need to remove the line that says eval = FALSE)\n\n\nAre the conditions met for the t-procedures to be valid for these data?\nUse R to construct a 90% confidence interval for the difference between the average walking distance of the African and Asian elephant populations. Include one-sentence interpretation of your interval. (When interpreting a confidence interval for the difference, you should always clarify the direction of subtraction and which population parameter is larger.)"
   },
   {
     "objectID": "activities/02-activity.html",
     "href": "activities/02-activity.html",
     "title": "02: Sampling",
     "section": "",
-    "text": "Press the “play” button below to run the chunk of code. This (1) loads the libraries that we need and (2) tells R to read mission_data.csv from my website folder into your R session and call it mission_data.\nCheck your “environment” pane in the upper right to make sure you can see a dataset called mission_data. Try clicking it, or running View(mission_data) in the console to bring up the data viewer.\nspoiler alert: The next chunk of code computes the population mean.\n\n\n[1] 5.947802\n\n\n\n\n [1] 213 328 237 164  34 311 115 121 253 250\n\n\nThe next chunk of code slices our population to draw our sample. Note that the position variable should match the sample output above.\n\n\n# A tibble: 10 × 4\n   paragraph word     position length\n       &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;\n 1         3 be            213      2\n 2         4 of            328      2\n 3         4 the           237      3\n 4         3 carleton      164      8\n 5         1 learning       34      8\n 6         4 for           311      3\n 7         3 the           115      3\n 8         3 students      121      8\n 9         4 arts          253      4\n10         4 in            250      2\n\n\n\n\n[1] 4.3\n\n\nTo try other random samples, change (or remove!) the set.seed() line of code, and try re-running the rest of the code. Do you ever get a sample mean that looks like your “by hand” sample mean?\nWhen you’re done, knit this file and try uploading the PDF to gradescope. There are two questions, one for the population mean and one for a sample mean. Be sure to mark the pages so I can see your answers!",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "02: Sampling"
-    ]
+    "text": "Press the “play” button below to run the chunk of code. This (1) loads the libraries that we need and (2) tells R to read mission_data.csv from my website folder into your R session and call it mission_data.\nCheck your “environment” pane in the upper right to make sure you can see a dataset called mission_data. Try clicking it, or running View(mission_data) in the console to bring up the data viewer.\nspoiler alert: The next chunk of code computes the population mean.\n\n\n[1] 5.947802\n\n\n\n\n [1] 213 328 237 164  34 311 115 121 253 250\n\n\nThe next chunk of code slices our population to draw our sample. Note that the position variable should match the sample output above.\n\n\n# A tibble: 10 × 4\n   paragraph word     position length\n       &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;\n 1         3 be            213      2\n 2         4 of            328      2\n 3         4 the           237      3\n 4         3 carleton      164      8\n 5         1 learning       34      8\n 6         4 for           311      3\n 7         3 the           115      3\n 8         3 students      121      8\n 9         4 arts          253      4\n10         4 in            250      2\n\n\n\n\n[1] 4.3\n\n\nTo try other random samples, change (or remove!) the set.seed() line of code, and try re-running the rest of the code. Do you ever get a sample mean that looks like your “by hand” sample mean?\nWhen you’re done, knit this file and try uploading the PDF to gradescope. There are two questions, one for the population mean and one for a sample mean. Be sure to mark the pages so I can see your answers!"
   },
   {
     "objectID": "activities/04-activity.html",
     "href": "activities/04-activity.html",
     "title": "04: Categorical Variables + Intro to Quantitative Variables",
     "section": "",
-    "text": "The lab manual data Pew contains data from a January 2014 Pew Research Center survey about the Internet. We’ll consider two variables from this survey:\n\nincome: the person’s yearly income, grouped into four categories\nvalues: an answer to the question asking if the Internet has been a “good thing”\n\n0. Import the data into R by running the following code chunk. Click on the dataset in the environment pane to pull up the data viewer. Can you see the “spreadsheet view”?\n1. The code below computes the frequency table for the values variable. Add a “pipe” (%&gt;%) and another command to answer: what proportion of respondents said that the Internet has been a good thing?\n\n\n\n bad good \n 140  556 \n\n\n2. Using esquisse, make a bar plot of the counts of people who said the Internet has vs. has not been a good thing. Insert your code in the chunk below.\n3. Show the two-way table for the values and income variables. How many people from the survey had an income above $150,000 a year and thought the Internet was a bad thing?\n\n\n              \n               bad good\n  0-30000       57  133\n  150000         5   64\n  30000-75000   50  206\n  75000-150000  28  153\n\n\n4. The table in part 3 shows the income categories in the wrong order (i.e., not in order of increasing income). You can fix this by changing the order of the categories of the income variable as below (see Appendix A.1 of the lab manual). Remake the table after reordering the categories.\n5. Use esquisse to make a stacked barplot of income and values.\n6. Your bar plot by default should show the counts of each combination. Copy and paste your bar plot code, and change geom_bar() to geom_bar(position = \"fill\"). Explain what this chunk of code did.\nStop Here and let Amanda know you’ve finished with the categorical EDA section\nA third variable in the dataset is age. The next few questions walk through how to do basic EDA for a quantitative variable.\n7. Create a histogram of the age variable using esquisse\n8. In the empty code chunk below, run mean(pew$age) and median(pew$age). Now try mode(pew$age). What happened?\n9. Using your answers to the previous two questions, describe the distribution of age.",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "04: Categorical Variables + Intro to Quantitative Variables"
-    ]
+    "text": "The lab manual data Pew contains data from a January 2014 Pew Research Center survey about the Internet. We’ll consider two variables from this survey:\n\nincome: the person’s yearly income, grouped into four categories\nvalues: an answer to the question asking if the Internet has been a “good thing”\n\n0. Import the data into R by running the following code chunk. Click on the dataset in the environment pane to pull up the data viewer. Can you see the “spreadsheet view”?\n1. The code below computes the frequency table for the values variable. Add a “pipe” (%&gt;%) and another command to answer: what proportion of respondents said that the Internet has been a good thing?\n\n\n\n bad good \n 140  556 \n\n\n2. Using esquisse, make a bar plot of the counts of people who said the Internet has vs. has not been a good thing. Insert your code in the chunk below.\n3. Show the two-way table for the values and income variables. How many people from the survey had an income above $150,000 a year and thought the Internet was a bad thing?\n\n\n              \n               bad good\n  0-30000       57  133\n  150000         5   64\n  30000-75000   50  206\n  75000-150000  28  153\n\n\n4. The table in part 3 shows the income categories in the wrong order (i.e., not in order of increasing income). You can fix this by changing the order of the categories of the income variable as below (see Appendix A.1 of the lab manual). Remake the table after reordering the categories.\n5. Use esquisse to make a stacked barplot of income and values.\n6. Your bar plot by default should show the counts of each combination. Copy and paste your bar plot code, and change geom_bar() to geom_bar(position = \"fill\"). Explain what this chunk of code did.\nStop Here and let Amanda know you’ve finished with the categorical EDA section\nA third variable in the dataset is age. The next few questions walk through how to do basic EDA for a quantitative variable.\n7. Create a histogram of the age variable using esquisse\n8. In the empty code chunk below, run mean(pew$age) and median(pew$age). Now try mode(pew$age). What happened?\n9. Using your answers to the previous two questions, describe the distribution of age."
   },
   {
     "objectID": "activities/06-activity.html",
     "href": "activities/06-activity.html",
     "title": "06: Correlation and Intro to Regression",
     "section": "",
-    "text": "This dataset gives education-related data for the 50 states and the District of Columbia. The variables are:\n\nregion: West, Northeast, Midwest, South\npop: Population, in 1,000’s\nverbal and math: average SAT verbal and math scores\ntaken: percent of students taking the SAT\nnoHS: percent of population with no high school diploma\nteachersPay: median teacher salary, in 1,000’s\n\n0. Load code libraries and the data and make sure you can view it. What is each case?\nWe’re going to investigate the relationship between math SAT scores (math) and the percentage of high school students who took the SAT.\n1. Before looking at the data, do expect there to be a positive, negative, or no relationship? Why?\n2. Make a scatterplot of math on the y-axis and taken on the x-axis with the line of best fit included (see notes from today for the line of code to include). What do you notice?\n3. Use the lm() command to find the equation for this line. Be careful about the X and Y variables! Interpret the slope and intercept in context.\n4. Find the correlation for this relationship.\n5. Color the scatterplot by region. What do you notice?\nThe code chunk below creates a new dataset called sat_northeast which filters to only the Northeast states (== is code for “equals”).\n6. Make a scatterplot of math on the y-axis and taken on the x-axis with the line of best fit included.\n7. Use the lm() command to find the equation for this line. How does it compare to your line from (3)?\n8. Find the correlation for this relationship. How does it compare to the correlation for the whole dataset?\nNote: this data is adapted from Ch 3.4 of the Lab Manual. You can find most of the code solutions there if your group gets stuck!",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "06: Correlation and Intro to Regression"
-    ]
+    "text": "This dataset gives education-related data for the 50 states and the District of Columbia. The variables are:\n\nregion: West, Northeast, Midwest, South\npop: Population, in 1,000’s\nverbal and math: average SAT verbal and math scores\ntaken: percent of students taking the SAT\nnoHS: percent of population with no high school diploma\nteachersPay: median teacher salary, in 1,000’s\n\n0. Load code libraries and the data and make sure you can view it. What is each case?\nWe’re going to investigate the relationship between math SAT scores (math) and the percentage of high school students who took the SAT.\n1. Before looking at the data, do expect there to be a positive, negative, or no relationship? Why?\n2. Make a scatterplot of math on the y-axis and taken on the x-axis with the line of best fit included (see notes from today for the line of code to include). What do you notice?\n3. Use the lm() command to find the equation for this line. Be careful about the X and Y variables! Interpret the slope and intercept in context.\n4. Find the correlation for this relationship.\n5. Color the scatterplot by region. What do you notice?\nThe code chunk below creates a new dataset called sat_northeast which filters to only the Northeast states (== is code for “equals”).\n6. Make a scatterplot of math on the y-axis and taken on the x-axis with the line of best fit included.\n7. Use the lm() command to find the equation for this line. How does it compare to your line from (3)?\n8. Find the correlation for this relationship. How does it compare to the correlation for the whole dataset?\nNote: this data is adapted from Ch 3.4 of the Lab Manual. You can find most of the code solutions there if your group gets stuck!"
   },
   {
     "objectID": "activities/24-activity.html",
     "href": "activities/24-activity.html",
     "title": "24: Inference for Regression in R",
     "section": "",
-    "text": "When we are fitting a linear regression model in R, we use the lm() function. Here is a template:\nlm(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set\n\nTo get the summary table use\nsummary(lm_mod)\nwhere lm_mod is the name of the model that you fit using lm().\nTo find confidence and prediction intervals for observations, use augment() from the broom package\naugment(lm_mod, newdata = tibble(x = ______), interval = \"none\", conf.level = .95)\nwhere\n\nlm_mod is the name of the model that you fit using lm()\nx is the column name for the categorical predictor variable\n_____ is filled in with the value of x that you want to predict\ninterval is one of “none”, “confidence”, or “prediction”\nconf.level is the confidence level for the interval (default is 0.95)\n\nWe’re going to use the dataset cereals.csv, which has nutrition data on a random sample of breakfast cereals.\n1. Load in the data and check the “spreadsheet view”. How many cereals are in the sample?\n2. We’re going to try to predict carbs per gram (carbsgram) using calories per gram (calgram). Make a scatterplot and describe the relationship you find.\n3. Find a confidence interval for the slope and report your result in context. Some starter code is below (make sure to remove eval = FALSE!)\n4. Use the starter code below to find a 90% prediction interval for a new cereal with 3.5 calories per gram. Interpret your result in context.\n5. The code below creates a confidence interval and prediction interval for all predicted values. One is shown in blue and one is shown in orange. Which is which, and how can you tell?\n6. There is one point that falls outside of the prediction interval. Is this evidence that it is an outlier? Should we remove it?\n7. The code below makes residual plots for the cereal_lm model. (Remove eval = FALSE after you have created the model). Do you have any concerns about the LINE conditions?\n8. When we include plots on posters or in papers, we want to be mindful of how much space they take up but also make sure they are readable. One way that I like to do this is by putting multiple plots side-by-side using the patchwork package. Remove eval = FALSE and run the code below. Next, run p1+p2 in the console to make the plot show up in the viewer. Click on “export” and then “save as image”. Change the dimensions to be 1200 pixels long x 400 pixels tall and save your plot with an informative file name. In order to get the plot from the RStudio Server onto your own computer, go to the “Files” tab and click on the name of the image. This should bring up a high-quality image that you can copy and paste into a text editor or embed directly. Alternatively, you can check the box next to the image and click on “more –&gt; export” to download to your computer. Submit only this image file on gradescope (1 per group).",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "24: Inference for Regression in R"
-    ]
+    "text": "When we are fitting a linear regression model in R, we use the lm() function. Here is a template:\nlm(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set\n\nTo get the summary table use\nsummary(lm_mod)\nwhere lm_mod is the name of the model that you fit using lm().\nTo find confidence and prediction intervals for observations, use augment() from the broom package\naugment(lm_mod, newdata = tibble(x = ______), interval = \"none\", conf.level = .95)\nwhere\n\nlm_mod is the name of the model that you fit using lm()\nx is the column name for the categorical predictor variable\n_____ is filled in with the value of x that you want to predict\ninterval is one of “none”, “confidence”, or “prediction”\nconf.level is the confidence level for the interval (default is 0.95)\n\nWe’re going to use the dataset cereals.csv, which has nutrition data on a random sample of breakfast cereals.\n1. Load in the data and check the “spreadsheet view”. How many cereals are in the sample?\n2. We’re going to try to predict carbs per gram (carbsgram) using calories per gram (calgram). Make a scatterplot and describe the relationship you find.\n3. Find a confidence interval for the slope and report your result in context. Some starter code is below (make sure to remove eval = FALSE!)\n4. Use the starter code below to find a 90% prediction interval for a new cereal with 3.5 calories per gram. Interpret your result in context.\n5. The code below creates a confidence interval and prediction interval for all predicted values. One is shown in blue and one is shown in orange. Which is which, and how can you tell?\n6. There is one point that falls outside of the prediction interval. Is this evidence that it is an outlier? Should we remove it?\n7. The code below makes residual plots for the cereal_lm model. (Remove eval = FALSE after you have created the model). Do you have any concerns about the LINE conditions?\n8. When we include plots on posters or in papers, we want to be mindful of how much space they take up but also make sure they are readable. One way that I like to do this is by putting multiple plots side-by-side using the patchwork package. Remove eval = FALSE and run the code below. Next, run p1+p2 in the console to make the plot show up in the viewer. Click on “export” and then “save as image”. Change the dimensions to be 1200 pixels long x 400 pixels tall and save your plot with an informative file name. In order to get the plot from the RStudio Server onto your own computer, go to the “Files” tab and click on the name of the image. This should bring up a high-quality image that you can copy and paste into a text editor or embed directly. Alternatively, you can check the box next to the image and click on “more –&gt; export” to download to your computer. Submit only this image file on gradescope (1 per group)."
   },
   {
     "objectID": "activities/12-activity.html",
     "href": "activities/12-activity.html",
     "title": "12: Bootstrap Confidence Intervals",
     "section": "",
-    "text": "The data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nLet’s see if this differs based on whether the respondent is 50 years or older or not.\n1. Create an appropriate visualization of values conditioned on over. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50’s?\n2. Compute the exact proportions for each age group.\nIn order to use the boot() command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories).\n3. Pull up the “spreadsheet view” of the data and confirm that values and values2 contain the same information stored in a different form.\nSince the values are 0’s and 1’s, when you compute the mean, you will be computing an expression of the form\n\\[ \\frac{1 + 1 + 0 + 1 + 0 +... +0}{n}\\] which is equivalent to the proportion of 1’s. This means that we can treat proportions as means. Yay!\n4. Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable values2, which is behavior recoded so that 1 = “good”, 0 = “bad”.\n5. Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval?\nWhen you’re done, please let me know!",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "12: Bootstrap Confidence Intervals"
-    ]
+    "text": "The data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nLet’s see if this differs based on whether the respondent is 50 years or older or not.\n1. Create an appropriate visualization of values conditioned on over. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50’s?\n2. Compute the exact proportions for each age group.\nIn order to use the boot() command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories).\n3. Pull up the “spreadsheet view” of the data and confirm that values and values2 contain the same information stored in a different form.\nSince the values are 0’s and 1’s, when you compute the mean, you will be computing an expression of the form\n\\[ \\frac{1 + 1 + 0 + 1 + 0 +... +0}{n}\\] which is equivalent to the proportion of 1’s. This means that we can treat proportions as means. Yay!\n4. Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable values2, which is behavior recoded so that 1 = “good”, 0 = “bad”.\n5. Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval?\nWhen you’re done, please let me know!"
   },
   {
     "objectID": "activities/18-activity.html",
     "href": "activities/18-activity.html",
     "title": "18: The Normal Distribution",
     "section": "",
-    "text": "Suppose weights of newborn babies in one community are normally distributed with a mean of 7.7 pounds and a standard deviation of 1.25 pounds\n1. Use the 95% rule to sketch a graph of this normal density curve. Include a scale with at least three values on the horizontal axis.\n2. Suppose I wanted to know the percent of newborns weighing less than 4.5 pounds.\n\nUse StatKey to answer this question\nUse the pnorm function to answer this question.\n\nAnswer: ________________\n3. Suppose I wanted to know the 15th percentile of the distribution.\n\nUse StatKey to answer this question\nUse the qnorm function to answer this question.\n\nAnswer: ________________\n4. APM Research Lab ran a survey of likely Minnesota voters between Sept 16-18 of this year. Here’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the “true” figure would fall within that range if all voters were surveyed. The margin for error is higher for any subgroup, such as a gender or age grouping.\n\nThey reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket.\n\nHow do you feel about this summary of a confidence interval (for a public/non-statistician audience)?\n\n\nWhat is the standard error for each of these estimates?\n\n\nBuild a 95% confidence interval for one of these proportions\n\n\nUse the normal distribution to instead build a 99% confidence interval for one of these proportions\n\nThe report also says:\n\nOverall margin of error = 3.5 percentage points (and therefore approximately 7 percentage points for the difference between two data points)\n\n\nUse this information to build a 90% confidence interval for the difference in proportions between the Harris/Walz supporters and the Trump/Vance supporters.\n\n5. True or False?\n\nThe central limit theorem says that the population distribution is approximately normal if the population is big enough.\nThe central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.\nThe central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.\nThe central limit theorem says that any statistic is normally distributed if the sample size is big enough.\nThe central limit theorem applies to proportions and means\n\n5. Using pnorm or qnorm, find the following quantities.\n\n\\(P(Z &lt; .25)\\)\n\\(P(Z &gt; 1.5)\\)\n\\(P(-.5 &lt; Z  &lt; 1.5)\\)\n\\(z^*\\) where \\(P(Z &lt; z^*) = .33\\)\n\\(z^*\\) where \\(P(Z &gt; z^*) = .33\\)\n\\(P(X &lt; 10)\\) where \\(X \\sim N(15, 22)\\)\n\\(P(X &gt; 40)\\) where \\(X \\sim(15,22)\\)",
-    "crumbs": [
-      "Home",
-      "Activities",
-      "18: The Normal Distribution"
-    ]
+    "text": "Suppose weights of newborn babies in one community are normally distributed with a mean of 7.7 pounds and a standard deviation of 1.25 pounds\n1. Use the 95% rule to sketch a graph of this normal density curve. Include a scale with at least three values on the horizontal axis.\n2. Suppose I wanted to know the percent of newborns weighing less than 4.5 pounds.\n\nUse StatKey to answer this question\nUse the pnorm function to answer this question.\n\nAnswer: ________________\n3. Suppose I wanted to know the 15th percentile of the distribution.\n\nUse StatKey to answer this question\nUse the qnorm function to answer this question.\n\nAnswer: ________________\n4. APM Research Lab ran a survey of likely Minnesota voters between Sept 16-18 of this year. Here’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the “true” figure would fall within that range if all voters were surveyed. The margin for error is higher for any subgroup, such as a gender or age grouping.\n\nThey reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket.\n\nHow do you feel about this summary of a confidence interval (for a public/non-statistician audience)?\n\n\nWhat is the standard error for each of these estimates?\n\n\nBuild a 95% confidence interval for one of these proportions\n\n\nUse the normal distribution to instead build a 99% confidence interval for one of these proportions\n\nThe report also says:\n\nOverall margin of error = 3.5 percentage points (and therefore approximately 7 percentage points for the difference between two data points)\n\n\nUse this information to build a 90% confidence interval for the difference in proportions between the Harris/Walz supporters and the Trump/Vance supporters.\n\n5. True or False?\n\nThe central limit theorem says that the population distribution is approximately normal if the population is big enough.\nThe central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.\nThe central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.\nThe central limit theorem says that any statistic is normally distributed if the sample size is big enough.\nThe central limit theorem applies to proportions and means\n\n5. Using pnorm or qnorm, find the following quantities.\n\n\\(P(Z &lt; .25)\\)\n\\(P(Z &gt; 1.5)\\)\n\\(P(-.5 &lt; Z  &lt; 1.5)\\)\n\\(z^*\\) where \\(P(Z &lt; z^*) = .33\\)\n\\(z^*\\) where \\(P(Z &gt; z^*) = .33\\)\n\\(P(X &lt; 10)\\) where \\(X \\sim N(15, 22)\\)\n\\(P(X &gt; 40)\\) where \\(X \\sim(15,22)\\)"
   }
 ]
