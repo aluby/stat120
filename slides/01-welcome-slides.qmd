@@ -102,7 +102,7 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 
 - There are no prerequisites for this course, and you do need to have *any* background in statistics, mathematics, or computer science to do well. If you've already taken Math 211, Psych 200, Psych 201, SOAN 239, or Stat 250, a different statistics class may be more appropriate for you. Please see me if this is the case. 
 
-## General Flow of the Course {smaller}
+## General Flow of the Course {.smaller}
 
 1. **Data**
 
