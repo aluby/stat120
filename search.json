@@ -119,11 +119,11 @@
     "text": "Statistical Literacy is a key skill for many different courses and majors, and becoming necessary to be a responsible citizen in “the real world”. In this course, we’ll lay the foundations for statistical literacy and learn basic data analysis skills. Upon completion of the course, I expect you to be able to:\n\nWork with and describe various types of data\nUnderstand the role of variation and randomness and the principles of statistical inference\nChoose the appropriate statistical analysis for a given task and recognize when certain statistical analyses are not appropriate\nAnalyze data and apply statistical methods using R and interpret results\nCritically examine analyses of data and interpretations of results from statistical methods\nThere are no prerequisites for this course, and you do need to have any background in statistics, mathematics, or computer science to do well. If you’ve already taken Math 211, Psych 200, Psych 201, SOAN 239, or Stat 250, a different statistics class may be more appropriate for you. Please see me if this is the case."
   },
   {
-    "objectID": "slides/01-welcome-slides.html#general-flow-of-the-course-smaller",
-    "href": "slides/01-welcome-slides.html#general-flow-of-the-course-smaller",
+    "objectID": "slides/01-welcome-slides.html#general-flow-of-the-course",
+    "href": "slides/01-welcome-slides.html#general-flow-of-the-course",
     "title": "Welcome to Stat120!",
-    "section": "General Flow of the Course {smaller}",
-    "text": "General Flow of the Course {smaller}\n\nData\n\nCollecting Data\nExploratory Data Analysis\nUni- and Multi-variate\n\nIntroduction to Statistical Inference\n\nSampling Uncertainty\nConfidence Intervals\nHypothesis Tests\n\nFormal Inference\n\nSpecific settings\nWorking on projects"
+    "section": "General Flow of the Course",
+    "text": "General Flow of the Course\n\nData\n\nCollecting Data\nExploratory Data Analysis\nUni- and Multi-variate\n\nIntroduction to Statistical Inference\n\nSampling Uncertainty\nConfidence Intervals\nHypothesis Tests\n\nFormal Inference\n\nSpecific settings\nWorking on projects"
   },
   {
     "objectID": "slides/01-welcome-slides.html#textbook",
