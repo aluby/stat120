@@ -5,6 +5,7 @@ format:
     theme: [white, slides.scss]
     title-slide-attributes: 
       data-background-color: "#1F4257"
+    scrollable: true
 brand: false
 ---
 
@@ -13,6 +14,7 @@ library(tidyverse)
 library(bookdown)
 library(infer)
 library(ragg)
+library(countdown)
 options(digits = 4)
 slides_theme = theme_minimal(
   base_family = "Source Sans 3", 
@@ -22,26 +24,73 @@ theme_set(slides_theme)
 
 ## Plan for today
 
+1. Intros
 1.  Syllabus/About the Course
 2.  Intro to Data
 
-## A bit about me
+## About me
 
--   This is my first year at Carleton!
-- I live near campus and you may see me walking with my dog (Pearl), my child (Ellis), and my spouse (Bret)
--   I have a PhD in Statistics & Data Science from Carnegie Mellon in Pittsburgh, and I taught for 5 years at Swarthmore College before joining the faculty here
-- I'm a first gen college student! 
--   My research area is models for decision-making, particularly applied to forensic science
--   My office is downstairs in the Math/Stat wing at the end of the hallway (with the giant windows!) 
+::::: columns
+::: {.column width="50%"}
+-   Ellis (almost 1.5!)
+-   Second year at Carleton 
+-   Taught at Swarthmore for 5 years before moving to MN 
+-   PhD in Statistics & Data Science from Carnegie Mellon University
+-   Grew up in Minnesota, went to St Ben's as an undergrad
+:::
 
-## A bit about me
+::: {.column width="50%"}
+![](img/TR3_5109.jpeg)
+:::
+:::::
 
-- Something I'm proud of
-- Something I'm nervous about
+## My crochet journey this summer
+
+::::: columns
+::: {.column width="50%"}
+![](img/ugly-crochet.JPG)
+:::
+
+::: {.column width="50%"}
+-   Decided I wanted to make a basket
+-   Skipped "practice these stitches" and just went for it
+-   Didn't understand the pattern, watched a couple of youtube videos from random creators and went for it
+-   Kept going even when I was very clearly doing something wrong
+:::
+:::::
+
+## My crochet journey this summer
+
+::::: columns
+::: {.column width="50%"}
+![](img/better-crochet.JPG)
+:::
+
+::: {.column width="50%" }
+-   Asked an expert (my sister) for advice
+-   Did "practice problems" using easier material (yarn) and bigger hook
+-   Found a reliable internet source for videos and tutorials
+-   Started being way more careful about checking my work and redoing things if I wasn't sure
+:::
+:::::
+
+## Intros
+
+::: {.nonincremental}
+- Name 
+- What makes you nervous about this class or term? 
+- Something about yourself you are proud of
+:::
+
+```{r}
+#| echo: false
+
+countdown(5)
+```
 
 # Syllabus {.maize}
 
-## 
+## {.smaller}
 
 Statistical Literacy is a key skill for many different courses and majors, and becoming necessary to be a responsible citizen in "the real world". In this course, we'll lay the foundations for statistical literacy and learn basic data analysis skills. Upon completion of the course, I expect you to be able to: 
 
@@ -53,7 +102,7 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 
 - There are no prerequisites for this course, and you do need to have *any* background in statistics, mathematics, or computer science to do well. If you've already taken Math 211, Psych 200, Psych 201, SOAN 239, or Stat 250, a different statistics class may be more appropriate for you. Please see me if this is the case. 
 
-## General Flow of the Course 
+## General Flow of the Course {smaller}
 
 1. **Data**
 
@@ -90,14 +139,7 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 - Please bring a laptop
 - For each class, I'll post a *handout* and *slides*. During class, you should fill in the *handout*. These become your reference materials for the class. I'll bring blank printed copies for the first few weeks.
 
-## What do I do if I'm sick? 
-
-- If you feel *a little under the weather*, wear a mask
-- If you feel fine but *have a cough*, wear a mask
-- If you *have a stomach bug* please do not come to class. Complete the daily check-in, send me an email, and check with a classmate to catch up
-- If you have a *more serious sickness*, please contact the health center and do not come to class. If you feel well enough, complete the daily check-in, send me an email, and check with a classmate to catch up. If you do not feel well enough to keep up with the material, send me an email. If you need to miss more than 1 day of class due to an illness, please contact me and your class dean to arrange alternative due dates.
-
-## Assignments
+## Assignments {.smaller}
 
 -   Homework will be assigned once per week, due on gradescope by midnight on Wednesday (Friday in week 4, 7, 9)
 -   No-questions-asked 12 hour grace period if you need it 
@@ -106,7 +148,7 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 -   Assignment submissions should be typeset using rmarkdown OR neatly written and scanned and submitted as a PDF file.
 -   You're responsible for submitting readable work and properly marking your questions on gradescope
 
-## Regrade request policy
+## Regrade request policy {.smaller}
 
 - Can be submitted on gradescope within 2 weekdays after graded homework has been returned
 - Use for administrative errors or obvious grading mistakes 
@@ -118,7 +160,7 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 - If you submit two or more inappropriate regrade requests, I won't consider any more from you during the term
 - Come talk to me with any questions!
 
-## Exams
+## Exams {.smaller}
 
 - While I believe most of your learning in this course will happen through working on homework and your project, part of being literate in statistics is being able to recall basic concepts and interpret analyses "on the fly", without access to other resources
 -   There will be three in-class exams, tentatively scheduled for Fridays of Week 3, 6, and 9
@@ -137,126 +179,92 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 
 -   15% homework
 -   5% daily check-ins (lowest 3 will be dropped)
--   15% each exam (45% total)
+-   5% attendance and participation in group work
+-   16.33% each exam (50% total)
 -   15% final paper
--   15% final project
--   5% participation and in-class activities
+-   10% final project
 -   Letter grades will be assigned based on the usual grading scale (A = 93%+, A- = 90-92.9%, B+ = 88-89.9%, B = 83-87.9, etc.)
 
 ## Advice from past intro stat students: {.smaller}
 
-- "Don't be afraid to ask questions. Even if you think they're really stupid, asking them could help you understand so many concepts."
+- Don't be afraid to ask questions. Even if you think they're really stupid, asking them could help you understand so many concepts.
 
-- "Ask questions! Prof. Luby is extremely helpful and approachable"
+- Even if homework is due weekly, try to do it throughout the week so you can check your understanding between class periods. Ask Amanda for help - especially in R! It's usually a quick fix and much easier than breaking your brain over a small error.
 
-- Stay on top of work, especially homework"
+- Do the work! The class really is not too difficult if you do what Amanda assigns/recommends. Readings, daily preps, HWs were all very helpful for learning.
 
-- "Take detailed notes, start homework assignments early and attend office hours if you have any questions."
+- To keep up with the work and really nail down the concepts because everything connects and if you don't understand something in the moment it will make things harder in the future
 
-- "Use the notes sets to make studying for each exam easier"
+- Don’t be afraid to ask questions, in and out of class, and don’t try to figure everything out on your own. Talking through problems with friends, people from stats lab, or Amanda helps a lot!
 
-- "The second half of the course is intimidating but I promise if you continue to ask clarifying questions about topics that are confusing, you'll get a good understanding of it by the end! The course is really fun and you can get a lot out if it, so try to enjoy it as well!"
+- Do NOT procrastinate on the homework because a lot of times I had trouble knitting and that is not ideal if you wait until the last minute to turn in the homework.
 
-- "Do a lot of practice"
+- START. THE HOMEWORK. EARLY. You may think "oh, it's a 100 level course, the homework can't take THAT long" but it can. It CAN take that long. And it will.
 
-- "i would say to not be afraid of using R. it really isnt as bad as it looks and can be pretty fun to use if you just learn the fundamentals of it"
+- Ask questions! Prof. Luby is extremely helpful and approachable
 
-- "Work with other people in the class, collaboration is key"
+- i would say to not be afraid of using R. it really isnt as bad as it looks and can be pretty fun to use if you just learn the fundamentals of it
 
-- "Be willing to ask lots of questions and don't be afraid to ask for help!"
-
-- "I would advise for them to attend office hours and the stat clinic since early on to get help and not be worrying about assignments at the last minute."
-
-- "I would advise future students to reach out and ask questions as soon if they have any confusion. Understanding statistical concepts and working with R can be frustrating at times, but people are here to help you along the way!"
-
-- "Don't let work snowball! Try to get help early and often and an imperfect problem set is better than no problem set."
-
-- "lots of R here! Organization is key, and you'll do well as long as you start homeworks early, communicate with the professor and with your fellow classmates. There's a good support system."
-
-## Getting Help 
+## Getting Help {.smaller}
 
 This course was not designed for you to do on your own in your dorm room every week, and I expect you to need some help on most assignments. 
 
 . . .
 
-**Office Hours** are held in my office (CMC 223). You can come and go as you please! These are open to all students in the class so you may need to wait a little while to have your specific question answered. These are best for homework questions and conceptual questions about material
+**Office Hours** are held in CMC 307. You can come and go as you please! These are open to all students in the class so you may need to wait a little while to have your specific question answered. These are best for homework questions and conceptual questions about material
 
 . . .
 
-**Individual Appointments** will often be available on Mondays (and sometimes other days). Appointment slots open 5 days in advance and close 2 hours in advance. Please use these for in-depth conversations about grade concerns, project consultations, or if you need extra help on a specific concept. You're welcome to come as a group, but please note that 15 minutes goes by fast!  
+**Individual Appointments** will be available throughout the week. Appointment slots open 5 days in advance and close 2 hours in advance. Please use these for in-depth conversations about grade concerns, project consultations, or if you need extra help on a specific concept. You're welcome to come as a group, but please note that 15 minutes goes by fast!  
 
 . . .
 
-**Stat Lab** is staffed by friendly and knowledgeable student assistants who can help you with R questions that arise on your homework or projects. Please come prepared with your attempt, your class notes, and your lab manual to make the most of your time. See [schedule](https://docs.google.com/document/d/1IAIXvZO_DMgynWlfCVvm6vRQclVniilpphNDAmKYOhk/edit) for assistants and availability
+**Stat Lab** is staffed by friendly and knowledgeable student assistants who can help you with R questions that arise on your homework or projects. Please come prepared with your attempt, your class notes, and your lab manual to make the most of your time. 
 
 . . .
 
 **Slack** is an asychronous communication platform where you can also ask homework questions anytime! I'll respond to messages at least twice per weekday. If you see someone ask a question that *you* know the answer to, please respond! 
 
-## Getting Help 
+## Office hours (*tentative*)
 
-There are **many** opportunities for you to get help throughout the week, and you should try to use **all** of them at some point! 
+| Day       | Time        | Type    | Location |
+|:----------|:------------|:--------|:---------|
+| Monday    | 12:30-1:30   | Drop-in | CMC 307  |
+| Tuesday   | 2-3 | Drop-in | CMC 307  |
+| Wednesday | 3-4^[Stat120 Priority]   | Drop-in | CMC 307  |
+| Friday    | 10-11^[Stat340 Priority]       | Drop-in | CMC 307  |
 
-**Sunday:** Stat Lab 1-5pm and 8-10pm
+## Communication
 
-**Monday:** Individual appointments available; Stat Lab 7-11pm
+::: {.fragment .nonincremental}
+- Moodle: assignments, slides, and grades
+- Slack: homework questions, announcements, discussion
+- Email: personal matters, time-sensitive announcements
+:::
 
-**Tuesday:** Office Hours 10:30-11:30am; Stat Lab 7-11pm
+::: {.fragment}
+**Slack** is the fastest way to reach me. I typically will respond to messages 3x per weekday. I try to respond to emails within 48 hours. I'm online sporadically on evenings and weekends to devote time to family and rest -- I hope you also use this time to reset and recharge! 
+:::
 
-**Wednesday:** Office Hours 2-3pm; Stat Lab 7-11pm (*Homework due*)
 
-**Thursday:** Stat Lab 7-11pm
+## The "Genius Myth" {.smaller}
 
-**Friday:** Office Hours 1-2pm; (*Homework due weeks 4, 7, 9*)
+It's sometimes easy to buy into the "genius myth" when it comes to math/stat courses: that you need to be a "math person" and have some innate mathematical ability in order to do well or become a statistics major. **This could not be further from the truth!** The best statisticians don't necessarily have the "best" math or programming background, but are people that are able to formulate interesting questions and use math and programming to rigorously answer those questions. Many of the best statisticians I know became statisticians because they were initially interested in something else (biology, public health, psychology, neuroscience, physics, etc.) and realized that being able to answer important questions with data was not only valuable but fun and interesting. Being able to perform interesting statistical analyses is a skill that is learned, not an innate ability, and working hard at developing that skill is the point of this course.
 
-**Saturday:** Stat Lab 2-4pm
+## Academic Integrity {.smaller}
 
-**Anytime:** Ask questions on slack
+You are expected to follow Carleton’s policies regarding academic integrity. I encourage you to discuss the homework problems with others and use the resources available to you to try to figure out tough problems. You should code and write up your solutions on your own. Exams must be done by yourself without communicating with others; all work must be your own. The use of textbook solution manuals (physical or online), course materials from other students, or materials from previous versions of this course are not allowed. Copying, paraphrasing, summarizing, or submitting work generated by anyone but yourself without proper attribution is considered academic dishonesty (this includes output from LLMs). 
 
-## Contacting Me
+Please ask if you are unsure of whether or not your actions are complying with the assignment/exam/project instructions. Always default to acknowledging any help received. Cases of suspected academic dishonesty are handled by the Provost’s Office and I am obligated to report any suspected violations of this policy. 
 
-The best way to get your questions answered is to reach out via **slack** (you should have received an invitation this morning): 
+## More on "AI" {.smaller}
 
-+ R Help (use `r-help` channel)
-+ Clarifications and questions about homework  (use `homework` channel)
-+ Logistical questions (use `general` channel)
-+ Setting up a meeting outside of appointment slots (use a private message)
-
-. . . 
-
-If you have questions about the course material, there's a good chance others do too! If you ask a question in a private message that I think would be helpful for everybody, I may ask you to post it in a public channel instead.
-
-. . . 
-
-Sensitive/private topics, or anything you want a more formal record of, should still come to my email (it just might take me longer to respond)
-
-## My office
-
-Drop in for as long as you'd like during office hours!
-
-. . .
-
-Blinds and door open = feel free to knock and ask a quick question
-
-. . . 
-
-Blinds open but door shut = I'm working on something or on a call. Feel free to knock if it's time-sensitive
-
-. . . 
-
-Blinds and door closed = Please check back in 30 minutes or send me a slack message instead
-
-## The "Genius Myth" {style="font-size: 90%;"}
-
-I've found that many students buy into the "genius myth" when it comes to math/stat courses: that you need to be a "math person" and have some innate mathematical ability in order to do well or become a statistics major. **This could not be further from the truth!** The best statisticians don't necessarily have the "best" math or programming background, but are people that are able to formulate interesting questions and use math and programming to rigorously answer those questions. Many of the best statisticians I know became statisticians because they were initially interested in something else (biology, public health, psychology, neuroscience, physics, etc.) and realized that being able to answer important questions with data was not only valuable but fun and interesting. Being able to perform interesting statistical analyses is a skill that is learned, not an innate ability, and working hard at developing that skill is the point of this course.
-
-## Academic Integrity {style="font-size: 80%;"}
-
-I encourage you to discuss the homework problems with others and use the resources available to you to try to figure out tough problems. You should code and write up your solutions on your own. Exams must be done by yourself without communicating with others; all work must be your own. The use of textbook solution manuals (physical or online), course materials from other students, or materials from previous versions of this course are not allowed. Large-language models (e.g. ChatGPT, Gemini, etc.) should only be used for coding help after you’ve attempted to solve the problem on your own, and you should never type homework problems directly into a prompt. Copying, paraphrasing, summarizing, or submitting work generated by anyone but yourself without proper attribution is considered academic dishonesty (this includes output from LLMs). 
+Large-language models (e.g. ChatGPT, Gemini, etc.) should only be used for help interpreting R’s error messages or suggestions for your own code once you have already attempted the problem. You should not copy and paste course material into or out of an AI text generator. 
 
 I also have a few rules in place to protect my intellectual property. You may not record my lectures using tools such as Otter.ai or upload any video or audio recordings to generate transcripts or study notes. You may not upload my course materials (slides, assignment prompts, note sets, etc.) into AI tools or homework help sites (such as chegg). 
 
-“AI” tools are new for all of us and it’s OK to have questions about what is and isn’t appropriate. Please ask if you are unsure of whether or not your actions are complying with the assignment/exam/project instructions. Always default to acknowledging any help received. Cases of suspected academic dishonesty are handled by the Provost’s Office and I am obligated to report any suspected violations of this policy. 
+“AI” tools are new for all of us and it’s OK to have questions about what is and isn’t appropriate! 
+
 
 ## Diversity & Inclusion
 
@@ -264,17 +272,25 @@ We all come to class with different backgrounds and experiences, and this divers
 
 ## Accomodations {style="font-size: 90%;"}
 
-The Office of Accessibility Resources (Henry House, 107 Union Street) is the campus office that collaborates with students who have disabilities to provide and/or arrange reasonable accommodations. If you have, or think you may have, a disability, please contact OAR@carleton.edu to arrange a confidential discussion regarding equitable access and reasonable accommodations. You are also welcome to contact me privately to discuss your academic needs. However, all disability-related accommodations must be arranged, in advance, through OAR.
-
-If you have an extra time accommodation for exams, please schedule them through OAR.
+Carleton College is committed to providing equitable access to learning
+opportunities for all students. The Office of Accessibility Resources (Henry House, 107 Union
+Street) is the campus office that collaborates with students who have disabilities to provide
+and/or arrange reasonable accommodations. If you have, or think you may have, a disability,
+please contact OAR@carleton.edu to arrange a confidential discussion regarding equitable
+access and reasonable accommodations. You are also welcome to contact me privately to discuss
+your academic needs. However, all disability-related accommodations must be arranged, in
+advance, through OAR.
 
 ## Title IX
 
 Please be aware that all faculty are "responsible employees", which means that if you tell me about a situation involving sexual harassment, sexual assault, dating violence, domestic violence, or stalking, I must share that information with the Title IX Coordinator. Although I have to make this notification, you will control how your case will be handled, including whether or not you wish to meet with the Title IX coordinator or pursue a formal complaint.
 
+
 ## Take care of yourself
 
-Do your best to maintain a healthy lifestyle this term by wearing a mask when you’re sick, eating a vegetable every now and then, exercising, avoiding excessive drug and alcohol use, getting enough sleep, and taking some time to relax. Your physical and mental health is more important than your grade in this course. There are many helpful resources available on campus and an important part of the college experience is learning how to ask for help. For more information, see Student Health and Counseling (SHAC), the Office of Health Promotion, or the Office of the Chaplain. If you are experiencing physical or mental health symptoms as a result of coursework, please speak with me so we can address the problem together. 
+Do your best to maintain a healthy lifestyle this semester by wearing a mask if you don't feel well, eating a vegetable every day, exercising, avoiding excessive drug and alcohol use, getting enough sleep, and taking some time to relax. Your mental health is more important than your grade in this course. There are many helpful resources available on campus and an important part of the college experience is learning how to ask for help. If you are experiencing mental health symptoms as a result of coursework, please speak with me so we can address the problem together.
+
+
 
 # Intro to Data {.maize}
 
@@ -333,11 +349,29 @@ flowchart LR
   A --> C(Continuous)
 ```
 
+## 
+
+![](https://www.researchgate.net/publication/374989660/figure/fig1/AS:11431281201405112@1698331780103/Ordinal-nominal-and-binary-factor-categorical-variables-Binary-factor-variables-are-a.ppm)
+
+##
+
+![](https://www.researchgate.net/publication/374989660/figure/fig2/AS:11431281201387254@1698331780554/Continuous-and-discrete-variables-Artwork-by-allison-horst.ppm)
+
+## Explanatory vs Response Variable
+
+An **explanatory** variable is the variable you believe causes, predicts, or influences another variable, while the **response** variable is the outcome you are measuring or interested in.
+
+The **explanatory** variables explain the **response** variable
+
+## Examples
+
+For each of the following, indicate the **cases** and the **variables**. For each variable, label it as **quantitative** or **categorical**. If you see clear **explanatory** or **response** variables, indicate those as well.
 
 ## Example 3.1: Penguins
 
 ```{r, echo = FALSE}
-palmerpenguins::penguins
+palmerpenguins::penguins |>
+  gt::gt()
 ```
 
 ## Example 3.2: Prices of diamonds
@@ -360,5 +394,5 @@ A gene called `ACTN3` encodes a protein which functions in fast-twitch muscles. 
 
 ## Upcoming
 
-- HW1 is posted on moodle (due on Wednesday)
-- Video posted later today to watch *before* Wednesday's class
+- HW1 is posted on moodle (due on Friday)
+- Video posted to watch *before* Wednesday's class

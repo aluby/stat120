@@ -28,12 +28,38 @@ theme_set(notes_theme)
 
 # Types of Variables
 
-\vspace{2in}
+::: callout-note
+## Quantitative
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+## Categorical
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+## Explanatory
+
+\vspace{.5in}
+
+:::
+
+::: callout-note
+## Response
+
+\vspace{.5in}
+
+:::
 
 
 # Examples
 
-For each of the following, label the *cases* and *variables*. For each variable, state whether it is *categorical* or *quantitative*. 
+Label the *cases* and *variables*. For each variable, state whether it is *categorical* or *quantitative*. Indicate if there's clear *response* or *explanatory* variables
 
 ## Penguins
 
