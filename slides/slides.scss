@@ -9,9 +9,26 @@ $presentation-heading-color: #1F4257;
 $presentation-heading-font: "Roboto Slab";
 $presentation-heading-font-weight: 1000;
 $presentation-h2-font-size: 1.3em;
-
+$presentation-font-size-root: 36px !default;
 
 /*-- section slide --*/
 .maize {
     background-color: #F3B61D !important;
 }
+
+/*-- scss:rules --*/
+
+details>summary {
+  font-size: 0.75em;
+}
+
+.reveal .slide .task {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  border-left: solid 5px #F3B61D;
+  background-color: #FAE1DC; }
+  

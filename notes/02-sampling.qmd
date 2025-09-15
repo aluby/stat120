@@ -35,7 +35,7 @@ theme_set(notes_theme)
 ::: callout-note
 ## Parameters and Statistics
 
-\vspace{.5in}
+*Parameters* are quantities that describe the population (like a mean). *Statistics* are corresponding quantities that describe a sample. 
 :::
 
 Identify the **sample mean** and (claimed) **population mean**
@@ -65,25 +65,25 @@ c.  A recent article in a college newspaper stated that college students get an 
 ::: callout-note
 ## Bias
 
-\vspace{.5in}
+Occurs when the method of collecting data causes the sample to inaccurately represent the population
 :::
 
 ::: callout-note
 ## Undercoverage
 
-\vspace{.5in}
+Part of the population has less representation in the sample
 :::
 
 ::: callout-note
 ## Voluntary Response
 
-\vspace{.5in}
+Individuals choose whether or not to participate
 :::
 
 ::: callout-note
 ## Convenience Sample
 
-\vspace{.5in}
+Sample consists of units that are "easy" to sample
 :::
 
 ::: callout-note

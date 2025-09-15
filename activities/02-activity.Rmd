@@ -3,12 +3,20 @@ title: "02: Sampling"
 author: "[List your group here]"
 ---
 
+To get started: 
+
+1. Click the "code" button
+2. Click "copy to clipboard" button
+3. In maize, open a new rmarkdown file (New file --> Rmarkdown --> (name the file `02-sampling.Rmd`))
+4. Paste the code into the file that opened up and hit "save"
+
+Once you have the file loaded into RStudio, you can follow the directions below.
+
 Press the "play" button below to run the chunk of code. This (1) loads the libraries that we need and (2) tells R to read `mission_data.csv` from my website folder into your R session and call it `mission_data`. 
 
 ```{r}
 library(tidyverse)
-#mission_data = read_csv("https://www.math.carleton.edu/aluby/stat120/mission_data.csv")
-mission_data = read_csv("../data/mission_data.csv") # update to server data!!
+mission_data = read_csv("https://www.math.carleton.edu/aluby/data/mission_data.csv")
 ```
 
 Check your "environment" pane in the upper right to make sure you can see a dataset called `mission_data`. Try clicking it, or running `View(mission_data)` in the console to bring up the data viewer. 
@@ -19,10 +27,12 @@ Check your "environment" pane in the upper right to make sure you can see a data
 mean(mission_data$length)
 ```
 
+The code below selects a random sample of word positions to use
+
 ```{r}
 set.seed(091824) # Sets the random seed so we all get the same answer
 sample = sample(1:nrow(mission_data), size = 10) # selects a random sample of size 10 from the numbers 1-364
-sample # prints the sample
+sample # prints the random sample of numbers
 ```
 
 The next chunk of code `slices` our population to draw our sample. Note that the `position` variable should match the `sample` output above. 
@@ -33,6 +43,8 @@ mission_sample = mission_data %>%
 
 mission_sample
 ```
+
+And this next chunk computes the mean word length of our sample
 
 ```{r}
 mean(mission_sample$length)

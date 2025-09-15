@@ -2,7 +2,7 @@
 title: "02: Sampling"
 format: 
   revealjs: 
-    theme: [white, slides.scss]
+    theme: slides.scss
     title-slide-attributes: 
       data-background-color: "#1F4257"
 brand: false
@@ -16,13 +16,11 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align 
 theme_set(theme_minimal(base_size = 18, base_family = "Source Sans 3"))
 ```
 
-# test {.maize}
-
 ## Today:
 
 1. A pep talk
+1. Intro to data/Notes 01
 1. Meet your groups!
-1. Data Recap
 2. Samples and Populations
 3. Sampling/RStudio Activity
 
@@ -103,30 +101,31 @@ The ultimate goal of statistics is to learn about a population using a subset of
 
 ## Spectrum of Samples
 
-## 
+## Definitions
 
 ::: callout-note
 ## Population
 
-.
+Includes all units of interest
+
 :::
 
 ::: callout-note
 ## Sample
 
-.
+Subset of the population
 :::
 
 ::: callout-note
 ## Statistical Inference
 
-.
+Using a sample to learn about the population
 :::
 
 ::: callout-note
 ## Parameters and Statistics
 
-.
+*Parameters* are quantities that describe the population (like a mean). *Statistics* are corresponding quantities that describe a sample. 
 :::
 
 # Examples
@@ -162,13 +161,13 @@ I'm interested in how satisfied the Carleton community is with the fitness cente
 ::: callout-note
 ## Simple Random Sample
 
-.
+All groups of size $n$ have an equal chance of being selected
 :::
 
 ::: callout-note
 ## Bias
 
-.
+Occurs when the method of collecting data causes the sample to inaccurately represent the population
 :::
 
 ## 
@@ -176,25 +175,25 @@ I'm interested in how satisfied the Carleton community is with the fitness cente
 ::: callout-note
 ## Undercoverage
 
-.
+Part of the population has less representation in the sample
 :::
 
 ::: callout-note
 ## Voluntary Response
 
-.
+Individuals choose whether or not to participate
 :::
 
 ::: callout-note
 ## Convenience Sample
 
-.
+Sample consists of units that are "easy" to sample
 :::
 
 ::: callout-note
 ## Non-response bias
 
-.
+Large fraction of the selected sample do not respond/participate
 :::
 
 # Activity: Mission Statement {.maize}
