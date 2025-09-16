@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-71648dcd5c2e7b58746042e36766d89e.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-200fa1cbf8b7586f9fc0fec747c34c95.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -138,17 +138,12 @@ Prof Amanda Luby | Fall 2025
 </div>
 
 </section>
-<section>
-<section id="test" class="title-slide slide level1 maize center">
-<h1>test</h1>
-
-</section>
 <section id="today" class="slide level2">
 <h2>Today:</h2>
 <ol type="1">
 <li>A pep talk</li>
+<li>Intro to data/Notes 01</li>
 <li>Meet your groups!</li>
-<li>Data Recap</li>
 <li>Samples and Populations</li>
 <li>Sampling/RStudio Activity</li>
 </ol>
@@ -156,15 +151,15 @@ Prof Amanda Luby | Fall 2025
 <section id="what-makes-you-nervous-about-this-class" class="slide level2">
 <h2>What makes you nervous about this class?</h2>
 
-<img data-src="wordcloud-2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="img/wordcloud-nervous.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="have-you-taken-a-stats-class-before" class="slide level2">
 <h2>Have you taken a stats class before?</h2>
 
-<img data-src="02-slides_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="02-slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="how-familiar-are-you-with-the-following-tools" class="slide level2">
 <h2>How familiar are you with the following tools?</h2>
 
-<img data-src="02-slides_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<img data-src="02-slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="meet-your-groups" class="title-slide slide level1 maize center">
 <h1>Meet your groups!</h1>
 
@@ -212,15 +207,15 @@ Prof Amanda Luby | Fall 2025
 <section id="spectrum-of-samples" class="slide level2">
 <h2>Spectrum of Samples</h2>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="definitions" class="slide level2">
+<h2>Definitions</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Population</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Includes all units of interest</p>
 </div>
 </div>
 </div>
@@ -230,7 +225,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Sample</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Subset of the population</p>
 </div>
 </div>
 </div>
@@ -240,7 +235,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Statistical Inference</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Using a sample to learn about the population</p>
 </div>
 </div>
 </div>
@@ -250,7 +245,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Parameters and Statistics</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p><em>Parameters</em> are quantities that describe the population (like a mean). <em>Statistics</em> are corresponding quantities that describe a sample.</p>
 </div>
 </div>
 </div>
@@ -282,7 +277,7 @@ Prof Amanda Luby | Fall 2025
 <h2>What’s wrong?</h2>
 <p>75% of online reviews for a product are negative, so 75% of buyers are dissatisfied with the product.</p>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section" class="slide level2">
 <h2></h2>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
@@ -290,7 +285,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Simple Random Sample</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>All groups of size <span class="math inline">\(n\)</span> have an equal chance of being selected</p>
 </div>
 </div>
 </div>
@@ -300,12 +295,12 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Bias</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Occurs when the method of collecting data causes the sample to inaccurately represent the population</p>
 </div>
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
@@ -313,7 +308,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Undercoverage</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Part of the population has less representation in the sample</p>
 </div>
 </div>
 </div>
@@ -323,7 +318,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Voluntary Response</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Individuals choose whether or not to participate</p>
 </div>
 </div>
 </div>
@@ -333,7 +328,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Convenience Sample</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Sample consists of units that are “easy” to sample</p>
 </div>
 </div>
 </div>
@@ -343,7 +338,7 @@ Prof Amanda Luby | Fall 2025
 <p><strong>Non-response bias</strong></p>
 </div>
 <div class="callout-content">
-<p>.</p>
+<p>Large fraction of the selected sample do not respond/participate</p>
 </div>
 </div>
 </div>
@@ -573,6 +568,44 @@ Prof Amanda Luby | Fall 2025
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
