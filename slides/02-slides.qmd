@@ -26,12 +26,12 @@ theme_set(theme_minimal(base_size = 18, base_family = "Source Sans 3"))
 
 ## What makes you nervous about this class?
 
-![](wordcloud-2.png){fig-align="center"}
+![](img/wordcloud-nervous.png){fig-align="center"}
 
 ```{r, echo = FALSE}
-survey = read_csv("../data/survey-anon.csv", 
-                  col_names = c("stats", "cs", "r", "rstudio", "rmarkdown", "nervous"),
-                  skip = 1)
+survey = read_csv("../data/survey_anon.csv")
+survey$stats = survey$`Have you taken a statistics course before?`
+survey$cs = survey$`Have you taken a programming course before?`
 ```
 
 ```{r, echo = FALSE}
@@ -61,7 +61,13 @@ survey %>%
 
 ```{r}
 survey %>% 
-  pivot_longer(cols = 3:5) %>%
+  select(`How familiar are you with the following tools: [R]`, 
+         `How familiar are you with the following tools: [RMarkdown]`,
+         `How familiar are you with the following tools: [RStudio]`) |>
+  pivot_longer(everything()) |>
+  mutate(
+    name = str_remove(name, "How familiar are you with the following tools: ")
+  ) |>
   ggplot(aes(y = name, fill = value)) +
   geom_bar() + 
   labs(x = "",
