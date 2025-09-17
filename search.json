@@ -70,116 +70,18 @@
     "text": "Two-sample CLT inference in R\nWhen we are comparing the mean of two independent groups, we again use the t.test() function in R. Here is a template:\nt.test(y ~ x, data = dataset, mu = null, direction = \"two.sided\", paired = FALSE)\nwhere\n\ny is the column name for the response variable\nx is the column name for the explanatory (grouping) variable\ndataset is the name of the data set\nnull is the value of \\(\\mu_1 - \\mu_2\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\nif x and y represent paired measurements, change paired to TRUE to perform a matched-pairs t-test\n\n\nResearchers Holdgate et al. (2016) studied walking behavior of elephants in North American zoos to see whether there is a difference in average distance traveled by African and Asian elephants in captivity. They put GPS loggers on 33 African elephants and 23 Asian elephants, and measured the distance (in kilometers) the elephants walked per day.\n\n\nelephants &lt;- read.delim(\"http://www.rossmanchance.com/iscam3/data/Elephants.txt\")\n\n\nUsing EDA, compare the distribution of distance for each species. What do you learn?\nDetermine the sample sizes, sample means, and the sample standard deviations for each group. Some starter code is below (you will need to remove the line that says eval = FALSE)\n\n\nelephants %&gt;%\n  group_by(&lt;var_name&gt;) %&gt;%\n  summarize(\n    mean = mean(&lt;var_name&gt;),\n    sd = sd(&lt;var_name&gt;),\n    n = n()\n  )\n\n\nAre the conditions met for the t-procedures to be valid for these data?\nUse R to construct a 90% confidence interval for the difference between the average walking distance of the African and Asian elephant populations. Include one-sentence interpretation of your interval. (When interpreting a confidence interval for the difference, you should always clarify the direction of subtraction and which population parameter is larger.)"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "objectID": "slides/test.html#first-slide",
+    "href": "slides/test.html#first-slide",
+    "title": "My Test Slides",
+    "section": "First Slide",
+    "text": "First Slide\nThis is a test slide. This is a test link"
   },
   {
-    "objectID": "slides/02-slides.html#today",
-    "href": "slides/02-slides.html#today",
-    "title": "02: Sampling",
-    "section": "Today:",
-    "text": "Today:\n\nA pep talk\nIntro to data/Notes 01\nMeet your groups!\nSamples and Populations\nSampling/RStudio Activity"
-  },
-  {
-    "objectID": "slides/02-slides.html#what-makes-you-nervous-about-this-class",
-    "href": "slides/02-slides.html#what-makes-you-nervous-about-this-class",
-    "title": "02: Sampling",
-    "section": "What makes you nervous about this class?",
-    "text": "What makes you nervous about this class?"
-  },
-  {
-    "objectID": "slides/02-slides.html#have-you-taken-a-stats-class-before",
-    "href": "slides/02-slides.html#have-you-taken-a-stats-class-before",
-    "title": "02: Sampling",
-    "section": "Have you taken a stats class before?",
-    "text": "Have you taken a stats class before?"
-  },
-  {
-    "objectID": "slides/02-slides.html#how-familiar-are-you-with-the-following-tools",
-    "href": "slides/02-slides.html#how-familiar-are-you-with-the-following-tools",
-    "title": "02: Sampling",
-    "section": "How familiar are you with the following tools?",
-    "text": "How familiar are you with the following tools?"
-  },
-  {
-    "objectID": "slides/02-slides.html#consider-the-following-research-questions",
-    "href": "slides/02-slides.html#consider-the-following-research-questions",
-    "title": "02: Sampling",
-    "section": "Consider the following research questions:",
-    "text": "Consider the following research questions:\n\nWhat is the average mercury content of swordfish in the Atlantic Ocean?\nOver the last five years, what is the average time to complete a degree for undergraduates in Minnesota? How does it compare to other states?\nDoes a new drug reduce the heart attack rate in patients with severe heart disease?"
-  },
-  {
-    "objectID": "slides/02-slides.html#possible-responses",
-    "href": "slides/02-slides.html#possible-responses",
-    "title": "02: Sampling",
-    "section": "3 Possible Responses:",
-    "text": "3 Possible Responses:\n\nA man on the news got mercury poisoning from eating swordfish, so it must be dangerously high.\nI met two students who took less than 4 years to graduate, so it must take less time to graduate in Minnesota than in other states.\nMy friend’s father had a heart attack after taking the new drug for six months, so it must not work"
-  },
-  {
-    "objectID": "slides/02-slides.html#the-big-picture",
-    "href": "slides/02-slides.html#the-big-picture",
-    "title": "02: Sampling",
-    "section": "The big picture",
-    "text": "The big picture\nThe ultimate goal of statistics is to learn about a population using a subset of that population. But, populations are hard (sometimes impossible!) to measure."
-  },
-  {
-    "objectID": "slides/02-slides.html#spectrum-of-samples",
-    "href": "slides/02-slides.html#spectrum-of-samples",
-    "title": "02: Sampling",
-    "section": "Spectrum of Samples",
-    "text": "Spectrum of Samples"
-  },
-  {
-    "objectID": "slides/02-slides.html#definitions",
-    "href": "slides/02-slides.html#definitions",
-    "title": "02: Sampling",
-    "section": "Definitions",
-    "text": "Definitions\n\n\n\nPopulation\n\n\nIncludes all units of interest\n\n\n\n\n\n\nSample\n\n\nSubset of the population\n\n\n\n\n\n\nStatistical Inference\n\n\nUsing a sample to learn about the population\n\n\n\n\n\n\nParameters and Statistics\n\n\nParameters are quantities that describe the population (like a mean). Statistics are corresponding quantities that describe a sample."
-  },
-  {
-    "objectID": "slides/02-slides.html#identify-the-sample-mean-and-claimed-population-mean",
-    "href": "slides/02-slides.html#identify-the-sample-mean-and-claimed-population-mean",
-    "title": "02: Sampling",
-    "section": "Identify the sample mean and (claimed) population mean",
-    "text": "Identify the sample mean and (claimed) population mean\n\n\nAmerican households spent an average of about $52 in 2007 on Halloween merchandise such as costumes, decorations, and candy. To see if this number had changed, researchers conducted a new survey in 2008 before industry numbers were reported. The survey included 1,500 households and found that average Halloween spending was $58 per household.\n\n\nThe average GPA of students in 2001 at a private university was 3.37. A survey on a sample of 203 students from this university yielded an average GPA of 3.59 a decade later.\n\n\nA recent article in a college newspaper stated that college students get an average of 5.5 hours of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night"
-  },
-  {
-    "objectID": "slides/02-slides.html#whats-wrong",
-    "href": "slides/02-slides.html#whats-wrong",
-    "title": "02: Sampling",
-    "section": "What’s wrong?",
-    "text": "What’s wrong?\nI’m interested in how satisfied the Carleton community is with the fitness center. I decide I need a sample size of 100, so at 6am one morning, I stand outside the entrance ask the first 100 people who exit whether or not they enjoyed their workout. They all said yes, so I conclude the fitness center is a perfect facility."
-  },
-  {
-    "objectID": "slides/02-slides.html#whats-wrong-1",
-    "href": "slides/02-slides.html#whats-wrong-1",
-    "title": "02: Sampling",
-    "section": "What’s wrong?",
-    "text": "What’s wrong?\n75% of online reviews for a product are negative, so 75% of buyers are dissatisfied with the product."
-  },
-  {
-    "objectID": "slides/02-slides.html#section",
-    "href": "slides/02-slides.html#section",
-    "title": "02: Sampling",
-    "section": "",
-    "text": "Simple Random Sample\n\n\nAll groups of size \\(n\\) have an equal chance of being selected\n\n\n\n\n\n\nBias\n\n\nOccurs when the method of collecting data causes the sample to inaccurately represent the population"
-  },
-  {
-    "objectID": "slides/02-slides.html#section-1",
-    "href": "slides/02-slides.html#section-1",
-    "title": "02: Sampling",
-    "section": "",
-    "text": "Undercoverage\n\n\nPart of the population has less representation in the sample\n\n\n\n\n\n\nVoluntary Response\n\n\nIndividuals choose whether or not to participate\n\n\n\n\n\n\nConvenience Sample\n\n\nSample consists of units that are “easy” to sample\n\n\n\n\n\n\nNon-response bias\n\n\nLarge fraction of the selected sample do not respond/participate"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "stat120",
-    "section": "",
-    "text": "You’ve found the landing page for Amanda Luby’s Stat120 course materials\n\n\n\n\n\n\nImportantCaution\n\n\n\nMaterial found here (instead of moodle) may be out of date"
+    "objectID": "slides/test.html#second-slide",
+    "href": "slides/test.html#second-slide",
+    "title": "My Test Slides",
+    "section": "Second Slide",
+    "text": "Second Slide\nIf this works, the problem is in the YAML of the other .qmd file."
   },
   {
     "objectID": "slides/01-welcome-slides.html#plan-for-today",
@@ -427,18 +329,116 @@
     "text": "Upcoming\n\nHW1 is posted on moodle (due on Friday)\nVideo posted to watch before Wednesday’s class"
   },
   {
-    "objectID": "slides/test.html#first-slide",
-    "href": "slides/test.html#first-slide",
-    "title": "My Test Slides",
-    "section": "First Slide",
-    "text": "First Slide\nThis is a test slide. This is a test link"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "stat120",
+    "section": "",
+    "text": "You’ve found the landing page for Amanda Luby’s Stat120 course materials\n\n\n\n\n\n\nImportantCaution\n\n\n\nMaterial found here (instead of moodle) may be out of date"
   },
   {
-    "objectID": "slides/test.html#second-slide",
-    "href": "slides/test.html#second-slide",
-    "title": "My Test Slides",
-    "section": "Second Slide",
-    "text": "Second Slide\nIf this works, the problem is in the YAML of the other .qmd file."
+    "objectID": "slides/02-slides.html#today",
+    "href": "slides/02-slides.html#today",
+    "title": "02: Sampling",
+    "section": "Today:",
+    "text": "Today:\n\nA pep talk\nMeet your groups!\nIntro to data/Notes 01\nSamples and Populations\nSampling/RStudio Activity"
+  },
+  {
+    "objectID": "slides/02-slides.html#what-makes-you-nervous-about-this-class",
+    "href": "slides/02-slides.html#what-makes-you-nervous-about-this-class",
+    "title": "02: Sampling",
+    "section": "What makes you nervous about this class?",
+    "text": "What makes you nervous about this class?"
+  },
+  {
+    "objectID": "slides/02-slides.html#have-you-taken-a-stats-class-before",
+    "href": "slides/02-slides.html#have-you-taken-a-stats-class-before",
+    "title": "02: Sampling",
+    "section": "Have you taken a stats class before?",
+    "text": "Have you taken a stats class before?"
+  },
+  {
+    "objectID": "slides/02-slides.html#how-familiar-are-you-with-the-following-tools",
+    "href": "slides/02-slides.html#how-familiar-are-you-with-the-following-tools",
+    "title": "02: Sampling",
+    "section": "How familiar are you with the following tools?",
+    "text": "How familiar are you with the following tools?"
+  },
+  {
+    "objectID": "slides/02-slides.html#consider-the-following-research-questions",
+    "href": "slides/02-slides.html#consider-the-following-research-questions",
+    "title": "02: Sampling",
+    "section": "Consider the following research questions:",
+    "text": "Consider the following research questions:\n\nWhat is the average mercury content of swordfish in the Atlantic Ocean?\nOver the last five years, what is the average time to complete a degree for undergraduates in Minnesota? How does it compare to other states?\nDoes a new drug reduce the heart attack rate in patients with severe heart disease?"
+  },
+  {
+    "objectID": "slides/02-slides.html#possible-responses",
+    "href": "slides/02-slides.html#possible-responses",
+    "title": "02: Sampling",
+    "section": "3 Possible Responses:",
+    "text": "3 Possible Responses:\n\nA man on the news got mercury poisoning from eating swordfish, so it must be dangerously high.\nI met two students who took less than 4 years to graduate, so it must take less time to graduate in Minnesota than in other states.\nMy friend’s father had a heart attack after taking the new drug for six months, so it must not work"
+  },
+  {
+    "objectID": "slides/02-slides.html#the-big-picture",
+    "href": "slides/02-slides.html#the-big-picture",
+    "title": "02: Sampling",
+    "section": "The big picture",
+    "text": "The big picture\nThe ultimate goal of statistics is to learn about a population using a subset of that population. But, populations are hard (sometimes impossible!) to measure."
+  },
+  {
+    "objectID": "slides/02-slides.html#spectrum-of-samples",
+    "href": "slides/02-slides.html#spectrum-of-samples",
+    "title": "02: Sampling",
+    "section": "Spectrum of Samples",
+    "text": "Spectrum of Samples"
+  },
+  {
+    "objectID": "slides/02-slides.html#definitions",
+    "href": "slides/02-slides.html#definitions",
+    "title": "02: Sampling",
+    "section": "Definitions",
+    "text": "Definitions\n\n\n\nPopulation\n\n\nIncludes all units of interest\n\n\n\n\n\n\nSample\n\n\nSubset of the population\n\n\n\n\n\n\nStatistical Inference\n\n\nUsing a sample to learn about the population\n\n\n\n\n\n\nParameters and Statistics\n\n\nParameters are quantities that describe the population (like a mean). Statistics are corresponding quantities that describe a sample."
+  },
+  {
+    "objectID": "slides/02-slides.html#identify-the-sample-mean-and-claimed-population-mean",
+    "href": "slides/02-slides.html#identify-the-sample-mean-and-claimed-population-mean",
+    "title": "02: Sampling",
+    "section": "Identify the sample mean and (claimed) population mean",
+    "text": "Identify the sample mean and (claimed) population mean\n\n\nAmerican households spent an average of about $52 in 2007 on Halloween merchandise such as costumes, decorations, and candy. To see if this number had changed, researchers conducted a new survey in 2008 before industry numbers were reported. The survey included 1,500 households and found that average Halloween spending was $58 per household.\n\n\nThe average GPA of students in 2001 at a private university was 3.37. A survey on a sample of 203 students from this university yielded an average GPA of 3.59 a decade later.\n\n\nA recent article in a college newspaper stated that college students get an average of 5.5 hours of sleep each night. A student who was skeptical about this value decided to conduct a survey by randomly sampling 25 students. On average, the sampled students slept 6.25 hours per night"
+  },
+  {
+    "objectID": "slides/02-slides.html#whats-wrong",
+    "href": "slides/02-slides.html#whats-wrong",
+    "title": "02: Sampling",
+    "section": "What’s wrong?",
+    "text": "What’s wrong?\nI’m interested in how satisfied the Carleton community is with the fitness center. I decide I need a sample size of 100, so at 6am one morning, I stand outside the entrance ask the first 100 people who exit whether or not they enjoyed their workout. They all said yes, so I conclude the fitness center is a perfect facility."
+  },
+  {
+    "objectID": "slides/02-slides.html#whats-wrong-1",
+    "href": "slides/02-slides.html#whats-wrong-1",
+    "title": "02: Sampling",
+    "section": "What’s wrong?",
+    "text": "What’s wrong?\n75% of online reviews for a product are negative, so 75% of buyers are dissatisfied with the product."
+  },
+  {
+    "objectID": "slides/02-slides.html#section",
+    "href": "slides/02-slides.html#section",
+    "title": "02: Sampling",
+    "section": "",
+    "text": "Simple Random Sample\n\n\nAll groups of size \\(n\\) have an equal chance of being selected\n\n\n\n\n\n\nBias\n\n\nOccurs when the method of collecting data causes the sample to inaccurately represent the population"
+  },
+  {
+    "objectID": "slides/02-slides.html#section-1",
+    "href": "slides/02-slides.html#section-1",
+    "title": "02: Sampling",
+    "section": "",
+    "text": "Undercoverage\n\n\nPart of the population has less representation in the sample\n\n\n\n\n\n\nVoluntary Response\n\n\nIndividuals choose whether or not to participate\n\n\n\n\n\n\nConvenience Sample\n\n\nSample consists of units that are “easy” to sample\n\n\n\n\n\n\nNon-response bias\n\n\nLarge fraction of the selected sample do not respond/participate"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "activities/21-activity.html",
