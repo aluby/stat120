@@ -1,4 +1,5 @@
-author: "Prof Amanda Luby | Fall 2025"
+subtitle: "Stat120 | Fall 2025"
+author: "Prof Amanda Luby"
 callout-appearance: minimal
 engine: knitr
 knitr:

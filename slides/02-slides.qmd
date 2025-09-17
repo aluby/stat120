@@ -19,8 +19,8 @@ theme_set(theme_minimal(base_size = 18, base_family = "Source Sans 3"))
 ## Today:
 
 1. A pep talk
-1. Intro to data/Notes 01
 1. Meet your groups!
+1. Intro to data/Notes 01
 2. Samples and Populations
 3. Sampling/RStudio Activity
 
@@ -83,7 +83,6 @@ survey %>%
 
 1. Try to figure out what shared interest you all listed in the survey
 2. Complete the academic honesty and group expectations worksheet
-3. If you have time, talk about the examples we didn't get to in Notes01. 
 
 # Data Recap {.maize}
 
