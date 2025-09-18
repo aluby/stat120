@@ -1,0 +1,124 @@
+---
+title: "04: EDA for Categorical Variables"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+```
+
+
+
+## Today: 
+
+1. Wrap up presentations from Friday
+1. EDA for 1 Categorical Variable
+2. EDA for 2 Categorical Variables
+3. Intro to EDA for Quantitative Variables
+
+# Remaining presentations from Friday
+
+# Penguins! 
+
+## Load Data
+
+```{r, echo = TRUE}
+penguins = palmerpenguins::penguins
+penguins
+```
+
+## Frequency Table
+
+```{r, echo = TRUE}
+table(penguins$species)
+```
+
+## Barplot
+
+```{r, echo = TRUE}
+ggplot(penguins, aes(x = species)) + 
+  geom_bar()
+```
+
+## Barplot: y-axis
+
+```{r, echo = TRUE}
+ggplot(penguins, aes(y = species)) + 
+  geom_bar()
+```
+
+## Barplot: with color! 
+
+```{r, echo = TRUE}
+ggplot(penguins, aes(y = species, fill = species)) + 
+  geom_bar()
+```
+
+## Relationship between `species` and `island`
+
+```{r, echo = TRUE}
+table(penguins$species, penguins$island)
+```
+. . . 
+
+- How would you represent this information using a barplot?
+
+## Relationship between `species` and `island`
+
+```{r, echo = TRUE}
+ggplot(penguins, aes(y = species, fill = island)) + 
+  geom_bar()
+```
+
+## Joint "Distribution"
+
+Distribution = proportions
+
+```{r, echo = TRUE}
+table(penguins$species, penguins$island) %>%
+  proportions() 
+```
+
+## Conditional Distribution
+
+Conditional distribution of `species` on `Dream` island
+
+```{r, echo = TRUE}
+table(penguins$species, penguins$island) 
+```
+. . . 
+
+```{r, echo = TRUE}
+table(penguins$species, penguins$island) %>%
+  proportions(2) # condition on COLUMNS
+```
+
+## Marginal Distribution
+
+Marginal distribution of `species` 
+
+```{r, echo = TRUE}
+table(penguins$species, penguins$island) %>%
+  addmargins()
+```
+
+. . . 
+
+```{r, echo = TRUE}
+table(penguins$species) %>%
+  proportions()
+```
+
+
+

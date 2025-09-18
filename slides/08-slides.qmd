@@ -1,0 +1,280 @@
+---
+title: "08: Customizing GGplots + Exam 1 Review"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+
+
+## Today: 
+
+1. 15-20 minutes to wrap up activity from last class
+2. Customizing ggplots
+3. Exam Review
+
+# R Activity {.maize}
+
+# Customizing ggplots {.maize}
+
+We've focused on a few main forms of `ggplots`: bar plots, histograms, box plots, and scatterplots. There are *many* other types of plots, and once you know the basics of the grammar, it's easy to move between them. 
+
+# Choice of graphical form
+
+Let's say we want to graphically display the mean flipper length for each penguin species. One way we could do that is with a barplot: 
+
+```{r}
+library(palmerpenguins)
+bar_mean = penguins %>%
+  group_by(species) %>%
+  summarize(
+    mean_flipper_length = mean(flipper_length_mm, na.rm = T)
+  ) %>%
+  ggplot(., aes(x = species, y = mean_flipper_length, fill = species)) +
+  geom_col() +
+  theme(legend.position = "none")
+
+bar_mean
+```
+
+## Choice of graphical form 
+
+```{r}
+scatter_mean = penguins %>%
+  ggplot(., aes(x = species, y = flipper_length_mm, fill = species, col = species)) + 
+  geom_boxplot(alpha = .5) + 
+  geom_jitter(alpha = .8) +
+  theme(legend.position = "none")
+
+scatter_mean
+```
+
+## Choice of graphical form 
+
+```{r}
+bar_mean + scatter_mean
+```
+
+## Distorting the y-axis
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics("img/oral_temperature_sara_bob_chartbuilder.png")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics("img/oral_temperature_sara_bob_chartbuilder-1.png")
+```
+:::
+
+::::
+
+## Distorting the y-axis
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = body_mass_g, y= flipper_length_mm)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) +
+  ylim(c(0, 250))
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+theme_set(theme_gray())
+```
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter() + 
+  geom_boxplot()
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5)
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5)
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_bw()
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal()
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal() + 
+  scale_fill_brewer(palette = "Greens")
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal() + 
+  scale_fill_brewer(palette = "Spectral")
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal() + 
+  scale_fill_viridis_d()
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal() + 
+  scale_fill_viridis_d(option ="plasma")
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal() + 
+  scale_fill_viridis_d(option ="plasma") + 
+  theme(legend.position = "bottom")
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal() + 
+  scale_fill_viridis_d(option ="plasma") + 
+  theme(legend.position = "none")
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal(base_size = 20) + 
+  scale_fill_viridis_d(option ="plasma") + 
+  theme(legend.position = "none")
+```
+
+## Other ggplot customization {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + 
+  geom_jitter(alpha = .2) + 
+  geom_boxplot(alpha = .5) +
+  theme_minimal(base_size = 20) + 
+  scale_fill_viridis_d(option ="plasma") + 
+  theme(legend.position = "none") + 
+  labs(
+    title = "Gentoo Penguins have the longest flipper lengths",
+    subtitle = "Adelie and Chinstrap Penguins are smaller",
+    y = "Flipper Length (mm)",
+    x = "",
+    caption = "Source: PalmerPenguins"
+  )
+```
+
+## In `esquisse`
+
+Change theme under the "theme" menu:
+
+```{r}
+knitr::include_graphics("img/esquisse-theme.png")
+```
+
+## In `esquisse`
+
+Change color palette under the "geometries" menu:
+
+```{r}
+knitr::include_graphics("img/esquisse-geometries.png")
+```
+
+## In `esquisse`
+
+Change title and axis labels under the "labels and title" menu:
+
+```{r}
+knitr::include_graphics("img/esquisse-labels-title.png")
+```
+
+# Exam Review {.maize}
+
+# Exam 1 Check-in forms {.maize}

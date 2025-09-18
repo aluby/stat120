@@ -1,0 +1,356 @@
+---
+title: "07: Linear Regression"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+
+
+## Today: 
+
+1. More on linear regression
+2. More on transformations
+3. Another R activity
+
+# Linear Regression
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## Fitting the least squares line
+
+```{r}
+penguins_lm = lm(flipper_length_mm ~ body_mass_g, data = penguins)
+penguins_lm
+```
+- Intercept ($b_0$): where does the line cross the y-axis? What is the *prediction* for $x=0$?
+
+- Slope ($b_1$): For a 1-unit increase in $x$, what is the change in the *prediction* for $y$? 
+
+## Important Notation
+
+Observations ($y_i$): the data points
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point(col = "#f5f190", size = 4) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## Important Notation 
+
+Predictions ($\hat{y}_i$): the points on the line for each $x$ value
+
+```{r}
+ggplot(broom::augment(penguins_lm), aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point() + 
+  geom_point(aes(y = .fitted), fill = "#f5f190", size = 4, pch = 21, col = "black") +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## Important Notation
+
+Residuals ($\epsilon_i$): difference between observations and predictions
+
+```{r}
+ggplot(broom::augment(penguins_lm), aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_segment(aes(xend = body_mass_g, yend = .fitted), col = "darkgray") + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+## Example
+
+Recall the least squares equation in this case was `r equatiomatic::extract_eq(penguins_lm, use_coefs = TRUE, coef_digits=3)`
+
+I grab a penguin with a flipper length of 193mm and a body mass of 3475g. What is the **observation**, **prediction**, and **residual** in this case?
+
+# Another penguins dataset {.maize}
+
+## The `penguin_dives` dataset.
+
+
+Emperor penguins routinely make dives of 5-12 minutes, with the longest recorded dive over 27 minutes (!!) The rate of oxygen depletion is primarily determined by the penguin's heart rate. Consequently, studies of heart rates during dives can help us understand how these animals regulate their oxygen consumption in order to make such impressive dives. 
+
+
+## Data
+
+`DiveHeartRate` is the bird's heart rate in beats per minute, `Depth` is the depth of the dive (in meters), `Duration` is the duration of the dive in minutes, and `Bird` is an ID variable indicating which penguin made the dive. 
+
+```{r}
+penguin_dives = read_csv("http://www.math.carleton.edu/aluby/data/penguin_dives.csv")
+penguin_dives
+```
+
+## Is it linear?  {auto-animate="true"}
+
+```{r, echo = TRUE}
+ggplot(penguin_dives, aes(x = Duration, y = DiveHeartRate)) + 
+  geom_point() + 
+  stat_smooth(method = "lm", se = FALSE) 
+```
+
+## Is it linear?  {auto-animate="true"}
+
+```{r, echo = TRUE}
+#| code-line-numbers: "3"
+
+ggplot(penguin_dives, aes(x = Duration, y = DiveHeartRate)) + 
+  geom_point() + 
+  stat_smooth(se = FALSE) 
+```
+
+
+## Residual scatterplot
+
+```{r}
+dives_lm = lm(DiveHeartRate ~ Duration, data = penguin_dives)
+```
+
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+
+ggplot(broom::augment(dives_lm), aes(x = Duration, y = DiveHeartRate)) + 
+  geom_segment(aes(xend = Duration, yend = .fitted), col = "darkgray", size = .5) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+::: {.fragment}
+It can be easier to see curvature with a horizontal reference line 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+
+ggplot(broom::augment(dives_lm), aes(x = Duration, y = .resid)) + 
+  geom_segment(aes(xend = Duration, yend = 0), col = "darkgray", size = .5) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+:::
+
+::: {.fragment}
+And sometimes we put *predictions* on the x-axis instead
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+
+ggplot(broom::augment(dives_lm), aes(x = .fitted, y = .resid)) + 
+  geom_segment(aes(xend = .fitted, yend = 0), col = "darkgray", size = .5) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+:::
+
+To make sure that we're working with a *linear* relationship, it's best practice to make a residual plot alongside the X-Y scatterplot when checking for curvature. 
+
+## To make a residual scatterplot
+
+::: {.fragment}
+Step 1: Fit model and save it to an *object*
+```{r}
+#| echo: true
+dives_lm = lm(DiveHeartRate ~ Duration, data = penguin_dives)
+```
+:::
+
+::: {.fragment}
+Step 2: Create `augmented` dataset. This creates a dataset which contains the original response and explanatory variables, a column with the residuals (`.resid`), a column with the predictions (`.fitted`), along with other quantities you'll see in future stats courses. `augment()` lives in the `broom` library, which we need to remember to load. 
+
+```{r}
+#| echo: true
+library(broom)
+dives_aug = augment(dives_lm)
+```
+:::
+
+::: {.fragment}
+Step 3. Create the scatterplot using the augmented dataset
+
+```{r}
+#| echo: true
+#| output-location: 'fragment'
+ggplot(dives_aug, aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept =0)
+```
+:::
+
+# What do we do???!!!! {.maize}
+
+## Reasons we do *transformations*
+
+1. Make the distribution (i.e. histogram) of a variable more symmetric
+   - Easier to summarize (mean $\approx$ median)
+   - Can use 68/95/99 rule
+2. Make the spread of different groups (i.e. boxplot) more alike, even if their centers differ 
+   - We'll get to why this is important later in the course
+3. Make the form of a scatterplot closer to a linear relationship
+   - So we can trust the results from the linear regression line and correlation
+   
+## Check distributions of *each variable*
+
+```{r}
+#| echo: true
+#| fig-width: 12
+#| fig-height: 4
+p1 = ggplot(penguin_dives, aes(x = Duration)) + 
+  geom_histogram(col = "white", bins  =20)
+
+p2 = ggplot(penguin_dives, aes(x = DiveHeartRate)) + 
+  geom_histogram(col = "white", bins = 20)
+
+p1 + p2
+```
+
+. . . 
+
+If you notice lots of *skew*, start by transforming that variable
+  
+## Transforming the y-variable
+
+```{r}
+p1 = ggplot(penguin_dives, aes(x = DiveHeartRate^2)) + 
+  geom_histogram(col = "white", bins  =20)
+
+p2 = ggplot(penguin_dives, aes(x = sqrt(DiveHeartRate))) + 
+  geom_histogram(col = "white", bins  =20)
+
+p3 = ggplot(penguin_dives, aes(x = log(DiveHeartRate))) + 
+  geom_histogram(col = "white", bins  =20)
+
+p4 = ggplot(penguin_dives, aes(x = -1/DiveHeartRate)) + 
+  geom_histogram(col = "white", bins  =20)
+
+p1 + p2 + p3 + p4
+```
+
+## Checking the transformed X-Y scatterplot
+
+```{r}
+#| echo: true
+#| code-line-numbers: "1"
+ggplot(penguin_dives, aes(x = Duration, y = DiveHeartRate^2)) + 
+  geom_point() + 
+  stat_smooth(se = FALSE) 
+```
+
+## Checking the transformed X-Y scatterplot
+
+```{r}
+#| echo: true
+#| code-line-numbers: "1"
+ggplot(penguin_dives, aes(x = Duration, y = sqrt(DiveHeartRate))) + 
+  geom_point() + 
+  stat_smooth(se = FALSE) 
+```
+
+## Checking the transformed X-Y scatterplot
+
+```{r}
+#| echo: true
+#| code-line-numbers: "1"
+ggplot(penguin_dives, aes(x = Duration, y = log(DiveHeartRate))) + 
+  geom_point() + 
+  stat_smooth(se = FALSE) 
+```
+
+## Checking the transformed X-Y scatterplot
+
+```{r}
+#| echo: true
+#| code-line-numbers: "1"
+ggplot(penguin_dives, aes(x = Duration, y = -1/DiveHeartRate)) + 
+  geom_point() + 
+  stat_smooth(se = FALSE) 
+```
+
+## Fitting the transformed model
+
+::: {.fragment}
+Add new column to dataset
+```{r}
+#| echo: true
+penguin_dives = penguin_dives %>%
+  mutate(
+    recip_DHR = -1/DiveHeartRate
+  )
+```
+:::
+
+::: {.fragment}
+Fit model and print output
+```{r}
+#| echo: true
+dives_lm2 = lm(recip_DHR ~ Duration, data = penguin_dives)
+dives_lm2
+```
+:::
+
+## Example
+
+Below is the slope and intercept for the transformed model. Write out the linear regression equation and provide an in-context interpretation of the intercept and slope
+
+```{r}
+dives_lm2
+```
+
+::: {.fragment}
+For a dive with duration 0, we expect the average *reciprocal* of DiveHeartRate to be -.0079
+
+For every 1-minute increase in dive Duration, we expect the average *reciprocal* of DiveHeartRate to be .0018 BPM lower. 
+:::
+
+
+## Residual Plot (again)
+
+It's also best practice to make the *new* residual plot
+
+```{r}
+#| echo: true
+
+dives_aug2 = augment(dives_lm2)
+ggplot(dives_aug2, aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept =0)
+```
+
+Since it looks more "like a cloud" without clear curvature, we should be safe to use our linear regression model for predictions. 
+
+
+## Summary
+
+- Linear regression is a powerful tool to explain the average relationship between 2 quantitative variables
+- It's important for the relationship to be *roughly linear*
+- If it's not linear, we can try transforming $Y$ and/or $X$ (but need to be careful about interpretation!) 
+- There's not one true correct transformation and you shouldn't spend a bunch of time trying to find one
+- But there are lots of wrong ones! 
+- Provide justification for your choice and point out potential weaknesses
