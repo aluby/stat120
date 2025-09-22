@@ -7,6 +7,8 @@ The lab manual data `Pew` contains data from a January 2014 Pew Research Center 
 - `income`: the person's yearly income, grouped into four categories
 - `values`: an answer to the question asking if the Internet has been a "good thing"
 
+The code chunk below loads the R *packages* that we need. Whenever you see this chunk in materials I give you, make sure to run it first!
+
 ```{r, message = FALSE}
 library(tidyverse)
 ```
@@ -23,7 +25,7 @@ pew = read_csv("http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv")
 table(pew$values) 
 ```
 
-**2.** Using esquisse, make a bar plot of the counts of people who said the Internet has vs. has not been a good thing. Insert your code in the chunk below.
+**2.** Using esquisse or ggplot, make a bar plot of the counts of people who said the Internet has vs. has not been a good thing. Insert your code in the chunk below.
 
 ```{r}
 
@@ -43,7 +45,7 @@ pew$income <- factor(pew$income, levels = c("0-30000", "30000-75000",
                                             "75000-150000", "150000"))
 ```
 
-**5.** Use `esquisse` to make a *stacked barplot* of `income` and `values`. 
+**5.** Use `esquisse` or ggplot to make a *stacked barplot* of `income` and `values`. 
 
 ```{r}
 
@@ -59,7 +61,7 @@ pew$income <- factor(pew$income, levels = c("0-30000", "30000-75000",
 
 A third variable in the dataset is `age`. The next few questions walk through how to do basic EDA for a quantitative variable.
 
-**7.** Create a histogram of the `age` variable using esquisse
+**7.** Create a histogram of the `age` variable using esquisse or ggplot
 
 ```{r}
 

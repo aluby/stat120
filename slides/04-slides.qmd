@@ -22,12 +22,9 @@ options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
 
 ## Today: 
 
-1. Wrap up presentations from Friday
 1. EDA for 1 Categorical Variable
 2. EDA for 2 Categorical Variables
-3. Intro to EDA for Quantitative Variables
-
-# Remaining presentations from Friday
+3. Practice in R
 
 # Penguins! 
 
@@ -37,6 +34,18 @@ options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
 penguins = palmerpenguins::penguins
 penguins
 ```
+
+## `species`
+
+Categorical variables are best summarized with a frequency table and visualized with a barplot. When we want to summarize a categorical variable with a single number, we often use a proportion
+
+::: callout-note
+## Proportion  (or percentage)
+
+$$\hat{p} = \frac{\text{The number within a category}}{\text{Total number}}$$
+
+We use $p$ if this denotes a population proportion, or $\hat{p}$ if it denotes a sample proportion
+:::
 
 ## Frequency Table
 

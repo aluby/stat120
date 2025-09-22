@@ -21,20 +21,20 @@ When we have two categorical variables, we often use a **two-way table** to summ
 
 **Example:** Below is the two-way table for our class representing the answers to "Have you taken a CS class before?" and whether the "Environmental Issues" interest box was checked.
 
-|       | No  | Yes - CS 111 | Yes - Other |
-|-------|-----|--------------|-------------|
-| FALSE | 10  | 9            | 3           |
-| TRUE  | 6   | 4            | 1           |
+|                       | Week 1 | Week 7 |
+|-----------------------|--------|--------|
+| Yes (Got Sleep)       | 10     | 4      |
+| No (Not enough sleep) | 6      | 9      |
 
-a. What is the marginal distribution of *environmental interest*? 
+a. What is the marginal distribution of *Sleep*? 
 \vspace{.5in}
-b. What is the conditional distribution of *environmental interest* among those who *have not taken a CS course*?
+b. What is the conditional distribution of *Week* among those who *did not get enough sleep*?
 \vspace{.5in}
-c. What is the conditional distribution of *prior CS courses* among those who *are not interested in environmental issues*? 
+c. What is the conditional distribution of *Sleep* among those who *were surveyed in Week 1*? 
 \vspace{.5in}
-d. What is the proportion of students who have taken a prior CS course? 
+d. What is the proportion of students who were surveyed in Week 1?
 \vspace{.5in}
-e. Does *interest in environmental issues* appear to be independent of *prior CS experience*? 
+e. Does *sleep* appear to be independent of *week*? 
 
 
 # Quantitative Variables
