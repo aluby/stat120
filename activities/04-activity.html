@@ -188,6 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>income</code>: the person’s yearly income, grouped into four categories</li>
 <li><code>values</code>: an answer to the question asking if the Internet has been a “good thing”</li>
 </ul>
+<p>The code chunk below loads the R <em>packages</em> that we need. Whenever you see this chunk in materials I give you, make sure to run it first!</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -204,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  140  556 </code></pre>
 </div>
 </div>
-<p><strong>2.</strong> Using esquisse, make a bar plot of the counts of people who said the Internet has vs.&nbsp;has not been a good thing. Insert your code in the chunk below.</p>
+<p><strong>2.</strong> Using esquisse or ggplot, make a bar plot of the counts of people who said the Internet has vs.&nbsp;has not been a good thing. Insert your code in the chunk below.</p>
 <p><strong>3.</strong> Show the two-way table for the <code>values</code> and <code>income</code> variables. How many people from the survey had an income above $150,000 a year and thought the Internet was a bad thing?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pew<span class="sc">$</span>income, pew<span class="sc">$</span>values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -222,11 +223,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pew<span class="sc">$</span>income <span class="ot">&lt;-</span> <span class="fu">factor</span>(pew<span class="sc">$</span>income, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0-30000"</span>, <span class="st">"30000-75000"</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"75000-150000"</span>, <span class="st">"150000"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>5.</strong> Use <code>esquisse</code> to make a <em>stacked barplot</em> of <code>income</code> and <code>values</code>.</p>
+<p><strong>5.</strong> Use <code>esquisse</code> or ggplot to make a <em>stacked barplot</em> of <code>income</code> and <code>values</code>.</p>
 <p><strong>6.</strong> Your bar plot by default should show the <em>counts</em> of each combination. Copy and paste your bar plot code, and change <code>geom_bar()</code> to <code>geom_bar(position = "fill")</code>. Explain what this chunk of code did.</p>
 <p><strong>Stop Here</strong> and let Amanda know you’ve finished with the categorical EDA section</p>
 <p>A third variable in the dataset is <code>age</code>. The next few questions walk through how to do basic EDA for a quantitative variable.</p>
-<p><strong>7.</strong> Create a histogram of the <code>age</code> variable using esquisse</p>
+<p><strong>7.</strong> Create a histogram of the <code>age</code> variable using esquisse or ggplot</p>
 <p><strong>8.</strong> In the empty code chunk below, run <code>mean(pew$age)</code> and <code>median(pew$age)</code>. Now try <code>mode(pew$age)</code>. What happened?</p>
 <p><strong>9.</strong> Using your answers to the previous two questions, describe the distribution of <code>age</code>.</p>
 
@@ -695,67 +696,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`income`</span>: the person's yearly income, grouped into four categories</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`values`</span>: an answer to the question asking if the Internet has been a "good thing"</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE}</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>**0.** Import the data into R by running the following code chunk. Click on the dataset in the environment pane to pull up the data viewer. Can you see the "spreadsheet view"?</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>The code chunk below loads the R *packages* that we need. Whenever you see this chunk in materials I give you, make sure to run it first!</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE}</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>pew <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>**1.** The code below computes the <span class="in">`frequency table`</span> for the <span class="in">`values`</span> variable. Add a "pipe" (<span class="in">`%&gt;%`</span>) and another command to answer: what proportion of respondents said that the Internet *has* been a good thing?</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>**0.** Import the data into R by running the following code chunk. Click on the dataset in the environment pane to pull up the data viewer. Can you see the "spreadsheet view"?</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>pew <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pew<span class="sc">$</span>values) </span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>**2.** Using esquisse, make a bar plot of the counts of people who said the Internet has vs. has not been a good thing. Insert your code in the chunk below.</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>**1.** The code below computes the <span class="in">`frequency table`</span> for the <span class="in">`values`</span> variable. Add a "pipe" (<span class="in">`%&gt;%`</span>) and another command to answer: what proportion of respondents said that the Internet *has* been a good thing?</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pew<span class="sc">$</span>values) </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>**3.** Show the two-way table for the <span class="in">`values`</span> and <span class="in">`income`</span> variables. How many people from the survey had an income above $150,000 a year and thought the Internet was a bad thing?</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>**2.** Using esquisse or ggplot, make a bar plot of the counts of people who said the Internet has vs. has not been a good thing. Insert your code in the chunk below.</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pew<span class="sc">$</span>income, pew<span class="sc">$</span>values)</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>**4.** The table in part 3 shows the income categories in the wrong order (i.e., not in order of increasing income). You can fix this by changing the order of the categories of the <span class="in">`income`</span> variable as below (see Appendix A.1 of the lab manual). Remake the table after reordering the categories.</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>**3.** Show the two-way table for the <span class="in">`values`</span> and <span class="in">`income`</span> variables. How many people from the survey had an income above $150,000 a year and thought the Internet was a bad thing?</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pew<span class="sc">$</span>income, pew<span class="sc">$</span>values)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>pew<span class="sc">$</span>income <span class="ot">&lt;-</span> <span class="fu">factor</span>(pew<span class="sc">$</span>income, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0-30000"</span>, <span class="st">"30000-75000"</span>,</span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"75000-150000"</span>, <span class="st">"150000"</span>))</span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>**5.** Use <span class="in">`esquisse`</span> to make a *stacked barplot* of <span class="in">`income`</span> and <span class="in">`values`</span>. </span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>**4.** The table in part 3 shows the income categories in the wrong order (i.e., not in order of increasing income). You can fix this by changing the order of the categories of the <span class="in">`income`</span> variable as below (see Appendix A.1 of the lab manual). Remake the table after reordering the categories.</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>pew<span class="sc">$</span>income <span class="ot">&lt;-</span> <span class="fu">factor</span>(pew<span class="sc">$</span>income, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0-30000"</span>, <span class="st">"30000-75000"</span>,</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"75000-150000"</span>, <span class="st">"150000"</span>))</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>**6.** Your bar plot by default should show the *counts* of each combination. Copy and paste your bar plot code, and change <span class="in">`geom_bar()`</span> to <span class="in">`geom_bar(position = "fill")`</span>. Explain what this chunk of code did. </span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>**5.** Use <span class="in">`esquisse`</span> or ggplot to make a *stacked barplot* of <span class="in">`income`</span> and <span class="in">`values`</span>. </span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>**Stop Here** and let Amanda know you've finished with the categorical EDA section</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>**6.** Your bar plot by default should show the *counts* of each combination. Copy and paste your bar plot code, and change <span class="in">`geom_bar()`</span> to <span class="in">`geom_bar(position = "fill")`</span>. Explain what this chunk of code did. </span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>A third variable in the dataset is <span class="in">`age`</span>. The next few questions walk through how to do basic EDA for a quantitative variable.</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>**Stop Here** and let Amanda know you've finished with the categorical EDA section</span>
 <span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>**7.** Create a histogram of the <span class="in">`age`</span> variable using esquisse</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>A third variable in the dataset is <span class="in">`age`</span>. The next few questions walk through how to do basic EDA for a quantitative variable.</span>
 <span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>**8.** In the empty code chunk below, run <span class="in">`mean(pew$age)`</span> and <span class="in">`median(pew$age)`</span>. Now try <span class="in">`mode(pew$age)`</span>. What happened?</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>**7.** Create a histogram of the <span class="in">`age`</span> variable using esquisse or ggplot</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>**9.** Using your answers to the previous two questions, describe the distribution of <span class="in">`age`</span>. </span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>**8.** In the empty code chunk below, run <span class="in">`mean(pew$age)`</span> and <span class="in">`median(pew$age)`</span>. Now try <span class="in">`mode(pew$age)`</span>. What happened?</span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>**9.** Using your answers to the previous two questions, describe the distribution of <span class="in">`age`</span>. </span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -209,17 +209,11 @@ Prof Amanda Luby
 <section id="today" class="slide level2 scrollable">
 <h2>Today:</h2>
 <ol type="1">
-<li class="fragment">Wrap up presentations from Friday</li>
 <li class="fragment">EDA for 1 Categorical Variable</li>
 <li class="fragment">EDA for 2 Categorical Variables</li>
-<li class="fragment">Intro to EDA for Quantitative Variables</li>
+<li class="fragment">Practice in R</li>
 </ol>
 </section>
-<section id="remaining-presentations-from-friday" class="title-slide slide level1 center">
-<h1>Remaining presentations from Friday</h1>
-
-</section>
-
 <section>
 <section id="penguins" class="title-slide slide level1 center">
 <h1>Penguins!</h1>
@@ -249,6 +243,21 @@ Prof Amanda Luby
 </div>
 </div>
 </section>
+<section id="species" class="slide level2">
+<h2><code>species</code></h2>
+<p>Categorical variables are best summarized with a frequency table and visualized with a barplot. When we want to summarize a categorical variable with a single number, we often use a proportion</p>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proportion (or percentage)</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\hat{p} = \frac{\text{The number within a category}}{\text{Total number}}\]</span></p>
+<p>We use <span class="math inline">\(p\)</span> if this denotes a population proportion, or <span class="math inline">\(\hat{p}\)</span> if it denotes a sample proportion</p>
+</div>
+</div>
+</div>
+</section>
 <section id="frequency-table" class="slide level2">
 <h2>Frequency Table</h2>
 <div class="cell" data-layout-align="center">
@@ -267,7 +276,7 @@ Prof Amanda Luby
 <span id="cb5-2"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="04-slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="04-slides_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="barplot-y-axis" class="slide level2">
 <h2>Barplot: y-axis</h2>
 <div class="cell" data-layout-align="center">
@@ -275,7 +284,7 @@ Prof Amanda Luby
 <span id="cb6-2"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="04-slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="04-slides_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="barplot-with-color" class="slide level2">
 <h2>Barplot: with color!</h2>
 <div class="cell" data-layout-align="center">
@@ -283,7 +292,7 @@ Prof Amanda Luby
 <span id="cb7-2"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="04-slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="04-slides_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="relationship-between-species-and-island" class="slide level2">
 <h2>Relationship between <code>species</code> and <code>island</code></h2>
 <div class="cell" data-layout-align="center">
@@ -309,7 +318,7 @@ Prof Amanda Luby
 <span id="cb10-2"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="04-slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="04-slides_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="joint-distribution" class="slide level2">
 <h2>Joint “Distribution”</h2>
 <p>Distribution = proportions</p>
@@ -596,44 +605,6 @@ Prof Amanda Luby
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
