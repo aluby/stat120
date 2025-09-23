@@ -17,7 +17,7 @@ library(tidyverse)
 **0.** Import the data into R by running the following code chunk. This chunk also includes a line to redefine the levels of the `income` variable so that they show up in the right order. Click on the dataset in the environment pane to pull up the data viewer. Can you see the "spreadsheet view" of the data?
 
 ```{r}
-pew = read_csv("http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv")
+pew <- read_csv("http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv")
 pew$income <- factor(pew$income, levels = c("0-30000", "30000-75000",
                                             "75000-150000", "150000"))
 ```
@@ -89,7 +89,7 @@ For the part of the activity, we're going to be looking at the CEO salaries for 
 
 ```{r, echo = FALSE}
 #ceo_salaries = read_csv("https://math.carleton.edu/aluby/stat120/ceo_salaries_23_24.csv")
-ceo_salaries = read_csv("../data/ceo_salaries_23_24.csv")
+ceo_salaries <- read_csv("../data/ceo_salaries_23_24.csv")
 ```
 
 **1.** Using `esquisse`, `ggplot`, or `base R`, create a histogram of the `Pay` variable 
@@ -107,11 +107,15 @@ ceo_salaries = read_csv("../data/ceo_salaries_23_24.csv")
 **3.** You should have noted that the distribution is *right-skewed* (it has a long right tail). The code below demonstrates one way to remove outliers by `filter`ing the very large observations and saving it to a new dataset called `ceo_salaries_outliers`. Run the code below, and then view the new dataset. Which companies have the highest CEO pay?
 
 ```{r}
-ceo_salaries_outliers = ceo_salaries %>%
+ceo_salaries_outliers <- ceo_salaries %>%
   filter(Pay > 100000000) 
 ```
 
 **4.** Next, create a dataset called `ceo_salaries_filtered` that includes all cases where Pay is less than $100,000,000. Create a histogram of the `Pay` variable for this filtered dataset and compute the mean and median. 
+
+```{r}
+
+```
 
 **5.** Alternatively, we can visualize and work with a *transformation* of our dataset. This is especially useful when we have a "long-tailed" dataset. Explain what the next few lines of code do. 
 
@@ -129,4 +133,4 @@ ceo_salaries %>%
 **7.** Your answer to 6 should note that there's now *low* outlier(s)! Find these outlier(s). Which companies are they? What do they pay their CEOs? (*Note:* you should do this using code, but can check your answer with the "spreadsheet view" of the data.)
 
 
-*When you're done*, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present). 
+*When you're done*, please knit and save your file. 

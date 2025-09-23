@@ -33,7 +33,7 @@ We're going to investigate the relationship between math SAT scores (`math`) and
 The code chunk below creates a new dataset called `sat_northeast` which filters to only the Northeast states (`==` is code for "equals"). 
 
 ```{r}
-sat_northeast = sat %>%
+sat_northeast <- sat %>%
   filter(region == "Northeast")
 ```
 
