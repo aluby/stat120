@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>0.</strong> Import the data into R by running the following code chunk. This chunk also includes a line to redefine the levels of the <code>income</code> variable so that they show up in the right order. Click on the dataset in the environment pane to pull up the data viewer. Can you see the “spreadsheet view” of the data?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pew <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pew <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pew<span class="sc">$</span>income <span class="ot">&lt;-</span> <span class="fu">factor</span>(pew<span class="sc">$</span>income, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0-30000"</span>, <span class="st">"30000-75000"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"75000-150000"</span>, <span class="st">"150000"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>2.</strong> Compute the <code>mean</code>,<code>median</code>, and <code>sd</code> of the <code>Pay</code> variable and describe the distribution. (You should focus on the <em>shape</em>, <em>center</em>, and <em>spread</em>.).</p>
 <p><strong>3.</strong> You should have noted that the distribution is <em>right-skewed</em> (it has a long right tail). The code below demonstrates one way to remove outliers by <code>filter</code>ing the very large observations and saving it to a new dataset called <code>ceo_salaries_outliers</code>. Run the code below, and then view the new dataset. Which companies have the highest CEO pay?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ceo_salaries_outliers <span class="ot">=</span> ceo_salaries <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ceo_salaries_outliers <span class="ot">&lt;-</span> ceo_salaries <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Pay <span class="sc">&gt;</span> <span class="dv">100000000</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>4.</strong> Next, create a dataset called <code>ceo_salaries_filtered</code> that includes all cases where Pay is less than $100,000,000. Create a histogram of the <code>Pay</code> variable for this filtered dataset and compute the mean and median.</p>
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>6.</strong> Create a histogram of the <code>log_pay</code> variable and describe the shape of the distribution.</p>
 <p><strong>7.</strong> Your answer to 6 should note that there’s now <em>low</em> outlier(s)! Find these outlier(s). Which companies are they? What do they pay their CEOs? (<em>Note:</em> you should do this using code, but can check your answer with the “spreadsheet view” of the data.)</p>
-<p><em>When you’re done</em>, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present).</p>
+<p><em>When you’re done</em>, please knit and save your file.</p>
 
 
 <!-- -->
@@ -748,7 +748,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>**0.** Import the data into R by running the following code chunk. This chunk also includes a line to redefine the levels of the <span class="in">`income`</span> variable so that they show up in the right order. Click on the dataset in the environment pane to pull up the data viewer. Can you see the "spreadsheet view" of the data?</span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>pew <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>pew <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>pew<span class="sc">$</span>income <span class="ot">&lt;-</span> <span class="fu">factor</span>(pew<span class="sc">$</span>income, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0-30000"</span>, <span class="st">"30000-75000"</span>,</span>
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"75000-150000"</span>, <span class="st">"150000"</span>))</span>
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -815,7 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
 <span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="co">#ceo_salaries = read_csv("https://math.carleton.edu/aluby/stat120/ceo_salaries_23_24.csv")</span></span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>ceo_salaries <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"../data/ceo_salaries_23_24.csv"</span>)</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>ceo_salaries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/ceo_salaries_23_24.csv"</span>)</span>
 <span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a>**1.** Using <span class="in">`esquisse`</span>, <span class="in">`ggplot`</span>, or <span class="in">`base R`</span>, create a histogram of the <span class="in">`Pay`</span> variable </span>
@@ -831,29 +831,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>**3.** You should have noted that the distribution is *right-skewed* (it has a long right tail). The code below demonstrates one way to remove outliers by <span class="in">`filter`</span>ing the very large observations and saving it to a new dataset called <span class="in">`ceo_salaries_outliers`</span>. Run the code below, and then view the new dataset. Which companies have the highest CEO pay?</span>
 <span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>ceo_salaries_outliers <span class="ot">=</span> ceo_salaries <span class="sc">%&gt;%</span></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>ceo_salaries_outliers <span class="ot">&lt;-</span> ceo_salaries <span class="sc">%&gt;%</span></span>
 <span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Pay <span class="sc">&gt;</span> <span class="dv">100000000</span>) </span>
 <span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>**4.** Next, create a dataset called <span class="in">`ceo_salaries_filtered`</span> that includes all cases where Pay is less than $100,000,000. Create a histogram of the <span class="in">`Pay`</span> variable for this filtered dataset and compute the mean and median. </span>
 <span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>**5.** Alternatively, we can visualize and work with a *transformation* of our dataset. This is especially useful when we have a "long-tailed" dataset. Explain what the next few lines of code do. </span>
-<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a>ceo_salaries <span class="ot">=</span> ceo_salaries <span class="sc">%&gt;%</span></span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_pay =</span> <span class="fu">log</span>(Pay <span class="sc">+</span> <span class="dv">1</span>))</span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>ceo_salaries <span class="sc">%&gt;%</span></span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(log_pay),</span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(log_pay))</span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a>**5.** Alternatively, we can visualize and work with a *transformation* of our dataset. This is especially useful when we have a "long-tailed" dataset. Explain what the next few lines of code do. </span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>ceo_salaries <span class="ot">=</span> ceo_salaries <span class="sc">%&gt;%</span></span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_pay =</span> <span class="fu">log</span>(Pay <span class="sc">+</span> <span class="dv">1</span>))</span>
 <span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>**6.** Create a histogram of the <span class="in">`log_pay`</span> variable and describe the shape of the distribution. </span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a>**7.** Your answer to 6 should note that there's now *low* outlier(s)! Find these outlier(s). Which companies are they? What do they pay their CEOs? (*Note:* you should do this using code, but can check your answer with the "spreadsheet view" of the data.)</span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>ceo_salaries <span class="sc">%&gt;%</span></span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(log_pay),</span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(log_pay))</span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a>*When you're done*, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present). </span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a>**6.** Create a histogram of the <span class="in">`log_pay`</span> variable and describe the shape of the distribution. </span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a>**7.** Your answer to 6 should note that there's now *low* outlier(s)! Find these outlier(s). Which companies are they? What do they pay their CEOs? (*Note:* you should do this using code, but can check your answer with the "spreadsheet view" of the data.)</span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a>*When you're done*, please knit and save your file. </span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
