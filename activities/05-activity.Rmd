@@ -87,9 +87,8 @@ For the part of the activity, we're going to be looking at the CEO salaries for 
 
 **0.** Import the data into R by running the following code chunk. Click on the dataset in the environment pane to pull up the data viewer. Can you see the "spreadsheet view" of the data? List the variables and whether they are categorical or quantitative. Note any ID variables.
 
-```{r, echo = FALSE}
-#ceo_salaries = read_csv("https://math.carleton.edu/aluby/stat120/ceo_salaries_23_24.csv")
-ceo_salaries <- read_csv("../data/ceo_salaries_23_24.csv")
+```{r}
+ceo_salaries = read_csv("https://math.carleton.edu/aluby/data/ceo_salaries_23_24.csv")
 ```
 
 **1.** Using `esquisse`, `ggplot`, or `base R`, create a histogram of the `Pay` variable 
