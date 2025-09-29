@@ -51,7 +51,7 @@ penguins_lm
 
 ## Important Notation
 
-Observations ($y_i$): the data points
+Observations ($y_i$): the data points that were **observed**
 
 ```{r}
 ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + 
@@ -64,6 +64,8 @@ ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
 
 Predictions ($\hat{y}_i$): the points on the line for each $x$ value
 
+$$\hat{y}_i = b_0 + b_1 x_i$$
+
 ```{r}
 ggplot(broom::augment(penguins_lm), aes(x = body_mass_g, y = flipper_length_mm)) + 
   geom_point() + 
@@ -74,6 +76,8 @@ ggplot(broom::augment(penguins_lm), aes(x = body_mass_g, y = flipper_length_mm))
 ## Important Notation
 
 Residuals ($\epsilon_i$): difference between observations and predictions
+
+$$\epsilon_i = y_i - \hat{y}_i  $$
 
 ```{r}
 ggplot(broom::augment(penguins_lm), aes(x = body_mass_g, y = flipper_length_mm)) + 
@@ -142,8 +146,8 @@ ggplot(broom::augment(dives_lm), aes(x = Duration, y = DiveHeartRate)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-::: {.fragment}
-It can be easier to see curvature with a horizontal reference line 
+
+## It can be easier to see curvature with a horizontal reference line 
 
 ```{r}
 #| fig-width: 8
@@ -154,10 +158,8 @@ ggplot(broom::augment(dives_lm), aes(x = Duration, y = .resid)) +
   geom_point() + 
   geom_smooth(method = "lm", se = FALSE)
 ```
-:::
 
-::: {.fragment}
-And sometimes we put *predictions* on the x-axis instead
+## And sometimes we put *predictions* on the x-axis instead
 
 ```{r}
 #| fig-width: 8
@@ -168,31 +170,31 @@ ggplot(broom::augment(dives_lm), aes(x = .fitted, y = .resid)) +
   geom_point() + 
   geom_smooth(method = "lm", se = FALSE)
 ```
-:::
 
 To make sure that we're working with a *linear* relationship, it's best practice to make a residual plot alongside the X-Y scatterplot when checking for curvature. 
 
 ## To make a residual scatterplot
 
-::: {.fragment}
 Step 1: Fit model and save it to an *object*
 ```{r}
 #| echo: true
 dives_lm = lm(DiveHeartRate ~ Duration, data = penguin_dives)
 ```
-:::
 
-::: {.fragment}
+## To make a residual scatterplot
+
 Step 2: Create `augmented` dataset. This creates a dataset which contains the original response and explanatory variables, a column with the residuals (`.resid`), a column with the predictions (`.fitted`), along with other quantities you'll see in future stats courses. `augment()` lives in the `broom` library, which we need to remember to load. 
 
 ```{r}
 #| echo: true
 library(broom)
 dives_aug = augment(dives_lm)
+dives_aug
 ```
-:::
 
-::: {.fragment}
+
+## To make a residual scatterplot
+
 Step 3. Create the scatterplot using the augmented dataset
 
 ```{r}
@@ -202,7 +204,18 @@ ggplot(dives_aug, aes(x = .fitted, y = .resid)) +
   geom_point() + 
   geom_hline(yintercept =0)
 ```
-:::
+
+## What do we ideally want to see? 
+
+```{r}
+set.seed(0928)
+tibble(
+  .resid = rnorm(150, sd = 2),
+  .fitted = rnorm(150, mean = 20, sd = 5)
+) |>
+  ggplot(aes(x = .fitted, y = .resid)) + 
+  geom_point()
+```
 
 # What do we do???!!!! {.maize}
 

@@ -31,6 +31,10 @@ equatiomatic::extract_eq(penguins_lm, use_coefs = TRUE)
 
 ::::
 
+- Intercept ($b_0$): where does the line cross the y-axis? What is the *prediction* for $x=0$?
+
+- Slope ($b_1$): For a 1-unit increase in $x$, what is the change in the *prediction* for $y$? 
+
 ::: callout-note
 Observation
 
@@ -56,9 +60,18 @@ Residual
 
 \vspace{1in}
 
+**Example:** Emperor penguins routinely make dives of 5-12 minutes, with the longest recorded dive over 27 minutes (!!) The rate of oxygen depletion is primarily determined by the penguin's heart rate. `DiveHeartRate` is the bird's heart rate in beats per minute, `Depth` is the depth of the dive (in meters), `Duration` is the duration of the dive in minutes, and `Bird` is an ID variable indicating which penguin made the dive. 
+
 ```{r}
-#penguin_dives = read_csv("http://www.math.carleton.edu/aluby/stat120/penguin_dives.csv")
-penguin_dives = read_csv("../data/penguin_dives.csv") # update data on server!! 
+penguin_dives = read_csv("http://www.math.carleton.edu/aluby/data/penguin_dives.csv")
+```
+
+```{r, echo = FALSE}
+#| fig-width: 3
+#| fig-height: 2
+#| fig-align: left
+ggplot(penguin_dives, aes(x = Duration, y = DiveHeartRate)) + 
+  geom_point(size = .5)
 ```
 
 It can be helpful to look at a *residual scatterplot* when checking for linearity and outliers. 
@@ -95,14 +108,4 @@ dives_lm2 = lm(-1/DiveHeartRate ~ Duration, data = penguin_dives)
 coef(dives_lm2)
 ```
 
-\vspace{1in}
 
-When do we do **transformations**? 
-
-\vspace{1in}
-
-Why is it important that we have a **linear relationship**? 
-
-\vspace{1in}
-
-What is the point of fitting a **linear regression**? 
