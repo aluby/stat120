@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fbf3c9a153a4c93f4b50cb59237d3c74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -200,11 +200,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Movies2004 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"http://math.carleton.edu/Stat120/RLabManual/Movies2004.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>1.</strong> Create a scatterplot of <code>worldwide</code> against <code>domestic</code>. Does the relationship appear to be linear?</p>
-<p><strong>2.</strong> Perform the linear regression of <code>worldwide</code> against <code>domestic</code>. Interpret the slope and intercept.</p>
+<p><strong>2.</strong> Run the code below to perform the linear regression of <code>worldwide</code> against <code>domestic</code>. Interpret the slope and intercept in context.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>movies_lm1 <span class="ot">=</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> domestic, <span class="at">data =</span> Movies2004)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>3.</strong> Create the residual plot with the reference line. Do you think a linear model is appropriate?</p>
+<p><strong>3.</strong> Run the code below to create the residual plot with the reference line. Do you think a linear model is appropriate?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>movies_aug1 <span class="ot">=</span> <span class="fu">augment</span>(movies_lm1)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(movies_aug1, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>4.</strong> Make a histogram of <code>worldwide</code> and <code>domestic</code> and describe their distribution.</p>
-<p><strong>5.</strong> You should have noticed that both variables have a strong right skew. (Your answer should also include roughly where the center of the distribution is). Skew is common in variables involving money, and we commonly transform them using <code>log()</code>. The code below creates those transformed variables in <code>Movies2004</code>. Check the distribution of the transformed variables using a histogram. Did the transformation “lessen” the skewness?</p>
+<p><strong>5.</strong> You should have noticed that both variables have a strong right skew. (Your answer should also include roughly where the center of the distribution is). Skew is common in variables involving money, and we often transform them using <code>log()</code>. The code below creates those transformed variables in <code>Movies2004</code>. Check the distribution of the transformed variables using a histogram. Did the transformation “lessen” the skewness?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Movies2004 <span class="ot">=</span> Movies2004 <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -228,12 +228,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>6.</strong> Create a scatterplot of <code>logworld</code> against <code>logdomestic</code>. Does the relationship appear to be linear?</p>
-<p><strong>7.</strong> Perform the least-squares regression of the log of worldwide gross against the log of domestic gross and call this model <code>movies_lm2</code>. Provide interpretations of the slope and intercept.</p>
+<p><strong>7.</strong> Run the code below to create the least-squares regression of the log of worldwide gross against the log of domestic gross and call this model <code>movies_lm2</code>. Provide interpretations of the slope and intercept.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>movies_lm2 <span class="ot">=</span> <span class="fu">lm</span>(logworld <span class="sc">~</span> logdomestic, <span class="at">data =</span> Movies2004)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>8.</strong> Check the residual plot. Do you have any concerns about the new model?</p>
-<p><em>When you’re done</em>, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present).</p>
+<p><em>When you’re done</em>, please knit and let Amanda know!</p>
 <p><em>Note:</em> This activity is adapted from the Lab Manual Ch3.5. Some code differs (e.g.&nbsp;using <code>_</code> instead of <code>.</code> in variable names, using <code>mutate()</code>, using <code>.fitted</code> in the residual plot) because of my personal code preference, but you can use whichever makes the most sense to you!</p>
 
 
@@ -716,13 +716,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>**1.** Create a scatterplot of <span class="in">`worldwide`</span> against <span class="in">`domestic`</span>. Does the relationship appear to be linear? </span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>**2.** Perform the linear regression of <span class="in">`worldwide`</span> against <span class="in">`domestic`</span>. Interpret the slope and intercept. </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>**2.** Run the code below to perform the linear regression of <span class="in">`worldwide`</span> against <span class="in">`domestic`</span>. Interpret the slope and intercept in context. </span>
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>movies_lm1 <span class="ot">=</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> domestic, <span class="at">data =</span> Movies2004)</span>
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>**3.** Create the residual plot with the reference line. Do you think a linear model is appropriate?</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>**3.** Run the code below to create the residual plot with the reference line. Do you think a linear model is appropriate?</span>
 <span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>movies_aug1 <span class="ot">=</span> <span class="fu">augment</span>(movies_lm1)</span>
@@ -733,7 +733,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>**4.** Make a histogram of <span class="in">`worldwide`</span> and <span class="in">`domestic`</span> and describe their distribution. </span>
 <span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>**5.** You should have noticed that both variables have a strong right skew. (Your answer should also include roughly where the center of the distribution is). Skew is common in variables involving money, and we commonly transform them using <span class="in">`log()`</span>. The code below creates those transformed variables in <span class="in">`Movies2004`</span>. Check the distribution of the transformed variables using a histogram. Did the transformation "lessen" the skewness? </span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>**5.** You should have noticed that both variables have a strong right skew. (Your answer should also include roughly where the center of the distribution is). Skew is common in variables involving money, and we often transform them using <span class="in">`log()`</span>. The code below creates those transformed variables in <span class="in">`Movies2004`</span>. Check the distribution of the transformed variables using a histogram. Did the transformation "lessen" the skewness? </span>
 <span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>Movies2004 <span class="ot">=</span> Movies2004 <span class="sc">%&gt;%</span></span>
@@ -745,7 +745,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>**6.** Create a scatterplot of <span class="in">`logworld`</span> against <span class="in">`logdomestic`</span>. Does the relationship appear to be linear? </span>
 <span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>**7.** Perform the least-squares regression of the log of worldwide gross against the log of domestic gross and call this model <span class="in">`movies_lm2`</span>. Provide interpretations of the slope and intercept. </span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>**7.** Run the code below to create the least-squares regression of the log of worldwide gross against the log of domestic gross and call this model <span class="in">`movies_lm2`</span>. Provide interpretations of the slope and intercept. </span>
 <span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>movies_lm2 <span class="ot">=</span> <span class="fu">lm</span>(logworld <span class="sc">~</span> logdomestic, <span class="at">data =</span> Movies2004)</span>
@@ -753,7 +753,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>**8.** Check the residual plot. Do you have any concerns about the new model? </span>
 <span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>*When you're done*, please knit and submit the PDF to gradescope. Group submissions are enabled and you only need to submit one PDF per group (but please only include group members who were present). </span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>*When you're done*, please knit and let Amanda know! </span>
 <span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>*Note:* This activity is adapted from the Lab Manual Ch3.5. Some code differs (e.g. using <span class="in">`_`</span> instead of <span class="in">`.`</span> in variable names, using <span class="in">`mutate()`</span>, using <span class="in">`.fitted`</span> in the residual plot) because of my personal code preference, but you can use whichever makes the most sense to you!</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>

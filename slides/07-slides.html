@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.24">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.23">
 
   <meta name="author" content="Prof Amanda Luby">
   <title>stat120 – 07: Linear Regression</title>
@@ -239,17 +239,19 @@ Coefficients:
 </section>
 <section id="important-notation" class="slide level2">
 <h2>Important Notation</h2>
-<p>Observations (<span class="math inline">\(y_i\)</span>): the data points</p>
+<p>Observations (<span class="math inline">\(y_i\)</span>): the data points that were <strong>observed</strong></p>
 
 <img data-src="07-slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="important-notation-1" class="slide level2">
 <h2>Important Notation</h2>
 <p>Predictions (<span class="math inline">\(\hat{y}_i\)</span>): the points on the line for each <span class="math inline">\(x\)</span> value</p>
+<p><span class="math display">\[\hat{y}_i = b_0 + b_1 x_i\]</span></p>
 
 <img data-src="07-slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="important-notation-2" class="slide level2">
 <h2>Important Notation</h2>
 <p>Residuals (<span class="math inline">\(\epsilon_i\)</span>): difference between observations and predictions</p>
+<p><span class="math display">\[\epsilon_i = y_i - \hat{y}_i  \]</span></p>
 
 <img data-src="07-slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="example" class="slide level2">
@@ -310,62 +312,56 @@ Coefficients:
 <img data-src="07-slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="residual-scatterplot" class="slide level2">
 <h2>Residual scatterplot</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="07-slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>It can be easier to see curvature with a horizontal reference line</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="07-slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>And sometimes we put <em>predictions</em> on the x-axis instead</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="07-slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<p>To make sure that we’re working with a <em>linear</em> relationship, it’s best practice to make a residual plot alongside the X-Y scatterplot when checking for curvature.</p>
+
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"></section>
+<section id="it-can-be-easier-to-see-curvature-with-a-horizontal-reference-line" class="slide level2">
+<h2>It can be easier to see curvature with a horizontal reference line</h2>
+
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"></section>
+<section id="and-sometimes-we-put-predictions-on-the-x-axis-instead" class="slide level2">
+<h2>And sometimes we put <em>predictions</em> on the x-axis instead</h2>
+
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>To make sure that we’re working with a <em>linear</em> relationship, it’s best practice to make a residual plot alongside the X-Y scatterplot when checking for curvature.</p>
 </section>
 <section id="to-make-a-residual-scatterplot" class="slide level2">
 <h2>To make a residual scatterplot</h2>
-<div class="fragment">
 <p>Step 1: Fit model and save it to an <em>object</em></p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>dives_lm <span class="ot">=</span> <span class="fu">lm</span>(DiveHeartRate <span class="sc">~</span> Duration, <span class="at">data =</span> penguin_dives)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<div class="fragment">
+</section>
+<section id="to-make-a-residual-scatterplot-1" class="slide level2">
+<h2>To make a residual scatterplot</h2>
 <p>Step 2: Create <code>augmented</code> dataset. This creates a dataset which contains the original response and explanatory variables, a column with the residuals (<code>.resid</code>), a column with the predictions (<code>.fitted</code>), along with other quantities you’ll see in future stats courses. <code>augment()</code> lives in the <code>broom</code> library, which we need to remember to load.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb6-2"><a></a>dives_aug <span class="ot">=</span> <span class="fu">augment</span>(dives_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a></a>dives_aug <span class="ot">=</span> <span class="fu">augment</span>(dives_lm)</span>
+<span id="cb6-3"><a></a>dives_aug</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 125 × 8
+   DiveHeartRate Duration .fitted .resid    .hat .sigma  .cooksd .std.resid
+           &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+ 1          88.8     1.05    91.2  -2.36 0.0270    14.2 0.000400     -0.170
+ 2         103.      1.18    90.4  13.0  0.0262    14.1 0.0117        0.931
+ 3          97.4     1.92    86.4  11.0  0.0221    14.1 0.00700       0.787
+ 4          85.3     3.47    77.9   7.35 0.0152    14.2 0.00212       0.525
+ 5          60.6     7.08    58.2   2.43 0.00803   14.2 0.000121      0.173
+ 6          77.6     4.77    70.8   6.76 0.0111    14.2 0.00131       0.482
+ 7          44.3     9.13    47.0  -2.66 0.00961   14.2 0.000174     -0.189
+ 8          32.8    11       36.8  -3.95 0.0146    14.2 0.000590     -0.282
+ 9          94.2     1.32    89.7   4.50 0.0255    14.2 0.00136       0.323
+10          99.8     1.48    88.8  11.0  0.0245    14.1 0.00783       0.790
+# ℹ 115 more rows</code></pre>
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="to-make-a-residual-scatterplot-2" class="slide level2">
+<h2>To make a residual scatterplot</h2>
 <p>Step 3. Create the scatterplot using the augmented dataset</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(dives_aug, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb7-3"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(dives_aug, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb8-3"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output-display">
@@ -376,8 +372,11 @@ Coefficients:
 </div>
 </div>
 </div>
-</div>
-</section></section>
+</section>
+<section id="what-do-we-ideally-want-to-see" class="slide level2">
+<h2>What do we ideally want to see?</h2>
+
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
 <section>
 <section id="what-do-we-do" class="title-slide slide level1 maize center">
 <h1>What do we do???!!!!</h1>
@@ -404,75 +403,75 @@ Coefficients:
 <section id="check-distributions-of-each-variable" class="slide level2">
 <h2>Check distributions of <em>each variable</em></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>p1 <span class="ot">=</span> <span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration)) <span class="sc">+</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">col =</span> <span class="st">"white"</span>, <span class="at">bins  =</span><span class="dv">20</span>)</span>
-<span id="cb8-3"><a></a></span>
-<span id="cb8-4"><a></a>p2 <span class="ot">=</span> <span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> DiveHeartRate)) <span class="sc">+</span> </span>
-<span id="cb8-5"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">col =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">20</span>)</span>
-<span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>p1 <span class="ot">=</span> <span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration)) <span class="sc">+</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">col =</span> <span class="st">"white"</span>, <span class="at">bins  =</span><span class="dv">20</span>)</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a>p2 <span class="ot">=</span> <span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> DiveHeartRate)) <span class="sc">+</span> </span>
+<span id="cb9-5"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">col =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">20</span>)</span>
+<span id="cb9-6"><a></a></span>
+<span id="cb9-7"><a></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"><div class="fragment">
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"><div class="fragment">
 <p>If you notice lots of <em>skew</em>, start by transforming that variable</p>
 </div>
 </section>
 <section id="transforming-the-y-variable" class="slide level2">
 <h2>Transforming the y-variable</h2>
 
-<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="checking-the-transformed-x-y-scatterplot" class="slide level2">
 <h2>Checking the transformed X-Y scatterplot</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> DiveHeartRate<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">+</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb9-3"><a></a>  <span class="fu">stat_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-</div>
-<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="checking-the-transformed-x-y-scatterplot-1" class="slide level2">
-<h2>Checking the transformed X-Y scatterplot</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> <span class="fu">sqrt</span>(DiveHeartRate))) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> DiveHeartRate<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">+</span> </span>
 <span id="cb10-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb10-3"><a></a>  <span class="fu">stat_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="07-slides_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="checking-the-transformed-x-y-scatterplot-2" class="slide level2">
+<section id="checking-the-transformed-x-y-scatterplot-1" class="slide level2">
 <h2>Checking the transformed X-Y scatterplot</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> <span class="fu">log</span>(DiveHeartRate))) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> <span class="fu">sqrt</span>(DiveHeartRate))) <span class="sc">+</span> </span>
 <span id="cb11-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb11-3"><a></a>  <span class="fu">stat_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="07-slides_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="checking-the-transformed-x-y-scatterplot-3" class="slide level2">
+<section id="checking-the-transformed-x-y-scatterplot-2" class="slide level2">
 <h2>Checking the transformed X-Y scatterplot</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>DiveHeartRate)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> <span class="fu">log</span>(DiveHeartRate))) <span class="sc">+</span> </span>
 <span id="cb12-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb12-3"><a></a>  <span class="fu">stat_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="07-slides_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="checking-the-transformed-x-y-scatterplot-3" class="slide level2">
+<h2>Checking the transformed X-Y scatterplot</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(penguin_dives, <span class="fu">aes</span>(<span class="at">x =</span> Duration, <span class="at">y =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>DiveHeartRate)) <span class="sc">+</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-3"><a></a>  <span class="fu">stat_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="fitting-the-transformed-model" class="slide level2">
 <h2>Fitting the transformed model</h2>
 <div class="fragment">
 <p>Add new column to dataset</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguin_dives <span class="ot">=</span> penguin_dives <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb13-3"><a></a>    <span class="at">recip_DHR =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>DiveHeartRate</span>
-<span id="cb13-4"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>penguin_dives <span class="ot">=</span> penguin_dives <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-3"><a></a>    <span class="at">recip_DHR =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>DiveHeartRate</span>
+<span id="cb14-4"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p>Fit model and print output</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>dives_lm2 <span class="ot">=</span> <span class="fu">lm</span>(recip_DHR <span class="sc">~</span> Duration, <span class="at">data =</span> penguin_dives)</span>
-<span id="cb14-2"><a></a>dives_lm2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>dives_lm2 <span class="ot">=</span> <span class="fu">lm</span>(recip_DHR <span class="sc">~</span> Duration, <span class="at">data =</span> penguin_dives)</span>
+<span id="cb15-2"><a></a>dives_lm2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -508,13 +507,13 @@ Coefficients:
 <h2>Residual Plot (again)</h2>
 <p>It’s also best practice to make the <em>new</em> residual plot</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>dives_aug2 <span class="ot">=</span> <span class="fu">augment</span>(dives_lm2)</span>
-<span id="cb17-2"><a></a><span class="fu">ggplot</span>(dives_aug2, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
-<span id="cb17-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb17-4"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>dives_aug2 <span class="ot">=</span> <span class="fu">augment</span>(dives_lm2)</span>
+<span id="cb18-2"><a></a><span class="fu">ggplot</span>(dives_aug2, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
+<span id="cb18-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb18-4"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Since it looks more “like a cloud” without clear curvature, we should be safe to use our linear regression model for predictions.</p>
+<img data-src="07-slides_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Since it looks more “like a cloud” without clear curvature, we should be safe to use our linear regression model for predictions.</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
