@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.23">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fbf3c9a153a4c93f4b50cb59237d3c74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -236,10 +236,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<ul>
-<li><p>Intercept (<span class="math inline">\(b_0\)</span>): where does the line cross the y-axis? What is the <em>prediction</em> for <span class="math inline">\(x=0\)</span>?</p></li>
-<li><p>Slope (<span class="math inline">\(b_1\)</span>): For a 1-unit increase in <span class="math inline">\(x\)</span>, what is the change in the <em>prediction</em> for <span class="math inline">\(y\)</span>?</p></li>
-</ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -271,16 +267,6 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Example:</strong> I grab a penguin with a flipper length of 193mm and a body mass of 3475g. What is the <strong>observation</strong>, <strong>prediction</strong>, and <strong>residual</strong> in this case?</p>
-<p><strong>Example:</strong> Emperor penguins routinely make dives of 5-12 minutes, with the longest recorded dive over 27 minutes (!!) The rate of oxygen depletion is primarily determined by the penguin’s heart rate. <code>DiveHeartRate</code> is the bird’s heart rate in beats per minute, <code>Depth</code> is the depth of the dive (in meters), <code>Duration</code> is the duration of the dive in minutes, and <code>Bird</code> is an ID variable indicating which penguin made the dive.</p>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="07-linear-regression_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="288"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>It can be helpful to look at a <em>residual scatterplot</em> when checking for linearity and outliers.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dives_lm <span class="ot">=</span> <span class="fu">lm</span>(DiveHeartRate <span class="sc">~</span> Duration, <span class="at">data =</span> penguin_dives)</span>
@@ -293,7 +279,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-linear-regression_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="07-linear-regression_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -305,6 +291,9 @@ window.Quarto = {
   -0.007926   -0.001817 </code></pre>
 </div>
 </div>
+<p>When do we do <strong>transformations</strong>?</p>
+<p>Why is it important that we have a <strong>linear relationship</strong>?</p>
+<p>What is the point of fitting a <strong>linear regression</strong>?</p>
 
 
 
