@@ -1,0 +1,103 @@
+---
+title: "Exam 01 Practice Questions"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(ragg)
+library(patchwork)
+options(digits = 4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3, dev = ragg::agg_png())
+notes_theme = theme_minimal(
+ # base_family = "Montserrat", 
+  base_size = 14)
+theme_set(notes_theme)
+```
+This dataset gives education-related data for the 50 states and the District of Columbia. The variables are: 
+
+ - `region`: West, Northeast, Midwest, South
+ - `pop`: Population, in 1,000's
+ - `verbal` and `math`: average SAT verbal and math scores
+ - `taken`: percent of students taking the SAT
+ - `noHS`: percent of population with no high school diploma
+ - `teachersPay`: median teacher salary, in 1,000's
+
+a) Label each variable as categorical or quantitative
+b) How many columns and rows are there in this dataset?
+c) Is this an experiment or observational study?
+d) Below is the distribution of `taken` represented by 3 histograms. Choose the histogram that best represents the data and then describe the distribution. 
+
+```{r}
+#| fig-width: 6
+#| fig-height: 2
+sat <- read.csv("http://math.carleton.edu/Stat120/RLabManual/sat.csv")
+
+p1 = ggplot(sat, aes(x = taken)) +
+  geom_histogram(bins = 4, col = "white")
+
+p2 = ggplot(sat, aes(x = taken)) +
+  geom_histogram(bins = 10, col = "white")
+
+p3 = ggplot(sat, aes(x = taken)) +
+  geom_histogram(bins = 60, col = "white")
+
+p1 + p2 + p3
+```
+
+e) Below is the scatterplot of `verbal` against `taken`. What do you think is closest to the actual correlation? Choose one: -1.1, -1, -.9, -.6, -.1, .1, .6, .9, 1, 1.1
+
+```{r}
+#| fig-height: 2
+#| fig-width: 3
+sat_lm = lm(verbal ~ taken, data = sat)
+
+ggplot(sat, aes(x = taken, y = verbal)) + 
+  geom_point(size = .5)
+```
+ 
+f) What do the points in the *upper left* part of the graph represent? What about the *lower right*?
+g) Below is the linear regression model output for this data. Write out the linear regression equation and interpret the slope and intercept in context.
+
+```{r}
+sat_lm
+```
+
+h) Below is the residual plot for this model. Do you have any concerns about the validity of the model? 
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+
+sat_aug <- broom::augment(sat_lm)
+max_resid <- sat_aug |> filter(.resid == max(.resid))
+ggplot(sat_lm, aes(x = .fitted, y = .resid, col = (.resid == max(.resid)))) + 
+  geom_point(size= .5) + 
+  geom_hline(yintercept = 0, col = "blue") + 
+  ggforce::geom_mark_circle(data = max_resid) +
+  theme(legend.position = "none") + 
+  scale_color_viridis_d(end = .75)
+```
+
+i) One point on the residual plot is colored in green and circled. Give the $\hat{y}$, $\epsilon$, $y$, and $x$ value for this data point. 
+j) The mean of `teachersPay` is 35.89, the median is 35, and the standard deviation is 6.226. The distribution is approximately symmetric and bell-shaped. Approximately how many states have `teachersPay` between 29.66 and 42.12?
+j) The graph below displays `region` filled by a new variable, `pay40`: whether `teachersPay` is greater than 40. 
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(sat, aes(y = region, fill = teachersPay > 40)) +
+  geom_bar() + 
+  theme(legend.position = "bottom") +
+  labs(
+    fill = "pay40"
+  ) + 
+  scale_fill_viridis_d(end = .75)
+```
+k) Find the conditional distribution of `pay40` for the Northeast region
+l) Estimate the proportion of Midwest states with a median teacher pay less than 40. 
+l) Find the marginal distribution of `pay40`
+m) Does there appear to be a relationship between `pay40` and `region`? 
+
+There will also be a few *conceptual* true/false or multiple choice questions that are *not* connected to the data analysis. 
