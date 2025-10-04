@@ -1,0 +1,31 @@
+---
+title: "10: Sampling Distributions with StatKey"
+---
+
+::: callout-note
+No R needed today! We'll focus on concepts and intuition with StatKey
+:::
+
+**1. ** Use StatKey’s **mean** menu: <https://www.lock5stat.com/StatKey/sampling_1_quant/sampling_1_quant.html> and select “Percent with internet access 3e (countries)”. Click “Show data table”. 
+
+  (a) What is each case? 
+  (a) What is each variable? 
+  (a) Do you think this dataset represents a population or a sample? 
+  (a) Close the dataset viewer. Click “Generate 10 samples”. What does each dot represent? 
+  (a) What happens to the shape, center, and spread of the sampling distribution as n increases? (You can use “Generate 1000 samples” to speed this up) 
+  (a) Is there a number of samples where the distribution doesn’t change much? 
+
+**2.** Use StatKey’s **proportion** menu: <https://www.lock5stat.com/StatKey/sampling_1_cat/sampling_1_cat.html> to answer the following.   (a) Click the “edit proportion” button to change the population parameter p
+  (a) Choose a value of p that is between .2 and .8. Describe how the shape, center, and spread of the sampling distribution changes as n increases
+  (a) Describe how the shape, center, and spread of the sampling distribution changes as p gets closer to 1
+  
+**3.** About 10% of the worldwide population is left-handed. A 200-seat lecture hall has been built with 15 rows (the number of seats in each row varies). Each row has a single "lefty seat" that has the built-in desk on the left rather than the right arm of the chair. In a class of 90 students, what’s the probability that there will not be enough seats for the left-handed students? 
+  (a) What number of left-handed students would have to be in the class for there to not be enough desks? 
+  (a) Set up the sampling distribution using StatKey. What is p and n? 
+  (a) Simulate 1000 samples. Use the results to estimate the probability. 
+  (a) Now suppose there’s a class of 50 instead. Do you think this probability will be higher, lower, or about the same as (d)? 
+  (a) Use StatKey to estimate the probability in (d). Are you surprised? 
+  
+**4.** Explain the difference between (1) the distribution of a population, (2) the distribution of a sample, (3) the sampling distribution. Be sure to fill in these definitions in your note sheet. 
+
+When you’re done, submit the answers to number 3 on gradescope. You only need to submit 1 per group. 

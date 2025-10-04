@@ -1,5 +1,5 @@
 ---
-title: "12: Bootstrap Confidence Intervals"
+title: "12: Solutions"
 ---
 
 ```{r, message = FALSE}
@@ -27,9 +27,42 @@ Pew <- Pew |>
 
 **1.** Create an appropriate visualization of `values` conditioned on `over`. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50's? 
 
+::: callout-tip
+## Solution
+
+You can tell they are not exactly equal, but the percentage who say it's been a good thing appear pretty similar across the two age groups
+
+
+```{r}
+#| fig-width: 4
+#| fig-height: 3
+ggplot(Pew, aes(y = over, fill = values)) + 
+  geom_bar(position = "fill") 
+```
+
+:::
+
 **2.** Compute the exact proportions for each age group.
 
+
+::: callout-tip
+## Solution
+
+```{r}
+table(Pew$over, Pew$values) |>
+  proportions(2)
+```
+
+::: 
+
 **3.** In order to use the `boot()` command, the response must be coded as a binary variable of 0's and 1's (instead of the names of the categories). Pull up the "spreadsheet view" of the data and confirm that `values` and `values2` contain the same information stored in a different form.
+
+::: callout-tip
+## Solution
+
+Confirmed
+
+::: 
 
 Since the values are 0's and 1's, when you compute the mean, you will be computing an expression of the form 
 
@@ -38,6 +71,26 @@ which is equivalent to the proportion of 1's. This means that we can treat propo
 
 **4.** Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable `values2`, which is behavior recoded so that 1 = "good", 0 = "bad".
 
+::: callout-tip
+## Solution
+
+I am 95% confident that the true difference in proportions between the two age groups is between -0.1 and 0.02. 
+
+```{r}
+boot(values2 ~ over, data = Pew)
+```
+
+:::
+
 **5.** Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval? 
+
+::: callout-tip
+## Solution
+
+$$-.0379 \pm2\times  0.03 = [-0.0979 , 0.0221] $$
+
+It is extremely similar.
+
+:::
 
 
