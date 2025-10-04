@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fbf3c9a153a4c93f4b50cb59237d3c74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -224,7 +224,7 @@ window.Quarto = {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Pew <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"http://math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Pew <span class="ot">=</span> Pew <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Pew <span class="ot">&lt;-</span> Pew <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">over =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span><span class="dv">50</span>, <span class="st">"over50"</span>, <span class="st">"under50"</span>),</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">over2 =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span><span class="dv">50</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
@@ -232,13 +232,11 @@ window.Quarto = {
 </div>
 <p><strong>1.</strong> Create an appropriate visualization of <code>values</code> conditioned on <code>over</code>. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50’s?</p>
 <p><strong>2.</strong> Compute the exact proportions for each age group.</p>
-<p>In order to use the <code>boot()</code> command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories).</p>
-<p><strong>3.</strong> Pull up the “spreadsheet view” of the data and confirm that <code>values</code> and <code>values2</code> contain the same information stored in a different form.</p>
+<p><strong>3.</strong> In order to use the <code>boot()</code> command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories). Pull up the “spreadsheet view” of the data and confirm that <code>values</code> and <code>values2</code> contain the same information stored in a different form.</p>
 <p>Since the values are 0’s and 1’s, when you compute the mean, you will be computing an expression of the form</p>
 <p><span class="math display">\[ \frac{1 + 1 + 0 + 1 + 0 +... +0}{n}\]</span> which is equivalent to the proportion of 1’s. This means that we can treat proportions as means. Yay!</p>
 <p><strong>4.</strong> Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable <code>values2</code>, which is behavior recoded so that 1 = “good”, 0 = “bad”.</p>
 <p><strong>5.</strong> Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval?</p>
-<p><em>When you’re done</em>, please let me know!</p>
 
 
 <!-- -->
@@ -716,30 +714,28 @@ window.Quarto = {
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>Pew <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"http://math.carleton.edu/Stat120/RLabManual/Pew.csv"</span>)</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>Pew <span class="ot">=</span> Pew <span class="sc">%&gt;%</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>Pew <span class="ot">&lt;-</span> Pew <span class="sc">|&gt;</span></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">over =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span><span class="dv">50</span>, <span class="st">"over50"</span>, <span class="st">"under50"</span>),</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">over2 =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span><span class="dv">50</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>**1.** Create an appropriate visualization of <span class="in">`values`</span> conditioned on <span class="in">`over`</span>. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50's? </span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>**2.** Compute the exact proportions for each age group.</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>In order to use the <span class="in">`boot()`</span> command, the response must be coded as a binary variable of 0's and 1's (instead of the names of the categories). </span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>**3.** Pull up the "spreadsheet view" of the data and confirm that <span class="in">`values`</span> and <span class="in">`values2`</span> contain the same information stored in a different form.</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>Since the values are 0's and 1's, when you compute the mean, you will be computing an expression of the form </span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>$$ \frac{1 + 1 + 0 + 1 + 0 +... +0}{n}$$</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>which is equivalent to the proportion of 1's. This means that we can treat proportions as means. Yay! </span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>**4.** Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable <span class="in">`values2`</span>, which is behavior recoded so that 1 = "good", 0 = "bad".</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>**5.** Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval? </span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>*When you're done*, please let me know! </span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>**1.** Create an appropriate visualization of <span class="in">`values`</span> conditioned on <span class="in">`over`</span>. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50's? </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>**2.** Compute the exact proportions for each age group.</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>**3.** In order to use the <span class="in">`boot()`</span> command, the response must be coded as a binary variable of 0's and 1's (instead of the names of the categories). Pull up the "spreadsheet view" of the data and confirm that <span class="in">`values`</span> and <span class="in">`values2`</span> contain the same information stored in a different form.</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>Since the values are 0's and 1's, when you compute the mean, you will be computing an expression of the form </span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>$$ \frac{1 + 1 + 0 + 1 + 0 +... +0}{n}$$</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>which is equivalent to the proportion of 1's. This means that we can treat proportions as means. Yay! </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>**4.** Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable <span class="in">`values2`</span>, which is behavior recoded so that 1 = "good", 0 = "bad".</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>**5.** Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval? </span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
