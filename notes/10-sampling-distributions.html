@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.23">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fbf3c9a153a4c93f4b50cb59237d3c74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -225,16 +225,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Geographic distribution:
 <ul>
-<li>Midwest 36.7%</li>
-<li>West 21.7%</li>
-<li>East 17.3%</li>
-<li>South 10.9%</li>
-<li>International 11.8%</li>
-<li>Other 1.6%</li>
+<li>Midwest 35%</li>
+<li>West 24%</li>
+<li>South 12%</li>
+<li>Middle States 11%</li>
+<li>International/Other 11%</li>
+<li>New England 7%</li>
 </ul></li>
-<li>34% BIPOC</li>
-<li>12% are among the first generation in their families to attend college</li>
-<li>61% graduated in the top 10% of their high school class</li>
+<li>9% report two or more races</li>
+<li>16% are among the first generation in their families to attend college</li>
+<li>65% graduated in the top 10% of their high school class</li>
+<li>75% are involved in community service</li>
 </ul>
 <p>In a moment, we’re going to do a poll to find one of these quantities for our class. Before we do, what is your <em>best guess</em> for each of these quantities?</p>
 <p><strong>Example:</strong> In this set-up, what is the:</p>
@@ -244,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Parameter</li>
 <li>Statistic</li>
 </ul>
-<p>We know that our class will likely not have <strong>exactly</strong> 36.7% from the Midwest, but we probably wouldn’t expect it to be 0% or 90%.</p>
+<p>We know that our class will likely not have <strong>exactly</strong> 35% from the Midwest, but we probably wouldn’t expect it to be 0% or 90%.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -262,49 +263,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 2,007 × 2
    student_id midwest
         &lt;int&gt; &lt;chr&gt;  
- 1        141 Yes    
- 2       1639 No     
- 3       1307 No     
- 4       1124 No     
- 5       1366 No     
- 6       1594 No     
- 7        296 Yes    
- 8         15 Yes    
- 9        117 Yes    
-10       1139 No     
+ 1       1059 No     
+ 2         57 Yes    
+ 3       1160 No     
+ 4        365 Yes    
+ 5        612 Yes    
+ 6         38 Yes    
+ 7        159 Yes    
+ 8        417 Yes    
+ 9       1550 No     
+10        203 Yes    
 # ℹ 1,997 more rows</code></pre>
 </div>
 </div>
 <p>Then, we take a random sample:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100424</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">&lt;-</span> carls <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">=</span> carls <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">32</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sample1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 32 × 2
    student_id midwest
         &lt;int&gt; &lt;chr&gt;  
- 1         52 Yes    
- 2       1098 No     
- 3       1377 No     
- 4       1530 No     
- 5       1676 No     
- 6       1734 No     
- 7        534 Yes    
- 8       1185 No     
- 9       1446 No     
-10       1207 No     
+ 1       1033 No     
+ 2        367 Yes    
+ 3        175 Yes    
+ 4       1379 No     
+ 5        294 Yes    
+ 6        272 Yes    
+ 7        127 Yes    
+ 8         50 Yes    
+ 9       1791 No     
+10         41 Yes    
 # ℹ 22 more rows</code></pre>
 </div>
 </div>
 <p>and calculate the proportion of “yes” responses:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(midwest) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(midwest) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
@@ -314,15 +315,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 2 Yes        12 0.375</code></pre>
 </div>
 </div>
-<p>This isn’t <em>super</em> useful, but if we do it a bunch of times, we can start to see what a range of possible samples could look like. (<em>Note:</em> this code requires the {<code>infer</code>} package)</p>
+<p>This isn’t <em>super</em> useful, but if we do it a bunch of times, we can start to see what a range of possible samples could look like. (<em>Note:</em> this code requires the <code>infer</code> package)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>many_samples <span class="ot">&lt;-</span> carls <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="dv">35</span>, <span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate, midwest) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>many_samples <span class="ot">=</span> carls <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="dv">35</span>, <span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate, midwest) <span class="sc">%&gt;%</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(midwest <span class="sc">==</span> <span class="st">"Yes"</span>)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>many_samples</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -331,16 +332,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # Groups:   replicate [1,000]
    replicate midwest     n p_hat
        &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;
- 1         1 Yes        13 0.371
- 2         2 Yes        12 0.343
- 3         3 Yes        16 0.457
- 4         4 Yes        10 0.286
- 5         5 Yes        11 0.314
- 6         6 Yes         9 0.257
- 7         7 Yes        15 0.429
- 8         8 Yes        13 0.371
- 9         9 Yes        13 0.371
-10        10 Yes        17 0.486
+ 1         1 Yes        18 0.514
+ 2         2 Yes        11 0.314
+ 3         3 Yes         8 0.229
+ 4         4 Yes        13 0.371
+ 5         5 Yes         8 0.229
+ 6         6 Yes        12 0.343
+ 7         7 Yes        13 0.371
+ 8         8 Yes        10 0.286
+ 9         9 Yes        11 0.314
+10        10 Yes        10 0.286
 # ℹ 990 more rows</code></pre>
 </div>
 </div>
