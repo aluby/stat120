@@ -74,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -154,12 +183,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Let’s begin with the class proportion from last time: 35% of Carleton students are “from the Midwest”, while 21% of our class (who were in attendance) are from the Midwest.</p>
+<p>Let’s begin with the class proportion from last time: 36.7% of Carleton students are “from the Midwest”, while ____% of our class (who answered) are from the Midwest.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11-cis-bootstrap_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="11-cis-bootstrap_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="288"></p>
 </figure>
 </div>
 </div>
@@ -170,39 +199,48 @@ ul.task-list li input[type="checkbox"] {
 <pre><code># A tibble: 1 × 2
    xbar     se
   &lt;dbl&gt;  &lt;dbl&gt;
-1 0.349 0.0879</code></pre>
+1 0.366 0.0898</code></pre>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>Standard Error:</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Standard Error:
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Standard deviation of a statistic or a sampling distribution</p>
 </div>
 </div>
 <p>In a random class of 32 students, how many would we expect to be from the Midwest?</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>Confidence Interval</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Confidence Interval
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An interval computed from sample data by a method that will capture the parameter for a specified percentage of all samples</p>
 </div>
 </div>
 <p>95% confidence interval using the standard error:</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>Margin of Error</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Margin of Error
 </div>
+</div>
+<div class="callout-body-container callout-body">
+
 </div>
 </div>
 <p>Example: Percent of each country with internet access (StatKey)</p>
@@ -213,6 +251,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-body-container">
 <p>CI Misinterpretations</p>
+<ul>
+<li>A 95% CI contains 95% of the data from the population</li>
+</ul>
+<p><span class="math inline">\(~\)</span></p>
+<ul>
+<li>I am 95% sure that the mean of the sample will be in CI</li>
+</ul>
+<p><span class="math inline">\(~\)</span></p>
+<ul>
+<li>The probability that the parameter is in the CI is 95%</li>
+</ul>
+<p><span class="math inline">\(~\)</span></p>
 </div>
 </div>
 </div>
@@ -222,6 +272,7 @@ ul.task-list li input[type="checkbox"] {
 <li>that the [population parameter in context]</li>
 <li>is between ____ and ____ [units]</li>
 </ol>
+<div style="page-break-after: always;"></div>
 <section id="the-bootstrap" class="level1">
 <h1>The Bootstrap</h1>
 <p>So far, we’ve used the <em>population</em> to generate samples and construct sampling distributions. For most situations, this is unrealistic.</p>
@@ -249,14 +300,17 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>The mean of this distribution is 200.9947 and the standard deviation is 0.6988.</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>Bootstrap confidence interval:</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Bootstrap confidence interval:
 </div>
+</div>
+<div class="callout-body-container callout-body">
+
 </div>
 </div>
 <p>The magic of the bootstrap is that it works for any statistic we can compute from our sample! We simply have to follow these steps:</p>
