@@ -15,7 +15,7 @@ notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
 ```
 
-Let's begin with the class proportion from last time: 36.7% of Carleton students are "from the Midwest", while ____% of our class (who were in attendance) are from the Midwest. 
+Let's begin with the class proportion from last time: 36.7% of Carleton students are "from the Midwest", while ____% of our class (who answered) are from the Midwest. 
 
 ```{r}
 #| fig-width: 3
@@ -25,7 +25,7 @@ set.seed(100424)
 
 carls = tibble(
   student_id = 1:2007,
-  midwest = c(rep("Yes", 702), rep("No", 2007-702))
+  midwest = c(rep("Yes", 737), rep("No", 2007-737))
 ) %>% 
   slice(sample(1:n()))
 
@@ -54,7 +54,7 @@ many_samples %>%
 ```
 
 ::: callout-note
-Standard Error:
+## Standard Error:
 
 Standard deviation of a statistic or a sampling distribution
 
@@ -66,7 +66,7 @@ In a random class of 32 students, how many would we expect to be from the Midwes
 \vspace{2in}
 
 ::: callout-note
-Confidence Interval
+## Confidence Interval
 
 An interval computed from sample data by a method that will capture the parameter for a specified percentage of all samples
 :::
@@ -76,7 +76,7 @@ An interval computed from sample data by a method that will capture the paramete
 \vspace{1in}
 
 ::: callout-note
-Margin of Error
+## Margin of Error
 
 \vspace{.5in}
 :::
@@ -89,8 +89,17 @@ Example: Percent of each country with internet access (StatKey)
 CI Misinterpretations
 
 - A 95% CI contains 95% of the data from the population
+
+$~$
+
 - I am 95% sure that the mean of the sample will be in CI
+
+$~$
+
 - The probability that the parameter is in the CI is 95%
+
+$~$
+
 :::
 
 Structure of a CI:
@@ -98,6 +107,9 @@ Structure of a CI:
 1.  I am \_\_\_ % confident
 2.  that the \[population parameter in context\]
 3.  is between \_\_\_\_ and \_\_\_\_ \[units\]
+
+
+\pagebreak 
 
 # The Bootstrap
 
@@ -140,10 +152,10 @@ bootstrap_sampling_dist %>%
 
 The mean of this distribution is `r mean(bootstrap_sampling_dist$xbar)` and the standard deviation is `r sd(bootstrap_sampling_dist$xbar)`.
 
-\vspace{1.25in}
+\vspace{2in}
 
 ::: callout-note 
-Bootstrap confidence interval:
+## Bootstrap confidence interval:
 
 \vspace{.5in}
 :::
