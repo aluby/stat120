@@ -1,0 +1,159 @@
+---
+title: "Midterm 1 + Check-in"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+library(googlesheets4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+
+# Midterm 1 {.maize}
+
+
+## A note on regrade requests: 
+
+- Grading is often a tedious task, and the grading team will sometimes make mistakes. I am always happy to fix these mistakes, and gradescope makes it easy to do so.
+- Regrade requests must be submitted on gradescope within two weekdays after homework has been returned to you. 
+- Regrade requests are for administrative errors or obvious grading mistakes. I will not consider regrade requests for anything that applied to the entire class (e.g. “I think this mistake should only be worth 1 point instead of 2” or “I didn’t realize we had to do X”). 
+- If you submit two or more inappropriate regrade requests, I will not consider additional regrade requests from you for the remainder of the term. 
+- If you’re unsure whether you should file a regrade request or not, just ask! You are always welcome to discuss any grading questions with me in office hours.
+
+# Check-In Results {.maize}
+
+## 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Going Well**
+
+ - Prep before class (readings, video, pre-class assignment)
+ - Note Sheets are helpful
+ - Group work
+ - Homework
+ - Manageable workload
+ - Pace is good
+ - R is fun/not that bad/etc.
+:::
+
+::: {.column width="50%"}
+**Things to change:** 
+
+ - R: more code examples on handouts
+ - R: explain more step by step
+ - Some homework questions are hard to figure out what its asking for
+:::
+
+::::
+
+## Balance of lectures/group work
+
+```{r}
+survey = read_sheet("https://docs.google.com/spreadsheets/d/1wieyZUUxueThb-Uh45SK15TV7eMQTzUDZ60Gocmx1n4/edit?usp=sharing") |>
+  janitor::clean_names()
+
+
+survey |>
+  ggplot(aes(y = how_do_you_feel_about_the_balance_of_lectures_and_group_work)) + 
+  geom_bar() +
+  labs(
+    y = ""
+  )
+```
+
+## Pre-class videos
+
+```{r}
+survey |>
+  ggplot(aes(y = how_do_you_feel_about_pre_class_videos)) + 
+  geom_bar() +
+  labs(
+    y = ""
+  )
+```
+
+## How helpful is....
+
+```{r}
+p1 <- survey |>
+  ggplot(aes(y = how_helpful_is_going_to_class_for_learning)) + 
+  geom_bar() +
+  labs(
+    y = "",
+    title = "Going to class"
+  ) + 
+  ylim(c(0,10))
+
+p2 <- survey |>
+  ggplot(aes(y = how_helpful_is_group_work_for_learning)) + 
+  geom_bar() +
+  labs(
+    y = "",
+    title = "Group Work"
+  ) + 
+  ylim(c(0,10))
+
+p3 <- survey |>
+  ggplot(aes(y = how_helpful_are_homework_assignments_for_learning)) + 
+  geom_bar() +
+  labs(
+    y = "",
+    title = "Homework"
+  ) + 
+  ylim(c(0,10))
+
+p1 + p2 + p3
+```
+
+## How much time/How often
+
+```{r}
+p1 <- survey |>
+  mutate( 
+     how_much_cat = fct_relevel(how_much_time_outside_of_class_are_you_spending_on_the_course_per_week_this_includes_pre_class_prep_homework_assignments_and_finishing_in_class_r_activities, "Between 6 and 8 hours", after = 1)
+   ) |>
+  ggplot(aes(y = how_much_cat)) + 
+  geom_bar() +
+  labs(
+    y = "",
+    title = "Time outside of class"
+  ) 
+p2 <- survey |>
+  mutate( 
+     resource_cat = fct_relevel(how_often_are_you_using_resources_like_stat_lab_office_hours_or_slack, "Once or twice", after = 1)
+   ) |>
+  ggplot(aes(y = resource_cat)) + 
+  geom_bar() +
+  labs(
+    y = "",
+    title = "Resource Frequency"
+  ) 
+
+p1 + p2 
+
+```
+
+## My goals for the rest of term: 
+
+- More R code on handouts
+- Continue mixing in videos for class prep
+
+
