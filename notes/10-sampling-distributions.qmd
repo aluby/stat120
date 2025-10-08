@@ -43,7 +43,7 @@ Some highlights:
 - 12% are among the first generation in their families to attend college
 - 61% graduated in the top 10% of their high school class
 
-In a moment, we're going to do a poll to find one of these quantities for our class. Before we do, what is your *best guess* for each of these quantities? 
+In a moment, we're going to see one of these quantities for our class. Before we do, what is your *best guess* for each of these quantities? 
 
 **Example:** In this set-up, what is the: 
 
