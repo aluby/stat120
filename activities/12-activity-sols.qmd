@@ -60,14 +60,25 @@ table(Pew$over, Pew$values) |>
 ::: callout-tip
 ## Solution
 
-Confirmed
+Confirmed. good = 1 and bad = 0
+
+```{r}
+Pew |>
+  select(values, values2) |>
+  unique()
+```
 
 ::: 
+
+::: callout-tip 
+## Means vs Proportions?
 
 Since the values are 0's and 1's, when you compute the mean, you will be computing an expression of the form 
 
 $$ \frac{1 + 1 + 0 + 1 + 0 +... +0}{n}$$
 which is equivalent to the proportion of 1's. This means that we can treat proportions as means. Yay! 
+
+:::
 
 **4.** Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable `values2`, which is behavior recoded so that 1 = "good", 0 = "bad".
 
