@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
+
+  <meta name="author" content="Prof Amanda Luby">
+  <title>stat120 – 13: Hypothesis Testing</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-200fa1cbf8b7586f9fc0fec747c34c95.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1F4257" class="quarto-title-block center">
+  <h1 class="title">13: Hypothesis Testing</h1>
+  <p class="subtitle">Stat120 | Fall 2025</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Prof Amanda Luby 
+</div>
+</div>
+</div>
+
+</section>
+<section id="today" class="slide level2 scrollable">
+<h2>Today</h2>
+<ol type="1">
+<li class="fragment">Recap of confidence interval activity</li>
+<li class="fragment">Intro to Hypothesis tests (slides/notes)</li>
+</ol>
+</section>
+<section>
+<section id="intro-to-hypothesis-tests" class="title-slide slide level1 maize center">
+<h1>Intro to Hypothesis Tests</h1>
+
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<ul>
+<li class="fragment">Parameter versus statistic</li>
+<li class="fragment">Sampling Distributions</li>
+</ul>
+</section>
+<section id="parameter-vs-statistic" class="slide level2">
+<h2>Parameter vs Statistic</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Statistic</th>
+<th>Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td><span class="math inline">\(\bar{y}\)</span></td>
+<td><span class="math inline">\(\mu\)</span></td>
+</tr>
+<tr class="even">
+<td>Standard Deviation</td>
+<td><span class="math inline">\(s\)</span></td>
+<td><span class="math inline">\(\sigma\)</span></td>
+</tr>
+<tr class="odd">
+<td>Correlation</td>
+<td><span class="math inline">\(r\)</span></td>
+<td><span class="math inline">\(\rho\)</span></td>
+</tr>
+<tr class="even">
+<td>Slope of Regression Line</td>
+<td><span class="math inline">\(b\)</span></td>
+<td><span class="math inline">\(\beta\)</span></td>
+</tr>
+<tr class="odd">
+<td>Proportion</td>
+<td><span class="math inline">\(\hat{p}\)</span></td>
+<td><span class="math inline">\(p\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sampling-distributions" class="slide level2">
+<h2>Sampling Distributions</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="13-slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li class="fragment">One of these was constructed with a sample where <span class="math inline">\(\bar{X} = 15\)</span> and one from a sample where <span class="math inline">\(\bar{X} = 35\)</span>. Which is which?</li>
+<li class="fragment">Which has the smaller SE?</li>
+</ul>
+</div></div>
+</section>
+<section id="running-example" class="slide level2">
+<h2>Running Example</h2>
+<ul>
+<li class="fragment">We’re going to create our own sample to use today.</li>
+<li class="fragment">On the next slide, I’m going to show you a paragraph and give you 90 seconds to count the number of a letter that you see.</li>
+<li class="fragment">Make note of your number, and then I’ll enter our data into R.</li>
+</ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>THE NECESSITY OF TRAINING HANDS FOR FIRST-CLASS FARMS IN THE FATHERLY HANDLING OF FARM LIVESTOCK IS FOREMOST IN THE MINDS OF FARM OWNERS. BECAUSE THE FOREFATHERS OF THE FARM OWNERS TRAINED THE FARM HANDS FOR THE FIRST-CLASS FARMS IN THE FATHERLY HANDLING OF FARM LIVESTOCK, THE OWNERS OF THE FARMS FEEL THEY SHOULD CARRY ON WITH THE FAMILY TRADITION OF TRAINING FARM HANDS IN THE FATHERLY HANDLING OF FARM LIVESTOCK BECAUSE OF THEIR BELIEF THAT IT IS THE BASIS FOR GOOD FUNDAMENTAL FARMING.</p>
+</section></section>
+<section>
+<section id="pause-for-data-entry." class="title-slide slide level1 maize center">
+<h1>Pause for data entry….</h1>
+
+</section>
+<section id="our-data" class="slide level2">
+<h2>Our Data</h2>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="section-1" class="slide level2 small">
+<h2></h2>
+<p>THE NECESSITY O<strong>F</strong> TRAINING HANDS <strong>F</strong>OR <strong>F</strong>IRST-CLASS <strong>F</strong>ARMS IN THE <strong>F</strong>ATHERLY HANDLING O<strong>F</strong> <strong>F</strong>ARM LIVESTOCK IS <strong>F</strong>OREMOST IN THE MINDS O<strong>F</strong> <strong>F</strong>ARM OWNERS. BECAUSE THE <strong>F</strong>ORE<strong>F</strong>ATHERS O<strong>F</strong> THE <strong>F</strong>ARM OWNERS TRAINED THE <strong>F</strong>ARM HANDS <strong>F</strong>OR THE <strong>F</strong>IRST-CLASS <strong>F</strong>ARMS IN THE <strong>F</strong>ATHERLY HANDLING O<strong>F</strong> <strong>F</strong>ARM LIVESTOCK, THE OWNERS O<strong>F</strong> THE <strong>F</strong>ARMS <strong>F</strong>EEL THEY SHOULD CARRY ON WITH THE <strong>F</strong>AMILY TRADITION O<strong>F</strong> TRAINING <strong>F</strong>ARM HANDS IN THE <strong>F</strong>ATHERLY HANDLING O<strong>F</strong> <strong>F</strong>ARM LIVESTOCK BECAUSE O<strong>F</strong> THEIR BELIE<strong>F</strong> THAT IT IS THE BASIS <strong>F</strong>OR GOOD <strong>F</strong>UNDAMENTAL <strong>F</strong>ARMING.</p>
+<ul>
+<li class="fragment">35 Total <strong>F</strong>’s</li>
+</ul>
+</section>
+<section id="howd-we-do-as-a-group" class="slide level2">
+<h2>How’d we do as a group?</h2>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="lets-go-back-in-time-before-we-did-this-exercise" class="slide level2 smaller">
+<h2>Let’s go back in time, before we did this exercise</h2>
+<ul>
+<li class="fragment">My hunch was that people will <em>systematically</em> miss F’s that are in words like “for” or “of”, or that occur in the middle of words instead of the beginning or end.</li>
+<li class="fragment">In other words, I think that the population mean number of <em>counted</em> F’s, <span class="math inline">\(\mu\)</span>, will be smaller than the truth.</li>
+<li class="fragment">As we’ve learned, statistics vary from sample to sample. Even if <span class="math inline">\(\mu = 35\)</span>, not every sample is going to have <span class="math inline">\(\bar{X} = 35\)</span>. How do we tell if our sample statistic is far enough below 35 to provide evidence of this systematic effect?</li>
+</ul>
+</section>
+<section id="section-2" class="slide level2 scrollable">
+<h2></h2>
+<p>Hypothesis testing is the “backbone” of science and allows us to make claims about <em>population parameters</em> based on <em>sample statistics</em>.</p>
+<ol type="1">
+<li class="fragment">Formulate hypotheses in terms of <em>population parameter</em></li>
+<li class="fragment">Collect data and compute a <em>sample statistic</em></li>
+<li class="fragment">Use the <em>sample statistic</em> to make a claim about the <em>hypotheses</em></li>
+</ol>
+</section>
+<section id="we-generally-form-two-competing-hypotheses" class="slide level2">
+<h2>We generally form two competing hypotheses:</h2>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Null hypothesis</strong></p>
+</div>
+<div class="callout-content">
+<p>Model that we temporarily adopt to see how consistent our data is with the model. Should be about <strong>population parameters</strong> and usually claims <strong>no effect or difference</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Alternative hypothesis</strong></p>
+</div>
+<div class="callout-content">
+<p>Usually the claim that we are trying to support with our data. Not equal to a specific value, but usually <strong>greater than</strong> (&gt;) <strong>less than</strong> (&lt;) or <strong>not equal to</strong></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="for-our-study-on-fs" class="slide level2">
+<h2>For our study on F’s</h2>
+<ul>
+<li class="fragment">Population parameter: <span class="math inline">\(\mu\)</span>: mean number of counted F’s</li>
+<li class="fragment">Sample statistic: <span class="math inline">\(\bar{X}\)</span></li>
+<li class="fragment"><span class="math inline">\(H_0: \mu = 35\)</span></li>
+<li class="fragment"><span class="math inline">\(H_a: \mu &lt; 35\)</span> (claim we are trying to show)</li>
+</ul>
+</section>
+<section id="null-distribution-sampling-distribution-if-h_0-is-true" class="slide level2">
+<h2>Null distribution: sampling Distribution if <span class="math inline">\(H_0\)</span> is true</h2>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<section>
+<section id="group-problems" class="title-slide slide level1 maize center">
+<h1>Group Problems</h1>
+
+</section>
+<section id="section-3" class="slide level2 smaller">
+<h2></h2>
+<p>In a random sample of 765 adults in the United States, 322 say they could not cover a $400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?</p>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
+<p>The National Center of Education Statistics conducted a survey of high school seniors. In a simple random sample of 200 students from this survey, the mean writing score was 47.9 and the mean reading score was 48.1 We are interested in seeing whether there is a difference in the average writing and reading score.</p>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="section-5" class="slide level2 smaller">
+<h2></h2>
+<p>In a study about Universal Basic Income, the (SEED) randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.3 and among the control group was 29.6.</p>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="section-6" class="slide level2 smaller">
+<h2></h2>
+<p>A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives <span class="math inline">\(r = 0.037\)</span>.</p>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="section-7" class="slide level2 smaller">
+<h2></h2>
+<p>In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?</p>
+
+<img data-src="13-slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="wrap-up" class="slide level2 scrollable">
+<h2>Wrap-Up</h2>
+<ul>
+<li class="fragment">Hypothesis testing allows us to make claims about <em>population parameters</em> using <em>sample statistics</em>
+<ol type="1">
+<li class="fragment">Formulate hypotheses</li>
+<li class="fragment">Collect data, compute a sample statistic</li>
+<li class="fragment">Compare the <em>statistic</em> to the <em>null distribution</em> in order to draw a conclusion about the <em>hypotheses</em>.</li>
+</ol></li>
+<li class="fragment">Next time:
+<ol start="4" type="1">
+<li class="fragment">Constructing <em>null distributions</em></li>
+<li class="fragment">Formalizing the idea of <em>surprising enough</em></li>
+</ol></li>
+</ul>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/aluby\.github\.io\/stat120\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
