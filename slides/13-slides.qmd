@@ -1,0 +1,349 @@
+---
+title: "13: Hypothesis Testing"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+library(googlesheets4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+1. Recap of confidence interval activity
+2. Intro to Hypothesis tests (slides/notes)
+
+# Intro to Hypothesis Tests {.maize}
+
+## Recap 
+
+-   Parameter versus statistic
+-   Sampling Distributions
+
+## Parameter vs Statistic 
+
+| Name                   | Statistic | Parameter |
+|------------------------|-----------|-----------|
+| Mean                   | $\bar{y}$ | $\mu$     |
+| Standard Deviation     | $s$       | $\sigma$  |
+| Correlation            | $r$       | $\rho$    |
+| Slope of Regression Line | $b$       | $\beta$   |
+| Proportion             | $\hat{p}$ | $p$       |
+
+## Sampling Distributions
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r}
+#| fig-height: 6.5
+#| fig-width: 6.5
+sampling_distribution_0 = tibble(
+  xbar1 = rep(NA, 1000),
+  xbar2 = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rnorm(10, mean = 15, sd = 10)
+  xi2 = rnorm(50, mean = 35, sd = 10)
+  sampling_distribution_0$xbar1[ii] = mean(xi)
+  sampling_distribution_0$xbar2[ii] = mean(xi2)
+}
+
+p1 = sampling_distribution_0 %>%
+  ggplot(aes(x = xbar1)) + 
+  geom_histogram(col = "white") + 
+  labs(
+    x = "Sample Mean",
+    y = "Number of Samples"
+  ) + 
+  theme_minimal(base_size = 16)
+
+p2 = sampling_distribution_0 %>%
+  ggplot(aes(x = xbar2)) + 
+  geom_histogram(col = "white") + 
+  labs(
+    x = "Sample Mean",
+    y = "Number of Samples"
+  ) + 
+  theme_minimal(base_size = 16)
+
+p1/p2
+```
+:::
+
+::: {.column width="40%"}
+- One of these was constructed with a sample where $\bar{X} = 15$ and one from a sample where $\bar{X} = 35$. Which is which? 
+- Which has the smaller SE?
+
+:::
+
+::::
+
+## Running Example 
+
+- We're going to create our own sample to use today. 
+- On the next slide, I'm going to show you a paragraph and give you 90 seconds to count the number of a letter that you see. 
+- Make note of your number, and then I'll enter our data into R. 
+
+##
+
+THE NECESSITY OF TRAINING HANDS FOR FIRST-CLASS FARMS IN THE FATHERLY HANDLING OF FARM LIVESTOCK IS FOREMOST IN THE MINDS OF FARM OWNERS. BECAUSE THE FOREFATHERS OF THE FARM OWNERS TRAINED THE FARM HANDS FOR THE FIRST-CLASS FARMS IN THE FATHERLY HANDLING OF FARM LIVESTOCK, THE OWNERS OF THE FARMS FEEL THEY SHOULD CARRY ON WITH THE FAMILY TRADITION OF TRAINING FARM HANDS IN THE FATHERLY HANDLING OF FARM LIVESTOCK BECAUSE OF THEIR BELIEF THAT IT IS THE BASIS FOR GOOD FUNDAMENTAL FARMING.
+
+# Pause for data entry.... {.maize}
+
+## Our Data
+
+```{r}
+f_sample = c(32, 23, 33, 22, 24, 22, 22, 20, 30, 27, 27, 22, 26, 22, 22, 30, 22, 27, 27, 26, 30, 25, 24, 26, 28, 27)
+xbar = mean(f_sample)
+s = sd(f_sample)
+
+f_ggplot = as_tibble(f_sample) %>%
+  ggplot(aes(x = value)) + 
+  geom_histogram(bins = 15, col = "white") + 
+  geom_vline(xintercept = c(xbar, xbar - s, xbar + s, xbar - 2*s, xbar + 2*s), linetype = "dashed", col = c("black", "gray40", "gray40", "gray60", "gray60")) +
+  labs(
+    x = "Number of F's",
+    y = "Frequency"
+  ) + 
+  theme_minimal(base_size = 16)
+
+f_ggplot
+```
+
+## {.small}
+
+THE NECESSITY O**F** TRAINING HANDS **F**OR **F**IRST-CLASS **F**ARMS IN THE **F**ATHERLY HANDLING O**F** **F**ARM LIVESTOCK IS **F**OREMOST IN THE MINDS O**F** **F**ARM OWNERS. BECAUSE THE **F**ORE**F**ATHERS O**F** THE **F**ARM OWNERS TRAINED THE **F**ARM HANDS **F**OR THE **F**IRST-CLASS **F**ARMS IN THE **F**ATHERLY HANDLING O**F** **F**ARM LIVESTOCK, THE OWNERS O**F** THE **F**ARMS **F**EEL THEY SHOULD CARRY ON WITH THE **F**AMILY TRADITION O**F** TRAINING **F**ARM HANDS IN THE **F**ATHERLY HANDLING O**F** **F**ARM LIVESTOCK BECAUSE O**F** THEIR BELIE**F** THAT IT IS THE BASIS **F**OR GOOD **F**UNDAMENTAL **F**ARMING.
+
+-   35 Total **F**'s
+
+## How'd we do as a group? 
+
+```{r}
+f_ggplot + geom_vline(xintercept = 35, col = "darkorange")
+```
+
+## Let's go back in time, before we did this exercise {.smaller}
+
+-   My hunch was that people will *systematically* miss F's that are in words like "for" or "of", or that occur in the middle of words instead of the beginning or end.
+- In other words, I think that the population mean number of *counted* F's, $\mu$, will be smaller than the truth. 
+-   As we've learned, statistics vary from sample to sample. Even if $\mu = 35$, not every sample is going to have $\bar{X} = 35$. How do we tell if our sample statistic is far enough below 35 to provide evidence of this systematic effect?
+
+##
+
+Hypothesis testing is the "backbone" of science and allows us to make claims about *population parameters* based on *sample statistics*.
+
+1.  Formulate hypotheses in terms of *population parameter*
+2.  Collect data and compute a *sample statistic*
+3.  Use the *sample statistic* to make a claim about the *hypotheses*
+
+## We generally form two competing hypotheses: 
+
+. . . 
+
+::: callout-note
+## Null hypothesis 
+
+Model that we temporarily adopt to see how consistent our data is with the model. Should be about **population parameters** and usually claims **no effect or difference**
+::: 
+
+. . . 
+
+::: callout-note
+## Alternative hypothesis 
+
+Usually the claim that we are trying to support with our data. Not equal to a specific value, but usually **greater than** (>) **less than** (<) or **not equal to** ($\ne$)
+::: 
+
+## For our study on F's
+
+- Population parameter: $\mu$: mean number of counted F's
+- Sample statistic: $\bar{X}$
+- $H_0: \mu = 35$ 
+- $H_a: \mu < 35$ (claim we are trying to show)
+
+## Null distribution: sampling Distribution if $H_0$ is true
+
+```{r}
+sampling_distribution = tibble(
+  xbar = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rnorm(length(f_sample), 35, 5)
+  sampling_distribution$xbar[ii] = mean(xi)
+}
+```
+
+```{r}
+sampling_distribution %>%
+  ggplot(aes(x = xbar)) + 
+  geom_histogram(col = "white") + 
+  geom_vline(xintercept = 35, col = "darkorange") + 
+  labs(
+    x = "Sample Mean",
+    y = "Number of Samples"
+  ) + 
+  scale_x_continuous(breaks = seq(30, 40, by = 1)) + 
+  theme_minimal(base_size = 16)
+```
+
+
+# Group Problems {.maize}
+
+## {.smaller}
+
+In a random sample of 765 adults in the United States, 322 say they could not cover a $400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?
+
+```{r}
+sampling_distribution_a = tibble(
+  phat = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rbinom(1, 765, prob = .5)
+  sampling_distribution_a$phat[ii] = xi/765
+}
+
+sampling_distribution_a %>%
+  ggplot(aes(x = phat)) + 
+  geom_histogram(col = "white") + 
+  geom_vline(xintercept = 322/765, col = "darkorange", linewidth = 2) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Number of Samples"
+  ) + 
+  theme_minimal(base_size = 16)
+```
+
+## {.smaller}
+
+The National Center of Education Statistics conducted a survey of high school seniors. In a simple random sample of 200 students from this survey, the mean writing score was 47.9 and the mean reading score was 48.1 We are interested in seeing whether there is a difference in the average writing and reading score. 
+
+```{r}
+sampling_distribution_b = tibble(
+  mean_d = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rnorm(200, mean = 0, sd = 6.69)
+  sampling_distribution_b$mean_d[ii] = mean(xi)
+}
+
+sampling_distribution_b %>%
+  ggplot(aes(x = mean_d)) + 
+  geom_histogram(col = "white") + 
+  geom_vline(xintercept = -.2, col = "darkorange", linewidth = 2) + 
+  labs(
+    x = "Sample Difference",
+    y = "Number of Samples"
+  ) + 
+  theme_minimal(base_size = 16)
+```
+
+
+## {.smaller}
+
+In a study about Universal Basic Income, the (SEED) randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.3 and among the control group was 29.6.
+
+```{r}
+sampling_distribution_c = tibble(
+  mean_d = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rnorm(100, mean = 0, sd = 10)
+  sampling_distribution_c$mean_d[ii] = mean(xi)
+}
+
+sampling_distribution_c %>%
+  ggplot(aes(x = mean_d)) + 
+  geom_histogram(col = "white") + 
+  geom_vline(xintercept = (31.3-29.6), col = "darkorange", linewidth = 2) + 
+  labs(
+    x = "Sample Difference",
+    y = "Number of Samples"
+  ) + 
+  theme_minimal(base_size = 16)
+```
+
+## {.smaller}
+
+A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$.  
+
+```{r}
+sampling_distribution_d = tibble(
+  test_stat = rep(NA, 1000)
+)
+
+for(ii in 1:1000){
+  xi = rnorm(23, mean = 0, sd = 1/(23-3))
+  sampling_distribution_d$test_stat[ii] = mean(xi)
+}
+
+sampling_distribution_d %>%
+  ggplot(aes(x = test_stat)) + 
+  geom_histogram(col = "white") + 
+  geom_vline(xintercept = 1/2*log((1+.037)/(1-.037)), col = "darkorange", linewidth = 2) + 
+  labs(
+    x = "Test Statistic",
+    y = "Number of Samples"
+  ) + 
+  theme_minimal(base_size = 16)
+```
+
+## {.smaller}
+
+In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users? 
+
+```{r}
+sampling_distribution_e = tibble(
+  p_d = rep(NA, 1000)
+)
+
+pp = ((.72*346) + (.8*530))/(530+346)
+
+for(ii in 1:1000){
+  xi = rnorm(346, mean = 0, sd = sqrt((pp*(1-pp))/530 + (pp*(1-pp))/346))
+  sampling_distribution_e$p_d[ii] = mean(xi)
+}
+
+sampling_distribution_e %>%
+  ggplot(aes(x = p_d)) + 
+  geom_histogram(bins=50, col = "white") + 
+  geom_vline(xintercept = .08, col = "darkorange", linewidth = 2, linewidth = 2) + 
+  labs(
+    x = "Sample Difference",
+    y = "Number of Samples"
+  ) + 
+  theme_minimal(base_size = 16)
+```
+
+## Wrap-Up 
+
+- Hypothesis testing allows us to make claims about *population parameters* using *sample statistics* 
+    1. Formulate hypotheses
+    2. Collect data, compute a sample statistic
+    3. Compare the *statistic* to the *null distribution* in order to draw a conclusion about the *hypotheses*. 
+- Next time: 
+   4. Constructing *null distributions*
+   5. Formalizing the idea of *surprising enough*
+

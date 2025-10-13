@@ -23,7 +23,18 @@ Hypothesis testing is the "backbone" of science and allows us to make claims abo
 
 We generally form two competing hypotheses:
 
-\vspace{1.75in}
+::: callout-note
+## Null hypothesis 
+
+Model that we temporarily adopt to see how consistent our data is with the model. Should be about ______________ and usually claims ______________ 
+::: 
+
+
+::: callout-note
+## Alternative hypothesis 
+
+Usually the claim that we are trying to support with our data. Not equal to a specific value, but usually __________________
+::: 
 
 ### For our study on F's
 
@@ -35,7 +46,7 @@ $H_0:$
 
 $H_A:$
 
-Sampling Distribution:
+**Null** Distribution:
 
 ```{r}
 sampling_distribution = tibble(
@@ -60,6 +71,7 @@ sampling_distribution %>%
     x = "Sample Mean",
     y = "Number of Samples"
   ) + 
+  scale_x_continuous(breaks = seq(30, 40, by = 1)) +  
   theme(axis.text.x = element_blank())
 ```
 
