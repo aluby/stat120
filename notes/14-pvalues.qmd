@@ -330,16 +330,19 @@ Combine all cases, then randomly assign each case to one of two groups with the 
 ## Statistical Significance {-}
 
 ::: callout-note
-Significance Level: Cutoff value for rejecting $H_0$ (called "alpha" or $\alpha$)
+## Significance Level
+
+Cutoff value for rejecting $H_0$ (called "alpha" or $\alpha$)
 
 If p-value _______ $\alpha$, we "reject $H_0$" and say results are "statistically significant"
 
 Common values: 
+
 Default: 
 :::
 
 ::: callout-note
-Statistical Significance
+## Statistical Significance
 
 If p-value is small enough, it's very unlikely to get the results we observed if $H_0$ is true due to random chance. 
 
@@ -347,7 +350,7 @@ Results are statistically significant if they provide convincing evidence agains
 :::
 
 ::: callout-note
-Formal Statistical Decisions
+## Formal Statistical Decisions
 
 - p-value ____ $\alpha$: Reject $H_0$ 
 - p-value ____ $\alpha$: Do not reject $H_0$
@@ -360,7 +363,7 @@ Whenever performing a hypothesis test, you should:
 (1) Perform an appropriate EDA 
 (2) Formulate $H_0$ and $H_A$
 (3) Compute a *test statistic*
-(4) Construct a *null distribution* 
+(4) Construct a *null distribution* using `permTest` in R or StatKey
 (5) Compare the test statistic to the null distribution and compute a *p-value*
 (6) Make a decision (reject or fail to reject) about $H_0$ 
 (7) Report your conclusion in context

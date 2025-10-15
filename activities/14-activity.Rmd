@@ -10,8 +10,6 @@ library(CarletonStats)
 ```
 
 
-# Part 1: `Pew` data
-
 *Note:* This is the same `Pew` data that you looked at last week. Before starting, I recommend reviewing the question of interest and EDA that you created. 
 
 The data set `Pew.csv` contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”
