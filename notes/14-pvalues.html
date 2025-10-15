@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fbf3c9a153a4c93f4b50cb59237d3c74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -185,14 +185,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#for-our-study-on-fs" id="toc-for-our-study-on-fs" class="nav-link active" data-scroll-target="#for-our-study-on-fs">For our study on F’s</a></li>
-  <li><a href="#statistical-significance" id="toc-statistical-significance" class="nav-link" data-scroll-target="#statistical-significance">Statistical Significance</a></li>
+  <li><a href="#statistical-significance" id="toc-statistical-significance" class="nav-link active" data-scroll-target="#statistical-significance">Statistical Significance</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="14-pvalues.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -228,7 +227,7 @@ window.Quarto = {
 </ol>
 <p>Today, we’re diving into step 3:</p>
 <blockquote class="blockquote">
-<p>3a. Construct <em>null distribution</em></p>
+<p>3a. Construct <em>null/randomization distribution</em></p>
 </blockquote>
 <blockquote class="blockquote">
 <p>3b. Compute <em>p-value</em></p>
@@ -236,76 +235,59 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p>3c. Make a decision about <span class="math inline">\(H_0\)</span></p>
 </blockquote>
-<section id="for-our-study-on-fs" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="for-our-study-on-fs">For our study on F’s</h3>
-<p>Population parameter: <span class="math inline">\(\mu\)</span></p>
-<p>Sample statistic: <span class="math inline">\(\bar{x}\)</span></p>
-<p><span class="math inline">\(H_0: \mu = 35\)</span></p>
-<p><span class="math inline">\(H_A: \mu &lt; 35\)</span></p>
-<p>Null Distribution:</p>
+<p><strong>StatKey Example 1</strong> In a random sample of 765 adults in the United States, 322 say they could not cover a $400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Constructing null distribution for a single proportion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this example, flip a coin 765 times and record the proportion that came up heads. Do this many times to construct the randomization distribution</p>
+</div>
+</div>
+<p><strong>StatKey Example 2</strong> In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Constructing null distribution for a difference in proportions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in proportions between the two groups. Do this many times.</p>
+</div>
+</div>
+<p><strong>R Example 1</strong></p>
+<p>Here is what the dataset from the last example might look like in R:</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="14-pvalues_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="288"></p>
-</figure>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 876 × 2
+   app       few_times_or_more
+   &lt;chr&gt;                 &lt;dbl&gt;
+ 1 twitter                   1
+ 2 twitter                   1
+ 3 instagram                 1
+ 4 instagram                 1
+ 5 instagram                 1
+ 6 twitter                   1
+ 7 instagram                 1
+ 8 twitter                   1
+ 9 instagram                 1
+10 instagram                 0
+# ℹ 866 more rows</code></pre>
 </div>
 </div>
-</div>
-<p><strong>How do we construct a null distribution?</strong></p>
-<div style="page-break-after: always;"></div>
-<p><strong>StatKey Example:</strong> In a random sample of 765 adults in the United States, 322 say they could not cover a $400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?</p>
-<p><strong>R “Paper” Example:</strong> A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives <span class="math inline">\(r = 0.037\)</span>.</p>
-<div class="cell column-page quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="14-pvalues_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="288"></p>
-</div>
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<pre><code># A tibble: 23 × 2
-     age heart_rate
-   &lt;dbl&gt;      &lt;dbl&gt;
- 1  70.7       76.2
- 2  87.4       86.0
- 3  67.3       95.4
- 4  80.4      108. 
- 5  95.1       88.9
- 6  60.7      116. 
- 7  83.9       67.4
- 8  79.6       73.7
- 9  90.9       95.0
-10  62.3       79.5
-# ℹ 13 more rows</code></pre>
-</div>
-</div>
-</div>
-<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CarletonStats)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">permTestCor</span>(heart_rate <span class="sc">~</span> age, <span class="at">data =</span> icu, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    ** Permutation test **
-
- Permutation test with alternative: greater 
- Observed correlation between age ,  heart_rate : 0.037 
- Mean of permutation distribution: -0.00652 
- Standard error of permutation distribution: 0.2069 
- P-value:  0.413 
-
-    *-------------*</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="14-pvalues_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>R Example:</strong> In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">permTest</span>(visits <span class="sc">~</span> app, <span class="at">data =</span> social_media)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">permTest</span>(few_times_or_more <span class="sc">~</span> app, <span class="at">data =</span> social_media)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>
     ** Permutation test **
 
@@ -314,65 +296,116 @@ window.Quarto = {
   instagram :  0.8   twitter :  0.7197 
  Observed difference: 0.08035 
 
- Mean of permutation distribution: -0.00025 
- Standard error of permutation distribution: 0.02929 
- P-value:  0.004 
+ Mean of permutation distribution: 0.00022 
+ Standard error of permutation distribution: 0.0296 
+ P-value:  0.0058 
 
     *-------------*</code></pre>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="14-pvalues_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="14-pvalues_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-</section>
-<section id="statistical-significance" class="level2">
-<h2 class="anchored" data-anchor-id="statistical-significance">Statistical Significance</h2>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<p><strong>R Example 2</strong> In a study about Universal Basic Income, the (SEED) randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.5 and among the control group was 29.5</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  group    mean     n
+  &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;
+1 Control  29.5   100
+2 UBI      31.5   100</code></pre>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">permTest</span>(well_being <span class="sc">~</span> group, <span class="at">data =</span> ubi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<pre><code>
+    ** Permutation test **
+
+ Permutation test with alternative: two.sided 
+ Observed statistic
+  Control :  29.54   UBI :  31.49 
+ Observed difference: -1.944 
+
+ Mean of permutation distribution: 0.0086 
+ Standard error of permutation distribution: 0.4253 
+ P-value:  1e-04 
+
+    *-------------*</code></pre>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="14-pvalues_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Constructing null distribution for a difference means
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in means between the two groups. Do this many times.</p>
+</div>
+</div>
+<section id="statistical-significance" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="statistical-significance">Statistical Significance</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Significance Level </p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Statistical Significance </p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Formal Statistical Decisions </p>
 </div>
 </div>
-</div>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="summary" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="summary">Summary</h2>
 <p>Whenever performing a hypothesis test, you should:</p>
 <ol type="1">
-<li><p>Perform an appropriate EDA</p></li>
-<li><p>Formulate <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></p></li>
-<li><p>Compute a <em>test statistic</em></p></li>
-<li><p>Construct a <em>null distribution</em></p></li>
-<li><p>Compare the test statistic to the null distribution and compute a <em>p-value</em></p></li>
-<li><p>Make a decision (reject or fail to reject) about <span class="math inline">\(H_0\)</span></p></li>
-<li><p>Report your conclusion in context</p></li>
+<li>Perform an appropriate EDA</li>
+<li>Formulate <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></li>
+<li>Compute a <em>test statistic</em></li>
+<li>Construct a <em>null distribution</em></li>
+<li>Compare the test statistic to the null distribution and compute a <em>p-value</em></li>
+<li>Make a decision (reject or fail to reject) about <span class="math inline">\(H_0\)</span></li>
+<li>Report your conclusion in context</li>
 </ol>
 
 
