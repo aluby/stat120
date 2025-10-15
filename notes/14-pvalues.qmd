@@ -25,32 +25,35 @@ Today, we're diving into step 3:
 
 > 3a. Construct *null/randomization distribution* 
 
-\vspace{.5in}
+> > If $H_0$ is __________________, what does the range of sample statistics look like?
 
 > 3b. Compute *p-value*
 
+> > Numeric summary of how extreme _______________________________________ is compared to ________________ distribution
+
+> 3c. Make a formal decision about $H_0$
+
+> > - Reject $H_0$ if ____________________________________
+> > - Do not Reject $H_0$ ____________________________________
+
 \vspace{.5in}
 
-> 3c. Make a decision about $H_0$
-
-\vspace{.5in}
-
-**StatKey Example 1** In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?
+**StatKey Example 1** In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that the true proportion is actually 50%. Is the journalist justified?
 
 \vspace{3in}
 
-::: callout-note
+::: callout-tip
 # Constructing null distribution for a single proportion
 
 In this example, flip a coin 765 times and record the proportion that came up heads. Do this many times to construct the randomization distribution
 :::
 
-**StatKey Example 2** In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?
+**StatKey Example 2** In a Pew Research Poll on social media use, 72% of Twitter users (249 out of 346) responded that they visited Twitter a few times a week or more. Among Instagram users, this number was 80%  (424 out of 530). Is there a difference in frequency of use between Twitter and Instagram users?
 
 
 \vspace{3in}
 
-::: callout-note
+::: callout-tip
 # Constructing null distribution for a difference in proportions
 
 Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in proportions between the two groups. Do this many times. 
@@ -67,20 +70,34 @@ social_media = tibble(
   app = c(rep("twitter", 346), rep("instagram", 530)), 
   few_times_or_more = c(rep(1, 249), rep(0, 346-249), rep(1, 424), rep(0, 530-424))
 )
-
-social_media |>
-  sample_n(n())
 ```
-
+```
+# A tibble: 876 × 2
+   app       few_times_or_more
+   <chr>                 <dbl>
+ 1 instagram                 1
+ 2 twitter                   1
+ 3 twitter                   0
+ 4 instagram                 1
+ ```
+ 
 ```{r}
 #| echo: true
 #| fig-height: 2.5
 #| layout-ncol: 2
 library(CarletonStats)
-permTest(few_times_or_more ~ app, data = social_media)
+permTest(few_times_or_more ~ app, data = social_media, seed = 101525)
 ```
 
-**R Example 2** In a study about Universal Basic Income, the (SEED) randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.5 and among the control group was 29.5
+::: callout-warning
+## Check:
+
+This is a different p-value than StatKey - why?
+:::
+
+**R Example 2** In a study about Universal Basic Income, the (SEED) randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.5 and among the control group was 29.5. Does UBI result in higher well-being scores?
+
+\vspace{.25in}
 
 ```{r}
 ubi <- tibble::tribble(
@@ -301,10 +318,10 @@ ubi |>
 #| fig-height: 2.5
 #| layout-ncol: 2
 
-permTest(well_being ~ group, data = ubi)
+permTest(well_being ~ group, data = ubi, alternative = "greater", seed = 101525)
 ```
 
-::: callout-note
+::: callout-tip
 # Constructing null distribution for a difference means
 
 Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in means between the two groups. Do this many times. 
@@ -313,18 +330,27 @@ Combine all cases, then randomly assign each case to one of two groups with the 
 ## Statistical Significance {-}
 
 ::: callout-note
-Significance Level
-\vspace{.75in}
+Significance Level: Cutoff value for rejecting $H_0$ (called "alpha" or $\alpha$)
+
+If p-value _______ $\alpha$, we "reject $H_0$" and say results are "statistically significant"
+
+Common values: 
+Default: 
 :::
 
 ::: callout-note
 Statistical Significance
-\vspace{.75in}
+
+If p-value is small enough, it's very unlikely to get the results we observed if $H_0$ is true due to random chance. 
+
+Results are statistically significant if they provide convincing evidence against $H_0$
 :::
 
 ::: callout-note
 Formal Statistical Decisions
-\vspace{.75in}
+
+- p-value ____ $\alpha$: Reject $H_0$ 
+- p-value ____ $\alpha$: Do not reject $H_0$
 :::
 
 ## Summary {-}
