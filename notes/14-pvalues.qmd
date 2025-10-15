@@ -23,107 +23,294 @@ Last time, we laid out the following steps for setting up a hypothesis test:
 
 Today, we're diving into step 3:   
 
-> 3a. Construct *null distribution*
+> 3a. Construct *null/randomization distribution* 
+
+\vspace{.5in}
 
 > 3b. Compute *p-value*
 
+\vspace{.5in}
+
 > 3c. Make a decision about $H_0$
 
-### For our study on F's
+\vspace{.5in}
 
-Population parameter: $\mu$
+**StatKey Example 1** In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?
 
-Sample statistic: $\bar{x}$
+\vspace{3in}
 
-$H_0: \mu = 35$
+::: callout-note
+# Constructing null distribution for a single proportion
 
-$H_A: \mu < 35$
+In this example, flip a coin 765 times and record the proportion that came up heads. Do this many times to construct the randomization distribution
+:::
 
-Null Distribution:
-
-```{r}
-sampling_distribution = tibble(
-  xbar = rep(NA, 1000)
-)
-
-for(ii in 1:1000){
-  xi = rnorm(15, 35, 5)
-  sampling_distribution$xbar[ii] = mean(xi)
-}
-```
-
-```{r}
-#| fig-width: 3
-#| fig-height: 2
+**StatKey Example 2** In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?
 
 
-sampling_distribution %>%
-  ggplot(aes(x = xbar)) + 
-  geom_histogram(col = "white") + 
-  labs(
-    x = "Sample Mean",
-    y = "Number of Samples"
-  ) 
-```
+\vspace{3in}
 
-**How do we construct a null distribution?**
+::: callout-note
+# Constructing null distribution for a difference in proportions
 
-\pagebreak 
-
-**StatKey Example:** In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that this is evidence that the overall proportion could be 50%. Is the journalist justified?
-
-\vspace{2in}
-
-**R "Paper" Example:** A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$.
+Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in proportions between the two groups. Do this many times. 
+:::
 
 
-```{r}
-#| fig-width: 3
-#| fig-height: 2
-#| layout-ncol: 2
-#| column: page
-set.seed(101524)
-out <- as.data.frame(MASS::mvrnorm(23, mu = c(0,0), 
-                     Sigma = matrix(c(1,0.037,0.037,1),, ncol = 2), 
-                     empirical = TRUE)) %>% tibble()
+**R Example 1** 
 
-icu = tibble(
-  age = (out$V1 - min(out$V1))*15+40,
-  heart_rate = (out$V2 )*15+80
-  )
-
-ggplot(icu, aes(x = age, y = heart_rate)) + 
-  geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
-
-icu %>% select(age, heart_rate)
-```
-
-```{r}
-#| echo: true
-#| fig-height: 2.5
-
-library(CarletonStats)
-permTestCor(heart_rate ~ age, data = icu, alternative = "greater")
-```
-
-**R Example:** In a pre-Musk Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?
+Here is what the dataset from the last example might look like in R: 
 
 ```{r}
 #| fig-height: 2.5
 social_media = tibble(
   app = c(rep("twitter", 346), rep("instagram", 530)), 
-  visits = c(rep(1, 249), rep(0, 346-249), rep(1, 424), rep(0, 530-424))
+  few_times_or_more = c(rep(1, 249), rep(0, 346-249), rep(1, 424), rep(0, 530-424))
 )
+
+social_media |>
+  sample_n(n())
 ```
 
 ```{r}
 #| echo: true
 #| fig-height: 2.5
-permTest(visits ~ app, data = social_media)
+#| layout-ncol: 2
+library(CarletonStats)
+permTest(few_times_or_more ~ app, data = social_media)
 ```
 
-## Statistical Significance
+**R Example 2** In a study about Universal Basic Income, the (SEED) randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.5 and among the control group was 29.5
+
+```{r}
+ubi <- tibble::tribble(
+            ~group, ~well_being,
+         "Control",            24.8,
+         "Control",            28.7,
+         "Control",              34,
+         "Control",            26.5,
+         "Control",            29.9,
+         "Control",            33.1,
+         "Control",            28.3,
+         "Control",            24.5,
+         "Control",            31.7,
+         "Control",            29.2,
+         "Control",            30.5,
+         "Control",            26.8,
+         "Control",            33.7,
+         "Control",            30.8,
+         "Control",            28.1,
+         "Control",            25.9,
+         "Control",            32.8,
+         "Control",            30.4,
+         "Control",            27.1,
+         "Control",            33.5,
+         "Control",            29.7,
+         "Control",            26.2,
+         "Control",              31,
+         "Control",            28.5,
+         "Control",            24.3,
+         "Control",            33.3,
+         "Control",            29.4,
+         "Control",            27.5,
+         "Control",            32.1,
+         "Control",            30.2,
+         "Control",            25.3,
+         "Control",            28.9,
+         "Control",            34.2,
+         "Control",            26.7,
+         "Control",              30,
+         "Control",              33,
+         "Control",              28,
+         "Control",            24.6,
+         "Control",            31.6,
+         "Control",            29.1,
+         "Control",            30.6,
+         "Control",            26.9,
+         "Control",            33.8,
+         "Control",            30.7,
+         "Control",            28.2,
+         "Control",              26,
+         "Control",            32.9,
+         "Control",            30.3,
+         "Control",              27,
+         "Control",            33.6,
+         "Control",            29.8,
+         "Control",            26.3,
+         "Control",            31.1,
+         "Control",            28.6,
+         "Control",            24.4,
+         "Control",            33.4,
+         "Control",            29.5,
+         "Control",            27.6,
+         "Control",            32.2,
+         "Control",            30.1,
+         "Control",            25.7,
+         "Control",            28.8,
+         "Control",            34.1,
+         "Control",            26.6,
+         "Control",              30,
+         "Control",            33.2,
+         "Control",            28.4,
+         "Control",            24.7,
+         "Control",            31.8,
+         "Control",            29.3,
+         "Control",            30.7,
+         "Control",              27,
+         "Control",            33.9,
+         "Control",            30.9,
+         "Control",            28.3,
+         "Control",            26.1,
+         "Control",              33,
+         "Control",            30.5,
+         "Control",            27.2,
+         "Control",            33.7,
+         "Control",            29.9,
+         "Control",            26.4,
+         "Control",            31.2,
+         "Control",            28.7,
+         "Control",            24.5,
+         "Control",            33.5,
+         "Control",            29.6,
+         "Control",            27.7,
+         "Control",            32.3,
+         "Control",            30.2,
+         "Control",            25.8,
+         "Control",              29,
+         "Control",            34.3,
+         "Control",            26.8,
+         "Control",            30.1,
+             "Control",            26.7,
+             "Control",            30.6,
+             "Control",            35.9,
+             "Control",            28.4,
+             "Control",            31.8,
+             "UBI",              35,
+             "UBI",            30.2,
+             "UBI",            26.4,
+             "UBI",            33.6,
+             "UBI",            31.1,
+             "UBI",            32.4,
+             "UBI",            28.7,
+             "UBI",            35.6,
+             "UBI",            32.7,
+             "UBI",              30,
+             "UBI",            27.8,
+             "UBI",            34.7,
+             "UBI",            32.3,
+             "UBI",              29,
+             "UBI",            35.4,
+             "UBI",            31.6,
+             "UBI",            28.1,
+             "UBI",            32.9,
+             "UBI",            30.4,
+             "UBI",            26.2,
+             "UBI",            35.2,
+             "UBI",            31.3,
+             "UBI",            29.4,
+             "UBI",              34,
+             "UBI",            32.1,
+             "UBI",            27.2,
+             "UBI",            30.8,
+             "UBI",            36.1,
+             "UBI",            28.6,
+             "UBI",            31.9,
+             "UBI",            35.1,
+             "UBI",            30.1,
+             "UBI",            26.5,
+             "UBI",            33.5,
+             "UBI",              31,
+             "UBI",            32.5,
+             "UBI",            28.8,
+             "UBI",            35.7,
+             "UBI",            32.8,
+             "UBI",            30.1,
+             "UBI",            27.9,
+             "UBI",            34.8,
+             "UBI",            32.4,
+             "UBI",            29.1,
+             "UBI",            35.5,
+             "UBI",            31.7,
+             "UBI",            28.2,
+             "UBI",              33,
+             "UBI",            30.5,
+             "UBI",            26.3,
+             "UBI",            35.3,
+             "UBI",            31.4,
+             "UBI",            29.5,
+             "UBI",            34.1,
+             "UBI",            32.2,
+             "UBI",            27.3,
+             "UBI",            30.9,
+             "UBI",            36.2,
+             "UBI",            28.7,
+             "UBI",              32,
+             "UBI",            35.2,
+             "UBI",            30.3,
+             "UBI",            26.6,
+             "UBI",            33.7,
+             "UBI",            31.2,
+             "UBI",            32.6,
+             "UBI",            28.9,
+             "UBI",            35.8,
+             "UBI",            32.9,
+             "UBI",            30.2,
+             "UBI",              28,
+             "UBI",            34.9,
+             "UBI",            32.5,
+             "UBI",            29.2,
+             "UBI",            35.6,
+             "UBI",            31.8,
+             "UBI",            28.3,
+             "UBI",            33.1,
+             "UBI",            30.6,
+             "UBI",            26.4,
+             "UBI",            35.4,
+             "UBI",            31.5,
+             "UBI",            29.6,
+             "UBI",            34.2,
+             "UBI",            32.3,
+             "UBI",            27.4,
+             "UBI",              31,
+             "UBI",            36.3,
+             "UBI",            28.8,
+             "UBI",            32.1,
+             "UBI",            35.3,
+             "UBI",            30.4,
+             "UBI",            26.7,
+             "UBI",            33.8,
+             "UBI",            31.3,
+             "UBI",            32.7,
+             "UBI",              29,
+             "UBI",            35.9,
+             "UBI",              33,
+             "UBI",            30.3
+         )
+
+ubi |>
+  group_by(group) |>
+  summarize(
+    mean = mean(well_being),
+    n = n()
+  )
+
+```
+
+```{r}
+#| echo: true
+#| fig-height: 2.5
+#| layout-ncol: 2
+
+permTest(well_being ~ group, data = ubi)
+```
+
+::: callout-note
+# Constructing null distribution for a difference means
+
+Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in means between the two groups. Do this many times. 
+:::
+
+## Statistical Significance {-}
 
 ::: callout-note
 Significance Level
@@ -140,14 +327,12 @@ Formal Statistical Decisions
 \vspace{.75in}
 :::
 
-## Summary
+## Summary {-}
 
 Whenever performing a hypothesis test, you should: 
 
 (1) Perform an appropriate EDA 
-
 (2) Formulate $H_0$ and $H_A$
-
 (3) Compute a *test statistic*
 (4) Construct a *null distribution* 
 (5) Compare the test statistic to the null distribution and compute a *p-value*
