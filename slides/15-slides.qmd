@@ -1,18 +1,13 @@
 ---
-title: "15: More on Testing"
-subtitle: "Stat120"
-author: "Prof Amanda Luby"
-callout-appearance: minimal
-format:
-  revealjs:
-    html-math-method: mathjax
-    slide-number: true
+title: "15: More On Testing"
+format: 
+  revealjs: 
+    theme: slides.scss
     scrollable: true
     incremental: true
-    embed-resources: true
-    theme: [../slides-css.scss]
     title-slide-attributes: 
       data-background-color: "#1F4257"
+brand: false
 ---
 
 ```{r setup, include=FALSE}
