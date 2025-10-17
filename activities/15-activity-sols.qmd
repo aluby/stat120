@@ -17,19 +17,82 @@ Cholesterol <- read.csv("http://math.carleton.edu/Stat120/RLabManual/Cholesterol
 
 **0.** Load the data and check the "spreadsheet view". What is each case? How many variables are there?
 
+::: callout-tip
+## Solution
+
+Each case is a patient. There are 2 variables (group + cholesterol, plus a column for patient ID)
+:::
+
 **1.** Create an appropriate graph to answer the research question. 
+
+::: callout-tip
+## Solution
+
+
+```{r}
+ggplot(Cholesterol, aes(y = group, x = cholest, fill = group, col = group)) + 
+  geom_boxplot(alpha = .5) + 
+  geom_jitter()
+```
+:::
 
 **2.** *Without performing a formal statistical test* Does there appear to be evidence of a difference in cholesterol levels between the control group and the heart attack group? 
 
+::: callout-tip
+## Solution
+
+Yes, it looks like there is a difference in cholesterol between the two groups, although the sample size is kind of small
+:::
+
+
 **3.** Write out appropriate null and alternative hypotheses using the original research question.
 
-**4.** Use the `permTest()` command in R to test your hypotheses. (Make sure to include `seed()`!) 
+::: callout-tip
+## Solution
+
+$$H_0: \mu_{\text{HeartAttack}} - \mu_{\text{Control}} = 0$$
+
+$$H_A: \mu_{\text{HeartAttack}} - \mu_{\text{Control}} > 0$$
+
+:::
+
+**4.** Use the `permTest()` command in R to test your hypotheses. (Make sure to include `seed`!) 
+
+::: callout-tip
+## Solution
+
+```{r}
+permTest(cholest ~ group, data = Cholesterol, alternative = "less", seed = 10156)
+```
+
+:::
 
 **5.** Report the *statistic* and *p-value* from the R output. 
 
+::: callout-tip
+## Solution
+
+Statistic is $\bar{X}_1 - \bar{X}_2 = 37.51$
+
+P value is .00003
+:::
+
+
 **6.** Make a *formal statistical decision* and *report your conclusion in context*.  
 
+::: callout-tip
+## Solution
+
+At the $\alpha = .05$ level, we reject $H_0$ and conclude that cholesterol for heart attack victims is likely higher than non heart attack victims.
+:::
+
 **7.** What type of error could you have made in (6)? Do you know the probability that an error occurred?
+
+::: callout-tip
+## Solution
+
+Type I error. $\alpha$
+:::
 
 *When you're done:* Let Amanda know. 
 
@@ -43,4 +106,15 @@ Cholesterol <- read.csv("http://math.carleton.edu/Stat120/RLabManual/Cholesterol
 (d) A big p-value means that you do not have strong evidence against the null hypothesis
 (e) A p-value is the probability of getting a result more in favor of the alternative hypothesis than the result that you observed, assuming the null hypothesis is true
 (f) A p-value is the probability of getting a result more in favor of the alternative hypothesis than the result that you observed, assuming the alternative hypothesis is true
+
+::: callout-tip
+## Solution
+
+(a) false
+(b) false
+(c) false
+(d) true
+(e) true
+(f) false
+:::
 

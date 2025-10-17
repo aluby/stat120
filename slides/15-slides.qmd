@@ -1,0 +1,267 @@
+---
+title: "15: More on Testing"
+subtitle: "Stat120"
+author: "Prof Amanda Luby"
+callout-appearance: minimal
+format:
+  revealjs:
+    html-math-method: mathjax
+    slide-number: true
+    scrollable: true
+    incremental: true
+    embed-resources: true
+    theme: [../slides-css.scss]
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+1.  Types of Errors
+2.  Connection between HT's and CI's
+
+## Hypothesis Tests Recap
+
+1.  Perform an appropriate EDA
+2.  Formulate $H_0$ and $H_A$
+3.  Compute a *test statistic*
+4.  Construct the *null distribution* using `permTest` or StatKey
+5.  Compare the test statistic to the null distribution and compute a *p-value*
+6.  Make a decision about $H_0$
+7.  Report conclusion in context
+
+# Types of Errors {.maize}
+
+## Decisions vs Truth
+
+There are two *formal statistical decisions* that we can make:
+
+1.  Reject $H_0$
+2.  Do not reject $H_0$
+
+. . .
+
+These decisions are under our control. There are also two possible "truths"
+
+1.  $H_0$ is actually true
+2.  $H_0$ is actually false
+
+## Types of Errors
+
+When we make a formal statistical decision, we can be wrong in two ways:
+
+1.  $H_0$ is actually true but we reject it
+2.  $H_0$ is actually false but we do not reject it
+
+. . .
+
+These two types of errors have different consequences, so it's important to distinguish between them. We call the first a *Type I Error* and the second a *Type II Error*
+
+## Decision Table
+
++------------------------------+-----------------------------------------+-----------------------------------------+
+|                              | $H_0$ True                              | $H_0$ False                             |
++==============================+:=======================================:+:=======================================:+
+| Reject $H_0$                 | ::: {style="background-color: #E97451"} | Correct Decision                        |
+|                              | Type I Error                            |                                         |
+|                              | :::                                     |                                         |
++------------------------------+-----------------------------------------+-----------------------------------------+
+| Do not reject $H_0$          | Correct Decision                        | ::: {style="background-color: #E97451"} |
+|                              |                                         | Type II Error                           |
+|                              |                                         | :::                                     |
++------------------------------+-----------------------------------------+-----------------------------------------+
+
+## Example
+
+A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$.
+
+
+```{r}
+#| layout-ncol: 2
+#| column: page
+#| 
+set.seed(101524)
+out <- as.data.frame(MASS::mvrnorm(23, mu = c(0,0), 
+                     Sigma = matrix(c(1,0.037,0.037,1),, ncol = 2), 
+                     empirical = TRUE)) %>% tibble()
+
+icu = tibble(
+  age = (out$V1 - min(out$V1))*15+40,
+  heart_rate = (out$V2 )*15+80
+  )
+
+ggplot(icu, aes(x = age, y = heart_rate)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+
+icu %>% select(age, heart_rate)
+
+ggplot(icu, aes(x = age, y = heart_rate)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## Example
+
+A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$.
+
+$H_0: \rho = 0$
+$H_A: \rho > 0$
+
+. . . 
+
+If we reject $H_0$, we could make a *Type I Error* and conclude there *is* a positive relationship when there is not. This could lead to a change in clinical practices and perhaps subjecting older patients to measures to lower their heart rate when unnecessary. This is also sometimes called a "False Positive Error"
+
+. . . 
+
+If we fail to reject $H_0$, we could make a *Type II Error* and conclude there is *no* relationship when there is one. This could lead to *missed* benefits for older patients if we fail to treat them. This is also sometimes called a "False Negative Error" 
+
+
+## 
+
+In practice, we never know if we made an error or not, but we can talk about the *probability* of each type of error.
+
+. . .
+
+::: callout-note
+## $\alpha$
+
+The probability of making a Type I error is $\alpha$ (our significance level) which we get to decide.
+:::
+
+. . .
+
+::: callout-note
+## $\beta$
+
+The probability of making a Type II error is called $\beta$, and depends on a specific value within $H_A$
+:::
+
+. . .
+
+::: callout-note
+## Power
+
+The probability of rejecting $H_0$ when $H_0$ is true. (High power = good, low power = bad). Equal to $1-\beta$
+:::
+
+. . .
+
+## Example
+
+A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$.
+
+$H_0: \rho = 0$
+$H_A: \rho > 0$
+
+. . . 
+
+If we use $\alpha = .05$, that means the probability that we make a Type I error is 5%. 
+
+. . . 
+
+Do you think the probability of a Type II error is higher if $\rho = .9$ or $\rho = .1$? 
+
+. . . 
+
+Computing an exact value of $\beta$ is beyond our capabilities right now, so as long as you have a sense of how $\beta$ is impacted for different values of the parameter, you're in good shape. 
+
+
+# Relationship between CI's and HT's {.maize}
+
+## Example {.smaller}
+
+In a Pew Research Poll on social media use, 72% of Twitter users (n = 346) responded that they visited Twitter a few times a week or more. Among Instagram users (n = 530), this number was 80%. Is there a difference in frequency of use between Twitter and Instagram users?
+
+::: {.panel-tabset}
+
+## Data 
+
+```{r}
+social_media = tibble(
+  app = c(rep("twitter", 346), rep("instagram", 530)), 
+  visits = c(rep(1, 249), rep(0, 346-249), rep(1, 424), rep(0, 530-424))
+)
+ggplot(social_media, aes(x = app, fill = as.factor(visits))) + 
+  geom_bar(position = "fill") +
+  labs(fill = "", 
+       title = "Proportion who visited the app a few times a week or more")
+```
+
+## Hypothesis Test
+
+```{r}
+#| echo: true
+library(CarletonStats)
+permTest(visits ~ app, data = social_media)
+```
+
+
+## Confidence Interval 
+
+```{r}
+#| echo: true
+library(CarletonStats)
+boot(visits ~ app, data = social_media)
+```
+
+## Comparison 
+
+A 95% percentile bootstrap interval is: [0.02266, 0.13808]
+
+The p-value for testing $H_0: p_I - p_T = 0$ is .004, so we reject $H_0$. 
+
+The value under $H_0$ (0) is *not* in the confidence interval, so it is *not* a plausible value for the parameter. Therefore, we can tell from the CI alone that we will reject $H_0$. 
+
+::: 
+
+## 
+
+```{r}
+#| fig-height: 3
+#| fig-width: 12
+
+test = permTest(visits ~ app, data = social_media)
+ci = boot(visits ~ app, data = social_media)
+
+plot(test) + xlim(c(-.1,.2)) + theme(legend.position = "none") + labs(x = "", y = "")
+plot(ci) + xlim(c(-.1,.2)) + theme(legend.position = "none") + labs(x = "", y = "")
+```
+
+## How do we choose?!
+
+. . . 
+
+Use a *confidence interval* when we want to summarize our "best guess" for the population parameter with sampling uncertainty.
+
+. . .
+
+Use a *hypothesis test* when there is a specific value that we want to (dis)prove. 
+
+. . .
+
+The best part is that we'll get the same result! If the value of $H_0$ is *outside* of the confidence interval, we'll reject it. If the value is *inside* the confidence interval, we'll fail to reject it.
+
+. . .
+
+I find *confidence intervals* to be more general purpose, but you'll typically see *hypothesis tests* and p-values in scientific articles.
+
+## Summary
+
+- There are two *formal statistical decisions* that we can make, but we make a wrong decision. 
+- A Type I Error occurs when we reject $H_0$ when it is actually true. The probability of this happening is $\alpha$ and we get to control it
+- A Type II Error occurs when we don't reject $H_0$ when it is actually false. The probability of this happening is $\beta$ and depends on a specific value within $H_A$.
+- We can tell if we will reject/not reject a hypothesis test based on a confidence interval. We can also tell if a confidence interval will contain the null value based on the hypothesis test. 

@@ -1,6 +1,7 @@
 subtitle: "Stat 120 | Fall 2025"
 author: "Prof Amanda Luby"
 engine: knitr
+callout-appearance: minimal
 knitr:
     opts_chunk: 
       dev: "ragg_png"

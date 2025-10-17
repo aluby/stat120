@@ -14,6 +14,14 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+  sidebar:
+    contents: 
+      - section: Notes
+        contents: notes
+      - section: Activities
+        contents: activities
+      - section: Slides
+        contents: slides
 
 format:
   html:

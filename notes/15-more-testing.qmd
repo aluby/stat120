@@ -9,47 +9,50 @@ library(infer)
 library(patchwork)
 library(palmerpenguins)
 library(broom)
-
+library(CarletonStats)
 options(digits = 4)
 notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
 ```
 
-## Types of Errors
+\vspace{-.25in}
 
 |                     | $H_0$ True | $H_0$ False |
 |---------------------|:----------:|:-----------:|
+|                     |            |             |
 | Reject $H_0$        |            |             |
+|                     |            |             |
 | Do not reject $H_0$ |            |             |
+|                     |            |             |
 
 ::: callout-note
-Type I Error
+## Type I Error
 
-\vspace{.5in}
+Rejecting $H_0$ when $H_0$ is true
 :::
 
 ::: callout-note
-Type II Error
+## Type II Error
 
-\vspace{.5in}
+Failing to reject $H_0$ when $H_0$ is false
 :::
 
 ::: callout-note
-$\alpha$
+## $\alpha$ (Significance Level)
 
-\vspace{.5in}
+The probability of making a Type I error is $\alpha$ (which we get to decide.)
 :::
 
 ::: callout-note
-$\beta$
+## $\beta$
 
-\vspace{.5in}
+The probability of making a Type II error 
 :::
 
 ::: callout-note
-Power
+## Power
 
-\vspace{.5in}
+The probability of rejecting $H_0$ when $H_0$ is true. (High power = good, low power = bad). Equal to $1-\beta$
 :::
 
 **Example:** A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$. Do you think the probability of a Type II error is higher if $\rho = .9$ or $\rho = .1$? 
@@ -58,12 +61,12 @@ $H_0: \rho = 0$
 
 $H_A: \rho > 0$
 
-
+![](images/icu-permTestCor.png){width="50%"}
 
 
 \pagebreak
 **Big Picture** Picture 
-\vspace{.5in}
+\vspace{1.5in}
 
 :::: {layout="[0.33, 0.33, 0.33]"}
 
@@ -83,7 +86,7 @@ $H_A: \rho > 0$
 
 \vspace{2in}
 
-## Connection to Confidence Intervals
+## Connection to Confidence Intervals {-}
 
 If the value of $H_0$ is *outside* of the confidence interval, we ___________________________________. 
 
@@ -108,4 +111,23 @@ plot(test) + xlim(c(-.1,.2)) + theme(legend.position = "none") + labs(x = "", y 
 plot(ci) + xlim(c(-.1,.2)) + theme(legend.position = "none") + labs(x = "", y = "")
 ```
 
+\pagebreak 
+
 ## Statistical vs Practical Significance
+
+**Example:** Breaking news! I have a proven way to improve your exam scores! The difference in Exam 02 scores between students who do this and students who don't is statistically significant! All you have to do is come to every office hour, read each chapter of the textbook 5 times, and do every single problem in the book. 
+
+Parameter: 
+
+Sample Statistic: 
+
+\vspace{2in}
+
+::: callout-tip
+## Statistical vs Practical Significance
+
+When making conclusions, it's important to consider **effect size** alongside *statistical significance*
+:::
+
+
+
