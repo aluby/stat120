@@ -1,0 +1,93 @@
+---
+title: "Inference Reference Sheet"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(ragg)
+library(patchwork)
+library(palmerpenguins)
+library(broom)
+
+options(digits = 4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, dev = ragg::agg_png())
+notes_theme = theme_minimal(
+  base_size = 10)
+theme_set(notes_theme)
+```
+
+\vspace{-.25in}
+
++---------------------------+-----------------------------+-------------------------+-----------------+
+| Name                      | Type of Variable(s)         | Statistic               | Parameter       |
++===========================+=============================+=========================+=================+
+| Mean                      | Quantitative                | $\bar{x}$               | $\mu$           |
++---------------------------+-----------------------------+-------------------------+-----------------+
+| Proportion                | Categorical                 | $\hat{p}$               | $p$             |
++---------------------------+-----------------------------+-------------------------+-----------------+
+| Standard Deviation        | Quantitative                | $s$                     | $\sigma$        |
++---------------------------+-----------------------------+-------------------------+-----------------+
+| Difference in Proportions | 2 Categorical               | $\hat{p}_1 - \hat{p}_2$ | $p_1 - p_2$     |
+|                           |                             |                         |                 |
+|                           | (1 Response, 1 Explanatory) |                         |                 |
++---------------------------+-----------------------------+-------------------------+-----------------+
+| Difference in Means       | 1 Quantitative (Response)   | $\bar{x}_1 - \bar{x}_2$ | $\mu_1 - \mu_2$ |
+|                           |                             |                         |                 |
+|                           | 1 Categorical (Explanatory) |                         |                 |
++---------------------------+-----------------------------+-------------------------+-----------------+
+| Correlation               | 2 Quantitative              | $r$                     | $\rho$          |
++---------------------------+-----------------------------+-------------------------+-----------------+
+| Slope                     | 2 Quantitative              | $b_1$                   | $\beta_1$       |
++---------------------------+-----------------------------+-------------------------+-----------------+
+
+::: {layout="[0.5, 0.5]"}
+::: {#firstcol}
+**Confidence Interval**
+
+1.  I am \_\_\_ % confident
+2.  that the \[population parameter in context\]
+3.  is between \_\_\_\_ and \_\_\_\_ \[units\]
+:::
+
+::: {#secondcol}
+**Hypothesis Test**
+
+1.  At $\alpha=$ \[significance level\]
+2.  I \[reject/do not reject\] $H_0$
+3.  with a p-value of \[p-value\]
+4.  and conclude \[population parameter\] is ...
+
+|                     | $H_0$ True | $H_0$ False |
+|---------------------|:----------:|:-----------:|
+| Reject $H_0$        |            |             |
+| Do not reject $H_0$ |            |             |
+:::
+:::
+
+
+
+## R Commands {-}
+
+\vspace{-.1in}
+
+`library(CarletonStats)`
+
+**Confidence Interval**
+
+Mean/Proportion: `boot(~<variable_name>, data = <dataset_name>, seed = <seed>)`
+
+Difference: `boot(<response> ~ <explanatory>, data = <dataset_name>, seed = <seed>)`
+
+Paired Diff.: `bootPaired(<response1> ~ <response2>, data = <dataset>, seed = <seed>)`
+
+Correlation: `bootCor(<response> ~ <explanatory>, data = <dataset_name>, seed = <seed>)`
+
+**Hypothesis Test**
+
+Difference: `permTest(<response> ~ <explanatory>, data = <dataset_name>, seed = <seed>)`
+
+Paired Diff.: `permTestPaired(<response1> ~ <response2>, data = <dataset>, seed = <seed>)`
+
+Correlation: `permTestCor(<response> ~ <explanatory>, data = <dataset_name>, seed = <seed>)`

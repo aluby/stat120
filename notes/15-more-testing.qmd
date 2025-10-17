@@ -52,7 +52,7 @@ The probability of making a Type II error
 ::: callout-note
 ## Power
 
-The probability of rejecting $H_0$ when $H_0$ is true. (High power = good, low power = bad). Equal to $1-\beta$
+The probability of rejecting $H_0$ when $H_0$ is false (High power = good, low power = bad). Equal to $1-\beta$
 :::
 
 **Example:** A public health researcher believes that there is a positive relationship between heart rate and age among ICU patients. Data from 23 patients gives $r = 0.037$. Do you think the probability of a Type II error is higher if $\rho = .9$ or $\rho = .1$? 

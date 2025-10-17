@@ -150,7 +150,7 @@ The probability of making a Type II error is called $\beta$, and depends on a sp
 ::: callout-note
 ## Power
 
-The probability of rejecting $H_0$ when $H_0$ is true. (High power = good, low power = bad). Equal to $1-\beta$
+The probability of rejecting $H_0$ when $H_0$ is false (High power = good, low power = bad). Equal to $1-\beta$
 :::
 
 . . .
