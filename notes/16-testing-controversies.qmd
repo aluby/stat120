@@ -80,6 +80,8 @@ sim_ps %>%
   labs(x = "")
 ```
 
+\vspace{-.1in}
+
 ## Multiple Testing
 
 When you do a single hypothesis test, your Type I error rate is:

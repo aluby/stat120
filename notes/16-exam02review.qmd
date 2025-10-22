@@ -1,0 +1,80 @@
+---
+title: "Exam 2 Review"
+subtitle: "Stat120 | Prof Amanda Luby"
+callout-appearance: minimal
+knitr:
+    opts_chunk: 
+      dev: "ragg_png"
+      echo: false
+      warning: false
+      message: false
+format:
+  pdf:
+    toc: false
+    number-sections: true
+    colorlinks: true
+    geometry:
+      - top=1in
+      - left=1in
+      - right=1in
+      - bottom=1in
+      - heightrounded
+    include-in-header: 
+       - "../../notes/preamble.tex"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(ragg)
+library(patchwork)
+options(digits = 4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3, dev = ragg::agg_png())
+notes_theme = theme_minimal(
+ # base_family = "Montserrat", 
+  base_size = 14)
+theme_set(notes_theme)
+```
+
+**Topics for Exam 2:**
+
+1. So many distributions
+    a) Population Distribution
+    a) Sample distribution
+    a) Sampling Distributions
+    a) Bootstrap Distributions
+    a) Null/Randomization Distributions
+1. Confidence Intervals
+    a) Standard Deviation, Standard Error, and Margin of Error
+    a) Percentile vs $\pm$ 2 SE
+    a) Interpreting in context
+2. Hypothesis Tests
+    a) Formulating null and alternative hypotheses
+    a) Statistical significance and p-values
+    a) Interpreting results in context
+    a) Type I Error, Type II Error, and Power
+    a) Connection to Confidence Intervals
+    a) Pitfalls
+  
+$~$
+
+**Cheat Sheet:** You may bring 1 side of 1 standard 8.5x11 sheet of paper of notes, but no other materials are allowed. 
+
+**Calculator:** While you might be asked to do basic arithmetic (similar to HW problems), if you get the answer to a point you would type it into the calculator, that will be full credit. I will bring basic calculators that you can use if you wish, but you may not use the calculator on your phone or any calculator that can make graphs or be programmed. 
+
+**R Questions:** You won't be able to use your computer and won't be asked to write down any R code. I will not give you R code and ask you to tell me what it does. You will be asked to look at output (e.g. a graph or `permTest()` output) and interpret the results. 
+
+**Academic Integrity:** I will ask you all to sign a statement that you have not received (and will not provide) any guidance or help on the exam problems, and will not discuss the exam with anyone inside or outside of class until it is returned to you. This includes using materials from prior versions of this class to study. Any academic integrity violations on the exam will be reported to the Provost's office.
+
+**Additional Practice:** In addition to your notes, R activities in class, and homework; the "Unit B Essential Synthesis"  of the textbook provides a nice overview and some conceptual practice problems. *Note:* don't over-study these practice problems, since the format of the exam will be entirely different. Focus your time and energy on understanding notes and homework problems first.
+
+**Format of the exam:** The exam will be similar to the first exam and follow the "data analysis" format. 
+
+**Overview: difference in means** Suppose you want to find out if reading speed is any different between the print and e-book version of a book. 
+
+\vspace{4in}
+
+**Overview: correlation** Suppose you want to see if there is a relationship between reading speed on an e-book versus the print version. 
+
+

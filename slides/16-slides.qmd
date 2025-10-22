@@ -1,0 +1,288 @@
+---
+title: "16: Hypothesis Test Controversies + Exam II Review"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+1.  "Warm Up" after break
+2.  Multiple Testing
+3.  Publication Bias
+4.  Exam II Review
+
+# Warm Up {.maize}
+
+## Is there such a thing as "Extrasensory Perception" (ESP)?
+
+![](img/zener.png)
+
+. . .
+
+Idea: subjects draw a card at random and telepathically communicate this to someone who then guesses the symbol
+
+. . .
+
+Let's say we run this experiment with 14 subjects and 3 get the answer right.
+
+## On your own...
+
+Write out the *population parameter*, *sample statistic*, $H_0$ and $H_A$.
+
+-   Population Parameter: $p$, the proportion of correctly guessed cards *in the population*
+-   Sample Statistic: $\hat{p}$, the proportion of correctly guessed cards *in our sample* (3/14)
+-   $H_0: p = .2$
+-   $H_A: p > .2$
+
+## Results
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/null-dist-sm.png")
+```
+
+## Oops! I meant that there were 1400 subjects and 300 got the answer right
+
+. . .
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/null-dist-med.png")
+```
+
+## Oops! I meant that there were 14000 subjects and 3000 got the answer right
+
+. . .
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/null-dist-big.png")
+```
+
+## Sample Size has a *huge* impact on "significance"
+
+. . .
+
+With *small samples*, even large effects might not be statistically significant.
+
+. . .
+
+With *large samples*, even very small effects can be statistically significant.
+
+. . .
+
+This is one reason why some people prefer "discernible" to "significant"
+
+## Confidence Interval
+
+Build using a *bootstrap distribution*: sample from the original data with replacement to create a bunch of new samples. Compute the sample proportion in each, and make a plot of the sample proportions to create the bootstrap distribution.
+
+. . .
+
+14 subjects: \[0, .429\]
+
+. . .
+
+1400 subjects: \[.194, .235\]
+
+. . .
+
+14000 subjects: \[.208, .221\]
+
+## 
+
+Which is the *bootstrap distribution* and which is the *null distribution*? (1400 subjects example)
+
+```{r}
+set.seed(102324)
+sim_ps = tibble(
+  boot_ps = rnorm(1000, mean = .214, sd = sqrt((.2*(1-.2))/1400)),
+  null_ps = rnorm(1000, mean = .2, sd = sqrt((.2*(1-.2))/1400))
+) 
+
+sim_ps %>%
+  pivot_longer(everything()) %>%
+  ggplot(aes(x = value, fill = name)) + 
+  geom_histogram(col = "white") + 
+  facet_wrap(vars(name)) + 
+  theme(legend.position = "none",
+        strip.text = element_blank()) + 
+  labs(x = "") + 
+  scale_fill_viridis_d(option = "plasma", end = .75)
+```
+
+## 
+
+The two distributions live in the same "world"
+
+```{r}
+sim_ps %>%
+  pivot_longer(everything()) %>%
+  ggplot(aes(x = value, fill = name)) + 
+  geom_histogram(col = "white", position = position_dodge())  + 
+  scale_fill_viridis_d(option = "plasma", end = .75) + 
+  theme(legend.position = "bottom")
+```
+
+# Multiple Testing {.maize}
+
+## 
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/xkcd1.png")
+```
+
+## 
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/xkcd2.png")
+```
+
+## 
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/xkcd3.png")
+```
+
+## 
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/xkcd4.png")
+```
+
+## Multiple Testing
+
+Whenever you do a **single** hypothesis test, your Type I Error rate is $\alpha$ (let's say 5%).
+
+. . .
+
+If you do *lots* of hypothesis tests, your Type I Error rate is much higher!
+
+. . .
+
+In fact, the probability of making at least Type I error among $k$ tests is $1-(.95)^k$
+
+. . .
+
+If you do 10 tests, your overall Type I Error rate is 40%
+
+. . .
+
+If you do 100 tests, your overall Type I Error rate is 99%!
+
+. . .
+
+Need to do a *multiple testing correction* in these cases. Plan the number of tests in advance and adjust your original $\alpha$ accordingly
+
+# Publication Bias {.maize}
+
+## 
+
+A 2017 paper in the [Journal of Clinical Epidemiology](https://www.sciencedirect.com/science/article/pii/S0895435616308381?via%3Dihub) looked at published p-values in 120 medical research articles published in top medical journals in 2016.
+
+Theoretically, the distribution of p-values should be *uniform*:
+
+. . .
+
+```{r}
+#| echo: false
+#| fig-height: 4
+#| fig-width: 8
+tibble(
+  label = c("[1,2)", "[2,3)", "[3,4)", "[4,5)", "[5,6)", "[6,7)", "[7,8)", "[8,9)"),
+  betterlab = c(".01-.02", ".02-.03", ".03-.04", ".04-.05", ".05-.06", ".06-.07", ".07-.08", ".08-.09"),
+  count = c(80, 82, 84, 76, 75, 81, 80, 85)
+) %>%
+  ggplot(aes(x = betterlab, y = count)) + 
+  geom_col() + 
+  labs(x = "")
+```
+
+## 
+
+Instead, the distribution looked like:
+
+. . .
+
+```{r}
+#| echo: false
+knitr::include_graphics("https://ars.els-cdn.com/content/image/1-s2.0-S0895435616308381-gr2.jpg")
+```
+
+## 
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/asa-statement.png")
+```
+
+## Six principles from the ASA statement
+
+1.  P-values can indicate how incompatible the data are with a specified statistical model.
+2.  P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.
+3.  Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.
+4.  Proper inference requires full reporting and transparency.
+5.  A p-value, or statistical significance, does not measure the size of an effect or the importance of a result.
+6.  By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis.
+
+## 
+
+43 articles and over 400 pages of opinions and suggestions for ways to move forward
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/AmStat.png")
+```
+
+# Exam II Review {.maize}
+
+## Topics/questions from daily prep (as of \~45 minutes before class) {.smaller}
+
+-   Does rejecting the null hypothesis mean the alternative hypothesis is true?
+-   when to trust p-value versus confidence interval
+-   differences between when to use sampling distribution, bootstrap distribution and randomization distribution
+-   how to interpret p-value again
+-   bootstrap distributions
+-   hypothesis tests
+-   How CI is calculated
+-   solve more exam-style questions
+-   hypothesis testing setup for trickier ones
+-   Is there a way to calculate/guess the p-value from a graph without R/Statkey?
+-   When to use a confidence interval vs. Hypothesis
+-   What unit do you put on an interpretation of a CI bootstrapped difference in proportions?
+
+## Practice Q's {.smaller}
+
+| Topic | Question/Answer writer | Proofreader |
+|----|----|----|
+| Hypothesis test for difference in means | 8 | 1 |
+| Hypothesis test for difference in proportions | 7 | 2 |
+| Hypothesis test for correlation | 6 | 3 |
+| Type I vs Type II error | 5 | 4 |
+| Confidence interval for difference in proportions | 4 | 5 |
+| Confidence interval for difference in means | 3 | 6 |
+| Connection between confidence interval and hypothesis testing | 2 | 7 |
+| Multiple Testing | 1 | 8 |
