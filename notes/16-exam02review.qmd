@@ -1,26 +1,5 @@
 ---
 title: "Exam 2 Review"
-subtitle: "Stat120 | Prof Amanda Luby"
-callout-appearance: minimal
-knitr:
-    opts_chunk: 
-      dev: "ragg_png"
-      echo: false
-      warning: false
-      message: false
-format:
-  pdf:
-    toc: false
-    number-sections: true
-    colorlinks: true
-    geometry:
-      - top=1in
-      - left=1in
-      - right=1in
-      - bottom=1in
-      - heightrounded
-    include-in-header: 
-       - "../../notes/preamble.tex"
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
