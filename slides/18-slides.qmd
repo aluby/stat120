@@ -1,0 +1,313 @@
+---
+title: "18: The Normal Distribution"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+1. Revisiting sampling/bootstrap/null distributions
+2. The Normal Distribution
+3. Practice in StatKey and R
+
+# Revisiting {.maize}
+
+## 
+
+We've already covered the 3 main pieces of intro stats: 
+
+1. **Exploratory Data Analysis**: Summarizing data with numbers and graphs
+2. **Estimation**: Using confidence intervals to estimate parameters with uncertainty
+3. **Testing:** Using p-values to evaluate competing hypotheses
+
+## Inference
+
+*Confidence intervals* and *Hypothesis Testing* are two ways that we can do **inference**: learning about population parameters with sample statistics. 
+
+. . . 
+
+Up until now, we've relied on computer simulations (via StatKey or R) to generate bootstrap or null distributions. 
+
+. . . 
+
+We're going to begin using *probability models* to generate these distributions instead. 
+
+## Examples of distributions we've seen so far
+
+::: {.r-stack}
+![](img/L5-4-53.png){.fragment height="500"}
+
+![](img/4-61-null-dist.png){.fragment height="500"}
+
+![](img/null-dist-med.png){.fragment height="500"}
+
+![](img/statkey-4-198.png){.fragment height="500"}
+
+![](img/unnamed-chunk-3-1.png){.fragment height="500"}
+
+![](img/unnamed-chunk-4-1.png){.fragment height="500"}
+
+![](img/unnamed-chunk-5-1.png){.fragment height="500"}
+
+![](img/unnamed-chunk-8-1.png){.fragment height="500"}
+
+![](img/unnamed-chunk-8-1 2.png){.fragment height="500"}
+:::
+
+## ESP example
+
+```{r}
+set.seed(102324)
+sim_ps = tibble(
+  boot_ps = rnorm(1000, mean = .214, sd = sqrt((.2*(1-.2))/1400)),
+  null_ps = rnorm(1000, mean = .2, sd = sqrt((.2*(1-.2))/1400))
+) 
+
+sim_ps %>%
+  ggplot(aes(x = boot_ps)) + 
+  geom_histogram(col = "white") + 
+  labs(x = "") + 
+  scale_fill_viridis_d(option = "plasma", end = .75)
+```
+
+## Turns out, we can draw curves with math!! 
+
+```{r}
+sim_ps %>%
+  ggplot(aes(x = boot_ps)) + 
+  geom_histogram(col = "white", aes(y = ..density..)) + 
+  labs(x = "") + 
+  scale_fill_viridis_d(option = "plasma", end = .75) + 
+  stat_function(fun = dnorm, args = list(mean = mean(sim_ps$boot_ps), sd = sd(sim_ps$boot_ps)), col = "#ED7953FF", linewidth = 2)
+```
+
+## Some details... 
+
+This is called a *density function* (note the y-axis is no longer 'count'!)
+
+. . . 
+
+$$\text{density} = \frac{1}{\sqrt{2\pi\sigma}} e^{-\frac{1}{2\sigma^2}(x - \mu)^2}$$
+
+. . . 
+
+Notation: we write $X \sim N(\mu, \sigma)$
+
+. . . 
+
+The *area under the curve* is equal to 1, and we can find *probabilities* by finding the appropriate area under the curve
+
+## Example 1
+
+Verbal SAT scores follow a normal distribution with a population mean of $\mu = 580$ and population standard deviation $\sigma = 70$. What proportion of test-takers score above 650? 
+
+. . . 
+
+1. Sketch the normal model with at least 3 x-axis ticks labelled 
+
+. . . 
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 580, sd = 70)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(580 - 2*70, 580 - 70, 580, 580 + 70, 580+2*70))
+```
+
+## Example 1
+
+Verbal SAT scores follow a normal distribution with a population mean of $\mu = 580$ and population standard deviation $\sigma = 70$. What proportion of test-takers score above 650? 
+
+2. Shade the area that corresponds to the probability we want to calculate
+
+. . . 
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 580, sd = 70)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(580 - 2*70, 580 - 70, 580, 580 + 70, 580+2*70)) + 
+  geom_area(stat = "function", fun = dnorm, args=list(mean=580, sd=70), fill = "#ED7953FF", xlim = c(650, 580+4*70)) 
+```
+
+## Example 1
+
+Find the probability: 
+. . . 
+
+a) Option 1: Calculus
+  $$\int_{650}^\infty\frac{1}{\sqrt{2\pi\sigma}} e^{-\frac{1}{2\sigma^2}(x - \mu)^2}$$
+
+. . . 
+
+(not a real option)
+
+## Example 1
+
+3. Find the probability: 
+  b) Option 2: StatKey
+      - Theoretical Distribution --> Normal
+      - "Edit Parameters" and input mean and SD 
+      - Check "right tail" and change the x-axis value to 650
+      
+## Example 1 
+
+3. Find the probability: 
+  c) Option 3: R
+      - `> pnorm(650, mean = 580, sd = 70, lower.tail = FALSE)`
+      - `[1] 0.158655 `
+  
+## Example 2
+
+What is the SAT score for the 90th percentile? 
+
+. . . 
+
+1. What does this correspond to on the sketch of the normal distribution? 
+
+. . . 
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+#| output-location: fragment
+ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 580, sd = 70)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(580 - 2*70, 580 - 70, 580, 580 + 70, 580+2*70))
+```
+
+## Example 2
+
+1. What does this correspond to on the sketch of the normal distribution? 
+
+. . . 
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 580, sd = 70)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(580 - 2*70, 580 - 70, 580, 580 + 70, 580+2*70)) + 
+  geom_area(stat = "function", fun = dnorm, args=list(mean=580, sd=70), fill = "#ED7953FF", xlim = c(300,670)) 
+```
+
+## To find the probability: 
+
+  a) Option 1: StatKey
+      - Theoretical Distribution --> Normal
+      - "Edit Parameters" and input mean and SD 
+      - Check "right tail" and change the probability value to .1
+  c) Option 2: R
+      - `> qnorm(.9, mean = 580, sd = 70, lower.tail = TRUE)`
+      - `[1] 669.708`
+
+# Connection to z-scores {.maize}
+
+## Z-scores
+
+Recall: 
+
+$$ z = \frac{x - \mu}{\sigma}$$
+
+. . . 
+
+z-scores measure *the number of standard deviations away from the mean* that a data point is. 
+
+## Standard Normal Model
+
+This means that all normal probability models can be transformed to the z-score space. We call this the *standard normal model*
+
+. . . 
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+ggplot(data = data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks=c(-2, -1, 0, 1, 2))
+```
+
+::: callout-note
+**Standard Normal Model:** $Z \sim N(\mu = 0, \sigma = 1)$
+:::
+
+## Back to the SAT Example 1
+
+Verbal SAT scores follow a normal distribution with a population mean of $\mu = 580$ and population standard deviation $\sigma = 70$. What proportion of test-takers score above 650? 
+
+1. Find the z-score
+
+. . . 
+
+$$ \frac{650 - 580}{70} = 1$$ 
+
+2. Use StatKey or `pnorm`
+
+. . . 
+
+```{r}
+#| echo: true
+
+pnorm(1, mean = 0, sd = 1, lower.tail = FALSE)
+```
+
+# Central Limit Theorem {.maize}
+
+## Why did our bootstrap and null distributions look normal? 
+
+. . . 
+
+**Central Limit Theorem:** for random samples, if $n$ is big enough, the *sampling distribution* of $\bar{x}$ is approximately normal, *regardless of what the shape of the population distribution is*. 
+
+## CLT
+
+This gives us a "shortcut" for estimation and testing that uses the Normal Distribution. Instead of simulating 1000 samples with the bootstrap or a permutation test, we can *assume*
+$$ \bar{X} \sim N(\mu_0, SE)$$
+when doing testing, and 
+
+$$ \bar{X} \sim N(\bar{X}, SE)$$
+when making confidence intervals.
+
+## Why is this a shortcut? 
+
+Instead of using StatKey, `boot()` or `permTest()`, we can use **z-scores** to find margin of errors for confidence intervals: 
+
+$$\bar{x} \pm z^* \times SE$$
+
+. . . 
+
+where $z^*$ can be found with `qnorm()` based on the appropriate confidence level
+
+. . . 
+
+And we can use `pnorm()` to find p-values based on our test statistic
+
+## Looking forward: 
+
+How do we find the SE?
