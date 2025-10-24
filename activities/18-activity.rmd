@@ -29,7 +29,7 @@ Answer: ________________
   
 Answer: ________________
 
-**4.** APM Research Lab ran a [survey of likely Minnesota voters](https://www.apmresearchlab.org/minnesota-poll-september-2024#methods) between Sept 16-18 of this year. Here's an excerpt from their methodology report: 
+**4.** APM Research Lab ran a [survey of likely Minnesota voters](https://www.apmresearchlab.org/minnesota-poll-september-2024#methods) between Sept 16-18 of 2024. Here's an excerpt from their methodology report: 
 
 > *The margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the "true" figure would fall within that range if all voters were surveyed. The margin for error is higher for any subgroup, such as a gender or age grouping.*
 
