@@ -661,7 +661,7 @@ window.Quarto = {
 <li>Use the <code>qnorm</code> function to answer this question.</li>
 </ol>
 <p>Answer: ________________</p>
-<p><strong>4.</strong> APM Research Lab ran a <a href="https://www.apmresearchlab.org/minnesota-poll-september-2024#methods">survey of likely Minnesota voters</a> between Sept 16-18 of this year. Here’s an excerpt from their methodology report:</p>
+<p><strong>4.</strong> APM Research Lab ran a <a href="https://www.apmresearchlab.org/minnesota-poll-september-2024#methods">survey of likely Minnesota voters</a> between Sept 16-18 of 2024. Here’s an excerpt from their methodology report:</p>
 <blockquote class="blockquote">
 <p><em>The margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the “true” figure would fall within that range if all voters were surveyed. The margin for error is higher for any subgroup, such as a gender or age grouping.</em></p>
 </blockquote>
@@ -682,27 +682,40 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p><em>Overall margin of error = 3.5 percentage points (and therefore approximately 7 percentage points for the difference between two data points)</em></p>
 </blockquote>
-<ol start="4" type="a">
+<ol start="5" type="a">
 <li>Use this information to build a 90% confidence interval for the <em>difference in proportions</em> between the Harris/Walz supporters and the Trump/Vance supporters.</li>
 </ol>
 <p><strong>5.</strong> True or False?</p>
 <ol type="a">
-<li><p>The central limit theorem says that the population distribution is approximately normal if the population is big enough.</p></li>
-<li><p>The central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.</p></li>
-<li><p>The central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.</p></li>
-<li><p>The central limit theorem says that any statistic is normally distributed if the sample size is big enough.</p></li>
-<li><p>The central limit theorem applies to proportions and means</p></li>
+<li>The central limit theorem says that the population distribution is approximately normal if the population is big enough.</li>
+<li>The central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.</li>
+<li>The central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.</li>
+<li>The central limit theorem says that any statistic is normally distributed if the sample size is big enough.</li>
+<li>The central limit theorem applies to proportions and means</li>
 </ol>
 <p><strong>5.</strong> Using <code>pnorm</code> or <code>qnorm</code>, find the following quantities.</p>
 <ol type="a">
-<li><p><span class="math inline">\(P(Z &lt; .25)\)</span></p></li>
-<li><p><span class="math inline">\(P(Z &gt; 1.5)\)</span></p></li>
-<li><p><span class="math inline">\(P(-.5 &lt; Z  &lt; 1.5)\)</span></p></li>
-<li><p><span class="math inline">\(z^*\)</span> where <span class="math inline">\(P(Z &lt; z^*) = .33\)</span></p></li>
-<li><p><span class="math inline">\(z^*\)</span> where <span class="math inline">\(P(Z &gt; z^*) = .33\)</span></p></li>
-<li><p><span class="math inline">\(P(X &lt; 10)\)</span> where <span class="math inline">\(X \sim N(15, 22)\)</span></p></li>
-<li><p><span class="math inline">\(P(X &gt; 40)\)</span> where <span class="math inline">\(X \sim(15,22)\)</span></p></li>
+<li><span class="math inline">\(P(Z &lt; .25)\)</span></li>
+<li><span class="math inline">\(P(Z &gt; 1.5)\)</span></li>
+<li><span class="math inline">\(P(-.5 &lt; Z  &lt; 1.5)\)</span></li>
+<li><span class="math inline">\(z^*\)</span> where <span class="math inline">\(P(Z &lt; z^*) = .33\)</span></li>
+<li><span class="math inline">\(z^*\)</span> where <span class="math inline">\(P(Z &gt; z^*) = .33\)</span></li>
+<li><span class="math inline">\(P(X &lt; 10)\)</span> where <span class="math inline">\(X \sim N(15, 22)\)</span></li>
+<li><span class="math inline">\(P(X &gt; 40)\)</span> where <span class="math inline">\(X \sim(15,22)\)</span></li>
 </ol>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>When you’re done…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please make sure that 1 person submits your group answers to gradescope, and includes all folks on the submission</p>
+</div>
+</div>
 
 
 <!-- -->
@@ -1217,39 +1230,34 @@ window.Quarto = {
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Overall margin of error = 3.5 percentage points (and therefore approximately 7 percentage points for the difference between two data points)*</span></span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>(d) Use this information to build a 90% confidence interval for the *difference in proportions* between the Harris/Walz supporters and the Trump/Vance supporters.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>(e) Use this information to build a 90% confidence interval for the *difference in proportions* between the Harris/Walz supporters and the Trump/Vance supporters.</span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>\vspace{2in}</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>**5.** True or False? </span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>(a) The central limit theorem says that the population distribution is approximately normal if the population is big enough.</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>(b) The central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>(c) The central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>(b) The central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>(c) The central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>(d) The central limit theorem says that any statistic is normally distributed if the sample size is big enough.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>(e) The central limit theorem applies to proportions and means</span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>(d) The central limit theorem says that any statistic is normally distributed if the sample size is big enough.</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>**5.** Using <span class="in">`pnorm`</span> or <span class="in">`qnorm`</span>, find the following quantities. </span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>(e) The central limit theorem applies to proportions and means</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>**5.** Using <span class="in">`pnorm`</span> or <span class="in">`qnorm`</span>, find the following quantities. </span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>(a) $P(Z &lt; .25)$</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>(b) $P(Z &gt; 1.5)$</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>(a) $P(Z &lt; .25)$</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>(b) $P(Z &gt; 1.5)$</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>(c) $P(-.5 &lt; Z  &lt; 1.5)$</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>(d) $z^*$ where $P(Z &lt; z^*) = .33$</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>(e) $z^*$ where $P(Z &gt; z^*) = .33$</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>(f) $P(X &lt; 10)$ where $X \sim N(15, 22)$</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>(g) $P(X &gt; 40)$ where $X \sim(15,22)$</span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>(c) $P(-.5 &lt; Z  &lt; 1.5)$</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>(d) $z^*$ where $P(Z &lt; z^*) = .33$</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## When you're done...</span></span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>(e) $z^*$ where $P(Z &gt; z^*) = .33$</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>(f) $P(X &lt; 10)$ where $X \sim N(15, 22)$</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>(g) $P(X &gt; 40)$ where $X \sim(15,22)$</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>Please make sure that 1 person submits your group answers to gradescope, and includes all folks on the submission</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
