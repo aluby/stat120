@@ -55,37 +55,31 @@ The report also says:
 
 > *Overall margin of error = 3.5 percentage points (and therefore approximately 7 percentage points for the difference between two data points)*
 
-(d) Use this information to build a 90% confidence interval for the *difference in proportions* between the Harris/Walz supporters and the Trump/Vance supporters.
+(e) Use this information to build a 90% confidence interval for the *difference in proportions* between the Harris/Walz supporters and the Trump/Vance supporters.
 
-\vspace{2in}
+\vspace{1in}
 
 **5.** True or False? 
 
 (a) The central limit theorem says that the population distribution is approximately normal if the population is big enough.
-
 (b) The central limit theorem says that the sampling distribution for the mean of a random sample is approximately normal if the sample is big enough.
-
 (c) The central limit theorem says that the sampling distribution for the mean is only normal if the population distribution is normal.
-
 (d) The central limit theorem says that any statistic is normally distributed if the sample size is big enough.
-
 (e) The central limit theorem applies to proportions and means
 
 **5.** Using `pnorm` or `qnorm`, find the following quantities. 
 
 (a) $P(Z < .25)$
-
 (b) $P(Z > 1.5)$
-
 (c) $P(-.5 < Z  < 1.5)$
-
 (d) $z^*$ where $P(Z < z^*) = .33$
-
 (e) $z^*$ where $P(Z > z^*) = .33$
-
 (f) $P(X < 10)$ where $X \sim N(15, 22)$
-
 (g) $P(X > 40)$ where $X \sim(15,22)$
 
 
+::: callout-note
+## When you're done...
 
+Please make sure that 1 person submits your group answers to gradescope, and includes all folks on the submission
+:::

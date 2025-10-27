@@ -216,7 +216,7 @@ ggplot(data = data.frame(x = c(580-4*70, 580+4*70)), aes(x)) +
   geom_area(stat = "function", fun = dnorm, args=list(mean=580, sd=70), fill = "#ED7953FF", xlim = c(300,670)) 
 ```
 
-## To find the probability: 
+## To find the percentile: 
 
   a) Option 1: StatKey
       - Theoretical Distribution --> Normal
@@ -283,7 +283,12 @@ pnorm(1, mean = 0, sd = 1, lower.tail = FALSE)
 
 . . . 
 
-**Central Limit Theorem:** for random samples, if $n$ is big enough, the *sampling distribution* of $\bar{x}$ is approximately normal, *regardless of what the shape of the population distribution is*. 
+::: callout-note
+## Central Limit Theorem:
+
+For random samples, if $n$ is big enough, the *sampling distribution* of $\bar{x}$ is approximately normal, *regardless of what the shape of the population distribution is*. 
+:::
+
 
 ## CLT
 
