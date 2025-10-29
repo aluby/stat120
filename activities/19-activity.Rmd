@@ -11,7 +11,7 @@ library(CarletonStats)
 
 1.  APM Research Lab ran a [survey of likely Minnesota
     voters](https://www.apmresearchlab.org/minnesota-poll-september-2024#methods)
-    between Sept 16-18 of this year. They reported 48.4% in support of
+    between Sept 16-18 of 2024. They reported 48.4% in support of
     the Harris/Walz ticket, and 43.3% in support of the Trump/Vance
     ticket.
 
@@ -22,7 +22,7 @@ Here's an excerpt from their methodology report:
 > that there is a 95% probability that the "true" figure would fall
 > within that range if all voters were surveyed.*
 
-(a) Show how the margin of error was computed
+(a) Show how the margin of error was computed 
 
 \vspace{1in}
 

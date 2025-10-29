@@ -1,0 +1,220 @@
+---
+title: "19: CLT-based Inference for Proportions"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+1. CLT Recap
+2. CLT-based inference for proportions
+
+# CLT Recap {.maize}
+
+## 
+
+If the sample size is big enough and the sample is random, 
+
+$$\bar{X} \sim N(\mu, SE_\bar{X})$$
+
+. . . 
+
+$$\widehat{p} \sim N(p, SE_\widehat{p})$$ 
+
+. . . 
+
+And we can build a confidence interval with the formula: 
+
+$$\text{Sample Stat} \pm z^* \times SE$$
+
+. . . 
+
+Where $z^*$ is determined by the confidence level that we want
+
+## Finding $z^*$
+
+What is $z^*$ for a 95% confidence interval? 
+
+. . . 
+
+What is $z^*$ for a 68% confidence interval? 
+
+. . . 
+
+What is $z^*$ for a 99% confidence interval? 
+
+. . . 
+
+What is $z^*$ for a 90% confidence interval? 
+
+. . . 
+
+```{r}
+ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks= -3:3) + 
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(-5, -1.64)) +
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(1.64,5)) 
+```
+
+```{r}
+#| echo: true
+qnorm(.05, lower.tail = TRUE)
+```
+
+## Today
+
+- How big of a sample is "big enough"? 
+- How do we get SE? 
+
+. . . 
+
+It turns out, the answer is different depending on which *statistic* we're looking at. Today, we'll answer those questions for **proportions**
+
+## How big is "big enough"? 
+
+**Example 1:** $\widehat{p} = .5$. How big is "big enough"?
+
+. . . 
+
+**Example 2:** $\widehat{p} = .05$. How big is "big enough"?
+
+. . . 
+
+Rule of thumb for proportions: 
+
+- Expected count in each category (Yes/No) should be >10
+- In math: $np > 10$ and $n(1-p) > 10$
+
+. . . 
+
+**Example 1:** .5 * 20 = 10 and .5*20 = 10 
+
+. . . 
+
+**Example 2:** .05 * 200 = 10 and .95*20 = 190 
+
+## How do we find SE?
+
+. . . 
+
+Wait.... what's the SE again? 
+
+. . . 
+
+The point of using the CLT is to have a "shortcut". We don't want to have to find the bootstrap distribution to get an estimate of the SE. 
+
+. . . 
+
+$$SE_{\widehat{p}} = \sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}$$
+
+. . . 
+
+Idea: as $n$ gets bigger, the SE gets smaller. If $\widehat p$ is close to .5, the SE is larger than if $\widehat{p}$  is close to 0 or 1. 
+
+## ESP Example (again)
+
+![](img/zener.png)
+
+. . . 
+
+- Population Parameter: $p$, the proportion of correctly guessed cards *in the population*
+- Sample Statistic: $\widehat{p}$, the proportion of correctly guessed cards *in our sample* 
+- $H_0: p = .2$
+- $H_A: p > .2$
+
+## n = 14 (StatKey)
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/null-dist-sm.png")
+```
+
+## n = 1400 (StatKey)
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/null-dist-med.png")
+```
+
+## n = 14000 (StatKey)
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/null-dist-big.png")
+```
+
+## Let's find these p-values *without* a permutation test
+
+- Sample Stat: $\widehat{p} = .214$
+- *Test* Statistic (Z-score): $z = \frac{\widehat{p} - p_0}{SE_{\widehat{p}}}$
+- $SE_{\widehat{p}} = \sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}$
+
+## n = 14
+
+```{r}
+#| echo: true
+
+
+p_hat = 3/14
+n = 14
+SE_p = sqrt((p_hat*(1-p_hat))/n)
+SE_p
+z_score = (p_hat - .2)/SE_p
+z_score
+p_val = pnorm(z_score, lower.tail = FALSE)
+p_val
+```
+
+
+## n=1400:
+
+```{r}
+#| echo: true
+
+p_hat = 3/14
+n = 1400
+SE_p = sqrt((p_hat*(1-p_hat))/n)
+SE_p
+z_score = (p_hat - .2)/SE_p
+z_score
+p_val = pnorm(z_score, lower.tail = FALSE)
+p_val
+```
+
+## n=14000
+
+```{r}
+#| echo: true
+
+p_hat = 3/14
+n = 14000
+SE_p = sqrt((p_hat*(1-p_hat))/n)
+SE_p
+z_score = (p_hat - .2)/SE_p
+z_score
+p_val = pnorm(z_score, lower.tail = FALSE)
+p_val
+```
+
+## "Big Picture" Picture
