@@ -4,7 +4,7 @@
     "href": "activities/19-activity.html",
     "title": "19: CLT-based Inference for Proportions",
     "section": "",
-    "text": "APM Research Lab ran a survey of likely Minnesota voters between Sept 16-18 of this year. They reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket.\n\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the “true” figure would fall within that range if all voters were surveyed.\n\n\nShow how the margin of error was computed\n\n\nIs it OK to use the normal distribution as a model for the sampling distribution of a proportion in this case?\n\n\nIn a random sample of 100 moviegoers in January 2013, 64 of them said they are more likely to wait and watch a new movie in the comfort of their own home.\n\n\nIs it ok to use the normal distribution as a model for the sampling distribution of the proportion of moviegoers preferring to wait and watch at home?\n\n\nSuppose I want to know if more than 50% of moviegoers in the population prefer to wait and watch at home. Write down the corresponding null and alternative hypotheses.\n\n\nFor the hypothesis test in part (b), find the standardized test statistic (i.e., the Z-score).\n\n\nCalculate the p-value and state a conclusion in context\n\n\nThe table below gives some of the percentiles of the N(0,1) distribution. If you were given this table (for example on an exam, where you do not have access to R), what could you say about the value of the p-value?\n\n\n\n\npercentage\npercentile (qnorm(percentage))\n\n\n\n\n90%\n1.3\n\n\n95%\n1.6\n\n\n97.5%\n2.0\n\n\n99%\n2.3\n\n\n99.5%\n2.6\n\n\n\n\nCompute and interpret a 90% confidence interval for the population proportion of moviegoers who believe they are more likely to watch a new movie from home. (Use the information from the previous table to find the critical value needed.)\n\n\nHow big of a sample size would you need if you wanted the margin of error for a 90% confidence interval to be no more than 2%? To answer this question, assume that the true proportion is \\(p=0.5\\), which would result in the biggest margin of error for a given sample size.",
+    "text": "APM Research Lab ran a survey of likely Minnesota voters between Sept 16-18 of 2024. They reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket.\n\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. This means that there is a 95% probability that the “true” figure would fall within that range if all voters were surveyed.\n\n\nShow how the margin of error was computed\n\n\nIs it OK to use the normal distribution as a model for the sampling distribution of a proportion in this case?\n\n\nIn a random sample of 100 moviegoers in January 2013, 64 of them said they are more likely to wait and watch a new movie in the comfort of their own home.\n\n\nIs it ok to use the normal distribution as a model for the sampling distribution of the proportion of moviegoers preferring to wait and watch at home?\n\n\nSuppose I want to know if more than 50% of moviegoers in the population prefer to wait and watch at home. Write down the corresponding null and alternative hypotheses.\n\n\nFor the hypothesis test in part (b), find the standardized test statistic (i.e., the Z-score).\n\n\nCalculate the p-value and state a conclusion in context\n\n\nThe table below gives some of the percentiles of the N(0,1) distribution. If you were given this table (for example on an exam, where you do not have access to R), what could you say about the value of the p-value?\n\n\n\n\npercentage\npercentile (qnorm(percentage))\n\n\n\n\n90%\n1.3\n\n\n95%\n1.6\n\n\n97.5%\n2.0\n\n\n99%\n2.3\n\n\n99.5%\n2.6\n\n\n\n\nCompute and interpret a 90% confidence interval for the population proportion of moviegoers who believe they are more likely to watch a new movie from home. (Use the information from the previous table to find the critical value needed.)\n\n\nHow big of a sample size would you need if you wanted the margin of error for a 90% confidence interval to be no more than 2%? To answer this question, assume that the true proportion is \\(p=0.5\\), which would result in the biggest margin of error for a given sample size.",
     "crumbs": [
       "Home",
       "Activities",
@@ -1105,13 +1105,6 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "stat120",
-    "section": "",
-    "text": "You’ve found the landing page for Amanda Luby’s Stat120 course materials\n\n\n\n\n\n\nImportantCaution\n\n\n\nMaterial found here (instead of moodle) may be out of date"
-  },
-  {
     "objectID": "slides/08-slides.html#today",
     "href": "slides/08-slides.html#today",
     "title": "08: Customizing GGplots + Exam 1 Review",
@@ -1382,6 +1375,208 @@
       "Slides",
       "Slides",
       "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "stat120",
+    "section": "",
+    "text": "You’ve found the landing page for Amanda Luby’s Stat120 course materials\n\n\n\n\n\n\nImportantCaution\n\n\n\nMaterial found here (instead of moodle) may be out of date"
+  },
+  {
+    "objectID": "slides/19-slides.html#today",
+    "href": "slides/19-slides.html#today",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Today",
+    "text": "Today\n\nCLT Recap\nCLT-based inference for proportions",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#section",
+    "href": "slides/19-slides.html#section",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "",
+    "text": "If the sample size is big enough and the sample is random,\n\\[\\bar{X} \\sim N(\\mu, SE_\\bar{X})\\]\n\n\\[\\widehat{p} \\sim N(p, SE_\\widehat{p})\\]\n\n\nAnd we can build a confidence interval with the formula:\n\\[\\text{Sample Stat} \\pm z^* \\times SE\\]\n\n\nWhere \\(z^*\\) is determined by the confidence level that we want",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#finding-z",
+    "href": "slides/19-slides.html#finding-z",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Finding \\(z^*\\)",
+    "text": "Finding \\(z^*\\)\nWhat is \\(z^*\\) for a 95% confidence interval?\n\nWhat is \\(z^*\\) for a 68% confidence interval?\n\n\nWhat is \\(z^*\\) for a 99% confidence interval?\n\n\nWhat is \\(z^*\\) for a 90% confidence interval?\n\n\n\n\n\n\n\n\n\n\n\n\nqnorm(.05, lower.tail = TRUE)\n\n[1] -1.644854",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#today-1",
+    "href": "slides/19-slides.html#today-1",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Today",
+    "text": "Today\n\nHow big of a sample is “big enough”?\nHow do we get SE?\n\n\nIt turns out, the answer is different depending on which statistic we’re looking at. Today, we’ll answer those questions for proportions",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#how-big-is-big-enough",
+    "href": "slides/19-slides.html#how-big-is-big-enough",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "How big is “big enough”?",
+    "text": "How big is “big enough”?\nExample 1: \\(\\widehat{p} = .5\\). How big is “big enough”?\n\nExample 2: \\(\\widehat{p} = .05\\). How big is “big enough”?\n\n\nRule of thumb for proportions:\n\nExpected count in each category (Yes/No) should be &gt;10\nIn math: \\(np &gt; 10\\) and \\(n(1-p) &gt; 10\\)\n\n\n\nExample 1: .5 * 20 = 10 and .5*20 = 10\n\n\nExample 2: .05 * 200 = 10 and .95*20 = 190",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#how-do-we-find-se",
+    "href": "slides/19-slides.html#how-do-we-find-se",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "How do we find SE?",
+    "text": "How do we find SE?\n\nWait…. what’s the SE again?\n\n\nThe point of using the CLT is to have a “shortcut”. We don’t want to have to find the bootstrap distribution to get an estimate of the SE.\n\n\n\\[SE_{\\widehat{p}} = \\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\]\n\n\nIdea: as \\(n\\) gets bigger, the SE gets smaller. If \\(\\widehat p\\) is close to .5, the SE is larger than if \\(\\widehat{p}\\) is close to 0 or 1.",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#esp-example-again",
+    "href": "slides/19-slides.html#esp-example-again",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "ESP Example (again)",
+    "text": "ESP Example (again)\n\n\n\nPopulation Parameter: \\(p\\), the proportion of correctly guessed cards in the population\nSample Statistic: \\(\\widehat{p}\\), the proportion of correctly guessed cards in our sample\n\\(H_0: p = .2\\)\n\\(H_A: p &gt; .2\\)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-14-statkey",
+    "href": "slides/19-slides.html#n-14-statkey",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 14 (StatKey)",
+    "text": "n = 14 (StatKey)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-1400-statkey",
+    "href": "slides/19-slides.html#n-1400-statkey",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 1400 (StatKey)",
+    "text": "n = 1400 (StatKey)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-14000-statkey",
+    "href": "slides/19-slides.html#n-14000-statkey",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 14000 (StatKey)",
+    "text": "n = 14000 (StatKey)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#lets-find-these-p-values-without-a-permutation-test",
+    "href": "slides/19-slides.html#lets-find-these-p-values-without-a-permutation-test",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Let’s find these p-values without a permutation test",
+    "text": "Let’s find these p-values without a permutation test\n\nSample Stat: \\(\\widehat{p} = .214\\)\nTest Statistic (Z-score): \\(z = \\frac{\\widehat{p} - p_0}{SE_{\\widehat{p}}}\\)\n\\(SE_{\\widehat{p}} = \\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-14",
+    "href": "slides/19-slides.html#n-14",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 14",
+    "text": "n = 14\n\np_hat = 3/14\nn = 14\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.1096642\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 0.1302678\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 0.4481773",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n1400",
+    "href": "slides/19-slides.html#n1400",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n=1400:",
+    "text": "n=1400:\n\np_hat = 3/14\nn = 1400\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.01096642\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 1.302678\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 0.09634238",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n14000",
+    "href": "slides/19-slides.html#n14000",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n=14000",
+    "text": "n=14000\n\np_hat = 3/14\nn = 14000\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.003467887\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 4.119429\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 1.89906e-05",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#big-picture-picture",
+    "href": "slides/19-slides.html#big-picture-picture",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "“Big Picture” Picture",
+    "text": "“Big Picture” Picture",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
     ]
   },
   {
@@ -2774,7 +2969,7 @@
     "href": "activities/21-2-activity.html",
     "title": "21.2: CLT-based Inference for Difference in Means",
     "section": "",
-    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here).\n\n\nlakes &lt;- read.csv(\"http://www.lock5stat.com/datasets1e/FloridaLakes.csv\")",
+    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here).",
     "crumbs": [
       "Home",
       "Activities",
@@ -2787,7 +2982,7 @@
     "href": "activities/21-2-activity.html#one-sample-clt-inference-in-r",
     "title": "21.2: CLT-based Inference for Difference in Means",
     "section": "",
-    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here).\n\n\nlakes &lt;- read.csv(\"http://www.lock5stat.com/datasets1e/FloridaLakes.csv\")",
+    "text": "When we are performing a t-test or computing a t-based confidence interval for a mean, we can use the t.test() function in R. Here is a template:\nt.test(y ~ 1, data = dataset, mu = null, direction = \"two.sided\")\nwhere\n\ny is the column name for the variable\ndataset is the name of the data set\nnull is the value of \\(\\mu\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\n\n\nThe code below reads in the FloridaLakes dataset from class last week. Use the t.test() function to perform the CLT-based t-test to see whether the average MaxMercury is less than 1 or not. Your results should match the “by hand” results from class. (Slides here).",
     "crumbs": [
       "Home",
       "Activities",
@@ -2800,7 +2995,7 @@
     "href": "activities/21-2-activity.html#two-sample-clt-inference-in-r",
     "title": "21.2: CLT-based Inference for Difference in Means",
     "section": "Two-sample CLT inference in R",
-    "text": "Two-sample CLT inference in R\nWhen we are comparing the mean of two independent groups, we again use the t.test() function in R. Here is a template:\nt.test(y ~ x, data = dataset, mu = null, direction = \"two.sided\", paired = FALSE)\nwhere\n\ny is the column name for the response variable\nx is the column name for the explanatory (grouping) variable\ndataset is the name of the data set\nnull is the value of \\(\\mu_1 - \\mu_2\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\nif x and y represent paired measurements, change paired to TRUE to perform a matched-pairs t-test\n\n\nResearchers Holdgate et al. (2016) studied walking behavior of elephants in North American zoos to see whether there is a difference in average distance traveled by African and Asian elephants in captivity. They put GPS loggers on 33 African elephants and 23 Asian elephants, and measured the distance (in kilometers) the elephants walked per day.\n\n\nelephants &lt;- read.delim(\"http://www.rossmanchance.com/iscam3/data/Elephants.txt\")\n\n\nUsing EDA, compare the distribution of distance for each species. What do you learn?\nDetermine the sample sizes, sample means, and the sample standard deviations for each group. Some starter code is below (you will need to remove the line that says eval = FALSE)\n\n\nelephants %&gt;%\n  group_by(&lt;var_name&gt;) %&gt;%\n  summarize(\n    mean = mean(&lt;var_name&gt;),\n    sd = sd(&lt;var_name&gt;),\n    n = n()\n  )\n\n\nAre the conditions met for the t-procedures to be valid for these data?\nUse R to construct a 90% confidence interval for the difference between the average walking distance of the African and Asian elephant populations. Include one-sentence interpretation of your interval. (When interpreting a confidence interval for the difference, you should always clarify the direction of subtraction and which population parameter is larger.)",
+    "text": "Two-sample CLT inference in R\nWhen we are comparing the mean of two independent groups, we again use the t.test() function in R. Here is a template:\nt.test(y ~ x, data = dataset, mu = null, direction = \"two.sided\", paired = FALSE)\nwhere\n\ny is the column name for the response variable\nx is the column name for the explanatory (grouping) variable\ndataset is the name of the data set\nnull is the value of \\(\\mu_1 - \\mu_2\\) specified in the null hypothesis\nalternative specifies which tail corresponds to the p-value. The options are \"two.sided\", \"less\", and \"greater\".\nconf.level can be added to change the confidence level of the interval returned\nif x and y represent paired measurements, change paired to TRUE to perform a matched-pairs t-test\n\n\nResearchers Holdgate et al. (2016) studied walking behavior of elephants in North American zoos to see whether there is a difference in average distance traveled by African and Asian elephants in captivity. They put GPS loggers on 33 African elephants and 23 Asian elephants, and measured the distance (in kilometers) the elephants walked per day.\n\n\nUsing EDA, compare the distribution of distance for each species. What do you learn?\nDetermine the sample sizes, sample means, and the sample standard deviations for each group. Some starter code is below (you will need to remove the line that says eval = FALSE)\n\n\nAre the conditions met for the t-procedures to be valid for these data?\nUse R to construct a 90% confidence interval for the difference between the average walking distance of the African and Asian elephant populations. Include one-sentence interpretation of your interval. (When interpreting a confidence interval for the difference, you should always clarify the direction of subtraction and which population parameter is larger.)",
     "crumbs": [
       "Home",
       "Activities",
@@ -2852,7 +3047,7 @@
     "href": "activities/24-activity.html",
     "title": "24: Inference for Regression in R",
     "section": "",
-    "text": "When we are fitting a linear regression model in R, we use the lm() function. Here is a template:\nlm(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set\n\nTo get the summary table use\nsummary(lm_mod)\nwhere lm_mod is the name of the model that you fit using lm().\nTo find confidence and prediction intervals for observations, use augment() from the broom package\naugment(lm_mod, newdata = tibble(x = ______), interval = \"none\", conf.level = .95)\nwhere\n\nlm_mod is the name of the model that you fit using lm()\nx is the column name for the categorical predictor variable\n_____ is filled in with the value of x that you want to predict\ninterval is one of “none”, “confidence”, or “prediction”\nconf.level is the confidence level for the interval (default is 0.95)\n\nWe’re going to use the dataset cereals.csv, which has nutrition data on a random sample of breakfast cereals.\n1. Load in the data and check the “spreadsheet view”. How many cereals are in the sample?\n\ncereals &lt;- read.csv(\"http://math.carleton.edu/Stat120/RLabManual/Cereals.csv\")\n\n2. We’re going to try to predict carbs per gram (carbsgram) using calories per gram (calgram). Make a scatterplot and describe the relationship you find.\n3. Find a confidence interval for the slope and report your result in context. Some starter code is below (make sure to remove eval = FALSE!)\n\ncereal_lm = lm(________ ~ ________, data = cereals)\nsummary(cereal_lm)\n\n4. Use the starter code below to find a 90% prediction interval for a new cereal with 3.5 calories per gram. Interpret your result in context.\n\naugment(________, newdata = tibble(calgram = ______), interval = ______, conf.level =  ____)\n\n5. The code below creates a confidence interval and prediction interval for all predicted values. One is shown in blue and one is shown in orange. Which is which, and how can you tell?\n\ncereal_aug = augment(cereal_lm, interval = \"prediction\")\nggplot(cereal_aug, aes(x = calgram, y = carbsgram)) +\n  geom_point() +\n  geom_smooth(method=lm, fill = \"darkblue\") +\n  geom_line(aes(y=.lower), color = \"darkorange\", linetype = \"dashed\") +\n  geom_line(aes(y=.upper), color = \"darkorange\", linetype = \"dashed\")\n\n6. There is one point that falls outside of the prediction interval. Is this evidence that it is an outlier? Should we remove it?\n7. The code below makes residual plots for the cereal_lm model. (Remove eval = FALSE after you have created the model). Do you have any concerns about the LINE conditions?\n\np1 = ggplot(cereal_aug, aes(x = .resid)) +\n  geom_histogram(col = \"white\", bins = 20)\n\np2 = ggplot(cereal_aug, aes(x = .fitted, y = .resid)) +\n  geom_point() + \n  geom_hline(yintercept = 0, col = \"darkgray\", linetype = \"dashed\")\n\np1\np2\n\n8. When we include plots on posters or in papers, we want to be mindful of how much space they take up but also make sure they are readable. One way that I like to do this is by putting multiple plots side-by-side using the patchwork package. Remove eval = FALSE and run the code below. Next, run p1+p2 in the console to make the plot show up in the viewer. Click on “export” and then “save as image”. Change the dimensions to be 1200 pixels long x 400 pixels tall and save your plot with an informative file name. In order to get the plot from the RStudio Server onto your own computer, go to the “Files” tab and click on the name of the image. This should bring up a high-quality image that you can copy and paste into a text editor or embed directly. Alternatively, you can check the box next to the image and click on “more –&gt; export” to download to your computer. Submit only this image file on gradescope (1 per group).\n\np1 + p2",
+    "text": "When we are fitting a linear regression model in R, we use the lm() function. Here is a template:\nlm(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set\n\nTo get the summary table use\nsummary(lm_mod)\nwhere lm_mod is the name of the model that you fit using lm().\nTo find confidence and prediction intervals for observations, use augment() from the broom package\naugment(lm_mod, newdata = tibble(x = ______), interval = \"none\", conf.level = .95)\nwhere\n\nlm_mod is the name of the model that you fit using lm()\nx is the column name for the categorical predictor variable\n_____ is filled in with the value of x that you want to predict\ninterval is one of “none”, “confidence”, or “prediction”\nconf.level is the confidence level for the interval (default is 0.95)\n\nWe’re going to use the dataset cereals.csv, which has nutrition data on a random sample of breakfast cereals.\n1. Load in the data and check the “spreadsheet view”. How many cereals are in the sample?\n2. We’re going to try to predict carbs per gram (carbsgram) using calories per gram (calgram). Make a scatterplot and describe the relationship you find.\n3. Find a confidence interval for the slope and report your result in context. Some starter code is below (make sure to remove eval = FALSE!)\n4. Use the starter code below to find a 90% prediction interval for a new cereal with 3.5 calories per gram. Interpret your result in context.\n5. The code below creates a confidence interval and prediction interval for all predicted values. One is shown in blue and one is shown in orange. Which is which, and how can you tell?\n6. There is one point that falls outside of the prediction interval. Is this evidence that it is an outlier? Should we remove it?\n7. The code below makes residual plots for the cereal_lm model. (Remove eval = FALSE after you have created the model). Do you have any concerns about the LINE conditions?\n8. When we include plots on posters or in papers, we want to be mindful of how much space they take up but also make sure they are readable. One way that I like to do this is by putting multiple plots side-by-side using the patchwork package. Remove eval = FALSE and run the code below. Next, run p1+p2 in the console to make the plot show up in the viewer. Click on “export” and then “save as image”. Change the dimensions to be 1200 pixels long x 400 pixels tall and save your plot with an informative file name. In order to get the plot from the RStudio Server onto your own computer, go to the “Files” tab and click on the name of the image. This should bring up a high-quality image that you can copy and paste into a text editor or embed directly. Alternatively, you can check the box next to the image and click on “more –&gt; export” to download to your computer. Submit only this image file on gradescope (1 per group).",
     "crumbs": [
       "Home",
       "Activities",
@@ -2865,7 +3060,7 @@
     "href": "activities/12-activity-sols.html",
     "title": "12: Solutions",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(patchwork)\nlibrary(CarletonStats)\n\nThe data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nLet’s see if this differs based on whether the respondent is 50 years or older or not.\n\nPew &lt;- read.csv(\"http://math.carleton.edu/Stat120/RLabManual/Pew.csv\")\n\nPew &lt;- Pew |&gt;\n  mutate(\n    over = ifelse(age &gt;=50, \"over50\", \"under50\"),\n    over2 = ifelse(age &gt;=50, 1, 0)\n  )\n\n1. Create an appropriate visualization of values conditioned on over. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50’s?\n\n\n\n\n\n\nTipSolution\n\n\n\nYou can tell they are not exactly equal, but the percentage who say it’s been a good thing appear pretty similar across the two age groups\n\nggplot(Pew, aes(y = over, fill = values)) + \n  geom_bar(position = \"fill\") \n\n\n\n\n\n\n\n\n\n\n2. Compute the exact proportions for each age group.\n\n\n\n\n\n\nTipSolution\n\n\n\n\ntable(Pew$over, Pew$values) |&gt;\n  proportions(2)\n\n         \n                bad      good\n  over50  0.5714286 0.5125899\n  under50 0.4285714 0.4874101\n\n\n\n\n3. In order to use the boot() command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories). Pull up the “spreadsheet view” of the data and confirm that values and values2 contain the same information stored in a different form.\n\n\n\n\n\n\nTipSolution\n\n\n\nConfirmed. good = 1 and bad = 0\n\nPew |&gt;\n  select(values, values2) |&gt;\n  unique()\n\n  values values2\n1   good       1\n2    bad       0\n\n\n\n\n\n\n\n\n\n\nTipMeans vs Proportions?\n\n\n\nSince the values are 0’s and 1’s, when you compute the mean, you will be computing an expression of the form\n\\[ \\frac{1 + 1 + 0 + 1 + 0 +... +0}{n}\\] which is equivalent to the proportion of 1’s. This means that we can treat proportions as means. Yay!\n\n\n4. Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable values2, which is behavior recoded so that 1 = “good”, 0 = “bad”.\n\n\n\n\n\n\nTipSolution\n\n\n\nI am 95% confident that the true difference in proportions between the two age groups is between -0.1 and 0.02.\n\nboot(values2 ~ over, data = Pew)\n\n\n    ** Bootstrap interval for difference of mean \n\n Observed difference of mean : over50 - under50 = -0.03791 \n Mean of bootstrap distribution: -0.03752 \n Standard error of bootstrap distribution: 0.03048 \n\n Bootstrap percentile interval\n       2.5%       97.5% \n-0.09656913  0.02243927 \n\n        *--------------*\n\n\n\n\n\n\n\n\n\n\n\n5. Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval?\n\n\n\n\n\n\nTipSolution\n\n\n\n\\[-.0379 \\pm2\\times  0.03 = [-0.0979 , 0.0221] \\]\nIt is extremely similar.",
+    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(patchwork)\nlibrary(CarletonStats)\n\nThe data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nLet’s see if this differs based on whether the respondent is 50 years or older or not.\n\nPew &lt;- read.csv(\"http://math.carleton.edu/Stat120/RLabManual/Pew.csv\")\n\nPew &lt;- Pew |&gt;\n  mutate(\n    over = ifelse(age &gt;=50, \"over50\", \"under50\"),\n    over2 = ifelse(age &gt;=50, 1, 0)\n  )\n\n1. Create an appropriate visualization of values conditioned on over. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50’s?\n\n\n\n\n\n\nTipSolution\n\n\n\nYou can tell they are not exactly equal, but the percentage who say it’s been a good thing appear pretty similar across the two age groups\n\nggplot(Pew, aes(y = over, fill = values)) + \n  geom_bar(position = \"fill\") \n\n\n\n\n\n\n\n\n\n\n2. Compute the exact proportions for each age group.\n\n\n\n\n\n\nTipSolution\n\n\n\n\ntable(Pew$over, Pew$values) |&gt;\n  proportions(2)\n\n         \n                bad      good\n  over50  0.5714286 0.5125899\n  under50 0.4285714 0.4874101\n\n\n\n\n3. In order to use the boot() command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories). Pull up the “spreadsheet view” of the data and confirm that values and values2 contain the same information stored in a different form.\n\n\n\n\n\n\nTipSolution\n\n\n\nConfirmed. good = 1 and bad = 0\n\nPew |&gt;\n  select(values, values2) |&gt;\n  unique()\n\n  values values2\n1   good       1\n2    bad       0\n\n\n\n\n\n\n\n\n\n\nTipMeans vs Proportions?\n\n\n\nSince the values are 0’s and 1’s, when you compute the mean, you will be computing an expression of the form\n\\[ \\frac{1 + 1 + 0 + 1 + 0 +... +0}{n}\\] which is equivalent to the proportion of 1’s. This means that we can treat proportions as means. Yay!\n\n\n4. Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable values2, which is behavior recoded so that 1 = “good”, 0 = “bad”.\n\n\n\n\n\n\nTipSolution\n\n\n\nI am 95% confident that the true difference in proportions between the two age groups is between -0.1 and 0.02.\n\nboot(values2 ~ over, data = Pew)\n\n\n    ** Bootstrap interval for difference of mean \n\n Observed difference of mean : over50 - under50 = -0.03791 \n Mean of bootstrap distribution: -0.03788 \n Standard error of bootstrap distribution: 0.03022 \n\n Bootstrap percentile interval\n       2.5%       97.5% \n-0.09769482  0.02110665 \n\n        *--------------*\n\n\n\n\n\n\n\n\n\n\n\n5. Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval?\n\n\n\n\n\n\nTipSolution\n\n\n\n\\[-.0379 \\pm2\\times  0.03 = [-0.0979 , 0.0221] \\]\nIt is extremely similar.",
     "crumbs": [
       "Home",
       "Activities",
