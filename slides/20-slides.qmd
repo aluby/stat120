@@ -1,0 +1,339 @@
+---
+title: "20: CLT-based Inference for Means"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+::: {.nonincremental}
+1. CLT Recap
+2. Reading `pnorm` and `qnorm` output from a table
+2. CLT-based inference for means
+:::
+
+# CLT Recap {.maize}
+
+## CLT recap
+
+If the sample size is big enough and the sample is random, 
+
+$$\bar{X} \sim N(\mu, SE_\bar{X})$$
+
+$$\widehat{p} \sim N(p, SE_\widehat{p})$$ 
+
+. . . 
+
+And we can build a confidence interval with the formula: 
+
+$$\text{Sample Stat} \pm z^* \times SE$$
+
+. . . 
+
+Where $z^*$ is determined by the confidence level that we want
+
+## Recap: Q2 (d) from last class: 
+
+The table below gives some of the percentiles of the N(0,1)
+    distribution. If you were given this table (for example on an exam,
+    where you do not have access to R), what could you say about the
+    value of the p-value? (The z-score was 2.917)
+    
+|  percentage  |  percentile (`qnorm(percentage)`)  |
+|:---------------------:|:------------:|
+|         90%          |     1.3      |
+|         95%          |     1.6      |
+|         97.5%          |     2.0      |
+|         99%          |     2.3      |
+|         99.5%          |     2.6      |
+
+## `qnorm(.9) = 1.28`
+
+```{r}
+ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks= -3:3) + 
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(-5, 1.28)) +
+  annotate("text", x = -3, y = .1, label = "90%", col = "#ED7953FF", size = 16) + 
+  annotate("text", x = 3, y = .1, label = "10%", col = "gray30", size = 16) 
+```
+
+. . . 
+
+If z-score is bigger than 1.28, p-value is smaller than .1
+
+## `qnorm(.995) = 2.6`
+
+```{r}
+ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks= -3:3) + 
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(-5, 2.6)) +
+  annotate("text", x = -3, y = .1, label = "99.5%", col = "#ED7953FF", size = 16) + 
+  annotate("text", x = 3, y = .1, label = "0.5%", col = "gray30", size = 16) 
+```
+
+. . . 
+
+If z-score is bigger than 2.6, p-value is smaller than 0.005
+
+## If we are making a (1-$\alpha$) confidence interval, want $\alpha/2$ on either side
+
+### `qnorm(.975) = 2.0` and `qnorm(.025) = -2.0`
+
+```{r}
+ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks= -3:3) + 
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(-2, 2)) +
+  annotate("text", x = -3, y = .1, label = "2.5%", col = "gray30", size = 16) + 
+  annotate("text", x = 3, y = .1, label = "2.5%", col = "gray30", size = 16)
+```
+
+
+## Today: means
+
+- How big of a sample is "big enough"? 
+- How do we get SE? 
+
+
+## How big is "big enough"? 
+
+Rule of thumb for means: 
+
+ $$n \ge 30$$
+
+
+## How do we find SE?
+
+$$SE_{\bar{X}} = \sqrt{\frac{\sigma}{n}}$$
+
+where $\sigma$ is standard deviation of the data
+
+. . . 
+
+Idea: as $n$ gets bigger, the SE gets smaller. If standard deviation is small, the SE is also small 
+
+## Florida Lakes Example 
+
+::: .nonincremental
+
+- 53 lakes in Florida were randomly sampled. 
+- In each lake, a sample of fish was taken and their mercury level was measured. The maximum mercury level for each lake was recorded. 
+- If mercury concentration is $<1$ ppm, then the fish is safe to eat. 
+- Is the average *maximum* mercury content in Florida lakes safe to eat?
+:::
+
+## MaxMercury content in Florida Lakes
+### $\bar{X} = `r round(mean(Lock5Data::FloridaLakes$MaxMercury),2)`$ and $s = `r round(sd(Lock5Data::FloridaLakes$MaxMercury), 2)`$. 
+
+```{r}
+Lock5Data::FloridaLakes %>%
+  ggplot(aes(x = MaxMercury)) + 
+  geom_histogram(col = "white", bins = 20)
+```
+
+Is it safe to use the CLT?
+
+## Florida Lakes Example
+
+Hypotheses: 
+
+  $H_0: \mu = 1$
+  
+  $H_A: \mu < 1$
+
+. . . 
+
+Sample Statistic: $\bar{X} = `r round(mean(Lock5Data::FloridaLakes$MaxMercury),2)`$ and $s = `r round(sd(Lock5Data::FloridaLakes$MaxMercury), 2)`$
+
+. . . 
+
+If $H_0$ is true, 
+
+$$ z = \frac{\bar{X} - \mu_0}{SE} \sim N(0,1)$$
+
+## 
+
+Test Statistic: 
+
+$$ z = \frac{\bar{X} - \mu_0}{SE} = \frac{\bar{X} - 1}{\sigma/\sqrt{n}} = \frac{.87 - 1}{\frac{.52}{\sqrt{53}}} = -1.75$$
+
+. . . 
+
+If the true average max mercury measurement was 1, the sample average we observed was 1.75 standard errors smaller than expected 
+
+. . . 
+
+P-value: 
+
+```{r}
+#| echo: true 
+
+pnorm(-1.75)
+```
+
+. . . 
+
+We reject $H_0$ in favor of $H_A$, and conclude we have strong evidence that the mean max mercury content in all Florida lakes is <1 ppm. (but I am still not going to eat the fish)
+
+## Example 2: Guinness beer acidity 
+
+```{r}
+guinness = tibble(
+  acidity = c(3.9, 4.1, 4.4, 4.3, 3.8)
+)
+```
+
+Different soil properties, ingredient levels, and fermentation methods can produce different levels of acidity when brewing beer. Guinness beer typically has a pH level of 4.3. The company is testing a new fermentation method that will speed up the brewing process, but want to make sure that the acidity doesn't increase using the new method. (*Note:* lower pH = higher acidity)
+
+. . . 
+
+Five batches were tested with the new fermentation method. The average acidity was `r round(mean(guinness$acidity), 2)` and the sd was `r round(sd(guinness$acidity), 2)`
+
+. . . 
+
+```{r}
+#| echo: true
+
+n = 5
+xbar = 4.1
+sd = 0.25
+se = sd/sqrt(n)
+z = (xbar - 4.3)/se
+z
+pnorm(z)
+```
+
+
+## William Sealy Gosset (1876-1937) 
+
+::::: columns
+::: {.column width="68%" .nonincremental}
+- This actually happened! Gosset was the head experimental brewer for Guinness but had a stats-y streak
+- After lots of experiments with small sample sizes, he realized he was getting way more significant results than he "should" have
+- In 1906, Guinness sent him to UCL to work with Karl Pearson, a well-known statistician 
+- He proved that, in small sample sizes, the test statistic we just used isn't actually normally distributed
+:::
+
+::: {.column width="30%" .center}
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/William_Sealy_Gosset.jpg/500px-William_Sealy_Gosset.jpg)
+:::
+:::::
+
+## Normal distribution vs Actual $n=5$ test statistic
+
+```{r}
+tibble(
+  x = seq(-4,4,length.out = 1000),
+  normal = dnorm(x),
+  `n=5` = dt(x, df = 4)
+) |>
+  pivot_longer(-x, names_to = "distribution", values_to = "density") |>
+  ggplot(aes(x = x, y = density, col = distribution, linetype = (distribution == "normal"))) + 
+  geom_line(linewidth = 1.5) +
+  scale_color_manual(values = c("#CC4678FF", "black")) +
+  guides(linetype = FALSE) + 
+  labs(
+    col = ""
+  ) + 
+  theme(legend.position = "top") + 
+  geom_vline(xintercept = -1.78, col = "darkorange", linewidth = 1.5)
+```
+
+Will the p-value for the actual n=5 distribution be *smaller* or *larger* than the p-value with the normal distribution?
+
+## Actual p-value (with n=5 distribution)
+
+```{r}
+#| echo: true
+
+n = 5
+xbar = 4.1
+sd = 0.25
+se = sd/sqrt(n)
+t = (xbar - 4.3)/se
+t
+pt(t, df = n-1)
+```
+
+## The t-distribution
+
+```{r}
+tibble(
+  x = seq(-4,4,length.out = 1000),
+  normal = dnorm(x),
+  `df=1` = dt(x, df = 1),
+  `df=3` = dt(x, df = 3),
+  `df=10` = dt(x, df = 10),
+  `df=30` = dt(x, df = 30)
+) |>
+  pivot_longer(-x, names_to = "distribution", values_to = "density") |>
+  mutate(distribution = factor(distribution,
+                               levels = c("normal", "df=1", "df=3", "df=10", "df=30"))) |>
+  ggplot(aes(x = x, y = density, col = distribution, linetype = (distribution == "normal"))) + 
+  geom_line(linewidth = 1.5) +
+  scale_color_manual(values = c("black", viridis::viridis(4, end = .75, option = "plasma", direction = -1))) +
+  guides(linetype = FALSE) + 
+  labs(
+    col = ""
+  ) + 
+  theme(legend.position = "top")
+```
+
+## The t-distribution
+
+- When we divide by the *estimated* SE ($\frac{s}{\sqrt{n}}$) instead of $\frac{\sigma}{\sqrt{n}}$, the test stat has a t-distribution instead of a N(0,1)
+- The t-distribution depends on the "degrees of freedom" ($n-1$)
+- When $df$ is small, t-distribution has "heavier tails" than N(0,1)
+- When $df$ is large, the t-distribution is approximately equal to N(0,1)
+
+
+## Florida Lakes (again)
+
+$$t_{52} = \frac{.87 - 1}{\frac{.52}{\sqrt{53}}} = -1.75$$
+
+```{r}
+#| echo: true
+
+t = -1.75
+pnorm(t)
+pt(t, df = 52)
+```
+
+::: {.nonincremental}
+- Since the sample size is "big", the p-value using the Z distribution isn't much different than the "correct" value using the $t_{52}$ distribution
+- Still better to do the correct thing
+:::
+
+## Summary
+
+- Test stat for means: $t_{n-1} = \frac{\bar{X} - \mu_0}{SE}$
+- SE: $\frac{s}{\sqrt{n}}$
+- Can "safely" use CLT for means if $n \ge 30$
+- If $n \le 30$, we can still use CLT if there are no outliers or extreme skew (but you should still be skeptical!)
+- t-distribution is more correct, but for large sample sizes it shouldn't matter too much
+- Percentage/probability of t-distribution below $t$-score: `pt(t-score, df = n-1)`
+- Percentile $t^*$ value for a specific percentage: `qt(percentage, df = n-1)`

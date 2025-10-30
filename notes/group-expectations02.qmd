@@ -1,0 +1,38 @@
+---
+title: "Group Expectations"
+subtitle: "Group members:"
+author: " "
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(ragg)
+options(digits = 4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3, dev = ragg::agg_png())
+notes_theme = theme_minimal(
+ # base_family = "Montserrat", 
+  base_size = 14)
+theme_set(notes_theme)
+```
+
+
+What are some things that have made your prior in-class groups successful?
+
+\vspace{2in}
+
+What are some things that have made it unsuccessful?
+
+\vspace{2in}
+
+What are your expectations from one another for this round of group work? (please focus on in-class exercises)
+
+\vspace{2in}
+
+Is there anything that Amanda could do to better support your group?
+
+
+
+
+
