@@ -143,11 +143,277 @@
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "slides/20-slides.html#today",
+    "href": "slides/20-slides.html#today",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Today",
+    "text": "Today\n\nCLT Recap\nReading pnorm and qnorm output from a table\nCLT-based inference for means",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#clt-recap-1",
+    "href": "slides/20-slides.html#clt-recap-1",
+    "title": "20: CLT-based Inference for Means",
+    "section": "CLT recap",
+    "text": "CLT recap\nIf the sample size is big enough and the sample is random,\n\\[\\bar{X} \\sim N(\\mu, SE_\\bar{X})\\]\n\\[\\widehat{p} \\sim N(p, SE_\\widehat{p})\\]\n\nAnd we can build a confidence interval with the formula:\n\\[\\text{Sample Stat} \\pm z^* \\times SE\\]\n\n\nWhere \\(z^*\\) is determined by the confidence level that we want",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#recap-q2-d-from-last-class",
+    "href": "slides/20-slides.html#recap-q2-d-from-last-class",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Recap: Q2 (d) from last class:",
+    "text": "Recap: Q2 (d) from last class:\nThe table below gives some of the percentiles of the N(0,1) distribution. If you were given this table (for example on an exam, where you do not have access to R), what could you say about the value of the p-value? (The z-score was 2.917)\n\n\n\npercentage\npercentile (qnorm(percentage))\n\n\n\n\n90%\n1.3\n\n\n95%\n1.6\n\n\n97.5%\n2.0\n\n\n99%\n2.3\n\n\n99.5%\n2.6",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#qnorm.9-1.28",
+    "href": "slides/20-slides.html#qnorm.9-1.28",
+    "title": "20: CLT-based Inference for Means",
+    "section": "qnorm(.9) = 1.28",
+    "text": "qnorm(.9) = 1.28\n\n\nIf z-score is bigger than 1.28, p-value is smaller than .1",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#qnorm.995-2.6",
+    "href": "slides/20-slides.html#qnorm.995-2.6",
+    "title": "20: CLT-based Inference for Means",
+    "section": "qnorm(.995) = 2.6",
+    "text": "qnorm(.995) = 2.6\n\n\nIf z-score is bigger than 2.6, p-value is smaller than 0.005",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#if-we-are-making-a-1-alpha-confidence-interval-want-alpha2-on-either-side",
+    "href": "slides/20-slides.html#if-we-are-making-a-1-alpha-confidence-interval-want-alpha2-on-either-side",
+    "title": "20: CLT-based Inference for Means",
+    "section": "If we are making a (1-\\(\\alpha\\)) confidence interval, want \\(\\alpha/2\\) on either side",
+    "text": "If we are making a (1-\\(\\alpha\\)) confidence interval, want \\(\\alpha/2\\) on either side\nqnorm(.975) = 2.0 and qnorm(.025) = -2.0",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#today-means",
+    "href": "slides/20-slides.html#today-means",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Today: means",
+    "text": "Today: means\n\nHow big of a sample is “big enough”?\nHow do we get SE?",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#how-big-is-big-enough",
+    "href": "slides/20-slides.html#how-big-is-big-enough",
+    "title": "20: CLT-based Inference for Means",
+    "section": "How big is “big enough”?",
+    "text": "How big is “big enough”?\nRule of thumb for means:\n\\[n \\ge 30\\]",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#how-do-we-find-se",
+    "href": "slides/20-slides.html#how-do-we-find-se",
+    "title": "20: CLT-based Inference for Means",
+    "section": "How do we find SE?",
+    "text": "How do we find SE?\n\\[SE_{\\bar{X}} = \\sqrt{\\frac{\\sigma}{n}}\\]\nwhere \\(\\sigma\\) is standard deviation of the data\n\nIdea: as \\(n\\) gets bigger, the SE gets smaller. If standard deviation is small, the SE is also small",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#florida-lakes-example",
+    "href": "slides/20-slides.html#florida-lakes-example",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Florida Lakes Example",
+    "text": "Florida Lakes Example\n\n\n53 lakes in Florida were randomly sampled.\nIn each lake, a sample of fish was taken and their mercury level was measured. The maximum mercury level for each lake was recorded.\nIf mercury concentration is \\(&lt;1\\) ppm, then the fish is safe to eat.\nIs the average maximum mercury content in Florida lakes safe to eat?",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#maxmercury-content-in-florida-lakes",
+    "href": "slides/20-slides.html#maxmercury-content-in-florida-lakes",
+    "title": "20: CLT-based Inference for Means",
+    "section": "MaxMercury content in Florida Lakes",
+    "text": "MaxMercury content in Florida Lakes\n\\(\\bar{X} = 0.87\\) and \\(s = 0.52\\).\n\nIs it safe to use the CLT?",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#florida-lakes-example-1",
+    "href": "slides/20-slides.html#florida-lakes-example-1",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Florida Lakes Example",
+    "text": "Florida Lakes Example\nHypotheses:\n\\(H_0: \\mu = 1\\)\n\\(H_A: \\mu &lt; 1\\)\n\nSample Statistic: \\(\\bar{X} = 0.87\\) and \\(s = 0.52\\)\n\n\nIf \\(H_0\\) is true,\n\\[ z = \\frac{\\bar{X} - \\mu_0}{SE} \\sim N(0,1)\\]",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#section",
+    "href": "slides/20-slides.html#section",
+    "title": "20: CLT-based Inference for Means",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Test Statistic:\n\\[ z = \\frac{\\bar{X} - \\mu_0}{SE} = \\frac{\\bar{X} - 1}{\\sigma/\\sqrt{n}} = \\frac{.87 - 1}{\\frac{.52}{\\sqrt{53}}} = -1.75\\]\n\nIf the true average max mercury measurement was 1, the sample average we observed was 1.75 standard errors smaller than expected\n\n\nP-value:\n\npnorm(-1.75)\n\n[1] 0.04005916\n\n\n\n\nWe reject \\(H_0\\) in favor of \\(H_A\\), and conclude we have strong evidence that the mean max mercury content in all Florida lakes is &lt;1 ppm. (but I am still not going to eat the fish)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#example-2-guinness-beer-acidity",
+    "href": "slides/20-slides.html#example-2-guinness-beer-acidity",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Example 2: Guinness beer acidity",
+    "text": "Example 2: Guinness beer acidity\nDifferent soil properties, ingredient levels, and fermentation methods can produce different levels of acidity when brewing beer. Guinness beer typically has a pH level of 4.3. The company is testing a new fermentation method that will speed up the brewing process, but want to make sure that the acidity doesn’t increase using the new method. (Note: lower pH = higher acidity)\n\nFive batches were tested with the new fermentation method. The average acidity was 4.1 and the sd was 0.25\n\n\n\nn = 5\nxbar = 4.1\nsd = 0.25\nse = sd/sqrt(n)\nz = (xbar - 4.3)/se\nz\n\n[1] -1.788854\n\npnorm(z)\n\n[1] 0.03681914",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#william-sealy-gosset-1876-1937",
+    "href": "slides/20-slides.html#william-sealy-gosset-1876-1937",
+    "title": "20: CLT-based Inference for Means",
+    "section": "William Sealy Gosset (1876-1937)",
+    "text": "William Sealy Gosset (1876-1937)\n\n\n\nThis actually happened! Gosset was the head experimental brewer for Guinness but had a stats-y streak\nAfter lots of experiments with small sample sizes, he realized he was getting way more significant results than he “should” have\nIn 1906, Guinness sent him to UCL to work with Karl Pearson, a well-known statistician\nHe proved that, in small sample sizes, the test statistic we just used isn’t actually normally distributed",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#normal-distribution-vs-actual-n5-test-statistic",
+    "href": "slides/20-slides.html#normal-distribution-vs-actual-n5-test-statistic",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Normal distribution vs Actual \\(n=5\\) test statistic",
+    "text": "Normal distribution vs Actual \\(n=5\\) test statistic\n\nWill the p-value for the actual n=5 distribution be smaller or larger than the p-value with the normal distribution?",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#actual-p-value-with-n5-distribution",
+    "href": "slides/20-slides.html#actual-p-value-with-n5-distribution",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Actual p-value (with n=5 distribution)",
+    "text": "Actual p-value (with n=5 distribution)\n\nn = 5\nxbar = 4.1\nsd = 0.25\nse = sd/sqrt(n)\nt = (xbar - 4.3)/se\nt\n\n[1] -1.788854\n\npt(t, df = n-1)\n\n[1] 0.07407407",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#the-t-distribution",
+    "href": "slides/20-slides.html#the-t-distribution",
+    "title": "20: CLT-based Inference for Means",
+    "section": "The t-distribution",
+    "text": "The t-distribution",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#the-t-distribution-1",
+    "href": "slides/20-slides.html#the-t-distribution-1",
+    "title": "20: CLT-based Inference for Means",
+    "section": "The t-distribution",
+    "text": "The t-distribution\n\nWhen we divide by the estimated SE (\\(\\frac{s}{\\sqrt{n}}\\)) instead of \\(\\frac{\\sigma}{\\sqrt{n}}\\), the test stat has a t-distribution instead of a N(0,1)\nThe t-distribution depends on the “degrees of freedom” (\\(n-1\\))\nWhen \\(df\\) is small, t-distribution has “heavier tails” than N(0,1)\nWhen \\(df\\) is large, the t-distribution is approximately equal to N(0,1)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#florida-lakes-again",
+    "href": "slides/20-slides.html#florida-lakes-again",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Florida Lakes (again)",
+    "text": "Florida Lakes (again)\n\\[t_{52} = \\frac{.87 - 1}{\\frac{.52}{\\sqrt{53}}} = -1.75\\]\n\nt = -1.75\npnorm(t)\n\n[1] 0.04005916\n\npt(t, df = 52)\n\n[1] 0.04300866\n\n\n\nSince the sample size is “big”, the p-value using the Z distribution isn’t much different than the “correct” value using the \\(t_{52}\\) distribution\nStill better to do the correct thing",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
+  },
+  {
+    "objectID": "slides/20-slides.html#summary",
+    "href": "slides/20-slides.html#summary",
+    "title": "20: CLT-based Inference for Means",
+    "section": "Summary",
+    "text": "Summary\n\nTest stat for means: \\(t_{n-1} = \\frac{\\bar{X} - \\mu_0}{SE}\\)\nSE: \\(\\frac{s}{\\sqrt{n}}\\)\nCan “safely” use CLT for means if \\(n \\ge 30\\)\nIf \\(n \\le 30\\), we can still use CLT if there are no outliers or extreme skew (but you should still be skeptical!)\nt-distribution is more correct, but for large sample sizes it shouldn’t matter too much\nPercentage/probability of t-distribution below \\(t\\)-score: pt(t-score, df = n-1)\nPercentile \\(t^*\\) value for a specific percentage: qt(percentage, df = n-1)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "20: CLT-based Inference for Means"
+    ]
   },
   {
     "objectID": "slides/03-slides.html#observational-studies",
@@ -2950,6 +3216,13 @@
       "Slides",
       "My Test Slides"
     ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "activities/11-activity.html",
