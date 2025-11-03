@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fbf3c9a153a4c93f4b50cb59237d3c74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -626,6 +626,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../slides/21-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">21: CLT-based Inference for Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../slides/test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">My Test Slides</span></a>
   </div>
@@ -691,7 +697,7 @@ window.Quarto = {
 <li><code>conf.level</code> can be added to change the confidence level of the interval returned</li>
 </ul>
 <ol type="1">
-<li>The code below reads in the <code>FloridaLakes</code> dataset from class last week. Use the <code>t.test()</code> function to perform the CLT-based t-test to see whether the average <code>MaxMercury</code> is less than 1 or not. Your results should match the “by hand” results from class. (Slides <a href="https://drive.google.com/file/d/15egLqrbG4NpP_3RKGX8vsnGfojXiVANh/view?usp=drive_link">here</a>).</li>
+<li>The code below reads in the <code>FloridaLakes</code> dataset from class last week. Use the <code>t.test()</code> function to perform the CLT-based t-test to see whether the average <code>MaxMercury</code> is less than 1 or not. Your results should match the “by hand” results from class. (Slides <a href="https://aluby.github.io/stat120/slides/20-slides.html#/florida-lakes-example-1">here</a>).</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lakes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"http://www.lock5stat.com/datasets1e/FloridaLakes.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1220,7 +1226,7 @@ window.Quarto = {
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`conf.level`</span> can be added to change the confidence level of the interval returned</span>
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The code below reads in the <span class="in">`FloridaLakes`</span> dataset from class last week. Use the <span class="in">`t.test()`</span> function to perform the CLT-based t-test to see whether the average <span class="in">`MaxMercury`</span> is less than 1 or not.  Your results should match the "by hand" results from class. (Slides <span class="co">[</span><span class="ot">here</span><span class="co">](https://drive.google.com/file/d/15egLqrbG4NpP_3RKGX8vsnGfojXiVANh/view?usp=drive_link)</span>). </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The code below reads in the <span class="in">`FloridaLakes`</span> dataset from class last week. Use the <span class="in">`t.test()`</span> function to perform the CLT-based t-test to see whether the average <span class="in">`MaxMercury`</span> is less than 1 or not.  Your results should match the "by hand" results from class. (Slides <span class="co">[</span><span class="ot">here</span><span class="co">](https://aluby.github.io/stat120/slides/20-slides.html#/florida-lakes-example-1)</span>). </span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>lakes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"http://www.lock5stat.com/datasets1e/FloridaLakes.csv"</span>)</span>

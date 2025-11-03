@@ -121,7 +121,7 @@
     "href": "activities/21-activity.html",
     "title": "21.1: CLT-based Inference for Difference in Proportions",
     "section": "",
-    "text": "APM Research Lab ran a survey of 800 likely Minnesota voters between Sept 16-18 of this year. They reported 48.4% were in support of the Harris/Walz ticket, and 43.3% were in support of the Trump/Vance ticket.\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. The margin of error is approximately 7 percentage points for the difference between two data points…. The margin of error is higher for any subgroup, such as gender or age grouping.\n\n\nWhat is the standard error for the difference in proportions?\n\n\nExplain why we should not use the CLT formula for the difference in proportions between Harris supporters and Trump supporters in this poll\n\n\nInstead, we’ll look at the difference in suppport for Harris between two different levels of education. (We can assume that the poll included 436 in the “no college degree” group and 360 in the “college degree” group). Show two ways that the standard error could have been computed.\n\n\n\n\n\n\n\n\n\n\n\nThe two ways of computing the standard error should produce similar results. Give two reasons why.\n\n\nThe following R code makes a confidence interval and performs a hypothesis test for the difference in these two proportions.\n\n\nWhere did x = c(192, 194) come from?\n\n\n\nWhat is \\(\\alpha\\) for the hypothesis test?\n\n\n\nProvide an in-context interpretation of the confidence interval (it should be clear in your answer which group had more support for Harris)\n\n\n\nprop.test(x = c(192, 194), \n          n = c(436, 360),\n          correct = FALSE, #tells R not to apply a \"continuity correction\"\n          conf.level = .90)\n\n\n    2-sample test for equality of proportions without continuity correction\n\ndata:  c(192, 194) out of c(436, 360)\nX-squared = 7.663, df = 1, p-value = 0.005637\nalternative hypothesis: two.sided\n90 percent confidence interval:\n -0.15680365 -0.04024018\nsample estimates:\n   prop 1    prop 2 \n0.4403670 0.5388889 \n\n\n\nWhat concept or topic is your group most confused about? (Some ideas to get you started: qnorm vs pnorm, normal vs t distribution, choosing a parameter, standard error formulas, when to use confidence intervals vs hypothesis tests)",
+    "text": "APM Research Lab ran a survey of 800 likely Minnesota voters between Sept 16-18 of this year. They reported 48.4% were in support of the Harris/Walz ticket, and 43.3% were in support of the Trump/Vance ticket.\nHere’s an excerpt from their methodology report:\n\nThe margin for error, according to standards customarily used by statisticians, is no more than ± 3.5 percentage points. The margin of error is approximately 7 percentage points for the difference between two data points…. The margin of error is higher for any subgroup, such as gender or age grouping.\n\n\nWhat is the standard error for the difference in proportions?\n\n\nExplain why we should not use the CLT formula for the difference in proportions between Harris supporters and Trump supporters in this poll\n\n\nInstead, we’ll look at the difference in support for Harris between two different levels of education. (We can assume that the poll included 436 in the “no college degree” group and 360 in the “college degree” group). Show two ways that the standard error could have been computed.\n\n\n\n\n\n\n\n\n\n\n\nThe two ways of computing the standard error should produce similar results. Give two reasons why.\n\n\nThe following R code makes a confidence interval and performs a hypothesis test for the difference in these two proportions.\n\n\nWhere did x = c(192, 194) come from?\n\n\n\nWhat is \\(\\alpha\\) for the hypothesis test?\n\n\n\nProvide an in-context interpretation of the confidence interval (it should be clear in your answer which group had more support for Harris)\n\n\n\nprop.test(x = c(192, 194), \n          n = c(436, 360),\n          correct = FALSE, #tells R not to apply a \"continuity correction\"\n          conf.level = .90)\n\n\n    2-sample test for equality of proportions without continuity correction\n\ndata:  c(192, 194) out of c(436, 360)\nX-squared = 7.663, df = 1, p-value = 0.005637\nalternative hypothesis: two.sided\n90 percent confidence interval:\n -0.15680365 -0.04024018\nsample estimates:\n   prop 1    prop 2 \n0.4403670 0.5388889 \n\n\n\nWhat concept or topic is your group most confused about? (Some ideas to get you started: qnorm vs pnorm, normal vs t distribution, choosing a parameter, standard error formulas, when to use confidence intervals vs hypothesis tests)",
     "crumbs": [
       "Home",
       "Activities",
@@ -1326,6 +1326,793 @@
     ]
   },
   {
+    "objectID": "slides/16-slides.html#today",
+    "href": "slides/16-slides.html#today",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Today",
+    "text": "Today\n\n“Warm Up” after break\nMultiple Testing\nPublication Bias\nExam II Review",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#is-there-such-a-thing-as-extrasensory-perception-esp",
+    "href": "slides/16-slides.html#is-there-such-a-thing-as-extrasensory-perception-esp",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Is there such a thing as “Extrasensory Perception” (ESP)?",
+    "text": "Is there such a thing as “Extrasensory Perception” (ESP)?\n\n\nIdea: subjects draw a card at random and telepathically communicate this to someone who then guesses the symbol\n\n\nLet’s say we run this experiment with 14 subjects and 3 get the answer right.",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#on-your-own",
+    "href": "slides/16-slides.html#on-your-own",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "On your own…",
+    "text": "On your own…\nWrite out the population parameter, sample statistic, \\(H_0\\) and \\(H_A\\).\n\nPopulation Parameter: \\(p\\), the proportion of correctly guessed cards in the population\nSample Statistic: \\(\\hat{p}\\), the proportion of correctly guessed cards in our sample (3/14)\n\\(H_0: p = .2\\)\n\\(H_A: p &gt; .2\\)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#results",
+    "href": "slides/16-slides.html#results",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Results",
+    "text": "Results",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#oops-i-meant-that-there-were-1400-subjects-and-300-got-the-answer-right",
+    "href": "slides/16-slides.html#oops-i-meant-that-there-were-1400-subjects-and-300-got-the-answer-right",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Oops! I meant that there were 1400 subjects and 300 got the answer right",
+    "text": "Oops! I meant that there were 1400 subjects and 300 got the answer right",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#oops-i-meant-that-there-were-14000-subjects-and-3000-got-the-answer-right",
+    "href": "slides/16-slides.html#oops-i-meant-that-there-were-14000-subjects-and-3000-got-the-answer-right",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Oops! I meant that there were 14000 subjects and 3000 got the answer right",
+    "text": "Oops! I meant that there were 14000 subjects and 3000 got the answer right",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#sample-size-has-a-huge-impact-on-significance",
+    "href": "slides/16-slides.html#sample-size-has-a-huge-impact-on-significance",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Sample Size has a huge impact on “significance”",
+    "text": "Sample Size has a huge impact on “significance”\n\nWith small samples, even large effects might not be statistically significant.\n\n\nWith large samples, even very small effects can be statistically significant.\n\n\nThis is one reason why some people prefer “discernible” to “significant”",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#confidence-interval",
+    "href": "slides/16-slides.html#confidence-interval",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nBuild using a bootstrap distribution: sample from the original data with replacement to create a bunch of new samples. Compute the sample proportion in each, and make a plot of the sample proportions to create the bootstrap distribution.\n\n14 subjects: [0, .429]\n\n\n1400 subjects: [.194, .235]\n\n\n14000 subjects: [.208, .221]",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#section",
+    "href": "slides/16-slides.html#section",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "",
+    "text": "Which is the bootstrap distribution and which is the null distribution? (1400 subjects example)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#section-1",
+    "href": "slides/16-slides.html#section-1",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "",
+    "text": "The two distributions live in the same “world”",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#multiple-testing-1",
+    "href": "slides/16-slides.html#multiple-testing-1",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Multiple Testing",
+    "text": "Multiple Testing\nWhenever you do a single hypothesis test, your Type I Error rate is \\(\\alpha\\) (let’s say 5%).\n\nIf you do lots of hypothesis tests, your Type I Error rate is much higher!\n\n\nIn fact, the probability of making at least Type I error among \\(k\\) tests is \\(1-(.95)^k\\)\n\n\nIf you do 10 tests, your overall Type I Error rate is 40%\n\n\nIf you do 100 tests, your overall Type I Error rate is 99%!\n\n\nNeed to do a multiple testing correction in these cases. Plan the number of tests in advance and adjust your original \\(\\alpha\\) accordingly",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#section-6",
+    "href": "slides/16-slides.html#section-6",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "",
+    "text": "A 2017 paper in the Journal of Clinical Epidemiology looked at published p-values in 120 medical research articles published in top medical journals in 2016.\nTheoretically, the distribution of p-values should be uniform:",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#section-7",
+    "href": "slides/16-slides.html#section-7",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "",
+    "text": "Instead, the distribution looked like:",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#six-principles-from-the-asa-statement",
+    "href": "slides/16-slides.html#six-principles-from-the-asa-statement",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Six principles from the ASA statement",
+    "text": "Six principles from the ASA statement\n\nP-values can indicate how incompatible the data are with a specified statistical model.\nP-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.\nScientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.\nProper inference requires full reporting and transparency.\nA p-value, or statistical significance, does not measure the size of an effect or the importance of a result.\nBy itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis.",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#section-9",
+    "href": "slides/16-slides.html#section-9",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "",
+    "text": "43 articles and over 400 pages of opinions and suggestions for ways to move forward",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#topicsquestions-from-daily-prep-as-of-45-minutes-before-class",
+    "href": "slides/16-slides.html#topicsquestions-from-daily-prep-as-of-45-minutes-before-class",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Topics/questions from daily prep (as of ~45 minutes before class)",
+    "text": "Topics/questions from daily prep (as of ~45 minutes before class)\n\nDoes rejecting the null hypothesis mean the alternative hypothesis is true?\nwhen to trust p-value versus confidence interval\ndifferences between when to use sampling distribution, bootstrap distribution and randomization distribution\nhow to interpret p-value again\nbootstrap distributions\nhypothesis tests\nHow CI is calculated\nsolve more exam-style questions\nhypothesis testing setup for trickier ones\nIs there a way to calculate/guess the p-value from a graph without R/Statkey?\nWhen to use a confidence interval vs. Hypothesis\nWhat unit do you put on an interpretation of a CI bootstrapped difference in proportions?",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/16-slides.html#practice-qs",
+    "href": "slides/16-slides.html#practice-qs",
+    "title": "16: Hypothesis Test Controversies + Exam II Review",
+    "section": "Practice Q’s",
+    "text": "Practice Q’s\n\n\n\n\n\n\n\n\nTopic\nQuestion/Answer writer\nProofreader\n\n\n\n\nHypothesis test for difference in means\n8\n1\n\n\nHypothesis test for difference in proportions\n7\n2\n\n\nHypothesis test for correlation\n6\n3\n\n\nType I vs Type II error\n5\n4\n\n\nConfidence interval for difference in proportions\n4\n5\n\n\nConfidence interval for difference in means\n3\n6\n\n\nConnection between confidence interval and hypothesis testing\n2\n7\n\n\nMultiple Testing\n1\n8",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "16: Hypothesis Test Controversies + Exam II Review"
+    ]
+  },
+  {
+    "objectID": "slides/10-midterm-checkin.html#a-note-on-regrade-requests",
+    "href": "slides/10-midterm-checkin.html#a-note-on-regrade-requests",
+    "title": "Midterm 1 + Check-in",
+    "section": "A note on regrade requests:",
+    "text": "A note on regrade requests:\n\nGrading is often a tedious task, and the grading team will sometimes make mistakes. I am always happy to fix these mistakes, and gradescope makes it easy to do so.\nRegrade requests must be submitted on gradescope within two weekdays after homework has been returned to you.\nRegrade requests are for administrative errors or obvious grading mistakes. I will not consider regrade requests for anything that applied to the entire class (e.g. “I think this mistake should only be worth 1 point instead of 2” or “I didn’t realize we had to do X”).\nIf you submit two or more inappropriate regrade requests, I will not consider additional regrade requests from you for the remainder of the term.\nIf you’re unsure whether you should file a regrade request or not, just ask! You are always welcome to discuss any grading questions with me in office hours.",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "Midterm 1 + Check-in"
+    ]
+  },
+  {
+    "objectID": "slides/10-midterm-checkin.html#section",
+    "href": "slides/10-midterm-checkin.html#section",
+    "title": "Midterm 1 + Check-in",
+    "section": "",
+    "text": "Going Well\n\nPrep before class (readings, video, pre-class assignment)\nNote Sheets are helpful\nGroup work\nHomework\nManageable workload\nPace is good\nR is fun/not that bad/etc.\n\n\nThings to change:\n\nR: more code examples on handouts\nR: explain more step by step\nSome homework questions are hard to figure out what its asking for",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "Midterm 1 + Check-in"
+    ]
+  },
+  {
+    "objectID": "slides/10-midterm-checkin.html#balance-of-lecturesgroup-work",
+    "href": "slides/10-midterm-checkin.html#balance-of-lecturesgroup-work",
+    "title": "Midterm 1 + Check-in",
+    "section": "Balance of lectures/group work",
+    "text": "Balance of lectures/group work",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "Midterm 1 + Check-in"
+    ]
+  },
+  {
+    "objectID": "slides/10-midterm-checkin.html#pre-class-videos",
+    "href": "slides/10-midterm-checkin.html#pre-class-videos",
+    "title": "Midterm 1 + Check-in",
+    "section": "Pre-class videos",
+    "text": "Pre-class videos",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "Midterm 1 + Check-in"
+    ]
+  },
+  {
+    "objectID": "slides/10-midterm-checkin.html#how-helpful-is.",
+    "href": "slides/10-midterm-checkin.html#how-helpful-is.",
+    "title": "Midterm 1 + Check-in",
+    "section": "How helpful is….",
+    "text": "How helpful is….",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "Midterm 1 + Check-in"
+    ]
+  },
+  {
+    "objectID": "slides/10-midterm-checkin.html#how-much-timehow-often",
+    "href": "slides/10-midterm-checkin.html#how-much-timehow-often",
+    "title": "Midterm 1 + Check-in",
+    "section": "How much time/How often",
+    "text": "How much time/How often",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "Midterm 1 + Check-in"
+    ]
+  },
+  {
+    "objectID": "slides/10-midterm-checkin.html#my-goals-for-the-rest-of-term",
+    "href": "slides/10-midterm-checkin.html#my-goals-for-the-rest-of-term",
+    "title": "Midterm 1 + Check-in",
+    "section": "My goals for the rest of term:",
+    "text": "My goals for the rest of term:\n\nMore R code on handouts\nContinue mixing in videos for class prep",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "Midterm 1 + Check-in"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#today",
+    "href": "slides/08-slides.html#today",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Today:",
+    "text": "Today:\n\n15-20 minutes to wrap up activity from last class\nCustomizing ggplots\nExam Review",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#choice-of-graphical-form-1",
+    "href": "slides/08-slides.html#choice-of-graphical-form-1",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Choice of graphical form",
+    "text": "Choice of graphical form",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#choice-of-graphical-form-2",
+    "href": "slides/08-slides.html#choice-of-graphical-form-2",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Choice of graphical form",
+    "text": "Choice of graphical form",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#distorting-the-y-axis",
+    "href": "slides/08-slides.html#distorting-the-y-axis",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Distorting the y-axis",
+    "text": "Distorting the y-axis",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#distorting-the-y-axis-1",
+    "href": "slides/08-slides.html#distorting-the-y-axis-1",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Distorting the y-axis",
+    "text": "Distorting the y-axis\n\nggplot(penguins, aes(x = body_mass_g, y= flipper_length_mm)) + \n  geom_point() + \n  geom_smooth(method = \"lm\", se = FALSE) +\n  ylim(c(0, 250))",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization",
+    "href": "slides/08-slides.html#other-ggplot-customization",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter() + \n  geom_boxplot()",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-1",
+    "href": "slides/08-slides.html#other-ggplot-customization-1",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-2",
+    "href": "slides/08-slides.html#other-ggplot-customization-2",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-3",
+    "href": "slides/08-slides.html#other-ggplot-customization-3",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_bw()",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-4",
+    "href": "slides/08-slides.html#other-ggplot-customization-4",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal()",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-5",
+    "href": "slides/08-slides.html#other-ggplot-customization-5",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_brewer(palette = \"Greens\")",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-6",
+    "href": "slides/08-slides.html#other-ggplot-customization-6",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_brewer(palette = \"Spectral\")",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-7",
+    "href": "slides/08-slides.html#other-ggplot-customization-7",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d()",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-8",
+    "href": "slides/08-slides.html#other-ggplot-customization-8",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d(option =\"plasma\")",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-9",
+    "href": "slides/08-slides.html#other-ggplot-customization-9",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"bottom\")",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-10",
+    "href": "slides/08-slides.html#other-ggplot-customization-10",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"none\")",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-11",
+    "href": "slides/08-slides.html#other-ggplot-customization-11",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal(base_size = 20) + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"none\")",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#other-ggplot-customization-12",
+    "href": "slides/08-slides.html#other-ggplot-customization-12",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "Other ggplot customization",
+    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal(base_size = 20) + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"none\") + \n  labs(\n    title = \"Gentoo Penguins have the longest flipper lengths\",\n    subtitle = \"Adelie and Chinstrap Penguins are smaller\",\n    y = \"Flipper Length (mm)\",\n    x = \"\",\n    caption = \"Source: PalmerPenguins\"\n  )",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#in-esquisse",
+    "href": "slides/08-slides.html#in-esquisse",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "In esquisse",
+    "text": "In esquisse\nChange theme under the “theme” menu:",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#in-esquisse-1",
+    "href": "slides/08-slides.html#in-esquisse-1",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "In esquisse",
+    "text": "In esquisse\nChange color palette under the “geometries” menu:",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "slides/08-slides.html#in-esquisse-2",
+    "href": "slides/08-slides.html#in-esquisse-2",
+    "title": "08: Customizing GGplots + Exam 1 Review",
+    "section": "In esquisse",
+    "text": "In esquisse\nChange title and axis labels under the “labels and title” menu:",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "08: Customizing GGplots + Exam 1 Review"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "stat120",
+    "section": "",
+    "text": "You’ve found the landing page for Amanda Luby’s Stat120 course materials\n\n\n\n\n\n\nImportantCaution\n\n\n\nMaterial found here (instead of moodle) may be out of date"
+  },
+  {
+    "objectID": "slides/19-slides.html#today",
+    "href": "slides/19-slides.html#today",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Today",
+    "text": "Today\n\nCLT Recap\nCLT-based inference for proportions",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#section",
+    "href": "slides/19-slides.html#section",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "",
+    "text": "If the sample size is big enough and the sample is random,\n\\[\\bar{X} \\sim N(\\mu, SE_\\bar{X})\\]\n\n\\[\\widehat{p} \\sim N(p, SE_\\widehat{p})\\]\n\n\nAnd we can build a confidence interval with the formula:\n\\[\\text{Sample Stat} \\pm z^* \\times SE\\]\n\n\nWhere \\(z^*\\) is determined by the confidence level that we want",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#finding-z",
+    "href": "slides/19-slides.html#finding-z",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Finding \\(z^*\\)",
+    "text": "Finding \\(z^*\\)\nWhat is \\(z^*\\) for a 95% confidence interval?\n\nWhat is \\(z^*\\) for a 68% confidence interval?\n\n\nWhat is \\(z^*\\) for a 99% confidence interval?\n\n\nWhat is \\(z^*\\) for a 90% confidence interval?\n\n\n\n\n\n\n\n\n\n\n\n\nqnorm(.05, lower.tail = TRUE)\n\n[1] -1.644854",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#today-1",
+    "href": "slides/19-slides.html#today-1",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Today",
+    "text": "Today\n\nHow big of a sample is “big enough”?\nHow do we get SE?\n\n\nIt turns out, the answer is different depending on which statistic we’re looking at. Today, we’ll answer those questions for proportions",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#how-big-is-big-enough",
+    "href": "slides/19-slides.html#how-big-is-big-enough",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "How big is “big enough”?",
+    "text": "How big is “big enough”?\nExample 1: \\(\\widehat{p} = .5\\). How big is “big enough”?\n\nExample 2: \\(\\widehat{p} = .05\\). How big is “big enough”?\n\n\nRule of thumb for proportions:\n\nExpected count in each category (Yes/No) should be &gt;10\nIn math: \\(np &gt; 10\\) and \\(n(1-p) &gt; 10\\)\n\n\n\nExample 1: .5 * 20 = 10 and .5*20 = 10\n\n\nExample 2: .05 * 200 = 10 and .95*20 = 190",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#how-do-we-find-se",
+    "href": "slides/19-slides.html#how-do-we-find-se",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "How do we find SE?",
+    "text": "How do we find SE?\n\nWait…. what’s the SE again?\n\n\nThe point of using the CLT is to have a “shortcut”. We don’t want to have to find the bootstrap distribution to get an estimate of the SE.\n\n\n\\[SE_{\\widehat{p}} = \\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\]\n\n\nIdea: as \\(n\\) gets bigger, the SE gets smaller. If \\(\\widehat p\\) is close to .5, the SE is larger than if \\(\\widehat{p}\\) is close to 0 or 1.",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#esp-example-again",
+    "href": "slides/19-slides.html#esp-example-again",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "ESP Example (again)",
+    "text": "ESP Example (again)\n\n\n\nPopulation Parameter: \\(p\\), the proportion of correctly guessed cards in the population\nSample Statistic: \\(\\widehat{p}\\), the proportion of correctly guessed cards in our sample\n\\(H_0: p = .2\\)\n\\(H_A: p &gt; .2\\)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-14-statkey",
+    "href": "slides/19-slides.html#n-14-statkey",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 14 (StatKey)",
+    "text": "n = 14 (StatKey)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-1400-statkey",
+    "href": "slides/19-slides.html#n-1400-statkey",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 1400 (StatKey)",
+    "text": "n = 1400 (StatKey)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-14000-statkey",
+    "href": "slides/19-slides.html#n-14000-statkey",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 14000 (StatKey)",
+    "text": "n = 14000 (StatKey)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#lets-find-these-p-values-without-a-permutation-test",
+    "href": "slides/19-slides.html#lets-find-these-p-values-without-a-permutation-test",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "Let’s find these p-values without a permutation test",
+    "text": "Let’s find these p-values without a permutation test\n\nSample Stat: \\(\\widehat{p} = .214\\)\nTest Statistic (Z-score): \\(z = \\frac{\\widehat{p} - p_0}{SE_{\\widehat{p}}}\\)\n\\(SE_{\\widehat{p}} = \\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\)",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n-14",
+    "href": "slides/19-slides.html#n-14",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n = 14",
+    "text": "n = 14\n\np_hat = 3/14\nn = 14\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.1096642\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 0.1302678\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 0.4481773",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n1400",
+    "href": "slides/19-slides.html#n1400",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n=1400:",
+    "text": "n=1400:\n\np_hat = 3/14\nn = 1400\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.01096642\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 1.302678\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 0.09634238",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#n14000",
+    "href": "slides/19-slides.html#n14000",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "n=14000",
+    "text": "n=14000\n\np_hat = 3/14\nn = 14000\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.003467887\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 4.119429\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 1.89906e-05",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
+    "objectID": "slides/19-slides.html#big-picture-picture",
+    "href": "slides/19-slides.html#big-picture-picture",
+    "title": "19: CLT-based Inference for Proportions",
+    "section": "“Big Picture” Picture",
+    "text": "“Big Picture” Picture",
+    "crumbs": [
+      "Home",
+      "Slides",
+      "Slides",
+      "19: CLT-based Inference for Proportions"
+    ]
+  },
+  {
     "objectID": "slides/01-welcome-slides.html#plan-for-today",
     "href": "slides/01-welcome-slides.html#plan-for-today",
     "title": "Welcome to Stat120!",
@@ -1781,790 +2568,224 @@
     ]
   },
   {
-    "objectID": "slides/19-slides.html#today",
-    "href": "slides/19-slides.html#today",
-    "title": "19: CLT-based Inference for Proportions",
+    "objectID": "slides/21-slides.html#today",
+    "href": "slides/21-slides.html#today",
+    "title": "21: CLT-based Inference for Differences",
     "section": "Today",
-    "text": "Today\n\nCLT Recap\nCLT-based inference for proportions",
+    "text": "Today\n\nCLT Recap\nCLT for differences in Proportions\nCLT for differences in Means",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#section",
-    "href": "slides/19-slides.html#section",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "",
-    "text": "If the sample size is big enough and the sample is random,\n\\[\\bar{X} \\sim N(\\mu, SE_\\bar{X})\\]\n\n\\[\\widehat{p} \\sim N(p, SE_\\widehat{p})\\]\n\n\nAnd we can build a confidence interval with the formula:\n\\[\\text{Sample Stat} \\pm z^* \\times SE\\]\n\n\nWhere \\(z^*\\) is determined by the confidence level that we want",
+    "objectID": "slides/21-slides.html#clt-recap-1",
+    "href": "slides/21-slides.html#clt-recap-1",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "CLT recap",
+    "text": "CLT recap\nIf the sample size is big enough and the sample is random,\n\n\n\n\\(\\widehat{p} \\sim N(p, SE_{\\widehat{p}})\\)\n\\(SE_\\widehat{p} = \\sqrt{\\frac{p(1-p)}{n}}\\)\nBut, we don’t know \\(p\\), so we plug in \\(\\widehat{p}\\) (CI’s), \\(p_0\\) (HT’s), or \\(0.5\\) (“conservative”)\n\n\n\n\\(\\bar{X} \\sim N(\\mu, SE_\\bar{X})\\)\n\\(SE_\\bar{X} = \\frac{\\sigma}{\\sqrt{n}}\\)\nBut, we don’t know \\(\\sigma\\), so we plug in \\(s\\)\n“t-score”: \\(\\frac{\\bar{X} - \\mu}{\\frac{s}{\\sqrt{n}}} \\sim t_{n-1}\\)",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#finding-z",
-    "href": "slides/19-slides.html#finding-z",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "Finding \\(z^*\\)",
-    "text": "Finding \\(z^*\\)\nWhat is \\(z^*\\) for a 95% confidence interval?\n\nWhat is \\(z^*\\) for a 68% confidence interval?\n\n\nWhat is \\(z^*\\) for a 99% confidence interval?\n\n\nWhat is \\(z^*\\) for a 90% confidence interval?\n\n\n\n\n\n\n\n\n\n\n\n\nqnorm(.05, lower.tail = TRUE)\n\n[1] -1.644854",
+    "objectID": "slides/21-slides.html#warm-up-example",
+    "href": "slides/21-slides.html#warm-up-example",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Warm-up Example",
+    "text": "Warm-up Example\nLast class, we wanted to build a 99% confidence interval for the mean number of fibers discharged per liter of wastewater when washing a fleece garment. \\(n=120\\), \\(\\bar{X} = 290\\) and \\(s = 87.6\\).\n\nThe form of a CI is \\(\\bar{x} \\pm t^* \\times SE_\\bar{X}\\)\n\n\n\nqt(.99, df = 120)\n\n\n\nSo a 99% confidence interval is\n\\(290 \\pm 2.35* \\times \\frac{87.6}{\\sqrt{120}}\\)\n\n\n\n\n\nWhat is the problem?",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#today-1",
-    "href": "slides/19-slides.html#today-1",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "Today",
-    "text": "Today\n\nHow big of a sample is “big enough”?\nHow do we get SE?\n\n\nIt turns out, the answer is different depending on which statistic we’re looking at. Today, we’ll answer those questions for proportions",
+    "objectID": "slides/21-slides.html#setup",
+    "href": "slides/21-slides.html#setup",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Setup",
+    "text": "Setup\nIdea: we are interested in the difference in proportions between two groups. Think “How far ahead is one candidate in a political poll?” or “Is disease incidence higher in one treatment group than another?”\n\nPopulation parameter: \\(p_1 - p_2\\)\nSample stat: \\(\\widehat{p}_1 - \\widehat{p}_2\\)\nCLT: if sample size is big enough, \\(\\widehat{p}_1 - \\widehat{p}_2 \\sim N(p_1 -p_2, SE_{\\widehat{p}_1 - \\widehat{p}_2})\\)\n\nHow big is “big enough”?\nWhat is the SE?\n\n\n\n\n\n\nImportant!\n\n\nThe two groups are independent",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#how-big-is-big-enough",
-    "href": "slides/19-slides.html#how-big-is-big-enough",
-    "title": "19: CLT-based Inference for Proportions",
+    "objectID": "slides/21-slides.html#how-big-is-big-enough",
+    "href": "slides/21-slides.html#how-big-is-big-enough",
+    "title": "21: CLT-based Inference for Differences",
     "section": "How big is “big enough”?",
-    "text": "How big is “big enough”?\nExample 1: \\(\\widehat{p} = .5\\). How big is “big enough”?\n\nExample 2: \\(\\widehat{p} = .05\\). How big is “big enough”?\n\n\nRule of thumb for proportions:\n\nExpected count in each category (Yes/No) should be &gt;10\nIn math: \\(np &gt; 10\\) and \\(n(1-p) &gt; 10\\)\n\n\n\nExample 1: .5 * 20 = 10 and .5*20 = 10\n\n\nExample 2: .05 * 200 = 10 and .95*20 = 190",
+    "text": "How big is “big enough”?\n\n\n1 proportion:\n\nAt least 10 in each category\n\\(np &gt; 10\\) and \\(n(1-p) &gt; 10\\)\n\n\n2 proportions:\n\nAt least 10 in each category for each group\n\\(n_1p_1 &gt; 10\\) and \\(n_1(1-p_1) &gt; 10\\)\n\\(n_2p_2 &gt; 10\\) and \\(n_2(1-p_2) &gt; 10\\)",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#how-do-we-find-se",
-    "href": "slides/19-slides.html#how-do-we-find-se",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "How do we find SE?",
-    "text": "How do we find SE?\n\nWait…. what’s the SE again?\n\n\nThe point of using the CLT is to have a “shortcut”. We don’t want to have to find the bootstrap distribution to get an estimate of the SE.\n\n\n\\[SE_{\\widehat{p}} = \\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\]\n\n\nIdea: as \\(n\\) gets bigger, the SE gets smaller. If \\(\\widehat p\\) is close to .5, the SE is larger than if \\(\\widehat{p}\\) is close to 0 or 1.",
+    "objectID": "slides/21-slides.html#what-is-the-se",
+    "href": "slides/21-slides.html#what-is-the-se",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "What is the SE?",
+    "text": "What is the SE?\n\\[ SE_{\\widehat{p}_1 - \\widehat{p}_2} = \\sqrt{\\frac{p_1(1-p_1)}{n_1} + \\frac{p_2(1-p_2)}{n_2}}\\]\n\nBut, we don’t know \\(p\\). 3 options:\n\n“Plug-in” \\(\\widehat{p}_1\\) and \\(\\widehat{p}_2\\)\nAssume \\(p_1 = p_2\\) and compute the “pooled” \\(\\widehat{p}\\)\n\n\\(\\widehat{p}_{pooled} = \\frac{n_1 \\widehat{p}_1 + n_2 \\widehat{p}_2}{n_1 + n_2}\\)\nThen “plug in” to SE formula: \\(\\sqrt{\\frac{p_{pooled}(1-p_{pooled})}{n_1} + \\frac{p_{pooled}(1-p_{pooled})}{n_2}}\\)\n\nUse the “conservative” SE\n\n\\(SE_{conservative} = \\sqrt{\\frac{.25}{n_1} + \\frac{.25}{n_2}}\\)",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#esp-example-again",
-    "href": "slides/19-slides.html#esp-example-again",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "ESP Example (again)",
-    "text": "ESP Example (again)\n\n\n\nPopulation Parameter: \\(p\\), the proportion of correctly guessed cards in the population\nSample Statistic: \\(\\widehat{p}\\), the proportion of correctly guessed cards in our sample\n\\(H_0: p = .2\\)\n\\(H_A: p &gt; .2\\)",
+    "objectID": "slides/21-slides.html#summary",
+    "href": "slides/21-slides.html#summary",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Summary",
+    "text": "Summary\nIf sample size condition is met and the groups are independent\n\n\n\nCLT-based confidence interval:\n\n\n\\[\\widehat{p}_1 - \\widehat{p}_2 \\pm z^* \\sqrt{\\frac{\\widehat p_1(1-\\widehat p_1)}{n_1} + \\frac{\\widehat p_2(1-\\widehat p_2)}{n_1}}\\]\n\n\n\n\n\n\nCLT-based test:\n\n\n\\(H_0: p_1 - p_2 = 0\\)\n\\[ z = \\frac{(\\widehat{p}_1 - \\widehat{p}_2) - 0}{SE_{pooled}}\\]",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#n-14-statkey",
-    "href": "slides/19-slides.html#n-14-statkey",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "n = 14 (StatKey)",
-    "text": "n = 14 (StatKey)",
+    "objectID": "slides/21-slides.html#setup-1",
+    "href": "slides/21-slides.html#setup-1",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Setup",
+    "text": "Setup\nIdea: we are interested in the difference in means between two groups.\n\nPopulation parameter: \\(\\mu_1 - \\mu_2\\)\nSample stat: \\(\\bar{x}_1 - \\bar{x}_2\\)\nCLT: if sample size is big enough, \\(\\bar{x}_1 - \\bar{x}_2 \\sim N(\\mu_1 - \\mu_2, SE_{\\bar{x}_1 - \\bar{x}_2})\\)\n\nHow big is “big enough”?\nWhat is the SE?",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#n-1400-statkey",
-    "href": "slides/19-slides.html#n-1400-statkey",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "n = 1400 (StatKey)",
-    "text": "n = 1400 (StatKey)",
+    "objectID": "slides/21-slides.html#how-big-is-big-enough-1",
+    "href": "slides/21-slides.html#how-big-is-big-enough-1",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "How big is “big enough”?",
+    "text": "How big is “big enough”?\n\n\n1 mean:\n\nIf \\(n &gt; 30\\)\nIf \\(n \\le 30\\) and there is no extreme skew or outliers (but t vs z really matters!)\n\n\n2 means:\n\n\\(n_1 &gt; 30\\) and \\(n_2 &gt; 30\\)\nIf one or both sample sizes is \\(\\le 30\\) and there is no extreme skew or outliers",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#n-14000-statkey",
-    "href": "slides/19-slides.html#n-14000-statkey",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "n = 14000 (StatKey)",
-    "text": "n = 14000 (StatKey)",
+    "objectID": "slides/21-slides.html#what-is-the-se-1",
+    "href": "slides/21-slides.html#what-is-the-se-1",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "What is the SE?",
+    "text": "What is the SE?\n\\[ SE_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}\\]\n\nBut, we don’t know \\(\\sigma\\)’s. Only option is to “plug in” \\(s\\)’s\n\\[ SE_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}\\]",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#lets-find-these-p-values-without-a-permutation-test",
-    "href": "slides/19-slides.html#lets-find-these-p-values-without-a-permutation-test",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "Let’s find these p-values without a permutation test",
-    "text": "Let’s find these p-values without a permutation test\n\nSample Stat: \\(\\widehat{p} = .214\\)\nTest Statistic (Z-score): \\(z = \\frac{\\widehat{p} - p_0}{SE_{\\widehat{p}}}\\)\n\\(SE_{\\widehat{p}} = \\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\)",
+    "objectID": "slides/21-slides.html#sampling-distribution-becomes-a-t",
+    "href": "slides/21-slides.html#sampling-distribution-becomes-a-t",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Sampling distribution becomes a t",
+    "text": "Sampling distribution becomes a t\n\\[\\frac{\\bar{X} - \\mu}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}} \\sim t_{df}\\]\nwhere \\(df\\) is determined by the smaller group:\n\\[df=\\min(n_1, n_2) - 1\\]",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#n-14",
-    "href": "slides/19-slides.html#n-14",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "n = 14",
-    "text": "n = 14\n\np_hat = 3/14\nn = 14\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.1096642\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 0.1302678\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 0.4481773",
+    "objectID": "slides/21-slides.html#summary-1",
+    "href": "slides/21-slides.html#summary-1",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Summary",
+    "text": "Summary\nIf sample sizes are “large” (or samples look normal-ish) and the groups are independent\n\n\n\nCLT-based confidence interval:\n\n\n\\[\\bar{x}_1 - \\bar{x}_2 \\pm t_{df}^* \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}\\]\n\n\n\n\n\n\nCLT-based test:\n\n\n\\(H_0: \\mu_1 - \\mu_2 = 0\\)\n\\[ t_{df} = \\frac{(\\bar{x}_1 - \\bar{x}_2) - 0}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}\\]\n\n\n\nwhere \\(df = \\min(n_1, n_2) - 1\\)",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#n1400",
-    "href": "slides/19-slides.html#n1400",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "n=1400:",
-    "text": "n=1400:\n\np_hat = 3/14\nn = 1400\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.01096642\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 1.302678\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 0.09634238",
+    "objectID": "slides/21-slides.html#setup-2",
+    "href": "slides/21-slides.html#setup-2",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Setup",
+    "text": "Setup\nIdea: we are interested in the difference in means between two groups, but the groups being compared can be matched in some way. Think “scores on pre/post exam” or “studies on twins”",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#n14000",
-    "href": "slides/19-slides.html#n14000",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "n=14000",
-    "text": "n=14000\n\np_hat = 3/14\nn = 14000\nSE_p = sqrt((p_hat*(1-p_hat))/n)\nSE_p\n\n[1] 0.003467887\n\nz_score = (p_hat - .2)/SE_p\nz_score\n\n[1] 4.119429\n\np_val = pnorm(z_score, lower.tail = FALSE)\np_val\n\n[1] 1.89906e-05",
+    "objectID": "slides/21-slides.html#setup-3",
+    "href": "slides/21-slides.html#setup-3",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Setup",
+    "text": "Setup\n\nPopulation parameter: \\(\\mu_d\\)\nSample stat: \\(\\bar{x}_d\\)\nCLT: if sample size is big enough, \\(\\bar{x}_d \\sim N(\\mu_d, SE_{\\bar{x}_d})\\)\n\nHow big is “big enough”?\nWhat is the SE?",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/19-slides.html#big-picture-picture",
-    "href": "slides/19-slides.html#big-picture-picture",
-    "title": "19: CLT-based Inference for Proportions",
-    "section": "“Big Picture” Picture",
-    "text": "“Big Picture” Picture",
+    "objectID": "slides/21-slides.html#how-big-is-big-enough-2",
+    "href": "slides/21-slides.html#how-big-is-big-enough-2",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "How big is “big enough”?",
+    "text": "How big is “big enough”?\n1 mean:\n\nIf \\(n &gt; 30\\)\nIf \\(n \\le 30\\) and there is no extreme skew or outliers (but t vs z really matters!)",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "19: CLT-based Inference for Proportions"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "stat120",
-    "section": "",
-    "text": "You’ve found the landing page for Amanda Luby’s Stat120 course materials\n\n\n\n\n\n\nImportantCaution\n\n\n\nMaterial found here (instead of moodle) may be out of date"
-  },
-  {
-    "objectID": "slides/08-slides.html#today",
-    "href": "slides/08-slides.html#today",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Today:",
-    "text": "Today:\n\n15-20 minutes to wrap up activity from last class\nCustomizing ggplots\nExam Review",
+    "objectID": "slides/21-slides.html#what-is-the-se-2",
+    "href": "slides/21-slides.html#what-is-the-se-2",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "What is the SE?",
+    "text": "What is the SE?\n\\[ SE_{\\bar{x}_d} = \\frac{\\sigma_d}{\\sqrt{n_d}}\\]\nBut, we don’t know \\(\\sigma_d\\). Only option is to “plug in” \\(s_d\\)\n\\[ SE_{\\bar{x}_d} = \\frac{s_d}{\\sqrt{n_d}}\\]\n\\[t = \\frac{\\bar{x}_d - \\mu_d}{\\frac{s}{\\sqrt{n}}} \\sim t_{n_d - 1}\\]",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
-    "objectID": "slides/08-slides.html#choice-of-graphical-form-1",
-    "href": "slides/08-slides.html#choice-of-graphical-form-1",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Choice of graphical form",
-    "text": "Choice of graphical form",
+    "objectID": "slides/21-slides.html#summary-2",
+    "href": "slides/21-slides.html#summary-2",
+    "title": "21: CLT-based Inference for Differences",
+    "section": "Summary",
+    "text": "Summary\nIf sample size is large enough and the two groups can be matched:\n\n\n\nCLT-based confidence interval:\n\n\n\\[\\bar{x}_d \\pm t_{n-1}^* \\sqrt{\\frac{s_d^2}{n}}\\]\n\n\n\n\n\n\nCLT-based test:\n\n\n\\(H_0: \\mu_1 - \\mu_2 = 0\\) or \\(H_0: \\mu_d = 0\\)\n\\[ t_{n-1} = \\frac{\\bar{x}_d  - 0}{\\sqrt{\\frac{s_d^2}{n}}}\\]",
     "crumbs": [
       "Home",
       "Slides",
       "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#choice-of-graphical-form-2",
-    "href": "slides/08-slides.html#choice-of-graphical-form-2",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Choice of graphical form",
-    "text": "Choice of graphical form",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#distorting-the-y-axis",
-    "href": "slides/08-slides.html#distorting-the-y-axis",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Distorting the y-axis",
-    "text": "Distorting the y-axis",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#distorting-the-y-axis-1",
-    "href": "slides/08-slides.html#distorting-the-y-axis-1",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Distorting the y-axis",
-    "text": "Distorting the y-axis\n\nggplot(penguins, aes(x = body_mass_g, y= flipper_length_mm)) + \n  geom_point() + \n  geom_smooth(method = \"lm\", se = FALSE) +\n  ylim(c(0, 250))",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization",
-    "href": "slides/08-slides.html#other-ggplot-customization",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter() + \n  geom_boxplot()",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-1",
-    "href": "slides/08-slides.html#other-ggplot-customization-1",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-2",
-    "href": "slides/08-slides.html#other-ggplot-customization-2",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-3",
-    "href": "slides/08-slides.html#other-ggplot-customization-3",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_bw()",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-4",
-    "href": "slides/08-slides.html#other-ggplot-customization-4",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal()",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-5",
-    "href": "slides/08-slides.html#other-ggplot-customization-5",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_brewer(palette = \"Greens\")",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-6",
-    "href": "slides/08-slides.html#other-ggplot-customization-6",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_brewer(palette = \"Spectral\")",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-7",
-    "href": "slides/08-slides.html#other-ggplot-customization-7",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d()",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-8",
-    "href": "slides/08-slides.html#other-ggplot-customization-8",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d(option =\"plasma\")",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-9",
-    "href": "slides/08-slides.html#other-ggplot-customization-9",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"bottom\")",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-10",
-    "href": "slides/08-slides.html#other-ggplot-customization-10",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal() + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"none\")",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-11",
-    "href": "slides/08-slides.html#other-ggplot-customization-11",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal(base_size = 20) + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"none\")",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#other-ggplot-customization-12",
-    "href": "slides/08-slides.html#other-ggplot-customization-12",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "Other ggplot customization",
-    "text": "Other ggplot customization\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species)) + \n  geom_jitter(alpha = .2) + \n  geom_boxplot(alpha = .5) +\n  theme_minimal(base_size = 20) + \n  scale_fill_viridis_d(option =\"plasma\") + \n  theme(legend.position = \"none\") + \n  labs(\n    title = \"Gentoo Penguins have the longest flipper lengths\",\n    subtitle = \"Adelie and Chinstrap Penguins are smaller\",\n    y = \"Flipper Length (mm)\",\n    x = \"\",\n    caption = \"Source: PalmerPenguins\"\n  )",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#in-esquisse",
-    "href": "slides/08-slides.html#in-esquisse",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "In esquisse",
-    "text": "In esquisse\nChange theme under the “theme” menu:",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#in-esquisse-1",
-    "href": "slides/08-slides.html#in-esquisse-1",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "In esquisse",
-    "text": "In esquisse\nChange color palette under the “geometries” menu:",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/08-slides.html#in-esquisse-2",
-    "href": "slides/08-slides.html#in-esquisse-2",
-    "title": "08: Customizing GGplots + Exam 1 Review",
-    "section": "In esquisse",
-    "text": "In esquisse\nChange title and axis labels under the “labels and title” menu:",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "08: Customizing GGplots + Exam 1 Review"
-    ]
-  },
-  {
-    "objectID": "slides/10-midterm-checkin.html#a-note-on-regrade-requests",
-    "href": "slides/10-midterm-checkin.html#a-note-on-regrade-requests",
-    "title": "Midterm 1 + Check-in",
-    "section": "A note on regrade requests:",
-    "text": "A note on regrade requests:\n\nGrading is often a tedious task, and the grading team will sometimes make mistakes. I am always happy to fix these mistakes, and gradescope makes it easy to do so.\nRegrade requests must be submitted on gradescope within two weekdays after homework has been returned to you.\nRegrade requests are for administrative errors or obvious grading mistakes. I will not consider regrade requests for anything that applied to the entire class (e.g. “I think this mistake should only be worth 1 point instead of 2” or “I didn’t realize we had to do X”).\nIf you submit two or more inappropriate regrade requests, I will not consider additional regrade requests from you for the remainder of the term.\nIf you’re unsure whether you should file a regrade request or not, just ask! You are always welcome to discuss any grading questions with me in office hours.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "Midterm 1 + Check-in"
-    ]
-  },
-  {
-    "objectID": "slides/10-midterm-checkin.html#section",
-    "href": "slides/10-midterm-checkin.html#section",
-    "title": "Midterm 1 + Check-in",
-    "section": "",
-    "text": "Going Well\n\nPrep before class (readings, video, pre-class assignment)\nNote Sheets are helpful\nGroup work\nHomework\nManageable workload\nPace is good\nR is fun/not that bad/etc.\n\n\nThings to change:\n\nR: more code examples on handouts\nR: explain more step by step\nSome homework questions are hard to figure out what its asking for",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "Midterm 1 + Check-in"
-    ]
-  },
-  {
-    "objectID": "slides/10-midterm-checkin.html#balance-of-lecturesgroup-work",
-    "href": "slides/10-midterm-checkin.html#balance-of-lecturesgroup-work",
-    "title": "Midterm 1 + Check-in",
-    "section": "Balance of lectures/group work",
-    "text": "Balance of lectures/group work",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "Midterm 1 + Check-in"
-    ]
-  },
-  {
-    "objectID": "slides/10-midterm-checkin.html#pre-class-videos",
-    "href": "slides/10-midterm-checkin.html#pre-class-videos",
-    "title": "Midterm 1 + Check-in",
-    "section": "Pre-class videos",
-    "text": "Pre-class videos",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "Midterm 1 + Check-in"
-    ]
-  },
-  {
-    "objectID": "slides/10-midterm-checkin.html#how-helpful-is.",
-    "href": "slides/10-midterm-checkin.html#how-helpful-is.",
-    "title": "Midterm 1 + Check-in",
-    "section": "How helpful is….",
-    "text": "How helpful is….",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "Midterm 1 + Check-in"
-    ]
-  },
-  {
-    "objectID": "slides/10-midterm-checkin.html#how-much-timehow-often",
-    "href": "slides/10-midterm-checkin.html#how-much-timehow-often",
-    "title": "Midterm 1 + Check-in",
-    "section": "How much time/How often",
-    "text": "How much time/How often",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "Midterm 1 + Check-in"
-    ]
-  },
-  {
-    "objectID": "slides/10-midterm-checkin.html#my-goals-for-the-rest-of-term",
-    "href": "slides/10-midterm-checkin.html#my-goals-for-the-rest-of-term",
-    "title": "Midterm 1 + Check-in",
-    "section": "My goals for the rest of term:",
-    "text": "My goals for the rest of term:\n\nMore R code on handouts\nContinue mixing in videos for class prep",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "Midterm 1 + Check-in"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#today",
-    "href": "slides/16-slides.html#today",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Today",
-    "text": "Today\n\n“Warm Up” after break\nMultiple Testing\nPublication Bias\nExam II Review",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#is-there-such-a-thing-as-extrasensory-perception-esp",
-    "href": "slides/16-slides.html#is-there-such-a-thing-as-extrasensory-perception-esp",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Is there such a thing as “Extrasensory Perception” (ESP)?",
-    "text": "Is there such a thing as “Extrasensory Perception” (ESP)?\n\n\nIdea: subjects draw a card at random and telepathically communicate this to someone who then guesses the symbol\n\n\nLet’s say we run this experiment with 14 subjects and 3 get the answer right.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#on-your-own",
-    "href": "slides/16-slides.html#on-your-own",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "On your own…",
-    "text": "On your own…\nWrite out the population parameter, sample statistic, \\(H_0\\) and \\(H_A\\).\n\nPopulation Parameter: \\(p\\), the proportion of correctly guessed cards in the population\nSample Statistic: \\(\\hat{p}\\), the proportion of correctly guessed cards in our sample (3/14)\n\\(H_0: p = .2\\)\n\\(H_A: p &gt; .2\\)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#results",
-    "href": "slides/16-slides.html#results",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Results",
-    "text": "Results",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#oops-i-meant-that-there-were-1400-subjects-and-300-got-the-answer-right",
-    "href": "slides/16-slides.html#oops-i-meant-that-there-were-1400-subjects-and-300-got-the-answer-right",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Oops! I meant that there were 1400 subjects and 300 got the answer right",
-    "text": "Oops! I meant that there were 1400 subjects and 300 got the answer right",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#oops-i-meant-that-there-were-14000-subjects-and-3000-got-the-answer-right",
-    "href": "slides/16-slides.html#oops-i-meant-that-there-were-14000-subjects-and-3000-got-the-answer-right",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Oops! I meant that there were 14000 subjects and 3000 got the answer right",
-    "text": "Oops! I meant that there were 14000 subjects and 3000 got the answer right",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#sample-size-has-a-huge-impact-on-significance",
-    "href": "slides/16-slides.html#sample-size-has-a-huge-impact-on-significance",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Sample Size has a huge impact on “significance”",
-    "text": "Sample Size has a huge impact on “significance”\n\nWith small samples, even large effects might not be statistically significant.\n\n\nWith large samples, even very small effects can be statistically significant.\n\n\nThis is one reason why some people prefer “discernible” to “significant”",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#confidence-interval",
-    "href": "slides/16-slides.html#confidence-interval",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Confidence Interval",
-    "text": "Confidence Interval\nBuild using a bootstrap distribution: sample from the original data with replacement to create a bunch of new samples. Compute the sample proportion in each, and make a plot of the sample proportions to create the bootstrap distribution.\n\n14 subjects: [0, .429]\n\n\n1400 subjects: [.194, .235]\n\n\n14000 subjects: [.208, .221]",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#section",
-    "href": "slides/16-slides.html#section",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "",
-    "text": "Which is the bootstrap distribution and which is the null distribution? (1400 subjects example)",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#section-1",
-    "href": "slides/16-slides.html#section-1",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "",
-    "text": "The two distributions live in the same “world”",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#multiple-testing-1",
-    "href": "slides/16-slides.html#multiple-testing-1",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Multiple Testing",
-    "text": "Multiple Testing\nWhenever you do a single hypothesis test, your Type I Error rate is \\(\\alpha\\) (let’s say 5%).\n\nIf you do lots of hypothesis tests, your Type I Error rate is much higher!\n\n\nIn fact, the probability of making at least Type I error among \\(k\\) tests is \\(1-(.95)^k\\)\n\n\nIf you do 10 tests, your overall Type I Error rate is 40%\n\n\nIf you do 100 tests, your overall Type I Error rate is 99%!\n\n\nNeed to do a multiple testing correction in these cases. Plan the number of tests in advance and adjust your original \\(\\alpha\\) accordingly",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#section-6",
-    "href": "slides/16-slides.html#section-6",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "",
-    "text": "A 2017 paper in the Journal of Clinical Epidemiology looked at published p-values in 120 medical research articles published in top medical journals in 2016.\nTheoretically, the distribution of p-values should be uniform:",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#section-7",
-    "href": "slides/16-slides.html#section-7",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "",
-    "text": "Instead, the distribution looked like:",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#six-principles-from-the-asa-statement",
-    "href": "slides/16-slides.html#six-principles-from-the-asa-statement",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Six principles from the ASA statement",
-    "text": "Six principles from the ASA statement\n\nP-values can indicate how incompatible the data are with a specified statistical model.\nP-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.\nScientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.\nProper inference requires full reporting and transparency.\nA p-value, or statistical significance, does not measure the size of an effect or the importance of a result.\nBy itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis.",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#section-9",
-    "href": "slides/16-slides.html#section-9",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "",
-    "text": "43 articles and over 400 pages of opinions and suggestions for ways to move forward",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#topicsquestions-from-daily-prep-as-of-45-minutes-before-class",
-    "href": "slides/16-slides.html#topicsquestions-from-daily-prep-as-of-45-minutes-before-class",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Topics/questions from daily prep (as of ~45 minutes before class)",
-    "text": "Topics/questions from daily prep (as of ~45 minutes before class)\n\nDoes rejecting the null hypothesis mean the alternative hypothesis is true?\nwhen to trust p-value versus confidence interval\ndifferences between when to use sampling distribution, bootstrap distribution and randomization distribution\nhow to interpret p-value again\nbootstrap distributions\nhypothesis tests\nHow CI is calculated\nsolve more exam-style questions\nhypothesis testing setup for trickier ones\nIs there a way to calculate/guess the p-value from a graph without R/Statkey?\nWhen to use a confidence interval vs. Hypothesis\nWhat unit do you put on an interpretation of a CI bootstrapped difference in proportions?",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
-    ]
-  },
-  {
-    "objectID": "slides/16-slides.html#practice-qs",
-    "href": "slides/16-slides.html#practice-qs",
-    "title": "16: Hypothesis Test Controversies + Exam II Review",
-    "section": "Practice Q’s",
-    "text": "Practice Q’s\n\n\n\n\n\n\n\n\nTopic\nQuestion/Answer writer\nProofreader\n\n\n\n\nHypothesis test for difference in means\n8\n1\n\n\nHypothesis test for difference in proportions\n7\n2\n\n\nHypothesis test for correlation\n6\n3\n\n\nType I vs Type II error\n5\n4\n\n\nConfidence interval for difference in proportions\n4\n5\n\n\nConfidence interval for difference in means\n3\n6\n\n\nConnection between confidence interval and hypothesis testing\n2\n7\n\n\nMultiple Testing\n1\n8",
-    "crumbs": [
-      "Home",
-      "Slides",
-      "Slides",
-      "16: Hypothesis Test Controversies + Exam II Review"
+      "21: CLT-based Inference for Differences"
     ]
   },
   {
@@ -3320,7 +3541,7 @@
     "href": "activities/24-activity.html",
     "title": "24: Inference for Regression in R",
     "section": "",
-    "text": "When we are fitting a linear regression model in R, we use the lm() function. Here is a template:\nlm(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set\n\nTo get the summary table use\nsummary(lm_mod)\nwhere lm_mod is the name of the model that you fit using lm().\nTo find confidence and prediction intervals for observations, use augment() from the broom package\naugment(lm_mod, newdata = tibble(x = ______), interval = \"none\", conf.level = .95)\nwhere\n\nlm_mod is the name of the model that you fit using lm()\nx is the column name for the categorical predictor variable\n_____ is filled in with the value of x that you want to predict\ninterval is one of “none”, “confidence”, or “prediction”\nconf.level is the confidence level for the interval (default is 0.95)\n\nWe’re going to use the dataset cereals.csv, which has nutrition data on a random sample of breakfast cereals.\n1. Load in the data and check the “spreadsheet view”. How many cereals are in the sample?\n\ncereals &lt;- read.csv(\"http://math.carleton.edu/Stat120/RLabManual/Cereals.csv\")\n\n2. We’re going to try to predict carbs per gram (carbsgram) using calories per gram (calgram). Make a scatterplot and describe the relationship you find.\n3. Find a confidence interval for the slope and report your result in context. Some starter code is below (make sure to remove eval = FALSE!)\n\ncereal_lm = lm(________ ~ ________, data = cereals)\nsummary(cereal_lm)\n\n4. Use the starter code below to find a 90% prediction interval for a new cereal with 3.5 calories per gram. Interpret your result in context.\n\naugment(________, newdata = tibble(calgram = ______), interval = ______, conf.level =  ____)\n\n5. The code below creates a confidence interval and prediction interval for all predicted values. One is shown in blue and one is shown in orange. Which is which, and how can you tell?\n\ncereal_aug = augment(cereal_lm, interval = \"prediction\")\nggplot(cereal_aug, aes(x = calgram, y = carbsgram)) +\n  geom_point() +\n  geom_smooth(method=lm, fill = \"darkblue\") +\n  geom_line(aes(y=.lower), color = \"darkorange\", linetype = \"dashed\") +\n  geom_line(aes(y=.upper), color = \"darkorange\", linetype = \"dashed\")\n\n6. There is one point that falls outside of the prediction interval. Is this evidence that it is an outlier? Should we remove it?\n7. The code below makes residual plots for the cereal_lm model. (Remove eval = FALSE after you have created the model). Do you have any concerns about the LINE conditions?\n\np1 = ggplot(cereal_aug, aes(x = .resid)) +\n  geom_histogram(col = \"white\", bins = 20)\n\np2 = ggplot(cereal_aug, aes(x = .fitted, y = .resid)) +\n  geom_point() + \n  geom_hline(yintercept = 0, col = \"darkgray\", linetype = \"dashed\")\n\np1\np2\n\n8. When we include plots on posters or in papers, we want to be mindful of how much space they take up but also make sure they are readable. One way that I like to do this is by putting multiple plots side-by-side using the patchwork package. Remove eval = FALSE and run the code below. Next, run p1+p2 in the console to make the plot show up in the viewer. Click on “export” and then “save as image”. Change the dimensions to be 1200 pixels long x 400 pixels tall and save your plot with an informative file name. In order to get the plot from the RStudio Server onto your own computer, go to the “Files” tab and click on the name of the image. This should bring up a high-quality image that you can copy and paste into a text editor or embed directly. Alternatively, you can check the box next to the image and click on “more –&gt; export” to download to your computer. Submit only this image file on gradescope (1 per group).\n\np1 + p2",
+    "text": "When we are fitting a linear regression model in R, we use the lm() function. Here is a template:\nlm(y ~ x, data = dataset)\nwhere\n\ny is the column name for the response variable\nx is the column name for the categorical predictor variable\ndataset is the name of the data set\n\nTo get the summary table use\nsummary(lm_mod)\nwhere lm_mod is the name of the model that you fit using lm().\nTo find confidence and prediction intervals for observations, use augment() from the broom package\naugment(lm_mod, newdata = tibble(x = ______), interval = \"none\", conf.level = .95)\nwhere\n\nlm_mod is the name of the model that you fit using lm()\nx is the column name for the categorical predictor variable\n_____ is filled in with the value of x that you want to predict\ninterval is one of “none”, “confidence”, or “prediction”\nconf.level is the confidence level for the interval (default is 0.95)\n\nWe’re going to use the dataset cereals.csv, which has nutrition data on a random sample of breakfast cereals.\n1. Load in the data and check the “spreadsheet view”. How many cereals are in the sample?\n2. We’re going to try to predict carbs per gram (carbsgram) using calories per gram (calgram). Make a scatterplot and describe the relationship you find.\n3. Find a confidence interval for the slope and report your result in context. Some starter code is below (make sure to remove eval = FALSE!)\n4. Use the starter code below to find a 90% prediction interval for a new cereal with 3.5 calories per gram. Interpret your result in context.\n5. The code below creates a confidence interval and prediction interval for all predicted values. One is shown in blue and one is shown in orange. Which is which, and how can you tell?\n6. There is one point that falls outside of the prediction interval. Is this evidence that it is an outlier? Should we remove it?\n7. The code below makes residual plots for the cereal_lm model. (Remove eval = FALSE after you have created the model). Do you have any concerns about the LINE conditions?\n8. When we include plots on posters or in papers, we want to be mindful of how much space they take up but also make sure they are readable. One way that I like to do this is by putting multiple plots side-by-side using the patchwork package. Remove eval = FALSE and run the code below. Next, run p1+p2 in the console to make the plot show up in the viewer. Click on “export” and then “save as image”. Change the dimensions to be 1200 pixels long x 400 pixels tall and save your plot with an informative file name. In order to get the plot from the RStudio Server onto your own computer, go to the “Files” tab and click on the name of the image. This should bring up a high-quality image that you can copy and paste into a text editor or embed directly. Alternatively, you can check the box next to the image and click on “more –&gt; export” to download to your computer. Submit only this image file on gradescope (1 per group).",
     "crumbs": [
       "Home",
       "Activities",
@@ -3333,7 +3554,7 @@
     "href": "activities/12-activity-sols.html",
     "title": "12: Solutions",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(patchwork)\nlibrary(CarletonStats)\n\nThe data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nLet’s see if this differs based on whether the respondent is 50 years or older or not.\n\nPew &lt;- read.csv(\"http://math.carleton.edu/Stat120/RLabManual/Pew.csv\")\n\nPew &lt;- Pew |&gt;\n  mutate(\n    over = ifelse(age &gt;=50, \"over50\", \"under50\"),\n    over2 = ifelse(age &gt;=50, 1, 0)\n  )\n\n1. Create an appropriate visualization of values conditioned on over. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50’s?\n\n\n\n\n\n\nTipSolution\n\n\n\nYou can tell they are not exactly equal, but the percentage who say it’s been a good thing appear pretty similar across the two age groups\n\nggplot(Pew, aes(y = over, fill = values)) + \n  geom_bar(position = \"fill\") \n\n\n\n\n\n\n\n\n\n\n2. Compute the exact proportions for each age group.\n\n\n\n\n\n\nTipSolution\n\n\n\n\ntable(Pew$over, Pew$values) |&gt;\n  proportions(2)\n\n         \n                bad      good\n  over50  0.5714286 0.5125899\n  under50 0.4285714 0.4874101\n\n\n\n\n3. In order to use the boot() command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories). Pull up the “spreadsheet view” of the data and confirm that values and values2 contain the same information stored in a different form.\n\n\n\n\n\n\nTipSolution\n\n\n\nConfirmed. good = 1 and bad = 0\n\nPew |&gt;\n  select(values, values2) |&gt;\n  unique()\n\n  values values2\n1   good       1\n2    bad       0\n\n\n\n\n\n\n\n\n\n\nTipMeans vs Proportions?\n\n\n\nSince the values are 0’s and 1’s, when you compute the mean, you will be computing an expression of the form\n\\[ \\frac{1 + 1 + 0 + 1 + 0 +... +0}{n}\\] which is equivalent to the proportion of 1’s. This means that we can treat proportions as means. Yay!\n\n\n4. Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable values2, which is behavior recoded so that 1 = “good”, 0 = “bad”.\n\n\n\n\n\n\nTipSolution\n\n\n\nI am 95% confident that the true difference in proportions between the two age groups is between -0.1 and 0.02.\n\nboot(values2 ~ over, data = Pew)\n\n\n    ** Bootstrap interval for difference of mean \n\n Observed difference of mean : over50 - under50 = -0.03791 \n Mean of bootstrap distribution: -0.03752 \n Standard error of bootstrap distribution: 0.03048 \n\n Bootstrap percentile interval\n       2.5%       97.5% \n-0.09656913  0.02243927 \n\n        *--------------*\n\n\n\n\n\n\n\n\n\n\n\n5. Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval?\n\n\n\n\n\n\nTipSolution\n\n\n\n\\[-.0379 \\pm2\\times  0.03 = [-0.0979 , 0.0221] \\]\nIt is extremely similar.",
+    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(patchwork)\nlibrary(CarletonStats)\n\nThe data set Pew.csv contains part of a survey conducted by the Pew Research Center in January 2014. One of the questions they asked was, “Overall, when you add up all the advantages and disadvantages of the internet, would you say that the internet has been mostly a good thing, a bad thing, or some of both?”\nThe variable values codes the response as “good” if the respondent said the internet has been a good thing and “bad” otherwise (this includes “a bad thing” and “some of both”).\nLet’s see if this differs based on whether the respondent is 50 years or older or not.\n\nPew &lt;- read.csv(\"http://math.carleton.edu/Stat120/RLabManual/Pew.csv\")\n\nPew &lt;- Pew |&gt;\n  mutate(\n    over = ifelse(age &gt;=50, \"over50\", \"under50\"),\n    over2 = ifelse(age &gt;=50, 1, 0)\n  )\n\n1. Create an appropriate visualization of values conditioned on over. Does it appear that the proportion of over 50 year olds that said the internet has been a good thing is approximately the same as the under 50’s?\n\n\n\n\n\n\nTipSolution\n\n\n\nYou can tell they are not exactly equal, but the percentage who say it’s been a good thing appear pretty similar across the two age groups\n\nggplot(Pew, aes(y = over, fill = values)) + \n  geom_bar(position = \"fill\") \n\n\n\n\n\n\n\n\n\n\n2. Compute the exact proportions for each age group.\n\n\n\n\n\n\nTipSolution\n\n\n\n\ntable(Pew$over, Pew$values) |&gt;\n  proportions(2)\n\n         \n                bad      good\n  over50  0.5714286 0.5125899\n  under50 0.4285714 0.4874101\n\n\n\n\n3. In order to use the boot() command, the response must be coded as a binary variable of 0’s and 1’s (instead of the names of the categories). Pull up the “spreadsheet view” of the data and confirm that values and values2 contain the same information stored in a different form.\n\n\n\n\n\n\nTipSolution\n\n\n\nConfirmed. good = 1 and bad = 0\n\nPew |&gt;\n  select(values, values2) |&gt;\n  unique()\n\n  values values2\n1   good       1\n2    bad       0\n\n\n\n\n\n\n\n\n\n\nTipMeans vs Proportions?\n\n\n\nSince the values are 0’s and 1’s, when you compute the mean, you will be computing an expression of the form\n\\[ \\frac{1 + 1 + 0 + 1 + 0 +... +0}{n}\\] which is equivalent to the proportion of 1’s. This means that we can treat proportions as means. Yay!\n\n\n4. Create a bootstrap distribution of the difference in proportions and give a sentence interpreting the 95% percentile interval. Use the variable values2, which is behavior recoded so that 1 = “good”, 0 = “bad”.\n\n\n\n\n\n\nTipSolution\n\n\n\nI am 95% confident that the true difference in proportions between the two age groups is between -0.1 and 0.02.\n\nboot(values2 ~ over, data = Pew)\n\n\n    ** Bootstrap interval for difference of mean \n\n Observed difference of mean : over50 - under50 = -0.03791 \n Mean of bootstrap distribution: -0.03788 \n Standard error of bootstrap distribution: 0.03022 \n\n Bootstrap percentile interval\n       2.5%       97.5% \n-0.09769482  0.02110665 \n\n        *--------------*\n\n\n\n\n\n\n\n\n\n\n\n5. Compute the 95% confidence interval based on the 95% rule. How does it compare to the percentile interval?\n\n\n\n\n\n\nTipSolution\n\n\n\n\\[-.0379 \\pm2\\times  0.03 = [-0.0979 , 0.0221] \\]\nIt is extremely similar.",
     "crumbs": [
       "Home",
       "Activities",
