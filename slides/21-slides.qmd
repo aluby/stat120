@@ -8,6 +8,8 @@ format:
     title-slide-attributes: 
       data-background-color: "#1F4257"
 brand: false
+filters:
+  - webr
 ---
 
 ```{r setup, include=FALSE}
@@ -65,7 +67,7 @@ The form of a CI is $\bar{x} \pm t^* \times SE_\bar{X}$
 
 . . .
 
-```{webr}
+```{webr-r}
 #| startover: false
 #| echo: true
 #| autorun: true
@@ -81,7 +83,7 @@ $290 \pm 2.35* \times \frac{87.6}{\sqrt{120}}$
 . . . 
 
 ::: callout-warning
-## What is the problem?
+## What are the problems with this interval?
 :::
 
 # CLT for a difference in proportions {.maize}
