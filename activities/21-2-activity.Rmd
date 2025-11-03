@@ -26,7 +26,7 @@ where
 - `conf.level` can be added to change the confidence level of the interval returned
 
 
-1. The code below reads in the `FloridaLakes` dataset from class last week. Use the `t.test()` function to perform the CLT-based t-test to see whether the average `MaxMercury` is less than 1 or not.  Your results should match the "by hand" results from class. (Slides [here](https://drive.google.com/file/d/15egLqrbG4NpP_3RKGX8vsnGfojXiVANh/view?usp=drive_link)). 
+1. The code below reads in the `FloridaLakes` dataset from class last week. Use the `t.test()` function to perform the CLT-based t-test to see whether the average `MaxMercury` is less than 1 or not.  Your results should match the "by hand" results from class. (Slides [here](https://aluby.github.io/stat120/slides/20-slides.html#/florida-lakes-example-1)). 
 
 ```{r}
 lakes <- read.csv("http://www.lock5stat.com/datasets1e/FloridaLakes.csv")

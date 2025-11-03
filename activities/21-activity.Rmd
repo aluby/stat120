@@ -28,7 +28,7 @@ Here's an excerpt from their methodology report:
 
 \vspace{1in}
 
-(c) Instead, we'll look at the difference in suppport for Harris between two different levels of education. (We can assume that the poll included 436 in the "no college degree" group and 360 in the "college degree" group). Show two ways that the standard error could have been computed.
+(c) Instead, we'll look at the difference in support for Harris between two different levels of education. (We can assume that the poll included 436 in the "no college degree" group and 360 in the "college degree" group). Show two ways that the standard error could have been computed.
 ```{r, echo = FALSE}
 knitr::include_graphics("images/poll-ed-breakdown.png")
 ```

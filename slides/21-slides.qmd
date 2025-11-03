@@ -1,0 +1,287 @@
+---
+title: "21: CLT-based Inference for Differences"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+::: {.nonincremental}
+1. CLT Recap
+2. CLT for differences in Proportions
+3. CLT for differences in Means
+:::
+
+# CLT Recap {.maize}
+
+## CLT recap
+
+If the sample size is big enough and the sample is random, 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- $\widehat{p} \sim N(p, SE_{\widehat{p}})$
+- $SE_\widehat{p} = \sqrt{\frac{p(1-p)}{n}}$
+- But, we don't know $p$, so we plug in $\widehat{p}$ (CI's), $p_0$ (HT's), or $0.5$ ("conservative")
+
+:::
+
+::: {.column width="50%"}
+- $\bar{X} \sim N(\mu, SE_\bar{X})$
+- $SE_\bar{X} = \frac{\sigma}{\sqrt{n}}$
+- But, we don't know $\sigma$, so we plug in $s$
+- "t-score": $\frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}} \sim t_{n-1}$
+:::
+
+::::
+
+## Warm-up Example
+
+Last class, we wanted to build a 99% confidence interval for the mean number of fibers discharged per liter of wastewater when washing a fleece garment. $n=120$, $\bar{X} = 290$ and $s = 87.6$.
+
+. . . 
+
+The form of a CI is $\bar{x} \pm t^* \times SE_\bar{X}$
+
+. . .
+
+```{webr}
+#| startover: false
+#| echo: true
+#| autorun: true
+qt(.99, df = 120)
+```
+
+. . . 
+
+So a 99% confidence interval is 
+
+$290 \pm 2.35* \times \frac{87.6}{\sqrt{120}}$
+
+. . . 
+
+::: callout-warning
+## What is the problem?
+:::
+
+# CLT for a difference in proportions {.maize}
+
+## Setup
+
+Idea: we are interested in the difference in proportions between two groups. Think "How far ahead is one candidate in a political poll?" or "Is disease incidence higher in one treatment group than another?" 
+
+- Population parameter: $p_1 - p_2$
+- Sample stat: $\widehat{p}_1 - \widehat{p}_2$
+- CLT: if sample size is big enough, $\widehat{p}_1 - \widehat{p}_2 \sim N(p_1 -p_2, SE_{\widehat{p}_1 - \widehat{p}_2})$
+  - How big is "big enough"?
+  - What is the SE?
+  
+::: {.callout-note .fragment}
+## Important! 
+
+The two groups are *independent*
+:::
+
+## How big is "big enough"? 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+1 proportion: 
+
+- At least 10 in each category
+- $np > 10$ and $n(1-p) > 10$
+
+:::
+
+::: {.column width="50%"}
+2 proportions: 
+
+- At least 10 in each category *for each group*
+- $n_1p_1 > 10$ and $n_1(1-p_1) > 10$
+- $n_2p_2 > 10$ and $n_2(1-p_2) > 10$
+:::
+
+::::
+
+## What is the SE?
+
+$$ SE_{\widehat{p}_1 - \widehat{p}_2} = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}$$
+
+. . . 
+
+But, we don't know $p$. 3 options: 
+
+- "Plug-in" $\widehat{p}_1$ and $\widehat{p}_2$ 
+- Assume $p_1 = p_2$ and compute the "pooled" $\widehat{p}$
+  - $\widehat{p}_{pooled} = \frac{n_1 \widehat{p}_1 + n_2 \widehat{p}_2}{n_1 + n_2}$
+  - Then "plug in" to SE formula: $\sqrt{\frac{p_{pooled}(1-p_{pooled})}{n_1} + \frac{p_{pooled}(1-p_{pooled})}{n_2}}$
+- Use the "conservative" SE
+  - $SE_{conservative} = \sqrt{\frac{.25}{n_1} + \frac{.25}{n_2}}$
+  
+## Summary 
+
+If sample size condition is met and the groups are *independent*
+
+::: {.callout-note}
+## CLT-based confidence interval: 
+
+$$\widehat{p}_1 - \widehat{p}_2 \pm z^* \sqrt{\frac{\widehat p_1(1-\widehat p_1)}{n_1} + \frac{\widehat p_2(1-\widehat p_2)}{n_1}}$$
+:::
+
+::: {.callout-note}
+## CLT-based test: 
+$H_0: p_1 - p_2 = 0$
+
+$$ z = \frac{(\widehat{p}_1 - \widehat{p}_2) - 0}{SE_{pooled}}$$
+:::
+
+# Group Problems {.maize}
+
+```{r}
+countdown::countdown(10)
+```
+
+# CLT for difference in means {.maize}
+
+## Setup
+
+Idea: we are interested in the difference in means between two groups. 
+
+- Population parameter: $\mu_1 - \mu_2$
+- Sample stat: $\bar{x}_1 - \bar{x}_2$
+- CLT: if sample size is big enough, $\bar{x}_1 - \bar{x}_2 \sim N(\mu_1 - \mu_2, SE_{\bar{x}_1 - \bar{x}_2})$
+  - How big is "big enough"?
+  - What is the SE?
+
+## How big is "big enough"? 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+1 mean: 
+
+- If $n > 30$ 
+- If $n \le 30$ and there is no extreme skew or outliers (but t vs z really matters!)
+
+:::
+
+::: {.column width="50%"}
+2 means: 
+
+- $n_1 > 30$ and $n_2 > 30$
+- If one or both sample sizes is $\le 30$ and there is no extreme skew or outliers
+:::
+
+::::
+
+## What is the SE?
+
+$$ SE_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
+
+. . . 
+
+But, we don't know $\sigma$'s. Only option is to "plug in" $s$'s
+
+$$ SE_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
+
+## Sampling distribution becomes a t
+
+$$\frac{\bar{X} - \mu}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \sim t_{df}$$
+
+where $df$ is determined by the *smaller* group: 
+
+$$df=\min(n_1, n_2) - 1$$
+
+## Summary 
+
+If sample sizes are "large" (or samples look normal-ish) and the groups are *independent*
+
+::: {.callout-note}
+## CLT-based confidence interval: 
+
+$$\bar{x}_1 - \bar{x}_2 \pm t_{df}^* \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
+:::
+
+::: {.callout-note}
+## CLT-based test: 
+$H_0: \mu_1 - \mu_2 = 0$
+
+$$ t_{df} = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
+:::
+
+where $df = \min(n_1, n_2) - 1$
+
+# CLT for matched pairs {.maize}
+
+## Setup
+
+Idea: we are interested in the difference in means between two groups, but the groups being compared can be *matched* in some way. Think "scores on pre/post exam" or "studies on twins"
+
+. . . 
+
+
+
+## Setup
+
+- Population parameter: $\mu_d$
+- Sample stat: $\bar{x}_d$
+- CLT: if sample size is big enough, $\bar{x}_d \sim N(\mu_d, SE_{\bar{x}_d})$
+  - How big is "big enough"?
+  - What is the SE?
+
+## How big is "big enough"? 
+
+1 mean: 
+
+- If $n > 30$ 
+- If $n \le 30$ and there is no extreme skew or outliers (but t vs z really matters!)
+
+
+
+## What is the SE?
+
+$$ SE_{\bar{x}_d} = \frac{\sigma_d}{\sqrt{n_d}}$$
+
+But, we don't know $\sigma_d$. Only option is to "plug in" $s_d$
+
+$$ SE_{\bar{x}_d} = \frac{s_d}{\sqrt{n_d}}$$
+
+$$t = \frac{\bar{x}_d - \mu_d}{\frac{s}{\sqrt{n}}} \sim t_{n_d - 1}$$
+
+## Summary
+
+If sample size is large enough and the two groups can be *matched*:
+
+::: {.callout-note}
+## CLT-based confidence interval: 
+
+$$\bar{x}_d \pm t_{n-1}^* \sqrt{\frac{s_d^2}{n}}$$
+:::
+
+::: {.callout-note}
+## CLT-based test: 
+$H_0: \mu_1 - \mu_2 = 0$ or $H_0: \mu_d = 0$
+
+$$ t_{n-1} = \frac{\bar{x}_d  - 0}{\sqrt{\frac{s_d^2}{n}}}$$
+:::
