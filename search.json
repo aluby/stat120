@@ -251,7 +251,7 @@
     "href": "slides/20-slides.html#how-do-we-find-se",
     "title": "20: CLT-based Inference for Means",
     "section": "How do we find SE?",
-    "text": "How do we find SE?\n\\[SE_{\\bar{X}} = \\sqrt{\\frac{\\sigma}{n}}\\]\nwhere \\(\\sigma\\) is standard deviation of the data\n\nIdea: as \\(n\\) gets bigger, the SE gets smaller. If standard deviation is small, the SE is also small",
+    "text": "How do we find SE?\n\\[SE_{\\bar{X}} = \\frac{\\sigma}{\\sqrt{n}}\\]\nwhere \\(\\sigma\\) is standard deviation of the data\n\nIdea: as \\(n\\) gets bigger, the SE gets smaller. If standard deviation is small, the SE is also small",
     "crumbs": [
       "Home",
       "Slides",
