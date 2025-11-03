@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.23">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Prof Amanda Luby">
   <title>stat120 – 20: CLT-based Inference for Means</title>
@@ -269,14 +269,14 @@ Prof Amanda Luby
 <section id="qnorm.9-1.28" class="slide level2">
 <h2><code>qnorm(.9) = 1.28</code></h2>
 
-<img data-src="20-slides_files/figure-html/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
+<img data-src="20-slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
 <p>If z-score is bigger than 1.28, p-value is smaller than .1</p>
 </div>
 </section>
 <section id="qnorm.995-2.6" class="slide level2">
 <h2><code>qnorm(.995) = 2.6</code></h2>
 
-<img data-src="20-slides_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
+<img data-src="20-slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
 <p>If z-score is bigger than 2.6, p-value is smaller than 0.005</p>
 </div>
 </section>
@@ -284,7 +284,7 @@ Prof Amanda Luby
 <h2>If we are making a (1-<span class="math inline">\(\alpha\)</span>) confidence interval, want <span class="math inline">\(\alpha/2\)</span> on either side</h2>
 <h3 id="qnorm.975-2.0-and-qnorm.025--2.0"><code>qnorm(.975) = 2.0</code> and <code>qnorm(.025) = -2.0</code></h3>
 
-<img data-src="20-slides_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="20-slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="today-means" class="slide level2">
 <h2>Today: means</h2>
 <ul>
@@ -320,7 +320,7 @@ Prof Amanda Luby
 <h2>MaxMercury content in Florida Lakes</h2>
 <h3 id="barx-0.87-and-s-0.52."><span class="math inline">\(\bar{X} = 0.87\)</span> and <span class="math inline">\(s = 0.52\)</span>.</h3>
 
-<img data-src="20-slides_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Is it safe to use the CLT?</p>
+<img data-src="20-slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Is it safe to use the CLT?</p>
 </section>
 <section id="florida-lakes-example-1" class="slide level2">
 <h2>Florida Lakes Example</h2>
@@ -396,7 +396,7 @@ Prof Amanda Luby
 <section id="normal-distribution-vs-actual-n5-test-statistic" class="slide level2">
 <h2>Normal distribution vs Actual <span class="math inline">\(n=5\)</span> test statistic</h2>
 
-<img data-src="20-slides_files/figure-html/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Will the p-value for the actual n=5 distribution be <em>smaller</em> or <em>larger</em> than the p-value with the normal distribution?</p>
+<img data-src="20-slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Will the p-value for the actual n=5 distribution be <em>smaller</em> or <em>larger</em> than the p-value with the normal distribution?</p>
 </section>
 <section id="actual-p-value-with-n5-distribution" class="slide level2">
 <h2>Actual p-value (with n=5 distribution)</h2>
@@ -419,7 +419,7 @@ Prof Amanda Luby
 <section id="the-t-distribution" class="slide level2">
 <h2>The t-distribution</h2>
 
-<img data-src="20-slides_files/figure-html/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="20-slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="the-t-distribution-1" class="slide level2">
 <h2>The t-distribution</h2>
 <ul>
@@ -677,6 +677,44 @@ Prof Amanda Luby
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
