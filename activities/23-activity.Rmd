@@ -19,7 +19,7 @@ aov(y ~ x, data = dataset)
 
 where
 
-- `y` is the column name for the response variable
+- `y` is the column name for the quantitative response variable
 - `x` is the column name for the categorical predictor variable
 - `dataset` is the name of the data set
 
@@ -29,7 +29,7 @@ where
 The code below reads in a dataset from the General Social Survey that includes scores on a 10-question vocabulary test called "wordsum" and a self-reported class (one of "lower", "working", "middle" or "upper"). 
 
 
-The vocabulary test works as follows: respondents are given a list of 10 words, and are asked to choose a word from the list that comes closest to the meaning of the first word provided in the capital letters.
+The vocabulary test works as follows: respondents are given a list of 10 words, and are asked to choose a word from the list that comes closest to the meaning of the first word provided in the capital letters. Here's an example:
 
  - SPACE (school, noon, captain, room, board, don’t know)
  - BROADEN (efface, make level, elapse, embroider, widen, don’t know)

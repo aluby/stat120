@@ -69,10 +69,33 @@ Our test statistic is called an "F" statistic and compares the variance within t
 
 $$ F = \frac{\text{Sample variance of means}}{\text{Pooled estimate of variance within groups}} = \frac{MS_T}{MS_E} $$
 
+What would the boxplots look like if there was **no difference between the groups**?
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(Soap, aes(x = Method, y = Bacterial.Counts)) 
+```
+
+$$ F = \frac{\text{Across Group}}{\text{Within Group}} =$$
+What would the boxplots look like if there was **extreme differences between the groups**?
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(Soap, aes(x = Method, y = Bacterial.Counts)) 
+```
+
+$$ F = \frac{\text{Across Group}}{\text{Within Group}} =$$
+
+\pagebreak
+
 In R, we calculate the F-statistic using `aov(Response ~ Explanatory)` and then `summary()`. This is the same syntax that we used for linear regression (`lm()`), we're just using a categorical variable instead of a quantitative variable as our predictor. 
 
 
 ```{r}
+#| fig-width: 4
+#| fig-height: 2
 soap_aov <- aov(Bacterial.Counts ~ Method, data = Soap)
 summary(soap_aov)
 ```
