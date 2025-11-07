@@ -8,7 +8,7 @@
 
 <meta name="author" content="Prof Amanda Luby">
 
-<title>Notes 23: Inference for &gt;2 Means – stat120</title>
+<title>Final Project Overview – stat120</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -109,35 +74,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -180,7 +116,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Notes</li><li class="breadcrumb-item"><a href="../notes/01-data.pdf">Notes</a></li><li class="breadcrumb-item"><a href="../notes/23-anova.pdf">Notes 23: Inference for &gt;2 Means</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Final Project Overview</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -207,13 +143,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/01-data.pdf" class="sidebar-item-text sidebar-link">
@@ -360,7 +296,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/23-anova.pdf" class="sidebar-item-text sidebar-link active">
+  <a href="../notes/23-anova.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Notes 23: Inference for &gt;2 Means</span></a>
   </div>
 </li>
@@ -650,20 +586,28 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#anova" id="toc-anova" class="nav-link active" data-scroll-target="#anova">ANOVA</a>
+  <li><a href="#format" id="toc-format" class="nav-link active" data-scroll-target="#format">Format</a>
   <ul class="collapse">
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#poster" id="toc-poster" class="nav-link" data-scroll-target="#poster">Poster</a></li>
+  <li><a href="#paper" id="toc-paper" class="nav-link" data-scroll-target="#paper">Paper</a>
+  <ul class="collapse">
+  <li><a href="#a-note-on-the-usclap-competition" id="toc-a-note-on-the-usclap-competition" class="nav-link" data-scroll-target="#a-note-on-the-usclap-competition">A note on the USCLAP competition:</a></li>
   </ul></li>
-  <li><a href="#post-hoc-testing" id="toc-post-hoc-testing" class="nav-link" data-scroll-target="#post-hoc-testing">Post-hoc Testing</a></li>
+  </ul></li>
+  <li><a href="#grading-checklist" id="toc-grading-checklist" class="nav-link" data-scroll-target="#grading-checklist">Grading Checklist</a>
+  <ul class="collapse">
+  <li><a href="#poster-1" id="toc-poster-1" class="nav-link" data-scroll-target="#poster-1">Poster</a></li>
+  <li><a href="#paper-1" id="toc-paper-1" class="nav-link" data-scroll-target="#paper-1">Paper</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="23-anova.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="format-guidelines.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Notes</li><li class="breadcrumb-item"><a href="../notes/01-data.pdf">Notes</a></li><li class="breadcrumb-item"><a href="../notes/23-anova.pdf">Notes 23: Inference for &gt;2 Means</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Notes 23: Inference for &gt;2 Means</h1>
+<h1 class="title">Final Project Overview</h1>
 <p class="subtitle lead">Stat 120 | Fall 2025</p>
 </div>
 
@@ -687,148 +631,101 @@ window.Quarto = {
 </header>
 
 
-<p>A biology student tested four different hand-washing methods (water only, washing with regular soap, washing with antibacterial soap, and spraying hands with antibacterial spray) and counted the number of bacteria present after two days of growth. They did this eight times for each of the four treatments.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="23-anova_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Up until now, we’ve done something like the following:</p>
-<p><span class="math inline">\(H_0:\)</span></p>
-<p><span class="math inline">\(H_A:\)</span></p>
-<p>What are some potential issues?</p>
-<div style="page-break-after: always;"></div>
-<section id="anova" class="level1">
-<h1>ANOVA</h1>
-<p>ANOVA stands for <strong>ANalysis Of VAriance</strong>, and it’s a method we use to compare means of groups when we have more than two groups.</p>
-<p>Here, the null hypothesis we are interested in is:</p>
-<p><span class="math inline">\(H_0:\)</span></p>
-<p><span class="math inline">\(H_A:\)</span></p>
-<p>But, it turns out it’s much harder to test multiple means than comparing only two.</p>
-<p><strong>Idea:</strong> (Visual)</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="23-anova_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Our test statistic is called an “F” statistic and compares the variance within the groups to the variance across the groups.</p>
-<p><span class="math display">\[ F = \frac{\text{Sample variance of means}}{\text{Pooled estimate of variance within groups}} = \frac{MS_T}{MS_E} \]</span></p>
-<p>What would the boxplots look like if there was <strong>no difference between the groups</strong>?</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="23-anova_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="384"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><span class="math display">\[ F = \frac{\text{Across Group}}{\text{Within Group}} =\]</span> What would the boxplots look like if there was <strong>extreme differences between the groups</strong>?</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="23-anova_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="384"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><span class="math display">\[ F = \frac{\text{Across Group}}{\text{Within Group}} =\]</span></p>
-<div style="page-break-after: always;"></div>
-<p>In R, we calculate the F-statistic using <code>aov(Response ~ Explanatory)</code> and then <code>summary()</code>. This is the same syntax that we used for linear regression (<code>lm()</code>), we’re just using a categorical variable instead of a quantitative variable as our predictor.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)   
-Method       3  29882    9961    7.06 0.0011 **
-Residuals   28  39484    1410                  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<p>This is called an ANOVA table and was originally designed to organize the calculations needed to compute an F-statistic.</p>
-<blockquote class="blockquote">
-<p><em>This table has a long tradition stretching back to when ANOVA calculations were done by hand. Major research labs had rooms full of mechanical calculators operated by women. (Yes, always women) Three women would perform each calculation, and if any two of them agreed on the answer, it was taken as the correct value.</em></p>
-</blockquote>
-<pre><code>            Df   Sum Sq   Mean Sq     F value     Pr(&gt;F)   
-Method      k-1  29882    SumSq/df    MS_t/MS_e   
-Residuals   N-k  39484    SumSq/df   </code></pre>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="23-anova_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
-<p>We need to verify some assumptions whenever we fit an ANOVA model.</p>
+<section id="format" class="level1">
+<h1>Format</h1>
+<section id="poster" class="level2">
+<h2 class="anchored" data-anchor-id="poster">Poster</h2>
+<p>We will be doing a “mini mini poster session” on the last day of class. The first “mini” is that it will only take 70 minutes. The second “mini” is that the posters themselves will be printed on 11x17 paper. This means that you will <em>not</em> be able to include all details from your analysis, and this is intentional! You should focus on the most important part of your analysis, and include that in the poster. It is OK to change your analysis between the poster and final paper: part of the reason we do poster sessions is to get feedback on work-in-progress and see examples of what other folks have done.</p>
+<p>In addition to the poster, your group should prepare a 2-minute “elevator pitch” for your project, and be prepared to answer questions. I will visit each poster once – if you go over your two minutes, I might not have time to ask a question before moving on to the next group, and won’t be able to fully evaluate your preparation to answer questions. All group members should speak during the elevator pitch.</p>
+<p>I am happy to print your posters for you, but will need to have a .pdf copy by Week 10 Tuesday at noon. I will print “as-is” and won’t make any formatting changes for you, so make sure you have saved your file in the 11x17 format!</p>
+</section>
+<section id="paper" class="level2">
+<h2 class="anchored" data-anchor-id="paper">Paper</h2>
+<p>The final product you will turn in is a short paper. The report should be a MAX 3 page paper reporting the results of your project (single-spaced, 11 or 12pt font with standard 1-inch margins. Multiple columns is OK). In addition to the 3 pages, you should have a <em>separate</em> title page with an abstract (~150 words). References should be listed at the end of the paper and do not count against the 3 page limit. You may also include up to 5 pages of additional information in an appendix. This could include secondary analysis results, additional charts/tables that are <em>not</em> central to the main conclusions of your paper, etc. No information critical to the evaluation of your project should be included in the appendix.</p>
+<p>In addition to the PDF of your final paper, you should also submit a single .rmd file with your analysis and a .csv file containing your data. If I cannot replicate your results with the code you provide, you may lose a significant amount of points.</p>
+<p><em>Note:</em> One way to write the paper is to knit your .rmd file to PDF. This is perfectly OK! I also know that the 3 pages is a tight limit, and so it is also OK to use google docs or microsoft word to write and format the paper. You should just make sure that all of the analyses in your paper are included in your .rmd file.</p>
+<section id="a-note-on-the-usclap-competition" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-on-the-usclap-competition">A note on the USCLAP competition:</h3>
+<p>The format of our paper follows the <a href="https://www.causeweb.org/usproc/usclap">USCLAP competition format</a>. If you plan to submit to the contest, please read the full information from their website. One thing to note is that submissions should be blinded.</p>
+<p>To be eligible for the extra credit, (5% on the paper) you should:</p>
+<ul>
+<li>Submit a rough draft to me by Monday of Week 10. The closer this is to “complete”, the better the feedback I can give you. However, don’t stress too much about fitting into the 3 page limit as long as you are in the ballpark.</li>
+<li>I will provide feedback to you before the reading period ends. You should incorporate my feedback into your final paper submission.</li>
+<li>I’ll do a quick look over your paper (without grading) to make sure it is in the right format for the competition, and then you will submit</li>
+<li>Forward me the confirmation of your submission and I’ll record your extra credit</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="grading-checklist" class="level1">
+<h1>Grading Checklist</h1>
+<p>I will use the following when determining your grades for the final project. If you don’t think your project fits into any of these questions, please speak with me in advance!</p>
+<section id="poster-1" class="level2">
+<h2 class="anchored" data-anchor-id="poster-1">Poster</h2>
 <ol type="1">
-<li>Independence</li>
-</ol>
-<p><em>Have to check based on the data collection process</em></p>
-<ol start="2" type="1">
-<li>Equal Variance</li>
-</ol>
+<li>(30%) Oral Presentation of the Poster
 <ul>
-<li>Do the boxplot “whiskers” look roughly the same length across all groups?</li>
-<li>Check the residual vs fitted plot:</li>
-</ul>
-<ol start="3" type="1">
-<li>Normal residuals:</li>
-</ol>
+<li>Was your group prepared for a 2 minute “elevator pitch”?</li>
+<li>Did your pitch motivate the subject-matter problem and describe your statistical approach?</li>
+<li>Did all group members speak?</li>
+<li>Were you prepared to answer question(s)?</li>
+</ul></li>
+<li>(40%) Poster Content
 <ul>
-<li>Check histogram of residuals</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="23-anova_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
+<li>Did you describe your motivation and data?</li>
+<li>Do you have at least one graph?</li>
+<li>Do you have results from at least one inference procedure?</li>
+<li>Is it clear what you learned?</li>
+</ul></li>
+<li>(20%) Poster Design
+<ul>
+<li>Does your poster include the following (These do <em>not</em> need to be section titles!!)
+<ul>
+<li>Title</li>
+<li>Names of group members</li>
+<li>Research Question(s)</li>
+<li>Data Analysis</li>
+<li>Conclusion</li>
+</ul></li>
+<li>Are all graphs publication-ready? (Informative titles and axis labels, text is readable, not blurry, etc.)</li>
+<li>Has your poster been proofread and edited?</li>
+</ul></li>
+<li>(10%) Peer review of posters
+<ul>
+<li>Completed via google form</li>
+<li>During half of the poster session, your group will be “presenting” and during half of the poster session your group will be “attending”. You will do a peer review for half of the groups in the class.</li>
+</ul></li>
+</ol>
 </section>
-</section>
-<section id="post-hoc-testing" class="level1">
-<h1>Post-hoc Testing</h1>
-<p>So far we’ve introduced ANOVA as a method for comparing many means to each other concurrently. Finding a statistically significant result at the end of an ANOVA however only tells us that at least one pair of means are different, but not <em>which pair(s)</em> of means are different.</p>
-<p>We won’t do a thorough discussion of post-hoc testing in this class, but the R code to do all pairwise tests is:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> Soap<span class="sc">$</span>Bacterial.Counts, <span class="at">g =</span> Soap<span class="sc">$</span>Method, <span class="at">p.adjust.method =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>                   Alcohol Spray Antibacterial Soap   Soap
-Antibacterial Soap     0.0066862                 NA     NA
-Soap                   0.0010697             0.4781     NA
-Water                  0.0002236             0.2026 0.5627</code></pre>
-</div>
-</div>
-<p>This approach suffers from a <strong>multiple testing problem</strong>. We can adjust the p-values to get valid results:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> Soap<span class="sc">$</span>Bacterial.Counts, <span class="at">g =</span> Soap<span class="sc">$</span>Method, <span class="at">p.adjust.method =</span> <span class="st">"holm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>                   Alcohol Spray Antibacterial Soap   Soap
-Antibacterial Soap      0.026745                 NA     NA
-Soap                    0.005349             0.9562     NA
-Water                   0.001342             0.6077 0.9562</code></pre>
-</div>
-</div>
+<section id="paper-1" class="level2">
+<h2 class="anchored" data-anchor-id="paper-1">Paper</h2>
+<ol type="1">
+<li>(10%) Proposal</li>
+<li>(40%) Statistical Content
+<ul>
+<li>Did you describe your data? Where did it come from? Was it an experiment, observational study, survey, etc.?</li>
+<li>What statistical methods did you use? Why are they appropriate? Did you choose a CLT-based analysis or a bootstrap/permutation test? Why?</li>
+<li>Are your graph(s) appropriate for your research question and methods?</li>
+<li>Is there enough detail to understand what you did, without an exhaustive step-by-step description?</li>
+<li>Could someone else replicate your analysis based on the paper?</li>
+<li>Did anything go wrong? How could you improve your analysis?</li>
+</ul></li>
+<li>(30%) Subject-matter Content
+<ul>
+<li>Is your research question motivated?</li>
+<li>What did you learn?</li>
+<li>Is your project interesting, fun, provocative, compelling, educational, etc.?</li>
+</ul></li>
+<li>(10%) Paper formatting
+<ul>
+<li>Did you follow the USCLAP guidelines?</li>
+<li>Has your paper been proofread and edited?</li>
+</ul></li>
+<li>(10%) Completing group evaluation</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
