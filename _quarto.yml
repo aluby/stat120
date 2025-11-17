@@ -22,6 +22,8 @@ website:
         contents: activities
       - section: Slides
         contents: slides
+      - section: Project
+        contents: project
 
 format:
   html:
