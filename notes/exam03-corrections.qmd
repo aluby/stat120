@@ -18,10 +18,13 @@ If you'd like to submit corrections, include the following for each question tha
 You won't earn back full points if you don't follow these directions.
 :::
 
- (a) Your original answer
+ (a) Your original answer (if you use your graded exam from gradescope, this is already there for you!)
  (b) Your corrected answer (should _not_ be identical to feedback provided on your graded exam)
+    - For open‐ended questions: your corrected answer
+    - For T/F questions or “check the box” questions: your corrected answer plus an explanation
+    - For Q5 i‐v: your corrected answer, plus an appropriate null and alternative hypothesis
  (c) An example/practice problem from homework, daily prep, notes, or the book that a future student could study to understand the exam problem.
 
 You should submit a corrected exam **on paper** by **4pm on Wednesday**. You should hand them to Amanda either before class or during office hours.
 
-
+I recommend printing your graded exam 3 from gradescope, and then making your corrections using a different color pen/pencil. 
