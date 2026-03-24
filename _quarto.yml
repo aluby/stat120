@@ -13,7 +13,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: syllabus.qmd
+        text: Syllabus
   sidebar:
     contents: 
       - section: Notes
