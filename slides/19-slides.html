@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.24">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.23">
 
   <meta name="author" content="Prof Amanda Luby">
   <title>stat120 – 19: CLT-based Inference for Proportions</title>
@@ -250,7 +250,7 @@ Prof Amanda Luby
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="19-slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="19-slides_files/figure-html/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -323,15 +323,15 @@ Prof Amanda Luby
 <section id="n-14-statkey" class="slide level2">
 <h2>n = 14 (StatKey)</h2>
 
-<img data-src="img/null-dist-sm.png" class="quarto-figure quarto-figure-center r-stretch" width="687"></section>
+<img data-src="img/null-dist-sm.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="n-1400-statkey" class="slide level2">
 <h2>n = 1400 (StatKey)</h2>
 
-<img data-src="img/null-dist-med.png" class="quarto-figure quarto-figure-center r-stretch" width="700"></section>
+<img data-src="img/null-dist-med.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="n-14000-statkey" class="slide level2">
 <h2>n = 14000 (StatKey)</h2>
 
-<img data-src="img/null-dist-big.png" class="quarto-figure quarto-figure-center r-stretch" width="688"></section>
+<img data-src="img/null-dist-big.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="lets-find-these-p-values-without-a-permutation-test" class="slide level2">
 <h2>Let’s find these p-values <em>without</em> a permutation test</h2>
 <ul>
@@ -626,44 +626,6 @@ Prof Amanda Luby
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
