@@ -17,7 +17,7 @@ theme_set(notes_theme)
 
 \vspace{-.5in}
 
-## CLT Recap
+## CLT Recap {-}
 
 ::: callout-note
 **CLT for 1 Proportion**
@@ -39,7 +39,7 @@ $$\frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}} \sim t_{n-1}$$
 
 \vspace{1in}
 
-## CLT for a difference in proportions
+## CLT for a difference in proportions {-}
 
 Idea:
 
@@ -80,7 +80,7 @@ $H_0: p_1 - p_2 = 0$
 $$ z = \frac{(\hat{p}_1 - \hat{p}_2) - 0}{SE_{pooled}}$$
 :::
 
-## CLT for a difference in means
+## CLT for a difference in means {-}
 
 Idea:
 
@@ -151,7 +151,7 @@ $$ t_{df} = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s
 
 where $df =$ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-## CLT for Matched Pairs
+## CLT for Matched Pairs {-}
 
 Idea:
 
@@ -202,6 +202,7 @@ Here's an excerpt from their methodology report:
 
 (c) Instead, we'll look at the difference in support for Harris between two different levels of education. (We can assume that the poll included 436 in the "no college degree" group and 360 in the "college degree" group). Show two ways that the standard error could have been computed.
 ```{r, echo = FALSE}
+#| fig-width: 8
 knitr::include_graphics("images/poll-ed-breakdown.png")
 ```
 
@@ -212,7 +213,7 @@ knitr::include_graphics("images/poll-ed-breakdown.png")
 
 \vspace{1in}
 
-(e) The following R code makes a confidence interval and performs a hypothesis test for the difference in these two proportions. 
+(e) The R code below makes a confidence interval and performs a hypothesis test for the difference in these two proportions. 
   i. Where did `x = c(192, 194)` come from?
   
   \vspace{1in}

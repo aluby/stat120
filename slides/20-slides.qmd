@@ -128,7 +128,7 @@ Rule of thumb for means:
 
 ## How do we find SE?
 
-$$SE_{\bar{X}} = \sqrt{\frac{\sigma}{n}}$$
+$$SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}$$
 
 where $\sigma$ is standard deviation of the data
 

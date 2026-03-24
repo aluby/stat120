@@ -1,0 +1,83 @@
+---
+title: "Final Project Format Guidelines"
+---
+
+# Format 
+
+## Poster
+
+We will be doing a "mini mini poster session" on the last day of class. The first "mini" is that it will only take 70 minutes. The second "mini" is that the posters themselves will be printed on 11x17 paper. This means that you will *not* be able to include all details from your analysis, and this is intentional! You should focus on the most important part of your analysis, and include that in the poster. It is OK to change your analysis between the poster and final paper: part of the reason we do poster sessions is to get feedback on work-in-progress and see examples of what other folks have done. 
+
+In addition to the poster, your group should prepare a 2-minute "elevator pitch" for your project, and be prepared to answer questions. I will visit each poster once -- if you go over your two minutes, I might not have time to ask a question before moving on to the next group, and won't be able to fully evaluate your preparation to answer questions. All group members should speak during the elevator pitch. 
+
+I am happy to print your posters for you, but will need to have a .pdf copy by Week 10 Tuesday at noon. I will print "as-is" and won't make any formatting changes for you, so make sure you have saved your file in the 11x17 format! 
+
+## Paper 
+
+The final product you will turn in is a short paper. The report should be a MAX 3 page paper reporting the results of your project (single-spaced, 11 or 12pt font with standard 1-inch margins. Multiple columns is OK). In addition to the 3 pages, you should have a *separate* title page with an abstract (~150 words). References should be listed at the end of the paper and do not count against the 3 page limit. You may also include up to 5 pages of additional information in an appendix. This could include secondary analysis results, additional charts/tables that are *not* central to the main conclusions of your paper, etc. No information critical to the evaluation of your project should be included in the appendix. 
+
+In addition to the PDF of your final paper, you should also submit a single .rmd file with your analysis and a .csv file containing your data. If I cannot replicate your results with the code you provide, you may lose a significant amount of points. 
+
+*Note:* One way to write the paper is to knit your .rmd file to PDF. This is perfectly OK! I also know that the 3 pages is a tight limit, and so it is also OK to use google docs or microsoft word to write and format the paper. You should just make sure that all of the analyses in your paper are included in your .rmd file. 
+
+### A note on the USCLAP competition: 
+
+The format of our paper follows the [USCLAP competition format](https://www.causeweb.org/usproc/usclap). If you plan to submit to the contest, please read the full information from their website. One thing to note is that submissions should be blinded. 
+
+To be eligible for the extra credit, (5% on the paper) you should: 
+
+- Submit a rough draft to me by Monday of Week 10. The closer this is to "complete", the better the feedback I can give you. However, don't stress too much about fitting into the 3 page limit as long as you are in the ballpark. 
+- I will provide feedback to you before the reading period ends. You should incorporate my feedback into your final paper submission. 
+- I'll do a quick look over your paper (without grading) to make sure it is in the right format for the competition, and then you will submit
+- Forward me the confirmation of your submission and I'll record your extra credit
+
+# Grading Checklist
+
+I will use the following when determining your grades for the final project. If you don't think your project fits into any of these questions, please speak with me in advance! 
+
+## Poster
+
+1. (30%) Oral Presentation of the Poster
+    - Was your group prepared for a 2 minute "elevator pitch"? 
+    - Did your pitch motivate the subject-matter problem and describe your statistical approach? 
+    - Did all group members speak? 
+    - Were you prepared to answer question(s)? 
+2. (40%) Poster Content
+    - Did you describe your motivation and data? 
+    - Do you have at least one graph? 
+    - Do you have results from at least one inference procedure?
+    - Is it clear what you learned? 
+3. (20%) Poster Design
+    - Does your poster include the following (These do *not* need to be section titles!!)
+        - Title
+        - Names of group members
+        - Research Question(s)
+        - Data Analysis
+        - Conclusion
+    - Are all graphs publication-ready? (Informative titles and axis labels, text is readable, not blurry, etc.)
+    - Has your poster been proofread and edited? 
+3. (10%) Peer review of posters
+    - Completed via google form
+    - During half of the poster session, your group will be "presenting" and during half of the poster session your group will be "attending". You will do a peer review for half of the groups in the class. 
+
+## Paper 
+
+1. (10%) Proposal 
+2. (40%) Statistical Content
+    - Did you describe your data? Where did it come from? Was it an experiment, observational study, survey, etc.? 
+    - What statistical methods did you use? Why are they appropriate? Did you choose a CLT-based analysis or a bootstrap/permutation test? Why? 
+    - Are your graph(s) appropriate for your research question and methods? 
+    - Is there enough detail to understand what you did, without an exhaustive step-by-step description? 
+    - Could someone else replicate your analysis based on the paper? 
+    - Did anything go wrong? How could you improve your analysis? 
+3. (30%) Subject-matter Content
+    - Is your research question motivated? 
+    - What did you learn? 
+    - Is your project interesting, fun, provocative, compelling, educational, etc.? 
+4. (10%) Paper formatting
+    - Did you follow the USCLAP guidelines?
+    - Has your paper been proofread and edited?
+5. (10%) Completing group evaluation
+
+
+
