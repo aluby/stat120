@@ -1,5 +1,7 @@
 ---
 title: "Notes 01: Data"
+execute: 
+  echo: false
 ---
 
 ```{r setup, include=FALSE}
@@ -28,19 +30,42 @@ theme_set(notes_theme)
 
 # Types of Variables
 
-::: callout-note
-## Quantitative
+:::: {layout="[0.5, 0.5]"}
 
-\vspace{.5in}
-
+::: {#first-col}
+```{mermaid, out.width = "70%"}
+%%| out-width: 70%
+%%| fig-align: center
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+flowchart LR
+  A{Categorical} --> B(Ordered/\nOrdinal)
+  A --> C(Binary)
+  A --> D(Categorical)
+```
 :::
 
-::: callout-note
-## Categorical
-
-\vspace{.5in}
-
+::: {#second-col}
+```{mermaid}
+%%| out-width: 70%
+%%| fig-align: center
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+flowchart LR
+  A{Quantitative} --> B(Discrete)
+  A --> C(Continuous)
+```
 :::
+
+::::
+
+
 
 ::: callout-note
 ## Explanatory
