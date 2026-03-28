@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="[List your group here]">
+<meta name="author" content="Prof Amanda Luby">
 
 <title>02: Sampling – stat120</title>
 <style>
@@ -395,6 +395,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activities/02-activity-old.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02: Sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activities/02-sampling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02-sampling</span></a>
   </div>
@@ -663,8 +669,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="02-activity.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#checkpoint-questions" id="toc-checkpoint-questions" class="nav-link active" data-scroll-target="#checkpoint-questions">Checkpoint questions</a></li>
+  <li><a href="#checkpoint-question" id="toc-checkpoint-question" class="nav-link" data-scroll-target="#checkpoint-question">Checkpoint question</a></li>
+  <li><a href="#checkpoint-question-1" id="toc-checkpoint-question-1" class="nav-link" data-scroll-target="#checkpoint-question-1">Checkpoint question</a></li>
+  <li><a href="#function-quick-reference" id="toc-function-quick-reference" class="nav-link" data-scroll-target="#function-quick-reference">Function quick reference</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="02-activity.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -681,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>[List your group here] </p>
+             <p>Prof Amanda Luby </p>
           </div>
   </div>
     
@@ -694,71 +709,124 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>To get started:</p>
-<ol type="1">
-<li>Click the “code” button</li>
-<li>Click “copy to clipboard” button</li>
-<li>In maize, open a new rmarkdown file (New file –&gt; Rmarkdown –&gt; (name the file <code>02-sampling.Rmd</code>))</li>
-<li>Paste the code into the file that opened up and hit “save”</li>
-</ol>
-<p>Once you have the file loaded into RStudio, you can follow the directions below.</p>
-<p>Press the “play” button below to run the chunk of code. This (1) loads the libraries that we need and (2) tells R to read <code>mission_data.csv</code> from my website folder into your R session and call it <code>mission_data</code>.</p>
+<p>Press the “Run Code” button below to run the chunk of code. This (1) loads the libraries that we need and (2) tells R to read <code>mission_data.csv</code> from my website folder into the R session and call it <code>mission_data</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mission_data <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://www.math.carleton.edu/aluby/data/mission_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="{webr}"><code>library(dplyr)
+mission_data = read.csv("https://raw.githubusercontent.com/aluby/stat120/refs/heads/main/data/mission_data.csv") #read.csv("https://aluby.github.io/stat120/data/mission_data.csv")</code></pre>
 </div>
-<p>Check your “environment” pane in the upper right to make sure you can see a dataset called <code>mission_data</code>. Try clicking it, or running <code>View(mission_data)</code> in the console to bring up the data viewer.</p>
-<p><strong>spoiler alert:</strong> The next chunk of code computes the <em>population mean</em>.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You should notice that R did not appear to do anything when you ran the above code. That’s because everything was done in the background and R will only show you what is requested. So don’t panic if you don’t see any output!</p>
+</div>
+</div>
+<p>Throughout the term I’ll refer to small pieces of code as “code chunks.” This is both descriptive and will be what RStudio (our interface) calls them later on. For today, we’ll focus on running small code chunks, and on Monday we’ll get practice writing our own.</p>
+<p>We can get an overview of the dataset by printing the first few rows with the <code>head()</code> command:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mission_data<span class="sc">$</span>length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.947802</code></pre>
+<pre class="{webr}"><code>head(mission_data)</code></pre>
 </div>
+<p>Another function, <code>glimpse()</code>, which lives in the {tidyverse} package, gives us another view of the dataset:</p>
+<div class="cell">
+<pre class="{webr}"><code>glimpse(mission_data)</code></pre>
 </div>
+<section id="checkpoint-questions" class="level2 callout-attention">
+<h2 class="anchored" data-anchor-id="checkpoint-questions">Checkpoint questions</h2>
+<ul>
+<li>How many rows are in the <code>mission_data</code> dataset?</li>
+<li>What does each row represent?</li>
+<li>How many variables are in the dataset? Are any categorical? Quantitative?</li>
+</ul>
+</section>
+<p>Instead of relying on our brains to do a random sample, we can use R to ensure that we get a random sample!</p>
 <p>The code below selects a random sample of word positions to use</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">091824</span>) <span class="co"># Sets the random seed so we all get the same answer</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mission_data), <span class="at">size =</span> <span class="dv">10</span>) <span class="co"># selects a random sample of size 10 from the numbers 1-364</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sample <span class="co"># prints the random sample of numbers</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 213 328 237 164  34 311 115 121 253 250</code></pre>
-</div>
+<pre class="{webr}"><code>set.seed(091824) # Sets the random seed so we all get the same answer
+sample = sample(1:364, size = 10) # selects a random sample of size 10 from the numbers 1-364
+sample # prints the random sample of numbers</code></pre>
 </div>
 <p>The next chunk of code <code>slices</code> our population to draw our sample. Note that the <code>position</code> variable should match the <code>sample</code> output above.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mission_sample <span class="ot">=</span> mission_data <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(sample)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>mission_sample</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 4
-   paragraph word     position length
-       &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
- 1         3 be            213      2
- 2         4 of            328      2
- 3         4 the           237      3
- 4         3 carleton      164      8
- 5         1 learning       34      8
- 6         4 for           311      3
- 7         3 the           115      3
- 8         3 students      121      8
- 9         4 arts          253      4
-10         4 in            250      2</code></pre>
+<pre class="{webr}"><code>mission_sample = slice(mission_data, sample)</code></pre>
 </div>
-</div>
-<p>And this next chunk computes the mean word length of our sample</p>
+<p>By running the name of the dataset, we print the entire thing:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mission_sample<span class="sc">$</span>length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.3</code></pre>
+<pre class="{webr}"><code>mission_sample</code></pre>
 </div>
+<p>R has built-in functions to compute summary statistics (like mean, median, and standard deviation) for a specific column. To “extract” a variable from the dataset, we use <code>$</code>. For example, we can extract the <code>length</code> variable from the <code>mission_sample</code> dataset and calculate the mean:</p>
+<div class="cell">
+<pre class="{webr}"><code>mean(mission_sample$length)</code></pre>
 </div>
-<p>To try other random samples, change (or remove!) the <code>set.seed()</code> line of code, and try re-running the rest of the code. Do you ever get a sample mean that looks like your “by hand” sample mean?</p>
-<p>When you’re done, <strong>knit this file</strong> and try uploading the PDF to gradescope. There are two questions, one for the <em>population mean</em> and one for a <em>sample mean</em>. Be sure to mark the pages so I can see your answers!</p>
+<section id="checkpoint-question" class="level2 callout-attention">
+<h2 class="anchored" data-anchor-id="checkpoint-question">Checkpoint question</h2>
+<p>To try other random samples, change (or remove!) the <code>set.seed()</code> line of code below, and try re-running the rest of the code. Do you ever get a sample mean that looks like your “by hand” sample mean?</p>
+</section>
+<div class="cell">
+<pre class="{webr}"><code>set.seed(091824)
+sample = sample(1:nrow(mission_data), size = 10) 
+mission_sample = slice(mission_data, sample)
+mean(mission_sample$length)</code></pre>
+</div>
+<p>Finally, let’s see what the population mean is!</p>
+<section id="checkpoint-question-1" class="level2 callout-attention">
+<h2 class="anchored" data-anchor-id="checkpoint-question-1">Checkpoint question</h2>
+<p>Use the code box below to compute the mean of the <code>length</code> variable in the original <code>mission_data</code> dataset. How close was your “by-hand” sample? How close were your true random samples?</p>
+</section>
+<div class="cell" data-min-lines="5">
+<pre class="{webr}"><code>#| min-lines: 5</code></pre>
+</div>
+<section id="function-quick-reference" class="level2">
+<h2 class="anchored" data-anchor-id="function-quick-reference">Function quick reference</h2>
+<p>The following table summarizes the functions we learned today:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read.csv("file_path_or_URL")</code></td>
+<td>Load a CSV data set from a file or the web</td>
+</tr>
+<tr class="even">
+<td><code>head(data)</code></td>
+<td>Print the first few rows of a data set</td>
+</tr>
+<tr class="odd">
+<td><code>glimpse(data)</code></td>
+<td>Get a quick overview of a data set (from {dplyr} package)</td>
+</tr>
+<tr class="even">
+<td><code>mean(x)</code></td>
+<td>Calculate the mean of a quantitative variable</td>
+</tr>
+<tr class="odd">
+<td><code>sample(x, size = n)</code></td>
+<td>Selects a random sample from <code>x</code> of size <code>n</code></td>
+</tr>
+<tr class="even">
+<td><code>slice(data, rows)</code></td>
+<td>Selects specific rows from a data set</td>
+</tr>
+</tbody>
+</table>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1214,59 +1282,119 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "02: Sampling"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "[List your group here]"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>To get started: </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Click the "code" button</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Click "copy to clipboard" button</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>In maize, open a new rmarkdown file (New file --&gt; Rmarkdown --&gt; (name the file <span class="in">`02-sampling.Rmd`</span>))</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Paste the code into the file that opened up and hit "save"</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>Once you have the file loaded into RStudio, you can follow the directions below.</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>Press the "play" button below to run the chunk of code. This (1) loads the libraries that we need and (2) tells R to read <span class="in">`mission_data.csv`</span> from my website folder into your R session and call it <span class="in">`mission_data`</span>. </span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>mission_data <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://www.math.carleton.edu/aluby/data/mission_data.csv"</span>)</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>Check your "environment" pane in the upper right to make sure you can see a dataset called <span class="in">`mission_data`</span>. Try clicking it, or running <span class="in">`View(mission_data)`</span> in the console to bring up the data viewer. </span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>**spoiler alert:** The next chunk of code computes the *population mean*. </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">webr:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">  packages:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">    - dplyr</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">  live-html:</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    output-file: "02-sampling-live.html"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> knitr</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>{{&lt; include ../_extensions/r-wasm/live/_knitr.qmd &gt;}}</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>Press the "Run Code" button below to run the chunk of code. This (1) loads the libraries that we need and (2) tells R to read <span class="in">`mission_data.csv`</span> from my website folder into the R session and call it <span class="in">`mission_data`</span>. </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="in">mission_data = read.csv("https://raw.githubusercontent.com/aluby/stat120/refs/heads/main/data/mission_data.csv") #read.csv("https://aluby.github.io/stat120/data/mission_data.csv")</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Note</span></span>
 <span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mission_data<span class="sc">$</span>length)</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>The code below selects a random sample of word positions to use</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">091824</span>) <span class="co"># Sets the random seed so we all get the same answer</span></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mission_data), <span class="at">size =</span> <span class="dv">10</span>) <span class="co"># selects a random sample of size 10 from the numbers 1-364</span></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>sample <span class="co"># prints the random sample of numbers</span></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>The next chunk of code <span class="in">`slices`</span> our population to draw our sample. Note that the <span class="in">`position`</span> variable should match the <span class="in">`sample`</span> output above. </span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>mission_sample <span class="ot">=</span> mission_data <span class="sc">%&gt;%</span> </span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(sample)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>You should notice that R did not appear to do anything when you ran the above code. That’s because everything was done in the background and R will only show you what is requested. So don’t panic if you don’t see any output!</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>Throughout the term I’ll refer to small pieces of code as “code chunks.” This is both descriptive and will be what RStudio (our interface) calls them later on. For today, we’ll focus on running small code chunks, and on Monday we'll get practice writing our own.</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>We can get an overview of the dataset by printing the first few rows with the <span class="in">`head()`</span> command: </span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="in">head(mission_data)</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>Another function, <span class="in">`glimpse()`</span>, which lives in the {tidyverse} package, gives us another view of the dataset: </span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="in">glimpse(mission_data)</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>::: callout-attention</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Checkpoint questions</span></span>
 <span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>mission_sample</span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>And this next chunk computes the mean word length of our sample</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How many rows are in the <span class="in">`mission_data`</span> dataset?</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What does each row represent?</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How many variables are in the dataset? Are any categorical? Quantitative?</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mission_sample<span class="sc">$</span>length)</span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>To try other random samples, change (or remove!) the <span class="in">`set.seed()`</span> line of code, and try re-running the rest of the code. Do you ever get a sample mean that looks like your "by hand" sample mean?</span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>When you're done, **knit this file** and try uploading the PDF to gradescope. There are two questions, one for the *population mean* and one for a *sample mean*. Be sure to mark the pages so I can see your answers! </span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>Instead of relying on our brains to do a random sample, we can use R to ensure that we get a random sample! </span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>The code below selects a random sample of word positions to use</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="in">set.seed(091824) # Sets the random seed so we all get the same answer</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="in">sample = sample(1:364, size = 10) # selects a random sample of size 10 from the numbers 1-364</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="in">sample # prints the random sample of numbers</span></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>The next chunk of code <span class="in">`slices`</span> our population to draw our sample. Note that the <span class="in">`position`</span> variable should match the <span class="in">`sample`</span> output above. </span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="in">mission_sample = slice(mission_data, sample)</span></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>By running the name of the dataset, we print the entire thing:</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="in">mission_sample</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>R has built-in functions to compute summary statistics (like mean, median, and standard deviation) for a specific column. To "extract" a variable from the dataset, we use <span class="in">`$`</span>. For example, we can extract the <span class="in">`length`</span> variable from the <span class="in">`mission_sample`</span> dataset and calculate the mean: </span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="in">mean(mission_sample$length)</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>::: callout-attention</span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## Checkpoint question</span></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>To try other random samples, change (or remove!) the <span class="in">`set.seed()`</span> line of code below, and try re-running the rest of the code. Do you ever get a sample mean that looks like your "by hand" sample mean?</span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="in">set.seed(091824)</span></span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="in">sample = sample(1:nrow(mission_data), size = 10) </span></span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="in">mission_sample = slice(mission_data, sample)</span></span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="in">mean(mission_sample$length)</span></span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>Finally, let's see what the population mean is! </span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>::: callout-attention</span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="fu">## Checkpoint question</span></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>Use the code box below to compute the mean of the <span class="in">`length`</span> variable in the original <span class="in">`mission_data`</span> dataset. How close was your "by-hand" sample? How close were your true random samples?</span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr}</span></span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a><span class="in">#| min-lines: 5</span></span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## Function quick reference</span></span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>The following table summarizes the functions we learned today:</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Function <span class="pp">|</span> Purpose <span class="pp">|</span></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="pp">|----|-----------|</span></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`read.csv("file_path_or_URL")`</span> <span class="pp">|</span> Load a CSV data set from a file or the web <span class="pp">|</span></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`head(data)`</span> <span class="pp">|</span> Print the first few rows of a data set <span class="pp">|</span></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`glimpse(data)`</span> <span class="pp">|</span> Get a quick overview of a data set (from {dplyr} package) <span class="pp">|</span></span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`mean(x)`</span> <span class="pp">|</span> Calculate the mean of a quantitative variable <span class="pp">|</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`sample(x, size = n)`</span> <span class="pp">|</span> Selects a random sample from <span class="in">`x`</span> of size <span class="in">`n`</span> <span class="pp">|</span></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`slice(data, rows)`</span> <span class="pp">|</span> Selects specific rows from a data set <span class="pp">|</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
