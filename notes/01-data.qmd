@@ -42,7 +42,7 @@ config:
   theme: neutral
 ---
 flowchart LR
-  A{Categorical} --> B(Ordered/\nOrdinal)
+  A{Categorical} --> B(Ordinal)
   A --> C(Binary)
   A --> D(Categorical)
 ```

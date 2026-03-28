@@ -334,20 +334,36 @@ Characteristics that are recorded for each case. Generally correspond to columns
 
 ## Types of Variables
 
-```{mermaid}
+:::: {layout="[0.5, 0.5]"}
+
+::: {#first-col}
+```{mermaid, out.width = "70%"}
+---
+config:
+  look: handDrawn
+  theme: forest
+---
 flowchart LR
-  A(Categorical) --> B(Ordered/Ordinal)
+  A{Categorical} --> B(Ordinal)
   A --> C(Binary)
-  A --> D(Categorical)
+  A --> D(Nominal)
 ```
+:::
 
-. . . 
-
+::: {#second-col .fragment}
 ```{mermaid}
+---
+config:
+  look: handDrawn
+  theme: forest
+---
 flowchart LR
-  A(Quantitative) --> B(Discrete)
+  A{Quantitative} --> B(Discrete)
   A --> C(Continuous)
 ```
+:::
+
+::::
 
 ## 
 
