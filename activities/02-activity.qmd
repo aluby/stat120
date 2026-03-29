@@ -5,9 +5,13 @@ webr:
     - dplyr
 format: 
   live-html:
+    theme: 
+      - cosmo
+      - ../custom.scss
     toc: true
     output-file: "02-sampling-live.html"
 sidebar: false
+navbar: false
 engine: knitr
 editor: source
 ---

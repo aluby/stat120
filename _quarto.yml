@@ -34,10 +34,5 @@ format:
       - cosmo
       - custom.scss
     toc: true
-  live-html: 
-    theme: 
-      - cosmo
-      - custom.scss
-    toc: true
 
 
