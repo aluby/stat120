@@ -138,7 +138,7 @@ d.  Compute the *sample statistic* for your random sample.
 
 ## Part 2: In R! 
 
-Find the `sampling-activity.rmd` file on moodle and open it in RStudio. Complete the questions within the .rmd document and save it in maize when you are done. 
+Find the R activity link on moodle and open it. Complete the questions within the website and get a little bit of practice with R commands!
 
 After finishing the activity in R, answer the following questions. 
 
