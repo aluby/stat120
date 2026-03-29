@@ -427,4 +427,4 @@ A gene called `ACTN3` encodes a protein which functions in fast-twitch muscles. 
 ## Upcoming
 
 - HW1 is posted on moodle (due on Friday)
-- Video posted to watch *before* Wednesday's class
+- Prep work to do *before* Wednesday's class
