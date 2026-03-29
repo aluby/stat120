@@ -1,6 +1,7 @@
 ---
 title: "Stat120: Introduction to Statistics"
 subtitle: "Spring 2026"
+sidebar: false
 execute:
   freeze: true
 typst-logo:

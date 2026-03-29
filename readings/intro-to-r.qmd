@@ -1,0 +1,44 @@
+---
+title: "A brief intro to R"
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r setup}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(ragg)
+options(digits = 4)
+notes_theme = theme_minimal(
+ # base_family = "Montserrat", 
+  base_size = 14)
+theme_set(notes_theme)
+```
+
+## What is R?
+
+R is a statistical software program. This means that it was designed to analyze data, fit statistical models, run simulations, and more. If you've seen `SPSS`, `SAS`, or `minitab` in a previous course, it serves a similar purpose. While lots of data is *stored* in excel spreadsheets or google sheets, those tools were not designed to run formal statistical analyses. Unlike lots of other software for doing statistical analyses, R does *not* rely on a point-and-click approach. 
+
+## Why do we have to learn it?
+
+When you take a lab science (like bio, chem, or physics), you also learn the lab techniques that are standard within that field. R is the preferred programming tool for lots of statisticians, which is why we teach it in our statistics classes. There are certainly alternatives, and if you *do* statistics within another field, you might need to learn a different programming language or software. I hope that your baseline knowledge in R will help you in the future regardless of what software you use to do your analyses! 
+
+## Why not point-and-click?
+
+Point-and-click software is easy to get started with and has a lot of benefits. However, when you click through various menus to analyze your data, those clicks do not get saved anywhere. This makes your analyses hard to reproduce. Instead, R relies on `code` commands to do your analyses. This takes a bit more work to learn at first, but means that your analyses are reproducible. 
+
+## Why do we care if it's reproducible?
+
+First, it makes your life easier. If you did an analysis that was *not* reproducible for your homework, but then realized you made a mistake, used the wrong data, or forgot to record the end result, you would have to start completely from scratch. Since R makes analyses reproducible, it's easier to go in and fix mistakes without changing the rest of your analysis. It also allows me to see exactly what you're doing and where any conceptual mistakes might be happening. 
+
+## What's the difference between R and RStudio?
+
+We'll use these interchangeably in this class. A useful analogy is a car. R is the "engine" that runs our analyses, and RStudio is the "dashboard" that makes it a bit easier to tell the engine what to do. This distinction is not super important for us, since we'll always be using RStudio and the maize server.
+
+## What's the `maize` server?
+
+The `maize` server lets you use R/RStudio within your browser, instead of having to download any programs directly to your computer. This ensures that we're all using the same version of R and have access to the same code libraries. You can access the server using the internet browser of your choice (e.g. safari, chrome, firefox, etc.) and logging in with your Carleton credentials. If you take future stats classes here, you'll likely want to download your own version of R/RStudio (it runs faster and you can work on larger datasets), but the maize server should be enough for our needs in Stat120. 
+

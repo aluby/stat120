@@ -28,7 +28,7 @@ theme_set(slides_theme)
 1.  Syllabus/About the Course
 2.  Intro to Data
 
-## About me
+## 👋 I'm Amanda
 
 ::::: columns
 ::: {.column width="50%"}
@@ -37,12 +37,15 @@ theme_set(slides_theme)
 -   Taught at Swarthmore for 5 years before moving to MN 
 -   PhD in Statistics & Data Science from Carnegie Mellon University
 -   Grew up in Minnesota, went to St Ben's as an undergrad
+-   When I'm not working or chasing Ellis around, I like to read and am trying to do more fiber crafts
 :::
 
 ::: {.column width="50%"}
-![](img/TR3_5109.jpeg)
+![](img/about-me.jpg)
 :::
 :::::
+
+# 👋 I'm Ezra
 
 ## My crochet journey this summer
 
@@ -51,7 +54,7 @@ theme_set(slides_theme)
 ![](img/ugly-crochet.JPG)
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" .incremental}
 -   Decided I wanted to make a basket
 -   Skipped "practice these stitches" and just went for it
 -   Didn't understand the pattern, watched a couple of youtube videos from random creators and went for it
@@ -66,7 +69,7 @@ theme_set(slides_theme)
 ![](img/better-crochet.JPG)
 :::
 
-::: {.column width="50%" }
+::: {.column width="50%" .incremental }
 -   Asked an expert (my sister) for advice
 -   Did "practice problems" using easier material (yarn) and bigger hook
 -   Found a reliable internet source for videos and tutorials
@@ -141,9 +144,9 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 
 ## Assignments {.smaller}
 
--   Homework will be assigned once per week, due on gradescope by midnight on Wednesday (Friday in week 4, 7, 9)
+-   Homework will be assigned once per week, due on gradescope by 10pm on Wednesday (Friday in week 1, 4, 7, 9)
 -   No-questions-asked 12 hour grace period if you need it 
-    - (grace period = no penalty, but help is generally not available anymore)
+    - (grace period = no penalty, but help is generally not available)
 -   Alternative due dates must be arranged in advance
 -   Assignment submissions should be typeset using rmarkdown OR neatly written and scanned and submitted as a PDF file.
 -   You're responsible for submitting readable work and properly marking your questions on gradescope
@@ -180,12 +183,15 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 -   15% homework
 -   5% daily check-ins (lowest 3 will be dropped)
 -   5% attendance and participation in group work
--   16.33% each exam (50% total)
+    - 5+ absences &rarr; 0%
+-   16.66% each exam (50% total)
 -   15% final paper
 -   10% final project
 -   Letter grades will be assigned based on the usual grading scale (A = 93%+, A- = 90-92.9%, B+ = 88-89.9%, B = 83-87.9, etc.)
 
 ## Advice from past intro stat students: {.smaller}
+
+::: {.incremental}
 
 - Don't be afraid to ask questions. Even if you think they're really stupid, asking them could help you understand so many concepts.
 
@@ -205,6 +211,8 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 
 - i would say to not be afraid of using R. it really isnt as bad as it looks and can be pretty fun to use if you just learn the fundamentals of it
 
+:::
+
 ## Getting Help {.smaller}
 
 This course was not designed for you to do on your own in your dorm room every week, and I expect you to need some help on most assignments. 
@@ -215,7 +223,7 @@ This course was not designed for you to do on your own in your dorm room every w
 
 . . .
 
-**Individual Appointments** will be available throughout the week. Appointment slots open 5 days in advance and close 2 hours in advance. Please use these for in-depth conversations about grade concerns, project consultations, or if you need extra help on a specific concept. You're welcome to come as a group, but please note that 15 minutes goes by fast!  
+**Individual Appointments** will be available each week. Appointment slots open 5 days in advance and close 2 hours in advance. Please use these for in-depth conversations about grade concerns, project consultations, or if you need extra help on a specific concept. You're welcome to come as a group, but please note that 15 minutes goes by fast!  
 
 . . .
 
@@ -223,27 +231,27 @@ This course was not designed for you to do on your own in your dorm room every w
 
 . . .
 
-**Slack** is an asychronous communication platform where you can also ask homework questions anytime! I'll respond to messages at least twice per weekday. If you see someone ask a question that *you* know the answer to, please respond! 
+**Ed** is an asychronous communication platform where you can also ask homework questions anytime! I'll respond to messages at least twice per weekday. If you see someone ask a question that *you* know the answer to, please respond! 
 
 ## Office hours (*tentative*)
 
 | Day       | Time        | Type    | Location |
 |:----------|:------------|:--------|:---------|
-| Monday    | 12:30-1:30   | Drop-in | CMC 307  |
+| Monday    | 3-4   | Drop-in | CMC 307  |
 | Tuesday   | 2-3 | Drop-in | CMC 307  |
-| Wednesday | 3-4^[Stat120 Priority]   | Drop-in | CMC 307  |
-| Friday    | 10-11^[Stat340 Priority]       | Drop-in | CMC 307  |
+| Wednesday | 9:30-10:30^[Stat120 Priority]   | Drop-in | CMC 307  |
+| Friday    | 10-11^[Stat230 Priority]       | Drop-in | CMC 307  |
 
 ## Communication
 
 ::: {.fragment .nonincremental}
 - Moodle: assignments, slides, and grades
-- Slack: homework questions, announcements, discussion
+- Ed: homework questions, announcements, discussion
 - Email: personal matters, time-sensitive announcements
 :::
 
 ::: {.fragment}
-**Slack** is the fastest way to reach me. I typically will respond to messages 3x per weekday. I try to respond to emails within 48 hours. I'm online sporadically on evenings and weekends to devote time to family and rest -- I hope you also use this time to reset and recharge! 
+**Ed** is the fastest way to reach me. I typically will respond to messages 2x per weekday. I try to respond to emails within 48 hours. I'm online sporadically on evenings and weekends to devote time to family and rest -- I hope you also use this time to reset and recharge! 
 :::
 
 
@@ -334,14 +342,18 @@ Characteristics that are recorded for each case. Generally correspond to columns
 
 ## Types of Variables
 
-:::: {layout="[0.5, 0.5]"}
+:::: {layout="[1, 1]" style="font-size: 1.5em;"}
 
 ::: {#first-col}
-```{mermaid, out.width = "70%"}
+```{mermaid}
 ---
 config:
   look: handDrawn
   theme: forest
+  flowchart:
+    nodeSpacing: 50
+    rankSpacing: 50
+    padding: 30
 ---
 flowchart LR
   A{Categorical} --> B(Ordinal)
@@ -356,6 +368,10 @@ flowchart LR
 config:
   look: handDrawn
   theme: forest
+  flowchart:
+    nodeSpacing: 50
+    rankSpacing: 50
+    padding: 30
 ---
 flowchart LR
   A{Quantitative} --> B(Discrete)

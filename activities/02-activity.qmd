@@ -7,6 +7,7 @@ format:
   live-html:
     toc: true
     output-file: "02-sampling-live.html"
+sidebar: false
 engine: knitr
 editor: source
 ---
@@ -17,7 +18,7 @@ Press the "Run Code" button below to run the chunk of code. This (1) loads the l
 
 ```{webr}
 library(dplyr)
-mission_data = read.csv("https://raw.githubusercontent.com/aluby/stat120/refs/heads/main/data/mission_data.csv") #read.csv("https://aluby.github.io/stat120/data/mission_data.csv")
+mission_data = read.csv("https://aluby.github.io/stat120/data/mission_data.csv")
 ```
 
 ::: callout-note

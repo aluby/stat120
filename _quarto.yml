@@ -32,8 +32,11 @@ format:
     theme: 
       - cosmo
       - custom.scss
-    css: styles.css
     toc: true
-
+  live-html: 
+    theme: 
+      - cosmo
+      - custom.scss
+    toc: true
 
 
