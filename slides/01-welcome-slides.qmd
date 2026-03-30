@@ -77,12 +77,13 @@ theme_set(slides_theme)
 :::
 :::::
 
+# Proud of/Nervous about
+
 ## Intros
 
 ::: {.nonincremental}
-- Name 
-- What makes you nervous about this class or term? 
-- Something about yourself you are proud of
+- Introduce yourselves: name, pronouns, year, academic interest, personal interest
+- Share a bit about why you’re taking this class
 :::
 
 ```{r}
@@ -92,6 +93,8 @@ countdown(5)
 ```
 
 # Syllabus {.maize}
+
+Read the full syllabus by next class! 
 
 ## {.smaller}
 
@@ -120,6 +123,7 @@ Statistical Literacy is a key skill for many different courses and majors, and b
    - Hypothesis Tests
 
 3. **Formal Inference**
+    - Central Limit Theorem
     - Specific settings
     - Working on projects
 
@@ -165,7 +169,7 @@ Statistical Literacy is a key skill for many different courses and majors, and b
 
 ## Exams {.smaller}
 
-- While I believe most of your learning in this course will happen through working on homework and your project, part of being literate in statistics is being able to recall basic concepts and interpret analyses "on the fly", without access to other resources
+- While I believe most of your learning in this course will happen through working together in class, doing your homework, and putting together your project, part of being literate in statistics is being able to recall basic concepts and interpret analyses "on the fly", without access to other resources
 -   There will be three in-class exams, tentatively scheduled for Fridays of Week 3, 6, and 9
 -   If I need to reschedule, I'll give you at least two weeks notice.
 -   Any conflicts must be communicated to me in writing at least two weeks in advance to be able to schedule a make-up time
@@ -383,11 +387,11 @@ flowchart LR
 
 ## 
 
-![](https://www.researchgate.net/publication/374989660/figure/fig1/AS:11431281201405112@1698331780103/Ordinal-nominal-and-binary-factor-categorical-variables-Binary-factor-variables-are-a.ppm)
+![](img/horst-categorical-vars.ppm)
 
 ##
 
-![](https://www.researchgate.net/publication/374989660/figure/fig2/AS:11431281201387254@1698331780554/Continuous-and-discrete-variables-Artwork-by-allison-horst.ppm)
+![](img/horst-quant-vars.ppm)
 
 ## Explanatory vs Response Variable
 
