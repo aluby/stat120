@@ -1,0 +1,18 @@
+/* css styles */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap');
+
+$primary: #1F4257;
+
+/* Default body and text styles */
+body {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+/* Header styles using Roboto Slab */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto Slab", serif;
+  color: #1F4257; /* Ensure headers also use the default color */
+}
