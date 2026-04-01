@@ -29,7 +29,7 @@ theme_set(theme_minimal(base_size = 18, base_family = "Source Sans 3"))
 ![](img/wordcloud-nervous.png){fig-align="center"}
 
 ```{r, echo = FALSE}
-survey = read_csv("../data/survey_anon.csv")
+survey = googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1Svn_Ag2gOKlYRABCVJnR1MSCh2uENoUW9hjeLCdQuV8/edit?usp=sharing")
 survey$stats = survey$`Have you taken a statistics course before?`
 survey$cs = survey$`Have you taken a programming course before?`
 ```
@@ -104,7 +104,230 @@ survey %>%
 
 The ultimate goal of statistics is to learn about a population using a subset of that population. But, populations are *hard* (sometimes impossible!) to measure. 
 
+
+```{r}
+#| fig-width: 16
+#| fig-height: 8
+
+
+# Used gemini to fiddle with arrows 
+library(ggwaffle)
+library(emojifont)  
+
+set.seed(033126)
+
+waffle_data <- tibble(
+  x = runif(200),
+  y = runif(200),
+  index = 1:200, 
+  col = sample(c("no","yes"), size = 200, replace = TRUE, prob = c(.95, .05))
+)
+
+waffle_data$label = fontawesome('fa-user')
+
+p1 <- ggplot(waffle_data, aes(x, y, colour = col)) + 
+  geom_text(aes(label=label), family='fontawesome-webfont', size=16) +
+  coord_equal() + 
+  scale_colour_manual(values = c("lightgreen", "darkgreen")) +
+  theme_waffle()  +
+  theme(legend.position = "none") + 
+  labs(
+    x = "",
+    y = ""
+  )
+
+p_arrow <- ggplot() +
+  geom_segment(
+    aes(x = 0.1, y = 0.5, xend = 0.9, yend = 0.5), 
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+    linewidth = 1.5, 
+    color = "black"
+  ) +
+  theme_void() + # This removes all axes, gridlines, and backgrounds
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) # Keeps the arrow centered
+
+p2 <- tibble(
+  x = rep(1:5/6, 2),
+  y = rep(1:2/3, each = 5),
+  col = "yes",
+  label = fontawesome('fa-user')
+  ) |>
+  ggplot(aes(x, y)) + 
+  geom_text(aes(label=label), family='fontawesome-webfont', size=16, color = "darkgreen") +
+  coord_equal(xlim = c(0, 1), ylim = c(0, 1)) +
+  theme_waffle()  +
+  theme(legend.position = "none") + 
+  labs(
+    x = "",
+    y = ""
+  )
+
+p_inference <- ggplot() +
+  # Swap geom_segment for geom_curve
+  geom_curve(
+    aes(x = 0.85, y = 0.4, xend = 0.15, yend = 0.4), 
+    curvature = -0.2, # Positive values curve one way, negative values curve the other
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+    linewidth = 1.5, 
+    color = "black"
+  ) +
+  # Adjust the y-coordinate of the text so it sits neatly under the arch
+  geom_text(
+    aes(x = 0.5, y = 0.15, label = "Inference"), 
+    size = 20, 
+    fontface = "italic",
+    color = "darkgreen"
+  ) +
+  theme_void() + 
+  coord_cartesian(xlim = c(0, 1), ylim = c(-1, 1), clip = "off")
+
+# Define the grid layout map
+# A = p1 (takes up 2 spaces)
+# B = p_arrow (takes up 1 space)
+# C = p2 (takes up 1 space)
+# D = p_inference (spans all 4 spaces on the bottom row)
+layout <- "
+AABC
+DDDD
+"
+
+p1 + p_arrow + p2 + p_inference + 
+  plot_layout(
+    design = layout, 
+    heights = c(5, 1) # Makes the top row 5x taller than the bottom arrow row
+  )  
+```
+
 ## Spectrum of Samples
+
+```{r}
+#| fig-width: 10
+#| fig-height: 4
+
+# Made with gemini
+
+library(ggplot2)
+library(patchwork)
+library(dplyr)
+library(emojifont)
+
+set.seed(42) # For reproducible random colors
+
+# ---------------------------------------------------------
+# 1. n=1 ("Anec-data")
+# ---------------------------------------------------------
+p1_data <- tibble(x = 1, y = 1, label = fontawesome('fa-user'))
+
+p1 <- ggplot(p1_data, aes(x, y)) +
+  geom_text(aes(label = label), family = 'fontawesome-webfont', size = 25, color = "#2b8cbe") +
+  coord_equal(xlim = c(0, 2), ylim = c(0, 2)) +
+  theme_void() +
+  ggtitle('"Anec-data"\nn=1') +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 22))
+
+# ---------------------------------------------------------
+# 2. Small Sample (n=5)
+# ---------------------------------------------------------
+p2_data <- tibble(
+  x = c(1, 2, 3, 1.5, 2.5),
+  y = c(1, 1, 1, 2, 2),
+  label = fontawesome('fa-user')
+)
+
+p2 <- ggplot(p2_data, aes(x, y)) +
+  geom_text(aes(label = label), family = 'fontawesome-webfont', size = 12, color = "#41ab5d") +
+  coord_equal(xlim = c(0, 4), ylim = c(0, 3)) +
+  theme_void() +
+  ggtitle('Small Sample') +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 22))
+
+# ---------------------------------------------------------
+# 3. Moderate Sample (n=100 as a 10x10 grid)
+# ---------------------------------------------------------
+p3_data <- expand.grid(x = 1:10, y = 1:10) |>
+  mutate(
+    label = fontawesome('fa-user'),
+    # Randomly assign a few colors to show variation
+    color = sample(c("#41ab5d", "#ec7014", "#2b8cbe", "#807dba"), 100, replace = TRUE)
+  )
+
+p3 <- ggplot(p3_data, aes(x, y, color = color)) +
+  geom_text(aes(label = label), family = 'fontawesome-webfont', size = 5) +
+  scale_color_identity() +
+  coord_equal() +
+  theme_void() +
+  ggtitle('Moderate Sample') +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 22))
+
+# ---------------------------------------------------------
+# 4. Large Sample (n=400 as a 20x20 grid)
+# ---------------------------------------------------------
+# Note: Rendering 1000 icons can make R run very slowly. 
+# A 20x20 grid (400) provides the exact same visual impact for a slide!
+p4_data <- expand.grid(x = 1:20, y = 1:20) |>
+  mutate(
+    label = fontawesome('fa-user'),
+    color = sample(c("#41ab5d", "#ec7014", "#2b8cbe", "#807dba", "#d73027"), 400, replace = TRUE)
+  )
+
+p4 <- ggplot(p4_data, aes(x, y, color = color)) +
+  geom_text(aes(label = label), family = 'fontawesome-webfont', size = 2.5) +
+  scale_color_identity() +
+  coord_equal() +
+  theme_void() +
+  ggtitle('Large Sample') +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 22))
+  
+
+# ---------------------------------------------------------
+# 5. Entire Population / Census (Dense uniform grid)
+# ---------------------------------------------------------
+p5_data <- expand.grid(x = 1:25, y = 1:25) |>
+  mutate(label = fontawesome('fa-user'))
+
+p5 <- ggplot(p5_data, aes(x, y)) +
+  geom_text(aes(label = label), family = 'fontawesome-webfont', size = 2, color = "grey40") +
+  coord_equal() +
+  theme_void() +
+  ggtitle('Entire Population:\n"Census"') +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 22))
+
+# ---------------------------------------------------------
+# 6. The Connecting Arrow (Bottom spanning plot)
+# ---------------------------------------------------------
+p_arrow <- ggplot() +
+  # Main spectrum arrow
+  geom_segment(
+    aes(x = 0.05, y = 0.5, xend = 0.95, yend = 0.5), 
+    arrow = arrow(length = unit(0.4, "cm"), type = "closed"), 
+    linewidth = 2, 
+    color = "#525252"
+  ) +
+  # Text above the arrow
+  geom_text(
+    aes(x = 0.5, y = 0.8, label = "Increasing Sample Size (n)"), 
+    size = 15, 
+    fontface = "italic",
+    color = "#525252"
+  ) +
+  theme_void() + 
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 1))
+
+# ---------------------------------------------------------
+# 7. Stitch it all together with Patchwork
+# ---------------------------------------------------------
+# We put the 5 plots in one row, and the arrow underneath them
+layout <- "
+ABCDE
+FFFFF
+"
+
+(p1 | p2 | p3 | p4 | p5) / p_arrow + 
+  plot_layout(
+    #design = layout, 
+    heights = c(4, 1) # Makes the icons take up 80% of the height, the arrow takes 20%
+  )
+```
 
 ## Definitions
 

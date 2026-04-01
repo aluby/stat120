@@ -5,6 +5,7 @@ title: "Notes 02: Sampling"
 ```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
 library(infer)
+library(patchwork)
 options(digits = 4)
 notes_theme = theme_minimal(
  # base_family = "Montserrat", 
@@ -13,6 +14,99 @@ theme_set(notes_theme)
 ```
 
 # Samples and Populations
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+
+
+# Used gemini to fiddle with arrows 
+library(ggwaffle)
+library(emojifont)  
+
+set.seed(033126)
+
+waffle_data <- tibble(
+  x = runif(200),
+  y = runif(200),
+  index = 1:200, 
+  col = sample(c("no","yes"), size = 200, replace = TRUE, prob = c(.95, .05))
+)
+
+waffle_data$label = fontawesome('fa-user')
+
+p1 <- ggplot(waffle_data, aes(x, y, colour = col)) + 
+  geom_text(aes(label=label), family='fontawesome-webfont', size=8) +
+  coord_equal() + 
+  scale_colour_manual(values = c("lightgreen", "darkgreen")) +
+  theme_waffle()  +
+  theme(legend.position = "none") + 
+  labs(
+    x = "",
+    y = ""
+  )
+
+p_arrow <- ggplot() +
+  geom_segment(
+    aes(x = 0.1, y = 0.5, xend = 0.9, yend = 0.5), 
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+    linewidth = 1, 
+    color = "black"
+  ) +
+  theme_void() + # This removes all axes, gridlines, and backgrounds
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) # Keeps the arrow centered
+
+p2 <- tibble(
+  x = rep(1:5/6, 2),
+  y = rep(1:2/3, each = 5),
+  col = "yes",
+  label = fontawesome('fa-user')
+  ) |>
+  ggplot(aes(x, y)) + 
+  geom_text(aes(label=label), family='fontawesome-webfont', size=8, color = "darkgreen") +
+  coord_equal(xlim = c(0, 1), ylim = c(0, 1)) +
+  theme_waffle()  +
+  theme(legend.position = "none") + 
+  labs(
+    x = "",
+    y = ""
+  )
+
+p_inference <- ggplot() +
+  # Swap geom_segment for geom_curve
+  geom_curve(
+    aes(x = 0.85, y = 0.4, xend = 0.15, yend = 0.4), 
+    curvature = -0.1, # Positive values curve one way, negative values curve the other
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+    linewidth = 1, 
+    color = "black"
+  ) +
+  # Adjust the y-coordinate of the text so it sits neatly under the arch
+  # geom_text(
+  #   aes(x = 0.5, y = 0.15, label = "Inference"), 
+  #   size = 20, 
+  #   fontface = "italic",
+  #   color = "darkgreen"
+  # ) +
+  theme_void() + 
+  coord_cartesian(xlim = c(0, 1), ylim = c(-1, 1), clip = "off")
+
+# Define the grid layout map
+# A = p1 (takes up 2 spaces)
+# B = p_arrow (takes up 1 space)
+# C = p2 (takes up 1 space)
+# D = p_inference (spans all 4 spaces on the bottom row)
+layout <- "
+AABC
+DDDD
+"
+
+p1 + p_arrow + p2 + p_inference + 
+  plot_layout(
+    design = layout, 
+    heights = c(5, 1) # Makes the top row 5x taller than the bottom arrow row
+  )  
+```
 
 ::: callout-note
 ## Population
@@ -134,8 +228,6 @@ d.  Construct your *dataset*
 
 d.  Compute the *sample statistic* for your random sample.
 
-\vspace{.75in}
-
 ## Part 2: In R! 
 
 Find the R activity link on moodle and open it. Complete the questions within the website and get a little bit of practice with R commands!
@@ -144,11 +236,11 @@ After finishing the activity in R, answer the following questions.
 
 1. Why is it important to have a *random* sample? 
 
-\vspace{.75in}
+\vspace{.5in}
 
 2. Why does it matter if we have a *biased* sample?
 
-\vspace{.75in}
+\vspace{.5in}
 
 3. Why do we prefer to obtain random samples using software like R? 
 
