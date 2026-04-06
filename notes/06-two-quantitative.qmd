@@ -11,13 +11,83 @@ notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
 ```
 
-When we're interested in the relationship between two quantitative variables, the best visualization is a **scatterplot**. If we want to summarize the relationship in a single number, we'll often choose the **correlation**.
+When we're interested in the relationship between two quantitative variables, the best visualization is a **scatterplot**. 
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2
+#| fig-align: "center"
+
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point(size = .5) +
+  labs(
+    x = "Explanatory Variable",
+    y = "Response Variable"
+  )
+```
+
+
+If we want to summarize the relationship in a single number, we'll often choose the **correlation**.
 
 ::: callout-note
-Correlation
-\vspace{1in}
+Correlation: measure of the strength and direction of a linear relationship between two quantitative variables
 
+- sample: \hspace{1.5in} population: 
+- between -1 and +1
+- no units, doesn't matter what x and y are
+$r = \frac{1}{n-1} \sum (\frac{(x_i - \bar{x})}{s_x})(\frac{(y_i - \bar{y})}{s_y})$
 :::
+
+```{r}
+#| fig-width: 8
+#| fig-height: 2
+set.seed(092324)
+
+sim_data = tibble(
+  x1 = rnorm(50), 
+  y1 = 2*x1,
+  x2 = rnorm(50), 
+  y2 = -.5*x2 + runif(50),
+   x3 = runif(50), 
+  y3 = runif(50),
+  x4 = rnorm(50), 
+  y4 = x4 + rnorm(50, sd = 2)
+) 
+
+p1 = ggplot(sim_data, aes(x = x1, y = y1 )) +
+  geom_point() +
+  labs(
+    x = "X",
+    y = "Y",
+    title = "r = 1"
+  )
+
+p2 = ggplot(sim_data, aes(x = x2, y = y2 )) +
+  geom_point() +
+  labs(
+    x = "X",
+    y = "Y",
+    title = "r = -.86"
+  )
+
+p3 = ggplot(sim_data, aes(x = x3, y = y3 )) +
+  geom_point() +
+  labs(
+    x = "X",
+    y = "Y",
+    title = "r = .14"
+  )
+
+p4 = ggplot(sim_data, aes(x = x4, y = y4 )) +
+  geom_point() +
+  labs(
+    x = "X",
+    y = "Y",
+    title = "r = .52"
+  )
+
+(p1 | p2 | p3 | p4)
+```
 
 ```{r, echo = TRUE}
 cor(penguins$body_mass_g, penguins$flipper_length_mm, use = "complete.obs")
@@ -28,7 +98,7 @@ If the relationship is **linear**, we can also summarize the relationship with "
 ```{r, echo = TRUE}
 #| fig-width: 3
 #| fig-height: 2
-#| fig-align: "center"
+#| fig-align: "right"
 
 ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
   geom_point(size = .5) +
