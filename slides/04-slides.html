@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.24">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.23">
 
   <meta name="author" content="Prof Amanda Luby">
   <title>stat120 – 04: EDA for Categorical Variables</title>
@@ -188,6 +188,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/countdown/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -214,11 +216,10 @@ Prof Amanda Luby
 <li class="fragment">Practice in R</li>
 </ol>
 </section>
-<section>
-<section id="penguins" class="title-slide slide level1 center">
-<h1>Penguins!</h1>
+<section id="section" class="slide level2">
+<h2></h2>
 
-</section>
+<img data-src="img/horst_penguins.png" class="r-stretch"></section>
 <section id="load-data" class="slide level2">
 <h2>Load Data</h2>
 <div class="cell" data-layout-align="center">
@@ -243,23 +244,12 @@ Prof Amanda Luby
 </div>
 </div>
 </section>
-<section id="species" class="slide level2">
-<h2><code>species</code></h2>
-<p>Categorical variables are best summarized with a frequency table and visualized with a barplot. When we want to summarize a categorical variable with a single number, we often use a proportion</p>
-<div class="callout callout-note no-icon callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Proportion (or percentage)</strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math display">\[\hat{p} = \frac{\text{The number within a category}}{\text{Total number}}\]</span></p>
-<p>We use <span class="math inline">\(p\)</span> if this denotes a population proportion, or <span class="math inline">\(\hat{p}\)</span> if it denotes a sample proportion</p>
-</div>
-</div>
-</div>
+<section id="summarizing-categorical-variables" class="slide level2">
+<h2>Summarizing categorical variables</h2>
+<p>Categorical variables are best summarized with a <strong>frequency table</strong> and visualized with a <strong>barplot</strong>.</p>
 </section>
-<section id="frequency-table" class="slide level2">
-<h2>Frequency Table</h2>
+<section id="frequency-table-of-species" class="slide level2">
+<h2>Frequency Table of <code>species</code></h2>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -293,6 +283,52 @@ Prof Amanda Luby
 
 </div>
 <img data-src="04-slides_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section>
+<section id="what-about-a-pie-chart" class="title-slide slide level1 center">
+<h1>What about a pie chart?</h1>
+
+</section>
+<section id="choose-the-right-plot-which-slice-is-the-biggestsmallest" class="slide level2">
+<h2>Choose the right plot: Which slice is the biggest/smallest?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/data-to-viz-pie-areas.png" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<p></p><div class="countdown" id="timer_dd853862" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
+</div><p></p>
+</div>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/data-to-vizbar-areas.png" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+
+</div>
+<aside><div>
+<p><a href="https://www.data-to-viz.com/caveat/pie.html">The issue with pie chart</a> by Data to Viz</p>
+</div></aside></section>
+<section id="relevant-parameter-proportion" class="slide level2">
+<h2>Relevant <strong>parameter</strong>: Proportion</h2>
+<p>When we want to summarize a categorical variable with a single number, we often use a proportion</p>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proportion (or percentage)</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\widehat{p} = \frac{\text{The number within a category}}{\text{Total number}}\]</span></p>
+<p>We use <span class="math inline">\(p\)</span> if this denotes a population proportion, or <span class="math inline">\(\widehat{p}\)</span> if it denotes a sample proportion</p>
+</div>
+</div>
+</div>
+</section>
 <section id="relationship-between-species-and-island" class="slide level2">
 <h2>Relationship between <code>species</code> and <code>island</code></h2>
 <div class="cell" data-layout-align="center">
@@ -305,11 +341,9 @@ Prof Amanda Luby
   Gentoo       124     0         0</code></pre>
 </div>
 </div>
-<div class="fragment">
 <ul>
 <li class="fragment">How would you represent this information using a barplot?</li>
 </ul>
-</div>
 </section>
 <section id="relationship-between-species-and-island-1" class="slide level2">
 <h2>Relationship between <code>species</code> and <code>island</code></h2>
@@ -318,12 +352,12 @@ Prof Amanda Luby
 <span id="cb10-2"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="04-slides_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="04-slides_files/figure-html/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="joint-distribution" class="slide level2">
 <h2>Joint “Distribution”</h2>
 <p>Distribution = proportions</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, penguins<span class="sc">$</span>island) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, penguins<span class="sc">$</span>island) <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a></a>  <span class="fu">proportions</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
@@ -349,7 +383,7 @@ Prof Amanda Luby
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, penguins<span class="sc">$</span>island) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, penguins<span class="sc">$</span>island) <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a></a>  <span class="fu">proportions</span>(<span class="dv">2</span>) <span class="co"># condition on COLUMNS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
@@ -365,7 +399,7 @@ Prof Amanda Luby
 <h2>Marginal Distribution</h2>
 <p>Marginal distribution of <code>species</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, penguins<span class="sc">$</span>island) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, penguins<span class="sc">$</span>island) <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a></a>  <span class="fu">addmargins</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
@@ -386,6 +420,22 @@ Prof Amanda Luby
 0.4418605 0.1976744 0.3604651 </code></pre>
 </div>
 </div>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Independence</strong></p>
+</div>
+<div class="callout-content">
+<p>Two categorical variables are <strong>independent</strong> if the marginal and conditional distributions are the same. This means that knowing something about one variable tells us nothing about the distribution of the other variable.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Example:</strong> Is penguin species independent of island? How can you tell?</p>
 
 
 </div>
