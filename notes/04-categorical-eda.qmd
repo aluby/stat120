@@ -83,7 +83,6 @@ ggplot(penguins, aes(y = species, fill = island)) +
   geom_bar()
 ```
 
-\pagebreak 
 
 **Example:** Below is the two-way table for our class representing the answers to "What is your class year?" and "Coffee or tea?"
 
