@@ -2,6 +2,7 @@ subtitle: "Stat 120 | Fall 2025"
 author: "Prof Amanda Luby"
 callout-appearance: simple
 engine: knitr
+sidebar: false
 knitr:
     opts_chunk: 
       dev: "ragg_png"

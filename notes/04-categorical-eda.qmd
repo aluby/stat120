@@ -4,6 +4,7 @@ title: "Notes 04: Categorical Variables"
 
 ```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
+library(palmerpenguins)
 options(digits = 4)
 notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
@@ -80,7 +81,7 @@ Visually, we use a filled barplot:
 #| fig-height: 2
 
 ggplot(penguins, aes(y = species, fill = island)) + 
-  geom_bar()
+  geom_bar(col = "white")
 ```
 
 
