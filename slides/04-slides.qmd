@@ -26,7 +26,10 @@ options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
 2. EDA for 2 Categorical Variables
 3. Practice in R
 
-# Penguins! 
+##
+
+![](img/horst_penguins.png)
+
 
 ## Load Data
 
@@ -35,19 +38,12 @@ penguins = palmerpenguins::penguins
 penguins
 ```
 
-## `species`
+## Summarizing categorical variables
 
-Categorical variables are best summarized with a frequency table and visualized with a barplot. When we want to summarize a categorical variable with a single number, we often use a proportion
+Categorical variables are best summarized with a **frequency table** and visualized with a **barplot**. 
 
-::: callout-note
-## Proportion  (or percentage)
 
-$$\hat{p} = \frac{\text{The number within a category}}{\text{Total number}}$$
-
-We use $p$ if this denotes a population proportion, or $\hat{p}$ if it denotes a sample proportion
-:::
-
-## Frequency Table
+## Frequency Table of `species`
 
 ```{r, echo = TRUE}
 table(penguins$species)
@@ -74,12 +70,41 @@ ggplot(penguins, aes(y = species, fill = species)) +
   geom_bar()
 ```
 
+# What about a pie chart? 
+
+## Choose the right plot: Which slice is the biggest/smallest?
+
+![](img/data-to-viz-pie-areas.png){fig-align="center" width="800"}
+
+```{r}
+countdown::countdown(0, 30)
+```
+
+. . .
+
+![](img/data-to-vizbar-areas.png){fig-align="center" width="800"}
+
+::: aside
+[The issue with pie chart](https://www.data-to-viz.com/caveat/pie.html) by Data to Viz
+:::
+
+## Relevant **parameter**: Proportion
+
+When we want to summarize a categorical variable with a single number, we often use a proportion
+
+::: callout-note
+## Proportion  (or percentage)
+
+$$\widehat{p} = \frac{\text{The number within a category}}{\text{Total number}}$$
+
+We use $p$ if this denotes a population proportion, or $\widehat{p}$ if it denotes a sample proportion
+:::
+
 ## Relationship between `species` and `island`
 
 ```{r, echo = TRUE}
 table(penguins$species, penguins$island)
 ```
-. . . 
 
 - How would you represent this information using a barplot?
 
@@ -95,7 +120,7 @@ ggplot(penguins, aes(y = species, fill = island)) +
 Distribution = proportions
 
 ```{r, echo = TRUE}
-table(penguins$species, penguins$island) %>%
+table(penguins$species, penguins$island) |>
   proportions() 
 ```
 
@@ -106,10 +131,11 @@ Conditional distribution of `species` on `Dream` island
 ```{r, echo = TRUE}
 table(penguins$species, penguins$island) 
 ```
+
 . . . 
 
 ```{r, echo = TRUE}
-table(penguins$species, penguins$island) %>%
+table(penguins$species, penguins$island) |>
   proportions(2) # condition on COLUMNS
 ```
 
@@ -118,7 +144,7 @@ table(penguins$species, penguins$island) %>%
 Marginal distribution of `species` 
 
 ```{r, echo = TRUE}
-table(penguins$species, penguins$island) %>%
+table(penguins$species, penguins$island) |>
   addmargins()
 ```
 
@@ -129,5 +155,16 @@ table(penguins$species) %>%
   proportions()
 ```
 
+## 
+
+::: callout-tip
+## Independence
+
+Two categorical variables are **independent** if the marginal and conditional distributions are the same. This means that knowing something about one variable tells us nothing about the distribution of the other variable. 
+:::
+
+. . . 
+
+**Example:** Is penguin species independent of island? How can you tell? 
 
 

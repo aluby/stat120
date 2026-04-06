@@ -11,58 +11,102 @@ theme_set(notes_theme)
 
 # Categorical Variables
 
-Categorical variables are best summarized with a **frequency table** and visualized using a **barplot**. When we want to summarize a categorical variable with a single number, we often use a **proportion**.
+Categorical variables are best summarized with a **frequency table** and visualized using a **barplot**. 
+
+
+```{r}
+#| echo: true
+table(penguins$species)
+```
+
+
+```{r}
+#| echo: true
+#| fig-width: 4
+#| fig-height: 2
+
+
+ggplot(penguins, aes(y = species)) + 
+  geom_bar()
+```
+
+
+
+If we want to summarize a categorical variable with a single number, or choose an appropriate parameter/statistic for a categorical variable, we often use a **proportion**.
 
 ::: callout-note
 Proportion \vspace{.5in}
 :::
 
-When we have two categorical variables, we often use a **two-way table** to summarize them at the same time (also called the **joint distribution**). We might also care about the **marginal distribution** (the margins) or **conditional distribution** (a specific row/column).
-
-**Example:** Below is the two-way table for our class representing the answers to "Have you taken a CS class before?" and whether the "Environmental Issues" interest box was checked.
-
-|                       | Week 1 | Week 7 |
-|-----------------------|--------|--------|
-| Yes (Got Sleep)       | 10     | 4      |
-| No (Not enough sleep) | 6      | 9      |
-
-a. What is the marginal distribution of *Sleep*? 
-\vspace{.5in}
-b. What is the conditional distribution of *Week* among those who *did not get enough sleep*?
-\vspace{.5in}
-c. What is the conditional distribution of *Sleep* among those who *were surveyed in Week 1*? 
-\vspace{.5in}
-d. What is the proportion of students who were surveyed in Week 1?
-\vspace{.5in}
-e. Does *sleep* appear to be independent of *week*? 
+When we have two categorical variables, we often use a **two-way table** to summarize them at the same time (also called the **joint distribution**). 
 
 
-# Quantitative Variables
+```{r}
+#| echo: true
+table(penguins$species, penguins$island)
+```
 
-Quantitative variables are best visualized with a **histogram** or **dotplot** (depending on sample size)
+
+
+We might also care about the **marginal distribution** (the margins) 
+
+```{r, echo = TRUE}
+table(penguins$species, penguins$island) |>
+  addmargins()
+```
+
+or **conditional distribution** (a specific row/column).
+
+```{r, echo = TRUE}
+table(penguins$species, penguins$island) |>
+  proportions(2) # condition on COLUMNS
+```
+
+::: callout-tip
+## Independence
+
+Two categorical variables are **independent** if the marginal and conditional distributions are the same. This means that knowing something about one variable tells us nothing about the distribution of the other variable. 
+:::
+
+**Example:** Is penguin species independent of island?
+\vspace{1in}
+
+
+Visually, we use a filled barplot: 
+
+```{r}
+#| echo: true
+#| fig-width: 4
+#| fig-height: 2
+
+ggplot(penguins, aes(y = species, fill = island)) + 
+  geom_bar()
+```
+
+\pagebreak 
+
+**Example:** Below is the two-way table for our class representing the answers to "What is your class year?" and "Coffee or tea?"
+
+|        | First year| Sophomore|
+|:-------|----------:|---------:|
+|Coffee  |         10|         8|
+|Neither |          3|         0|
+|Tea     |          5|         5|
+
+a. What is the marginal distribution of *coffee_or_tea*? 
 
 \vspace{1in}
 
-When describing quantitative variables, we typically care most about the **shape** and **center**. When we want to summarize a quantitative variable with a single number, we often choose the **mean**, **median**, or **mode**.
+b. What is the conditional distribution of *class year* among those who *prefer coffee*?
 
-+---------------------------+------------------------+--------------------------+
-| Skewed Right \hspace{1in} | Symmetric \hspace{1in} | Skewed Left \hspace{1in} |
-+===========================+========================+==========================+
-| \vspace{1.5in}            |                        |                          |
-|                           |                        |                          |
-| .                         |                        |                          |
-+---------------------------+------------------------+--------------------------+
+\vspace{1in}
 
-There are various ways to describe the center of the distribution. The three most common are:
 
-::: callout-note
-Mean \vspace{.75in}
-:::
+c. What is the conditional distribution of *coffee or tea* among those who *sophomores*? 
 
-::: callout-note
-Median \vspace{.75in}
-:::
+\vspace{1in}
 
-::: callout-note
-Mode \vspace{.75in}
-:::
+d. Does *coffee or tea* appear to be independent of *class year*? 
+
+
+
