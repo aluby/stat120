@@ -58,8 +58,11 @@ pew %>%
 
 
 **5.** Another way to look at the distribution of a quantitative variable across different levels of a categorical variable is using `facets`. Facets create a different graph for each level of a categorical variable. Choose one method below.
+
   + In esquisse, create a histogram of `age` and then drag `values` into the facet box (far right)
   + If using ggplot directly, create a histogram of `age` and then add `facet_wrap(vars(values))`
+
+
 What can you see using the histogram approach that you cannot see with the side-by-side boxplots? 
 
 ```{r}

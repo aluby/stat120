@@ -5,17 +5,35 @@ title: "Notes 05: Quantitative Variables"
 ```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
 library(patchwork)
+library(palmerpenguins)
 options(digits = 4)
 notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
 ```
 
 
-Quantitative variables are best visualized with a **histogram** or **dotplot** (depending on sample size)
+Quantitative variables are best visualized with a **histogram** (better for large samples) or **dotplot** (better for small samples)
 
-\vspace{1in}
 
-When describing quantitative variables, we typically care most about the **shape** and **center**. When we want to summarize a quantitative variable with a single number, we often choose the **mean**, **median**, or **mode**.
+```{r}
+#| fig-width: 8
+#| fig-height: 2
+
+set.seed(040626)
+
+p1 <- ggplot(penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(col = "white", binwidth = 3) +
+  labs(title = "n = 344")
+
+p2 <- ggplot(penguins |> slice_sample(n = 50), aes(x = flipper_length_mm)) + 
+  geom_dotplot(dotsize = .25, binwidth = 5, col = "white") + 
+  labs(y = "",
+       title = "n = 50")
+
+p1 + p2
+```
+
+When describing quantitative variables, we typically care most about the **shape** and **center**. 
 
 +---------------------------+------------------------+--------------------------+
 | Skewed Right \hspace{1in} | Symmetric \hspace{1in} | Skewed Left \hspace{1in} |
@@ -25,21 +43,54 @@ When describing quantitative variables, we typically care most about the **shape
 | .                         |                        |                          |
 +---------------------------+------------------------+--------------------------+
 
-There are various ways to describe the center of the distribution. The three most common are:
+It's also important to note if the shape is **unimodal** or **multimodal**
+
+When making a histogram, it's important to choose an appropriate **number of bins**
+
+```{r}
+#| fig-width: 8
+#| fig-height: 2
+p1 <- ggplot(penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(col = "white", bins = 70) +
+  labs(title = "too many")
+
+p2 <- ggplot(penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(col = "white", bins = 9) +
+  labs(title = "too few")
+
+p3 <- ggplot(penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(col = "white", bins = 25) +
+  labs(title = "a good amount")
+
+p1 + p2 + p3
+```
+
+
+There are various ways to describe the **center** of the distribution. The three most common are:
 
 ::: callout-note
-Mean \vspace{.5in}
+## Mean: add up values and divide by *n*
+- Sample: 
+- Population: 
+- $\bar{x} = \frac{x_1 + x_2 + ... + x_n}{n} = \frac{1}{n} \sum x_i$
+
 :::
 
 ::: callout-note
-Median \vspace{.5in}
+## Median: midpoint
+
+- odd *n*: middle number
+- even *n*: mean of the middle 2 values
 :::
 
 ::: callout-note
-Mode \vspace{.5in}
+## Mode: most common single value
+
+- peak of the histogram
+- can have more than 1!
 :::
 
-# Standard Deviation
+# Standard Deviation: measure of spread
 
 ```{r}
 #| fig-width: 8
@@ -49,7 +100,7 @@ tibble(
   x = c(rnorm(1000, mean = 10, sd = 1), 
         rnorm(1000, mean = 10, sd = 3), 
         rnorm(1000, mean = 10, sd = .25)),
-  category = c(rep("s = 1", 1000), rep("s = 3", 1000), rep("s = .25", 1000 ))
+  category = c(rep("sd = 1", 1000), rep("sd = 3", 1000), rep("sd = .25", 1000 ))
 ) %>%
   ggplot(aes(x = x)) + 
   geom_histogram(col = "white") + 
@@ -58,23 +109,33 @@ tibble(
 ```
 
 ::: callout-note
-Standard Deviation
+## Standard Deviation: typical distance of a data point from the mean
 
-\vspace{.5in}
+$s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n-1}}$ \hspace{1in} R: `sd(...)`
 :::
 
 The **68, 95, 99 rule** says that: 
 
-\vspace{2in}
+```{r}
+#| fig-width: 3
+#| fig-height: 2
+
+
+library(ggformula)
+gf_dist("norm") + 
+  scale_x_continuous(breaks = -3:3) +
+  labs(y = "",
+       x = "")
+```
 
 **Example:** Standardized test scores are often designed to have bell-curved distributions. The mean reported ACT score at Carleton is 33 with a standard deviation of 1.493. If we assume that Carleton's distribution is also symmetric and approximately bell-shaped, what interval gives the ACT score range of 95% of students? 
 
-\vspace{2in}
+\vspace{1.5in}
 
 # Z-Scores
 
 ::: callout-note
-Z-Score
+## Z-Score: number of sd's away from the mean a data point is
 
 \vspace{.5in}
 :::
@@ -111,7 +172,7 @@ A boxplot is a visualization of the **five number summary**, plus outliers.
 \vspace{1in}
 
 ::: callout-note
-Outlier
+## Outlier: a data point that "stands out" from the rest
 
 \vspace{.5in}
 :::
