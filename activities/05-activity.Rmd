@@ -8,13 +8,13 @@ The lab manual data `Pew` contains data from a January 2014 Pew Research Center 
 - `income`: the person's yearly income, grouped into four categories
 - `values`: an answer to the question asking if the Internet has been a "good thing"
 
-**-1.** Run the code chunk below to load the libraries we need for this activity. 
+**0.** Run the code chunk below to load the libraries we need for this activity. 
 
 ```{r, message = FALSE}
 library(tidyverse)
 ```
 
-**0.** Import the data into R by running the following code chunk. This chunk also includes a line to redefine the levels of the `income` variable so that they show up in the right order. Click on the dataset in the environment pane to pull up the data viewer. Can you see the "spreadsheet view" of the data?
+**1.** Import the data into R by running the following code chunk. This chunk also includes a line to redefine the levels of the `income` variable so that they show up in the right order. Click on the dataset in the environment pane to pull up the data viewer. Can you see the "spreadsheet view" of the data?
 
 ```{r}
 pew <- read_csv("http://www.math.carleton.edu/Stat120/RLabManual/Pew.csv")
@@ -22,25 +22,25 @@ pew$income <- factor(pew$income, levels = c("0-30000", "30000-75000",
                                             "75000-150000", "150000"))
 ```
 
-**1.** If you haven't already, create a histogram of the `age` variable using esquisse. Make sure to copy your code to the chunk below.
+**2.** If you haven't already, create a histogram of the `age` variable using esquisse. Make sure to copy your code to the chunk below.
 
 ```{r}
 
 ```
 
-**2.** In the empty code chunk below, run `mean(pew$age)` and `median(pew$age)`. Now try `mode(pew$age)`. What happened?
+**3.** In the empty code chunk below, run `mean(pew$age)` and `median(pew$age)`. Now try `mode(pew$age)`. What happened?
 
 ```{r}
 
 ```
 
-**3.** Compute the standard deviation of `age`. Does the 68/95/99 rule apply? Find the interval where 95% of the cases should fall. 
+**4.** Compute the standard deviation of `age`. Does the 68/95/99 rule apply? Find the interval where 95% of the cases should fall. 
 
 ```{r}
 
 ```
 
-**4.** Let's see if you're right! The chunk of code below `filters` the data to only include values where `age` is greater or equal to 18 and less than or equal to 99 and then spits out how many cases are in the filtered dataset. These are the minimum and maximum values, so the entire dataset is included. Edit this chunk so it corresponds to your interval values above. How close to 95% is it? 
+**5.** Let's see if you're right! The chunk of code below `filters` the data to only include values where `age` is greater or equal to 18 and less than or equal to 99 and then spits out how many cases are in the filtered dataset. These are the minimum and maximum values, so the entire dataset is included. Edit this chunk so it corresponds to your interval values above. How close to 95% is it? 
 
 ```{r}
 pew %>%
@@ -50,14 +50,14 @@ pew %>%
   )
 ```
 
-**4.** Are people who think the internet has been a "good thing" younger than those that don't? Create side-by-side boxplots to answer the question. (You can use ggplot, base R, or esquisse to create your boxplots)
+**6.** Are people who think the internet has been a "good thing" younger than those that don't? Create side-by-side boxplots to answer the question. (You can use ggplot, base R, or esquisse to create your boxplots)
 
 ```{r}
 
 ```
 
 
-**5.** Another way to look at the distribution of a quantitative variable across different levels of a categorical variable is using `facets`. Facets create a different graph for each level of a categorical variable. Choose one method below.
+**7.** Another way to look at the distribution of a quantitative variable across different levels of a categorical variable is using `facets`. Facets create a different graph for each level of a categorical variable. Choose one method below.
 
   + In esquisse, create a histogram of `age` and then drag `values` into the facet box (far right)
   + If using ggplot directly, create a histogram of `age` and then add `facet_wrap(vars(values))`
@@ -70,7 +70,7 @@ What can you see using the histogram approach that you cannot see with the side-
 ```
 
 
-**6.** We also often want summary statistics per group. The code below groups the data by `values`, and then computes the mean and median for each group. Add a line of code to compute the `sd()` for each group. (You may also need to add a comma at the end of a line) Do these quantities align with the visualizations that you made above? 
+**8.** We also often want summary statistics per group. The code below groups the data by `values`, and then computes the mean and median for each group. Add a line of code to compute the `sd()` for each group. (You may also need to add a comma at the end of a line) Do these quantities align with the visualizations that you made above? 
 
 ```{r}
 pew %>%

@@ -89,9 +89,15 @@ p4 = ggplot(sim_data, aes(x = x4, y = y4 )) +
 (p1 | p2 | p3 | p4)
 ```
 
+<br> 
+
+<br> 
+
 ```{r, echo = TRUE}
 cor(penguins$body_mass_g, penguins$flipper_length_mm, use = "complete.obs")
 ```
+
+\pagebreak 
 
 If the relationship is **linear**, we can also summarize the relationship with "the line of best fit" or "least squares" line. 
 
@@ -113,9 +119,21 @@ lm(flipper_length_mm ~ body_mass_g, data = penguins)
 lm(flipper_length_mm ~ body_mass_g, data = penguins) %>% coef()
 ```
 
-**Interpretation:**
+```{r}
+#| echo: false
 
-\vspace{2in}
+
+lm(flipper_length_mm ~ body_mass_g, data = penguins)  |> equatiomatic::extract_eq( use_coefs = TRUE)
+```
+
+
+**Interpretations:**
+
+ - **Slope:** As [x variable] increases by 1 [unit], the average [y variable] also increases by [b1]
+
+ - **Intercept:** For [observation with x = 0], the model predicts the average [y variable] to be [b0]
+
+\pagebreak
 
 **Two types of outliers:** 
 
@@ -164,6 +182,8 @@ equatiomatic::extract_eq(eq2, use_coefs = TRUE)
 Best fit line with outlier: $\operatorname{\widehat{y}} = 7.1 + 0.82\operatorname{x}$ 
 
 Best fit line without outlier: $\operatorname{\widehat{y}} = -8.79 + 1.01\operatorname{x}$
+
+\vspace{1in}
 
 ```{r}
 #| fig-width: 6
