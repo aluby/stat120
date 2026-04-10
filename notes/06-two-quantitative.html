@@ -763,12 +763,15 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><br></p>
+<p><br></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(penguins<span class="sc">$</span>body_mass_g, penguins<span class="sc">$</span>flipper_length_mm, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8712</code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 <p>If the relationship is <strong>linear</strong>, we can also summarize the relationship with “the line of best fit” or “least squares” line.</p>
 <div class="cell" data-layout-align="right">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span></span>
@@ -791,13 +794,25 @@ window.Quarto = {
   136.72956     0.01528 </code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<p><span class="math display">\[
+\operatorname{\widehat{flipper\_length\_mm}} = 136.73 + 0.02(\operatorname{body\_mass\_g})
+\]</span></p>
+</div>
+</div>
 <p><strong>Interpretation:</strong></p>
+<ul>
+<li><p><strong>Slope:</strong> As [x variable] increases by 1 [unit], the average [y variable] also increases by [b1]</p></li>
+<li><p><strong>Intercept:</strong> For [observation with x = 0], the model predicts the average [y variable] to be [b0]</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
 <p><strong>Two types of outliers:</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-two-quantitative_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="06-two-quantitative_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -808,7 +823,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-two-quantitative_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="06-two-quantitative_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
