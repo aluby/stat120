@@ -58,7 +58,7 @@ Residual
 
 **Example:** I grab a penguin with a flipper length of 193mm and a body mass of 3475g. What is the **observation**, **prediction**, and **residual** in this case?
 
-\vspace{1in}
+\vspace{2in}
 
 **Example:** Emperor penguins routinely make dives of 5-12 minutes, with the longest recorded dive over 27 minutes (!!) The rate of oxygen depletion is primarily determined by the penguin's heart rate. `DiveHeartRate` is the bird's heart rate in beats per minute, `Depth` is the depth of the dive (in meters), `Duration` is the duration of the dive in minutes, and `Bird` is an ID variable indicating which penguin made the dive. 
 

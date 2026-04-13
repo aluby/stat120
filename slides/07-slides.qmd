@@ -55,35 +55,36 @@ Observations ($y_i$): the data points that were **observed**
 
 ```{r}
 ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + 
-  geom_point(col = "#f5f190", size = 4) +
-  geom_point() + 
+  geom_point(fill = "#f5f190", shape = 21, size = 4) +
+  geom_point(alpha = .5, size = .5) + 
   geom_smooth(method = "lm", se = FALSE)
 ```
 
 ## Important Notation 
 
-Predictions ($\hat{y}_i$): the points on the line for each $x$ value
+Predictions ($\widehat{y}_i$): the points on the line for each $x$ value
 
-$$\hat{y}_i = b_0 + b_1 x_i$$
+$$\widehat{y}_i = b_0 + b_1 x_i$$
 
 ```{r}
 ggplot(broom::augment(penguins_lm), aes(x = body_mass_g, y = flipper_length_mm)) + 
-  geom_point() + 
-  geom_point(aes(y = .fitted), fill = "#f5f190", size = 4, pch = 21, col = "black") +
-  geom_smooth(method = "lm", se = FALSE)
+  geom_point(alpha = .5, size = .5) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_point(aes(y = .fitted), fill = "#f5f190", size = 4, pch = 21, col = "black") 
 ```
 
 ## Important Notation
 
 Residuals ($\epsilon_i$): difference between observations and predictions
 
-$$\epsilon_i = y_i - \hat{y}_i  $$
+$$\epsilon_i = y_i - \widehat{y}_i  $$
 
 ```{r}
 ggplot(broom::augment(penguins_lm), aes(x = body_mass_g, y = flipper_length_mm)) + 
   geom_segment(aes(xend = body_mass_g, yend = .fitted), col = "darkgray") + 
-  geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
+  geom_point(size = .5) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_point(aes(y = .fitted), size = 1, col = "black") 
 ```
 
 
@@ -195,7 +196,7 @@ dives_aug
 
 ## To make a residual scatterplot
 
-Step 3. Create the scatterplot using the augmented dataset
+Step 3. Create the scatterplot using the augmented dataset (you can also use {esquisse} for this)
 
 ```{r}
 #| echo: true

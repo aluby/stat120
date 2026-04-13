@@ -2,6 +2,8 @@
 title: "Notes 06: Two Quantitative Variables"
 ---
 
+**add motivation**
+
 ```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
 library(patchwork)
