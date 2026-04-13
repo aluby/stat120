@@ -28,98 +28,49 @@ theme_set(notes_theme)
 
 
 
-Carleton publishes an "at a glance" page with some facts and figures about the student body: https://www.carleton.edu/about/carleton-at-a-glance/
-
-Some highlights: 
-
-- Geographic distribution: 
-    - Midwest 36.7% 
-    - West 21.7%
-    - East 17.3%
-    - South 10.9%
-    - International 11.8%
-    - Other 1.6%
-- 34% BIPOC
-- 12% are among the first generation in their families to attend college
-- 61% graduated in the top 10% of their high school class
-
-In a moment, we're going to see one of these quantities for our class. Before we do, what is your *best guess* for each of these quantities? 
-
-**Example:** In this set-up, what is the: 
-
-- Population
-- Sample
-- Parameter
-- Statistic
-
-We know that our class will likely not have **exactly** 36.7% from the Midwest, but we probably wouldn't expect it to be 0% or 90%. 
-
-::: callout-note
-Sampling variability
-
-\vspace{.5in}
-:::
-
-We might start to ask ourselves, what if a *different* set of 32 students enrolled in this course? 
-
-First, we create a population. 
+**Example:** Fingerprints are often used in criminal investigations even though fingerprint uniqueness has never *actually* been proven. While investigators use "minutiae", or small details in the fingerprint, to determine whether two fingerprints "match", they can exclude potential suspects if the fingerprint pattern is different. There are 3 major types of fingerprint patterns: 
 
 ```{r}
-carls <- tibble(
-  student_id = 1:2007,
-  midwest = c(rep("Yes", 702), rep("No", 2007-702))
-) |>
-  slice(sample(1:n()))
-carls
+#| fig-align: 'center'
+knitr::include_graphics("images/fingerprint-patterns.png")
 ```
 
-Then, we take a random sample: 
+If we knew the population proportions for each of the three patterns, we could help investigators better understand the probability of seeing two fingerprints that look very similar but don't actually match. Our goal is to estimate $p_{\text{whorl}}$. 
 
-```{r, echo = TRUE}
-set.seed(100424)
-sample1 <- carls |>
-  sample_n(32)
-sample1
-```
+On your own, compute $\hat{p}_{\text{whorl}}$ for two different samples and then contribute your answer to the graph on the board.
 
-and calculate the proportion of "yes" responses: 
+- $n=5$ (one hand): 
 
-```{r, echo = TRUE}
-sample1 |>
-  group_by(midwest) |>
-  summarize(
-    n = n()
-  ) |>
-  mutate(p_hat = n/sum(n))
-```
+- $n=10$ (both hands): 
 
-This isn't *super* useful, but if we do it a bunch of times, we can start to see what a range of possible samples could look like. (*Note:* this code requires the {`infer`} package)
-
-```{r, echo = TRUE}
-many_samples <- carls |>
-  rep_sample_n(35, reps = 1000, replace = TRUE) |>
-  group_by(replicate, midwest) |>
-  summarize(
-    n = n()
-  ) |>
-  mutate(p_hat = n/sum(n)) |>
-  filter(midwest == "Yes")
-
-many_samples
-```
-
-Looking at this first few rows, we can start to get a sense of the range of possible sample proportions, but there are 990 rows that we can't see. Let's make a graph! 
-
-```{r}
-#| fig-width: 4
-#| fig-height: 2
-ggplot(many_samples, aes(x = p_hat)) + 
-  geom_histogram(bins = 12, col = "white")
-```
-
-**Example:** Carleton Mission Statement
+Sketch finished graphs here: 
 
 \vspace{2in}
+
+How do we feel about our estimates? 
+
+\vspace{1in}
+
+Now, visit the fingerprint sampler at <https://aluby.github.io/stat120/activities/10-fingerprints-live.html> and obtain 3 samples of size 5 and 3 samples of size 20. Record your data here and in the google sheet linked on the webpage.  
+
+- $n=5$ (1): 
+
+- $n=5$ (2): 
+
+- $n=5$ (3): 
+
+- $n=20$ (1): 
+
+- $n=20$ (2): 
+
+- $n=20$ (3): 
+
+
+Sketch finished graphs here: 
+
+\vspace{2in}
+
+
 
 *In your own words:* provide explanations for:
 
