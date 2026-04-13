@@ -2862,7 +2862,7 @@
     "href": "slides/07-slides.html#important-notation-1",
     "title": "07: Linear Regression",
     "section": "Important Notation",
-    "text": "Important Notation\nPredictions (\\(\\hat{y}_i\\)): the points on the line for each \\(x\\) value\n\\[\\hat{y}_i = b_0 + b_1 x_i\\]",
+    "text": "Important Notation\nPredictions (\\(\\widehat{y}_i\\)): the points on the line for each \\(x\\) value\n\\[\\widehat{y}_i = b_0 + b_1 x_i\\]",
     "crumbs": [
       "Home",
       "Slides",
@@ -2875,7 +2875,7 @@
     "href": "slides/07-slides.html#important-notation-2",
     "title": "07: Linear Regression",
     "section": "Important Notation",
-    "text": "Important Notation\nResiduals (\\(\\epsilon_i\\)): difference between observations and predictions\n\\[\\epsilon_i = y_i - \\hat{y}_i  \\]",
+    "text": "Important Notation\nResiduals (\\(\\epsilon_i\\)): difference between observations and predictions\n\\[\\epsilon_i = y_i - \\widehat{y}_i  \\]",
     "crumbs": [
       "Home",
       "Slides",
@@ -3018,7 +3018,7 @@
     "href": "slides/07-slides.html#to-make-a-residual-scatterplot-2",
     "title": "07: Linear Regression",
     "section": "To make a residual scatterplot",
-    "text": "To make a residual scatterplot\nStep 3. Create the scatterplot using the augmented dataset\n\nggplot(dives_aug, aes(x = .fitted, y = .resid)) + \n  geom_point() + \n  geom_hline(yintercept =0)",
+    "text": "To make a residual scatterplot\nStep 3. Create the scatterplot using the augmented dataset (you can also use {esquisse} for this)\n\nggplot(dives_aug, aes(x = .fitted, y = .resid)) + \n  geom_point() + \n  geom_hline(yintercept =0)",
     "crumbs": [
       "Home",
       "Slides",
