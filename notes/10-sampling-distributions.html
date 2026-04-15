@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -73,9 +38,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-dfe7fa01f6a1255648ffb9ea4378a0b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -109,6 +74,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -436,6 +430,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activities/10-fingerprints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10: Fingerprints Sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activities/11-activity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">11: Bootstrap Confidence Intervals with StatKey</span></a>
   </div>
@@ -736,141 +736,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Carleton publishes an “at a glance” page with some facts and figures about the student body: https://www.carleton.edu/about/carleton-at-a-glance/</p>
-<p>Some highlights:</p>
-<ul>
-<li>Geographic distribution:
-<ul>
-<li>Midwest 36.7%</li>
-<li>West 21.7%</li>
-<li>East 17.3%</li>
-<li>South 10.9%</li>
-<li>International 11.8%</li>
-<li>Other 1.6%</li>
-</ul></li>
-<li>34% BIPOC</li>
-<li>12% are among the first generation in their families to attend college</li>
-<li>61% graduated in the top 10% of their high school class</li>
-</ul>
-<p>In a moment, we’re going to see one of these quantities for our class. Before we do, what is your <em>best guess</em> for each of these quantities?</p>
-<p><strong>Example:</strong> In this set-up, what is the:</p>
-<ul>
-<li>Population</li>
-<li>Sample</li>
-<li>Parameter</li>
-<li>Statistic</li>
-</ul>
-<p>We know that our class will likely not have <strong>exactly</strong> 36.7% from the Midwest, but we probably wouldn’t expect it to be 0% or 90%.</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Sampling variability</p>
-</div>
-</div>
-</div>
-<p>We might start to ask ourselves, what if a <em>different</em> set of 32 students enrolled in this course?</p>
-<p>First, we create a population.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,007 × 2
-   student_id midwest
-        &lt;int&gt; &lt;chr&gt;  
- 1       1497 No     
- 2       1918 No     
- 3        611 Yes    
- 4       1509 No     
- 5        745 No     
- 6        801 No     
- 7        653 Yes    
- 8       1760 No     
- 9       1254 No     
-10       1595 No     
-# ℹ 1,997 more rows</code></pre>
-</div>
-</div>
-<p>Then, we take a random sample:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100424</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">&lt;-</span> carls <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">32</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sample1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 32 × 2
-   student_id midwest
-        &lt;int&gt; &lt;chr&gt;  
- 1       1532 No     
- 2       1163 No     
- 3       1523 No     
- 4        216 Yes    
- 5       1054 No     
- 6       1755 No     
- 7       1864 No     
- 8        887 No     
- 9        858 No     
-10       1098 No     
-# ℹ 22 more rows</code></pre>
-</div>
-</div>
-<p>and calculate the proportion of “yes” responses:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(midwest) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-  midwest     n p_hat
-  &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;
-1 No         22 0.688
-2 Yes        10 0.312</code></pre>
-</div>
-</div>
-<p>This isn’t <em>super</em> useful, but if we do it a bunch of times, we can start to see what a range of possible samples could look like. (<em>Note:</em> this code requires the {<code>infer</code>} package)</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>many_samples <span class="ot">&lt;-</span> carls <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="dv">35</span>, <span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate, midwest) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(midwest <span class="sc">==</span> <span class="st">"Yes"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>many_samples</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,000 × 4
-# Groups:   replicate [1,000]
-   replicate midwest     n p_hat
-       &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;
- 1         1 Yes        12 0.343
- 2         2 Yes        12 0.343
- 3         3 Yes        13 0.371
- 4         4 Yes        12 0.343
- 5         5 Yes        11 0.314
- 6         6 Yes        17 0.486
- 7         7 Yes        12 0.343
- 8         8 Yes        14 0.4  
- 9         9 Yes         7 0.2  
-10        10 Yes        15 0.429
-# ℹ 990 more rows</code></pre>
-</div>
-</div>
-<p>Looking at this first few rows, we can start to get a sense of the range of possible sample proportions, but there are 990 rows that we can’t see. Let’s make a graph!</p>
-<div class="cell">
+<p><strong>Example:</strong> Fingerprints are often used in criminal investigations even though fingerprint uniqueness has never <em>actually</em> been proven. While investigators use “minutiae”, or small details in the fingerprint, to determine whether two fingerprints “match”, they can exclude potential suspects if the fingerprint pattern is different. There are 3 major types of fingerprint patterns:</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="10-sampling-distributions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="images/fingerprint-patterns.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="720"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>Example:</strong> Carleton Mission Statement</p>
+<p>If we knew the population proportions for each of the three patterns, we could help investigators better understand the probability of seeing two fingerprints that look very similar but don’t actually match. Our goal is to estimate <span class="math inline">\(p_{\text{whorl}}\)</span>.</p>
+<p>On your own, compute <span class="math inline">\(\hat{p}_{\text{whorl}}\)</span> for two different samples and then contribute your answer to the graph on the board.</p>
+<ul>
+<li><p><span class="math inline">\(n=5\)</span> (one hand):</p></li>
+<li><p><span class="math inline">\(n=10\)</span> (both hands):</p></li>
+</ul>
+<p>Sketch finished graphs here:</p>
+<p>How do we feel about our estimates?</p>
+<p>Now, visit the fingerprint sampler at <a href="https://aluby.github.io/stat120/activities/10-fingerprints-live.html" class="uri">https://aluby.github.io/stat120/activities/10-fingerprints-live.html</a> and obtain 3 samples of size 5 and 3 samples of size 20. Record your data here and in the google sheet linked on the webpage.</p>
+<ul>
+<li><p><span class="math inline">\(n=5\)</span> (1):</p></li>
+<li><p><span class="math inline">\(n=5\)</span> (2):</p></li>
+<li><p><span class="math inline">\(n=5\)</span> (3):</p></li>
+<li><p><span class="math inline">\(n=20\)</span> (1):</p></li>
+<li><p><span class="math inline">\(n=20\)</span> (2):</p></li>
+<li><p><span class="math inline">\(n=20\)</span> (3):</p></li>
+</ul>
+<p>Sketch finished graphs here:</p>
 <p><em>In your own words:</em> provide explanations for:</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
