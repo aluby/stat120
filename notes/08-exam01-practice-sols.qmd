@@ -6,7 +6,7 @@ subtitle: "Solutions"
 ::: callout-warning
 ## Note
 
-These solutions are provided solely for Carleton College students enrolled in Amanda Luby’s Stat120 course in Fall 2025. Dissemination of this solution to people who are not registered for this course is not permitted and will be considered grounds for an Academic Dishonesty report for all individuals involved in the giving and receiving of the solution.
+These solutions are provided solely for Carleton College students enrolled in Amanda Luby’s Stat120 course in Spring 2026. Dissemination of this solution to any other person will be considered grounds for an Academic Dishonesty report for all individuals involved in the giving and receiving of the solution.
 :::
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -73,7 +73,7 @@ p2 = ggplot(sat, aes(x = taken)) +
   geom_histogram(bins = 10, col = "white")
 
 p3 = ggplot(sat, aes(x = taken)) +
-  geom_histogram(bins = 60, col = "white")
+  geom_histogram(bins = 60)
 
 p1 + p2 + p3
 ```
@@ -110,7 +110,7 @@ $\hat{y} = 572.21 - 1.14x$
 
 For a state where 0% of the students took the SAT, the average score is predicted to be 572 (this doesn’t make sense though, there can be no scores for no students)
 
-On average, states with a 1% increase in percent of students who took the SAT also tend to have a lower average score by 1.14 points.
+On average, states with a 1% increase in percent of students who took the SAT also tend to have an average score that is 1.14 points lower.
 :::
 
 ```{r}
@@ -140,19 +140,21 @@ ggplot(sat_lm, aes(x = .fitted, y = .resid, col = (.resid == max(.resid)))) +
 i)  One point on the residual plot is colored in green and circled. Give the $\hat{y}$, $\epsilon$, $y$, and $x$ value for this data point.
 
 ::: callout-note
-Epsilon = 30, y hat = 563, y = 593, x = 8.08
+- Epsilon $\approx$ 30, y hat $\approx$ 563 (read from residual scatterplot) 
+- y $\approx$ 593 (since $\epsilon = y - \hat y$) 
+- Since $\hat y = b_0 + b_1x$ we can find this with the regression equation: $563 = 572.21 - 1.14x \to x = 8.08$
 :::
 
 j)  The mean of `teachersPay` is 35.89, the median is 35, and the standard deviation is 6.226. The distribution is approximately symmetric and bell-shaped. Approximately how many states have `teachersPay` between 29.66 and 42.12?
 
 ::: callout-note
-This interval was found by using the 68/95/99 rule, which gives what percent of the data will be within 1/2/3 standard deviations of the mean respectively. Since it is a 95% interval, use 2 standard deviations.
+This interval was found by using the 68/95/99 rule, which gives what percent of a bell curve will be within 1/2/3 standard deviations of the mean respectively. Since it is a 95% interval, use 2 standard deviations.
 
 lower interval bound = mean - 2 standard deviations = 35.89 - (2\*6.226) = 23.44
 
 Upper interval bound = mean + 2 standard deviations = 35.89 - (2\*6.226) = 48.34
 
-The result means that 95% of the data points have a value between 23.44 and 48.34.
+The result means that, if the 68/95/99 rule holds, 95% of the data points would have a value between 23.44 and 48.34.
 :::
 
 j)  The graph below displays `region` filled by a new variable, `pay40`: whether `teachersPay` is greater than 40.
