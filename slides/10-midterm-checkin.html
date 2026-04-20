@@ -149,9 +149,8 @@ Prof Amanda Luby
 <h2>A note on regrade requests:</h2>
 <ul>
 <li class="fragment">Grading is often a tedious task, and the grading team will sometimes make mistakes. I am always happy to fix these mistakes, and gradescope makes it easy to do so.</li>
-<li class="fragment">Regrade requests must be submitted on gradescope within two weekdays after homework has been returned to you.</li>
+<li class="fragment">Regrade requests must be submitted on gradescope within two weekdays after grades are returned to you.</li>
 <li class="fragment">Regrade requests are for administrative errors or obvious grading mistakes. I will not consider regrade requests for anything that applied to the entire class (e.g.&nbsp;“I think this mistake should only be worth 1 point instead of 2” or “I didn’t realize we had to do X”).</li>
-<li class="fragment">If you submit two or more inappropriate regrade requests, I will not consider additional regrade requests from you for the remainder of the term.</li>
 <li class="fragment">If you’re unsure whether you should file a regrade request or not, just ask! You are always welcome to discuss any grading questions with me in office hours.</li>
 </ul>
 </section></section>
@@ -164,46 +163,49 @@ Prof Amanda Luby
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Going Well</strong></p>
+<p><strong>Going Well (all n=2-5)</strong></p>
 <ul>
 <li class="fragment">Prep before class (readings, video, pre-class assignment)</li>
 <li class="fragment">Note Sheets are helpful</li>
 <li class="fragment">Group work</li>
 <li class="fragment">Homework</li>
-<li class="fragment">Manageable workload</li>
-<li class="fragment">Pace is good</li>
+<li class="fragment">Manageable workload/pace</li>
+<li class="fragment">General comprehension</li>
 <li class="fragment">R is fun/not that bad/etc.</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><strong>Things to change:</strong></p>
+<p><strong>Things to change: (all n=1)</strong></p>
 <ul>
-<li class="fragment">R: more code examples on handouts</li>
-<li class="fragment">R: explain more step by step</li>
-<li class="fragment">Some homework questions are hard to figure out what its asking for</li>
+<li class="fragment">Feeling a little lost with basic concepts</li>
+<li class="fragment">Homework R problems are too long</li>
+<li class="fragment">Homework should be shorter but more challenging</li>
+<li class="fragment">Please stop group work</li>
 </ul>
 </div></div>
 </section>
 <section id="balance-of-lecturesgroup-work" class="slide level2">
 <h2>Balance of lectures/group work</h2>
 
-<img data-src="10-midterm-checkin_files/figure-html/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="10-midterm-checkin_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="pre-class-videos" class="slide level2">
 <h2>Pre-class videos</h2>
 
-<img data-src="10-midterm-checkin_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="10-midterm-checkin_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="how-helpful-is." class="slide level2">
 <h2>How helpful is….</h2>
 
-<img data-src="10-midterm-checkin_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="10-midterm-checkin_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="how-much-timehow-often" class="slide level2">
 <h2>How much time/How often</h2>
 
-<img data-src="10-midterm-checkin_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="my-goals-for-the-rest-of-term" class="slide level2">
-<h2>My goals for the rest of term:</h2>
+<img data-src="10-midterm-checkin_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="moving-forward" class="slide level2">
+<h2>Moving forward</h2>
 <ul>
-<li class="fragment">More R code on handouts</li>
-<li class="fragment">Continue mixing in videos for class prep</li>
+<li class="fragment">In general, past students have found the next “chunk” of the class to be more conceptually challenging</li>
+<li class="fragment">No major changes to length/difficulty of homework</li>
+<li class="fragment">We will continue to do group work</li>
+<li class="fragment">Continue having a mix of reading/video for pre-class work</li>
 </ul>
 
 
@@ -423,6 +425,44 @@ Prof Amanda Luby
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

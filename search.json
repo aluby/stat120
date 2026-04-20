@@ -1666,7 +1666,7 @@
     "href": "slides/10-midterm-checkin.html#a-note-on-regrade-requests",
     "title": "Midterm 1 + Check-in",
     "section": "A note on regrade requests:",
-    "text": "A note on regrade requests:\n\nGrading is often a tedious task, and the grading team will sometimes make mistakes. I am always happy to fix these mistakes, and gradescope makes it easy to do so.\nRegrade requests must be submitted on gradescope within two weekdays after homework has been returned to you.\nRegrade requests are for administrative errors or obvious grading mistakes. I will not consider regrade requests for anything that applied to the entire class (e.g. “I think this mistake should only be worth 1 point instead of 2” or “I didn’t realize we had to do X”).\nIf you submit two or more inappropriate regrade requests, I will not consider additional regrade requests from you for the remainder of the term.\nIf you’re unsure whether you should file a regrade request or not, just ask! You are always welcome to discuss any grading questions with me in office hours.",
+    "text": "A note on regrade requests:\n\nGrading is often a tedious task, and the grading team will sometimes make mistakes. I am always happy to fix these mistakes, and gradescope makes it easy to do so.\nRegrade requests must be submitted on gradescope within two weekdays after grades are returned to you.\nRegrade requests are for administrative errors or obvious grading mistakes. I will not consider regrade requests for anything that applied to the entire class (e.g. “I think this mistake should only be worth 1 point instead of 2” or “I didn’t realize we had to do X”).\nIf you’re unsure whether you should file a regrade request or not, just ask! You are always welcome to discuss any grading questions with me in office hours.",
     "crumbs": [
       "Home",
       "Slides",
@@ -1679,7 +1679,7 @@
     "href": "slides/10-midterm-checkin.html#section",
     "title": "Midterm 1 + Check-in",
     "section": "",
-    "text": "Going Well\n\nPrep before class (readings, video, pre-class assignment)\nNote Sheets are helpful\nGroup work\nHomework\nManageable workload\nPace is good\nR is fun/not that bad/etc.\n\n\nThings to change:\n\nR: more code examples on handouts\nR: explain more step by step\nSome homework questions are hard to figure out what its asking for",
+    "text": "Going Well (all n=2-5)\n\nPrep before class (readings, video, pre-class assignment)\nNote Sheets are helpful\nGroup work\nHomework\nManageable workload/pace\nGeneral comprehension\nR is fun/not that bad/etc.\n\n\nThings to change: (all n=1)\n\nFeeling a little lost with basic concepts\nHomework R problems are too long\nHomework should be shorter but more challenging\nPlease stop group work",
     "crumbs": [
       "Home",
       "Slides",
@@ -1740,11 +1740,11 @@
     ]
   },
   {
-    "objectID": "slides/10-midterm-checkin.html#my-goals-for-the-rest-of-term",
-    "href": "slides/10-midterm-checkin.html#my-goals-for-the-rest-of-term",
+    "objectID": "slides/10-midterm-checkin.html#moving-forward",
+    "href": "slides/10-midterm-checkin.html#moving-forward",
     "title": "Midterm 1 + Check-in",
-    "section": "My goals for the rest of term:",
-    "text": "My goals for the rest of term:\n\nMore R code on handouts\nContinue mixing in videos for class prep",
+    "section": "Moving forward",
+    "text": "Moving forward\n\nIn general, past students have found the next “chunk” of the class to be more conceptually challenging\nNo major changes to length/difficulty of homework\nWe will continue to do group work\nContinue having a mix of reading/video for pre-class work",
     "crumbs": [
       "Home",
       "Slides",
