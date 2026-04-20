@@ -31,9 +31,8 @@ theme_set(slides_theme)
 ## A note on regrade requests: 
 
 - Grading is often a tedious task, and the grading team will sometimes make mistakes. I am always happy to fix these mistakes, and gradescope makes it easy to do so.
-- Regrade requests must be submitted on gradescope within two weekdays after homework has been returned to you. 
+- Regrade requests must be submitted on gradescope within two weekdays after grades are returned to you. 
 - Regrade requests are for administrative errors or obvious grading mistakes. I will not consider regrade requests for anything that applied to the entire class (e.g. “I think this mistake should only be worth 1 point instead of 2” or “I didn’t realize we had to do X”). 
-- If you submit two or more inappropriate regrade requests, I will not consider additional regrade requests from you for the remainder of the term. 
 - If you’re unsure whether you should file a regrade request or not, just ask! You are always welcome to discuss any grading questions with me in office hours.
 
 # Check-In Results {.maize}
@@ -43,23 +42,24 @@ theme_set(slides_theme)
 :::: {.columns}
 
 ::: {.column width="50%"}
-**Going Well**
+**Going Well (all n=2-5)**
 
  - Prep before class (readings, video, pre-class assignment)
  - Note Sheets are helpful
  - Group work
  - Homework
- - Manageable workload
- - Pace is good
+ - Manageable workload/pace 
+ - General comprehension 
  - R is fun/not that bad/etc.
 :::
 
 ::: {.column width="50%"}
-**Things to change:** 
+**Things to change: (all n=1)** 
 
- - R: more code examples on handouts
- - R: explain more step by step
- - Some homework questions are hard to figure out what its asking for
+- Feeling a little lost with basic concepts
+- Homework R problems are too long
+- Homework should be shorter but more challenging 
+- Please stop group work 
 :::
 
 ::::
@@ -68,7 +68,8 @@ theme_set(slides_theme)
 
 ```{r}
 survey = read_sheet("https://docs.google.com/spreadsheets/d/1wieyZUUxueThb-Uh45SK15TV7eMQTzUDZ60Gocmx1n4/edit?usp=sharing") |>
-  janitor::clean_names()
+  janitor::clean_names() |>
+  filter(timestamp > "2026-04-01")
 
 
 survey |>
@@ -147,13 +148,13 @@ p2 <- survey |>
     title = "Resource Frequency"
   ) 
 
-p1 + p2 
+p1 / p2 
 
 ```
 
-## My goals for the rest of term: 
+## Moving forward
 
-- More R code on handouts
-- Continue mixing in videos for class prep
-
-
+- In general, past students have found the next "chunk" of the class to be more conceptually challenging
+- No major changes to length/difficulty of homework
+- We will continue to do group work
+- Continue having a mix of reading/video for pre-class work
