@@ -28,7 +28,7 @@ theme_set(notes_theme)
 
 
 
-**Example:** Fingerprints are often used in criminal investigations even though fingerprint uniqueness has never *actually* been proven. While investigators use "minutiae", or small details in the fingerprint, to determine whether two fingerprints "match", they can exclude potential suspects if the fingerprint pattern is different. There are 3 major types of fingerprint patterns: 
+**Example:** Fingerprints are often used in criminal investigations even though the uniqueness of fingerprints has never actually been proven. While investigators use "minutiae", or small details in the fingerprint, to determine whether two fingerprints "match", they can exclude potential suspects if the fingerprint pattern is different. There are 3 major types of fingerprint patterns: 
 
 ```{r}
 #| fig-align: 'center'
@@ -91,3 +91,5 @@ Sampling distribution
 
 \vspace{.5in}
 :::
+
+*In your own words:* explain why we used the fingerprint sampler website instead of using our class samples
