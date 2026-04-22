@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -38,9 +38,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-dfe7fa01f6a1255648ffb9ea4378a0b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -430,6 +430,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activities/10-fingerprints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10: Fingerprints Sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activities/11-activity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">11: Bootstrap Confidence Intervals with StatKey</span></a>
   </div>
@@ -699,12 +705,13 @@ window.Quarto = {
 </header>
 
 
-<p>Let’s begin with the class proportion from last time: 36.7% of Carleton students are “from the Midwest”, while ____% of our class (who answered) are from the Midwest.</p>
+<p><strong>“Big picture”</strong> picture</p>
+<p><strong>Sampling distributions</strong> for fingerprint example from last time (random samples)</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11-cis-bootstrap_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="288"></p>
+<p><img src="11-cis-bootstrap_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -712,10 +719,11 @@ window.Quarto = {
 <p>The mean and standard deviation of the sampling distribution are:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-   xbar     se
-  &lt;dbl&gt;  &lt;dbl&gt;
-1 0.366 0.0898</code></pre>
+<pre><code># A tibble: 2 × 3
+  sample  mean    sd
+  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 n=20   0.332 0.132
+2 n=5    0.298 0.210</code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
@@ -731,7 +739,8 @@ window.Quarto = {
 <p>Standard deviation of a statistic or a sampling distribution</p>
 </div>
 </div>
-<p>In a random class of 32 students, how many would we expect to be from the Midwest?</p>
+<p>What’s the <strong>point estimate</strong> for <span class="math inline">\(p_{\text{whorl}}\)</span> using the <span class="math inline">\(n=20\)</span> sample? The <span class="math inline">\(n=5\)</span>?</p>
+<p>Would you be surprised of <span class="math inline">\(p_{\text{whorl}}\)</span> was actually <span class="math inline">\(0.39\)</span>? What about <span class="math inline">\(0.80\)</span>?</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -791,7 +800,7 @@ window.Quarto = {
 <div style="page-break-after: always;"></div>
 <section id="the-bootstrap" class="level1">
 <h1>The Bootstrap</h1>
-<p>So far, we’ve used the <em>population</em> to generate samples and construct sampling distributions. For most situations, this is unrealistic.</p>
+<p>So far, we’ve used the <em>population</em> to generate samples and construct sampling distributions (because we relied on the fingerprint sampler). For most situations, this is unrealistic.</p>
 <p><strong>Example:</strong> Let’s consider our <code>penguin</code> friends. I’m interested in finding a 95% confidence interval for the mean flipper length of <em>all</em> Palmer Archipelago penguins. The mean flipper length is 200.9152 and the standard deviation is 14.0617.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -815,7 +824,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The mean of this distribution is 200.9947 and the standard deviation is 0.6988.</p>
+<p>The mean of this distribution is 200.8408 and the standard deviation is 0.7735.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
