@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.23">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-dfe7fa01f6a1255648ffb9ea4378a0b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -198,18 +198,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>What is the average commuting time for people who live and work in the Atlanta Metropolitan Area? It’s not feasible to contact all Atlanta residents, but the US Census Bureau regularly collects data from carefully selected samples of residents in many different areas. This data is from the American Housing Survey (AHS) which contains information about housing and living conditions for samples from certain metropolitan areas. These data represent a random sample of people who live in the Atlanta metropolitan area. They include only cases where the respondent worked somewhere other than home. Variables include the time (in minutes) and distance (in miles) that respondents typically traveled on their commute to work each day as well as age and sex.</p>
 <ol type="a">
 <li>We’re going to look at the Commute Time. In StatKey, choose “Confidence Interval for Mean, Median, StDev” and then “Atlanta Commute Time”. You should see the data distribution in the “Original Sample” graph. Describe the shape, center, and spread of the data distribution.</li>
+</ol>
+<ol start="2" type="a">
 <li>What is the relevant parameter and the best point estimate?</li>
+</ol>
+<ol start="3" type="a">
 <li>Generate 1 bootstrap sample. You should see the sample under “Bootstrap sample”. How does n, mean, median, and st dev compare to the original sample?</li>
+</ol>
+<ol start="4" type="a">
 <li>Generate 1000 bootstrap samples and describe the shape, center, and spread of the bootstrap distribution. How does it compare to the data distribution? You should be able to explain why any discrepancies exist.</li>
+</ol>
+<ol start="5" type="a">
 <li>Construct a 95% confidence interval for the average commute time and interpret it in context</li>
 </ol>
 <p><strong>2.</strong> Compassionate Rats</p>
 <p>In a recent study, rats showed compassion that surprised scientists. Twenty-three of the 30 rats in the study freed another trapped rat in their cage, even when chocolate served as a distraction and even when the rats would then have to share the chocolate with their freed companion. Rats did not open the cage when it was empty or when there was a stuffed animal inside, only when a fellow rat was trapped. We wish to use the sample to estimate the proportion of rats that would show empathy in this way. The data are available in the dataset CompassionateRats on StatKey.</p>
 <ol type="a">
 <li>Give the relevant parameter and its best point estimate</li>
+</ol>
+<ol start="2" type="a">
 <li>Describe how you could use slips of paper to create one bootstrap statistic. How many slips of paper do you need?</li>
+</ol>
+<ol start="3" type="a">
 <li>Use StatKey to create a bootstrap distribution with 500 bootstrap samples. Describe the shape, center, and spread using appropriate quantities.</li>
+</ol>
+<ol start="4" type="a">
 <li>Use StatKey to create a bootstrap distribution with 20,000 bootstrap samples. How does it compare to your distribution from (c)?</li>
+</ol>
+<ol start="5" type="a">
 <li>Use the standard error to find and interpret a 95% confidence interval for the proportion of rats likely to show empathy.</li>
 </ol>
 <p><strong>3.</strong> Do Teen Problems Differ Based on Income Level?</p>
@@ -243,18 +259,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <ol type="a">
-<li><p>What proportion of teens in households with an income below 75,000 think it is a major problem? What about the proportion above 75,000?&nbsp;</p></li>
-<li><p>Give notation and the value of the relevant sample statistic. Give notation for the population parameter.</p></li>
-<li><p>Use StatKey to find the standard error for this statistic using a bootstrap distribution. (This data is called “Teen Anxiety Depression Problem (by Income)”)</p></li>
-<li><p>Use the standard error to find a 99% confidence interval for the difference in proportions.</p></li>
+<li>What proportion of teens in households with an income below 75,000 think it is a major problem? What about the proportion above 75,000?&nbsp;</li>
+</ol>
+<ol start="2" type="a">
+<li>Give notation and the value of the relevant sample statistic. Give notation for the population parameter.</li>
+</ol>
+<ol start="3" type="a">
+<li>Use StatKey to find the standard error for this statistic using a bootstrap distribution. (This data is called “Teen Anxiety Depression Problem (by Income)”)</li>
+</ol>
+<ol start="4" type="a">
+<li>Use the standard error to find a 99% confidence interval for the difference in proportions.</li>
 </ol>
 <p><strong>4.</strong> Atlanta Commute Times (again)</p>
 <p>A key reason for longer commute times is having to travel a further distance. We want to see how strong the (linear) relationship is between commute distance and commute time among Atlanta residents.</p>
 <ol type="a">
-<li><p>What population parameter is of interest here?&nbsp;</p></li>
-<li><p>Find the correct StatKey menu and choose the dataset “Commute Atlanta (Time as a function of Distance)”. Describe the original sample and find the appropriate sample statistic.&nbsp;</p></li>
-<li><p>Generate a bootstrap distribution and describe the shape, center, and spread.&nbsp;</p></li>
-<li><p>Construct a 95% confidence interval and interpret it in context.</p></li>
+<li>What population parameter is of interest here?&nbsp;</li>
+</ol>
+<ol start="2" type="a">
+<li>Find the correct StatKey menu and choose the dataset “Commute Atlanta (Time as a function of Distance)”. Describe the original sample and find the appropriate sample statistic.&nbsp;</li>
+</ol>
+<ol start="3" type="a">
+<li>Generate a bootstrap distribution and describe the shape, center, and spread.&nbsp;</li>
+</ol>
+<ol start="4" type="a">
+<li>Construct a 95% confidence interval and interpret it in context.</li>
 </ol>
 
 
@@ -730,51 +758,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>What is the average commuting time for people who live and work in the Atlanta Metropolitan Area? It’s not feasible to contact all Atlanta residents, but the US Census Bureau regularly collects data from carefully selected samples of residents in many different areas. This data is from the American Housing Survey (AHS) which contains information about housing and living conditions for samples from certain metropolitan areas. These data represent a random sample of people who live in the Atlanta metropolitan area. They include only cases where the respondent worked somewhere other than home. Variables include the time (in minutes) and distance (in miles) that respondents typically traveled on their commute to work each day as well as age and sex.</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>(a) We’re going to look at the Commute Time. In StatKey, choose “Confidence Interval for Mean, Median, StDev” and then “Atlanta Commute Time”. You should see the data distribution in the “Original Sample” graph. Describe the shape, center, and spread of the data distribution.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>(b) What is the relevant parameter and the best point estimate?</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>(c) Generate 1 bootstrap sample. You should see the sample under “Bootstrap sample”. How does n, mean, median, and st dev compare to the original sample?</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>(d) Generate 1000 bootstrap samples and describe the shape, center, and spread of the bootstrap distribution. How does it compare to the data distribution? You should be able to explain why any discrepancies exist.</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>(e) Construct a 95% confidence interval for the average commute time and interpret it in context</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>(b) What is the relevant parameter and the best point estimate?</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>**2.** Compassionate Rats</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>\vspace{.5in}</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>In a recent study, rats showed compassion that surprised scientists. Twenty-three of the 30 rats in the study freed another trapped rat in their cage, even when chocolate served as a distraction and even when the rats would then have to share the chocolate with their freed companion. Rats did not open the cage when it was empty or when there was a stuffed animal inside, only when a fellow rat was trapped. We wish to use the sample to estimate the proportion of rats that would show empathy in this way. The data are available in the dataset CompassionateRats on StatKey.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>(c) Generate 1 bootstrap sample. You should see the sample under “Bootstrap sample”. How does n, mean, median, and st dev compare to the original sample?</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>(a) Give the relevant parameter and its best point estimate</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>(b) Describe how you could use slips of paper to create one bootstrap statistic. How many slips of paper do you need?</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>(c) Use StatKey to create a bootstrap distribution with 500 bootstrap samples. Describe the shape, center, and spread using appropriate quantities.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>(d) Use StatKey to create a bootstrap distribution with 20,000 bootstrap samples. How does it compare to your distribution from (c)?</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>(e) Use the standard error to find and interpret a 95% confidence interval for the proportion of rats likely to show empathy.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>(d) Generate 1000 bootstrap samples and describe the shape, center, and spread of the bootstrap distribution. How does it compare to the data distribution? You should be able to explain why any discrepancies exist.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**3.** Do Teen Problems Differ Based on Income Level?</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>(e) Construct a 95% confidence interval for the average commute time and interpret it in context</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>A recent study found that anxiety/depression topped the list of problems teens see among their peers. The table below shows whether they consider anxiety/depression a major problem based on household income level. We are interested in estimating the difference in proportion who think it is a major problem between the two groups.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>            <span class="pp">|</span>               <span class="pp">|</span>                   <span class="pp">|</span>       <span class="pp">|</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|---------------|-------------------|-------|</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Income     <span class="pp">|</span> Major Problem <span class="pp">|</span> Not Major Problem <span class="pp">|</span> Total <span class="pp">|</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="sc">\&lt;</span>\$75,000 <span class="pp">|</span> 386           <span class="pp">|</span> 150               <span class="pp">|</span> 536   <span class="pp">|</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="sc">\&gt;</span>\$75,000 <span class="pp">|</span> 258           <span class="pp">|</span> 126               <span class="pp">|</span> 384   <span class="pp">|</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Total      <span class="pp">|</span> 644           <span class="pp">|</span> 276               <span class="pp">|</span> 920   <span class="pp">|</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**2.** Compassionate Rats</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>In a recent study, rats showed compassion that surprised scientists. Twenty-three of the 30 rats in the study freed another trapped rat in their cage, even when chocolate served as a distraction and even when the rats would then have to share the chocolate with their freed companion. Rats did not open the cage when it was empty or when there was a stuffed animal inside, only when a fellow rat was trapped. We wish to use the sample to estimate the proportion of rats that would show empathy in this way. The data are available in the dataset CompassionateRats on StatKey.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>(a) Give the relevant parameter and its best point estimate</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>a.  What proportion of teens in households with an income below 75,000 think it is a major problem? What about the proportion above 75,000?&nbsp;</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>\vspace{.5in}</span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>b.  Give notation and the value of the relevant sample statistic. Give notation for the population parameter.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>(b) Describe how you could use slips of paper to create one bootstrap statistic. How many slips of paper do you need?</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>c.  Use StatKey to find the standard error for this statistic using a bootstrap distribution. (This data is called “Teen Anxiety Depression Problem (by Income)”)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\vspace{.5in}</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>d.  Use the standard error to find a 99% confidence interval for the difference in proportions.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>(c) Use StatKey to create a bootstrap distribution with 500 bootstrap samples. Describe the shape, center, and spread using appropriate quantities.</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**4.** Atlanta Commute Times (again)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>A key reason for longer commute times is having to travel a further distance. We want to see how strong the (linear) relationship is between commute distance and commute time among Atlanta residents.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>(d) Use StatKey to create a bootstrap distribution with 20,000 bootstrap samples. How does it compare to your distribution from (c)?</span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>a.  What population parameter is of interest here?&nbsp;</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>b.  Find the correct StatKey menu and choose the dataset “Commute Atlanta (Time as a function of Distance)”. Describe the original sample and find the appropriate sample statistic.&nbsp;</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>(e) Use the standard error to find and interpret a 95% confidence interval for the proportion of rats likely to show empathy.</span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>c.  Generate a bootstrap distribution and describe the shape, center, and spread.&nbsp;</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>d.  Construct a 95% confidence interval and interpret it in context.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>**3.** Do Teen Problems Differ Based on Income Level?</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>A recent study found that anxiety/depression topped the list of problems teens see among their peers. The table below shows whether they consider anxiety/depression a major problem based on household income level. We are interested in estimating the difference in proportion who think it is a major problem between the two groups.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>            <span class="pp">|</span>               <span class="pp">|</span>                   <span class="pp">|</span>       <span class="pp">|</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|---------------|-------------------|-------|</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Income     <span class="pp">|</span> Major Problem <span class="pp">|</span> Not Major Problem <span class="pp">|</span> Total <span class="pp">|</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="sc">\&lt;</span>\$75,000 <span class="pp">|</span> 386           <span class="pp">|</span> 150               <span class="pp">|</span> 536   <span class="pp">|</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="sc">\&gt;</span>\$75,000 <span class="pp">|</span> 258           <span class="pp">|</span> 126               <span class="pp">|</span> 384   <span class="pp">|</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Total      <span class="pp">|</span> 644           <span class="pp">|</span> 276               <span class="pp">|</span> 920   <span class="pp">|</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>a.  What proportion of teens in households with an income below 75,000 think it is a major problem? What about the proportion above 75,000?&nbsp;</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>\vspace{.5in}</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>b.  Give notation and the value of the relevant sample statistic. Give notation for the population parameter.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>\vspace{.5in}</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>c.  Use StatKey to find the standard error for this statistic using a bootstrap distribution. (This data is called “Teen Anxiety Depression Problem (by Income)”)</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>\vspace{.5in}</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>d.  Use the standard error to find a 99% confidence interval for the difference in proportions.</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>**4.** Atlanta Commute Times (again)</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>A key reason for longer commute times is having to travel a further distance. We want to see how strong the (linear) relationship is between commute distance and commute time among Atlanta residents.</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>a.  What population parameter is of interest here?&nbsp;</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>\vspace{.5in}</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>b.  Find the correct StatKey menu and choose the dataset “Commute Atlanta (Time as a function of Distance)”. Describe the original sample and find the appropriate sample statistic.&nbsp;</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>c.  Generate a bootstrap distribution and describe the shape, center, and spread.&nbsp;</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>\vspace{1in}</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>d.  Construct a 95% confidence interval and interpret it in context.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

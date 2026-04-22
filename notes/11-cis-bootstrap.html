@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.23">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -38,9 +38,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-dfe7fa01f6a1255648ffb9ea4378a0b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -242,6 +242,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../notes/08-exam01-review.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam I Review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/10-fingerprints-post.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notes 10 Addendum: Fingerprints Sampling Distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -716,6 +722,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>As _____ increases:</p>
 <p>The mean and standard deviation of the sampling distribution are:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -765,10 +772,9 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Range of values above and below a point estimate that defines the boundary of a confidence interval</p>
 </div>
 </div>
-<p>Example: Percent of each country with internet access (StatKey)</p>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -788,6 +794,7 @@ window.Quarto = {
 <li>The probability that the parameter is in the CI is 95%</li>
 </ul>
 <p><span class="math inline">\(~\)</span></p>
+<p><span class="math inline">\(~\)</span></p>
 </div>
 </div>
 </div>
@@ -797,10 +804,9 @@ window.Quarto = {
 <li>that the [population parameter in context]</li>
 <li>is between ____ and ____ [units]</li>
 </ol>
-<div style="page-break-after: always;"></div>
 <section id="the-bootstrap" class="level1">
 <h1>The Bootstrap</h1>
-<p>So far, we’ve used the <em>population</em> to generate samples and construct sampling distributions (because we relied on the fingerprint sampler). For most situations, this is unrealistic.</p>
+<p>So far, we’ve relied on generating lots of samples to construct sampling distributions (because we relied on the fingerprint sampler). For most situations, this is unrealistic.</p>
 <p><strong>Example:</strong> Let’s consider our <code>penguin</code> friends. I’m interested in finding a 95% confidence interval for the mean flipper length of <em>all</em> Palmer Archipelago penguins. The mean flipper length is 200.9152 and the standard deviation is 14.0617.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -811,9 +817,9 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><strong>Idea:</strong></p>
+<p><strong>Idea:</strong> if we make a bunch of copies of our random sample, we should get something close to the population</p>
 <p><img src="images/BootstrapPopulation.png" class="img-fluid" style="width:60.0%"></p>
-<div style="page-break-after: always;"></div>
+<p><strong>Bootstrap picture:</strong></p>
 <p>Let’s return to our penguins. I’ve made 100 bootstrap samples and found the mean for each one:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -824,7 +830,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The mean of this distribution is 200.8408 and the standard deviation is 0.7735.</p>
+<p>The mean of this distribution is 200.9754 and the standard deviation is 0.7803.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
