@@ -33,12 +33,15 @@ phats_5 <- c(0.4, 0.2, 0.2, 0.2, 0.2, 0.2, 0.6, 0.2, 0.6, 0.2, 0.4, 0.4, 0.4, 0.
 phats_20 <- c(0.4, 0.3, 0.45, 0.45, 0.25, 0.25, 0.35, 0.35, 0.35, 0.4, 0.4, 0.2, 0.15, 0.15, 0.15, 0.45, 0.45, 0.45, 0.25, 0.3, 0.3, 0.25, 0.1, 0.2, 0.35, 0.3, 0.25, 0.3, 0.7, 0.35, 0.6, 0.2, 0.3,  0.45, 0.3, 0.3, 0.2, 0.3, 0.25, 0.35, 0.4, 0.05, 0.45, 0.3, 0.3, 0.15, 0.3, 0.45, 0.15, 0.25, 0.45, 0.35, 0.25, 0.35, 0.2, 0.4, 0.3, 0.25, 0.25, 0.7, 0.4, 0.5, 0.4, 0.4, 0.35, 0.55, 0.25, 0.3, 0.3, 0.3, 0.15, 0.25, 0.5, 0.3, 0.4, 0.2, 0.5, 0.15, 0.25, 0.15, 0.4, 0.25, 0.4, 0.35, 0.4, 0.3, 0.35, 0.3, 0.25, 0.45, 0.8, 0.25, 0.6)
 
 
-p1 <- gf_histogram(~phats_5, bins = 10, col = "white", fill = "black", xlab = "n=5", alpha = .7, boundary = 0) +  scale_x_continuous(breaks = seq(0,1,by=.2), limits = c(0,1))
+p1 <- gf_histogram(~phats_5, bins = 10, col = "white", fill = "black", xlab = "n=5", alpha = .7, boundary = 0) +  scale_x_continuous(breaks = seq(0,1,by=.2), limits = c(0,1)) + ylim(c(0,40))
 
-p2 <- gf_histogram(~phats_20, bins = 12, col = "white", fill = "black", xlab = "n=20", alpha = .7, boundary = 0) + scale_x_continuous(breaks = seq(0,1,by=.2), limits = c(0,1))
+p2 <- gf_histogram(~phats_20, bins = 12, col = "white", fill = "black", xlab = "n=20", alpha = .7, boundary = 0) + scale_x_continuous(breaks = seq(0,1,by=.2), limits = c(0,1)) + ylim(c(0,40))
 
 p1 + p2
 ```
+
+As _____ increases: 
+
 
 The mean and standard deviation of the sampling distribution are:
 
@@ -59,7 +62,6 @@ tibble(
 
 Standard deviation of a statistic or a sampling distribution
 
-\vspace{.25in}
 :::
 
 What's the **point estimate** for $p_{\text{whorl}}$ using the $n=20$ sample? The $n=5$? 
@@ -78,17 +80,15 @@ An interval computed from sample data by a method that will capture the paramete
 
 95% confidence interval using the standard error:
 
-\vspace{1in}
+\vspace{1.5in}
 
 ::: callout-note
 ## Margin of Error
 
-\vspace{.5in}
+Range of values above and below a point estimate that defines the boundary of a confidence interval
+
+\vspace{.25in}
 :::
-
-Example: Percent of each country with internet access (StatKey)
-
-\vspace{2in}
 
 ::: {.callout-warning appearance="simple"}
 CI Misinterpretations
@@ -105,6 +105,8 @@ $~$
 
 $~$
 
+$~$
+
 :::
 
 Structure of a CI:
@@ -115,7 +117,7 @@ Structure of a CI:
 
 # The Bootstrap
 
-So far, we've used the *population* to generate samples and construct sampling distributions (because we relied on the fingerprint sampler). For most situations, this is unrealistic.
+So far, we've relied on generating lots of samples to construct sampling distributions (because we relied on the fingerprint sampler). For most situations, this is unrealistic.
 
 **Example:** Let's consider our `penguin` friends. I'm interested in finding a 95% confidence interval for the mean flipper length of *all* Palmer Archipelago penguins. The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` and the standard deviation is `r sd(penguins$flipper_length_mm, na.rm = TRUE)`.
 
@@ -126,14 +128,15 @@ ggplot(penguins, aes(x = flipper_length_mm)) +
   geom_histogram(col = "white", bins = 20)
 ```
 
-**Idea:**
+**Idea:** if we make a bunch of copies of our random sample, we should get something close to the population
 
 \vspace{.25in}
 
 ![](images/BootstrapPopulation.png){width="60%"}
 
+**Bootstrap picture:** 
 
-\pagebreak
+\vspace{2in}
 
 Let's return to our penguins. I've made 100 bootstrap samples and found the mean for each one: 
 
