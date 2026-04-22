@@ -9,47 +9,48 @@ library(patchwork)
 library(palmerpenguins)
 library(broom)
 library(infer)
+library(ggformula)
 
 options(digits = 4)
 notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
 ```
 
-Let's begin with the class proportion from last time: 36.7% of Carleton students are "from the Midwest", while ____% of our class (who answered) are from the Midwest. 
+**"Big picture"** picture
+
+\vspace{2in}
+
+
+
+**Sampling distributions** for fingerprint example from last time (random samples)
 
 ```{r}
-#| fig-width: 3
-#| fig-height: 2
+#| fig-width: 8
+#| fig-height: 2.5
 
-set.seed(100424)
+phats_5 <- c(0.4, 0.2, 0.2, 0.2, 0.2, 0.2, 0.6, 0.2, 0.6, 0.2, 0.4, 0.4, 0.4, 0.2, 0.2, 0, 0.2, 0.6, 0.4, 0.2, 0.2, 0.6, 0.1, 0, 0.8, 0.2, 0.2, 0.4, 0, 0.2, 0.8, 0.6, 0.2, 0.2, 0.6, 0.6, 0.4, 0.6, 0.2, 0, 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0, 0.4, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0, 0.4, 0, 0.4, 0.2, 0.2, 0.8, 0.6, 0, 0.4, 0.4, 0.4, 0.2, 0.2, 0.4, 0.2, 0, 0.4, 0, 0.4, 0.2, 0.2, 0.4, 0.4, 0.2, 0.4, 0.2, 0.6, 0.2, 0.8, 0.2, 0.8, 0.1, 0.4, 0, 0.1, 0, 0.6)
 
-carls = tibble(
-  student_id = 1:2007,
-  midwest = c(rep("Yes", 737), rep("No", 2007-737))
-) %>% 
-  slice(sample(1:n()))
+phats_20 <- c(0.4, 0.3, 0.45, 0.45, 0.25, 0.25, 0.35, 0.35, 0.35, 0.4, 0.4, 0.2, 0.15, 0.15, 0.15, 0.45, 0.45, 0.45, 0.25, 0.3, 0.3, 0.25, 0.1, 0.2, 0.35, 0.3, 0.25, 0.3, 0.7, 0.35, 0.6, 0.2, 0.3,  0.45, 0.3, 0.3, 0.2, 0.3, 0.25, 0.35, 0.4, 0.05, 0.45, 0.3, 0.3, 0.15, 0.3, 0.45, 0.15, 0.25, 0.45, 0.35, 0.25, 0.35, 0.2, 0.4, 0.3, 0.25, 0.25, 0.7, 0.4, 0.5, 0.4, 0.4, 0.35, 0.55, 0.25, 0.3, 0.3, 0.3, 0.15, 0.25, 0.5, 0.3, 0.4, 0.2, 0.5, 0.15, 0.25, 0.15, 0.4, 0.25, 0.4, 0.35, 0.4, 0.3, 0.35, 0.3, 0.25, 0.45, 0.8, 0.25, 0.6)
 
-many_samples = carls %>%
-  rep_sample_n(32, reps = 1000, replace = TRUE) %>%
-  group_by(replicate, midwest) %>%
-  summarize(
-    n = n()
-  ) %>%
-  mutate(p_hat = n/sum(n)) %>%
-  filter(midwest == "Yes")
 
-ggplot(many_samples, aes(x = p_hat)) + 
-  geom_histogram(bins = 10, col = "white")
+p1 <- gf_histogram(~phats_5, bins = 10, col = "white", fill = "black", xlab = "n=5", alpha = .7, boundary = 0) +  scale_x_continuous(breaks = seq(0,1,by=.2), limits = c(0,1))
+
+p2 <- gf_histogram(~phats_20, bins = 12, col = "white", fill = "black", xlab = "n=20", alpha = .7, boundary = 0) + scale_x_continuous(breaks = seq(0,1,by=.2), limits = c(0,1))
+
+p1 + p2
 ```
 
 The mean and standard deviation of the sampling distribution are:
 
 ```{r}
-many_samples %>%
-  ungroup() %>%
+tibble(
+  phat = c(phats_5, phats_20),
+  sample = rep(paste0("n=", c(5, 20)), each = length(phats_20))
+) |>
+  group_by(sample) |>
   summarize(
-    xbar = mean(p_hat),
-    se = sd(p_hat)
+    mean = mean(phat),
+    sd = sd(phat)
   )
 ```
 
@@ -61,9 +62,13 @@ Standard deviation of a statistic or a sampling distribution
 \vspace{.25in}
 :::
 
-In a random class of 32 students, how many would we expect to be from the Midwest?
+What's the **point estimate** for $p_{\text{whorl}}$ using the $n=20$ sample? The $n=5$? 
 
-\vspace{2in}
+\vspace{1in}
+
+Would you be surprised of $p_{\text{whorl}}$ was actually $0.39$? What about $0.80$? 
+
+\vspace{1in}
 
 ::: callout-note
 ## Confidence Interval
@@ -108,12 +113,9 @@ Structure of a CI:
 2.  that the \[population parameter in context\]
 3.  is between \_\_\_\_ and \_\_\_\_ \[units\]
 
-
-\pagebreak 
-
 # The Bootstrap
 
-So far, we've used the *population* to generate samples and construct sampling distributions. For most situations, this is unrealistic.
+So far, we've used the *population* to generate samples and construct sampling distributions (because we relied on the fingerprint sampler). For most situations, this is unrealistic.
 
 **Example:** Let's consider our `penguin` friends. I'm interested in finding a 95% confidence interval for the mean flipper length of *all* Palmer Archipelago penguins. The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` and the standard deviation is `r sd(penguins$flipper_length_mm, na.rm = TRUE)`.
 

@@ -6,9 +6,9 @@ title: "11: Bootstrap Confidence Intervals with StatKey"
 These problems are drawn from the textbook with the datasets built into StatKey. I want the focus today to be on the “big ideas” of bootstrap distributions and confidence intervals, without the added complexity of coding. Next time, we’ll see how to load data and create bootstrap confidence intervals in R.
 :::
 
-Part of what you need to do is choose the right menu within StatKey. For example, if you are trying to make a confidence interval for a proportion, you will need to be in the “proportion” menu under “Bootstrap confidence intervals”.
+The first thing you'll have to do is choose the right menu from StatKey. For example, if you are trying to make a confidence interval for a proportion, you will need to be in the “proportion” menu under “Bootstrap confidence intervals”. 
 
-Statkey link: https://www.lock5stat.com/StatKey/index.html
+Statkey link: <https://www.lock5stat.com/StatKey/index.html>
 
 **1.** Atlanta Commute times
 
