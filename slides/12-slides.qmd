@@ -1,0 +1,184 @@
+---
+title: "12: Percentile CIs + CIs in R"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## Today
+
+1. Percentile confidence intervals
+2. Bootstrap confidence intervals in R 
+
+##
+
+![](correlation-statkey-skewed.png)
+
+# StatKey {.maize}
+
+## Summary of Percentile CIs: 
+
+- For skewed distributions, 95% rule may not apply
+- Sometimes, we might want a confidence level *other* than 68%, 95%, or 99%. 
+- In these cases, we can use the *percentiles* of the bootstrap distribution to find a confidence interval
+- Make sure to use a large number of bootstrap samples! 
+
+# Bootstrap CIs in R {.maize}
+
+## But why?! 
+
+- Point-and-click menus are great for getting a feel of what's happening and playing around with different settings
+- For actually *doing* analyses, it's better to work in statistical software like R: 
+  - Load any dataset
+  - Make custom visualizations and find any summary statistics
+  - Create new columns if you need them
+  - Reproducible: you don't have to record all of the buttons that you hit in order for someone to recreate your analysis (how many bootstrap samples did I use? What was my original SE?)
+  
+## 
+
+Do Airplanes take off at their scheduled time? The dataset `DelaysAA` contains information on how long an airplane was delayed before taking off for American Airline flights in May 2009. The variable `Delay` gives the length of the delay in minutes. 
+
+```{r}
+#| echo: true
+
+DelaysAA = read_csv("http://math.carleton.edu/Stat120/RLabManual/DelaysAA.csv")
+DelaysAA
+```
+
+## 
+
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 4
+
+ggplot(DelaysAA, aes(x = Delay)) + 
+  geom_histogram(col = "white")
+```
+
+## 
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| layout-ncol: 2
+
+library(CarletonStats)
+boot(~Delay, data = DelaysAA)
+```
+
+. . . 
+
+I'm 95% confident that the mean AA Delay in May 2009 is between 2.58 and 5.54 minutes. 
+
+## 
+
+Syntax to find a bootstrap distribution for a mean or proportion: 
+
+`boot(~ <VARIABLE>, data = <DATASET NAME>)`
+
+```{r}
+#| echo: true
+#| layout-ncol: 2
+
+library(CarletonStats)
+boot(~Delay, data = DelaysAA)
+```
+
+## 
+
+To change the confidence level: 
+
+```{r}
+#| echo: true
+#| layout-ncol: 2
+
+library(CarletonStats)
+boot(~Delay, data = DelaysAA, conf.level = .89)
+```
+
+## Another example
+
+The dataset `Tuition2006` contains the tuition for Resident and Non-Resident students at a sample of state universities and colleges (from collegeboard.com). We want to know if there is a substantial difference (on average) in the amount of tuition that residents pay compared to non-residents.
+
+```{r}
+Tuition2006 = read_csv("http://math.carleton.edu/Stat120/RLabManual/Tuition2006.csv")
+Tuition2006
+```
+
+## 
+
+This is an example of _paired data_: the amount a school charges for non-residents is likely related to how much it charges residents **and**  the two variables are measuring the same thing (cost). 
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| layout-ncol: 2
+
+ggplot(Tuition2006, aes(x = NonRes - Res)) + 
+  geom_histogram(col = "white", bins = 10)
+```
+
+##
+
+For paired data, use `bootPaired(<First Variable> ~ <Second Variable>, data = <Dataset Name>)`
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| layout-ncol: 2
+
+
+bootPaired(NonRes ~ Res, data = Tuition2006)
+```
+
+## 
+
+Each time we run `boot()`, we will get slightly different answers because of the slightly different bootstrap samples that we generate each time. 
+
+```{r}
+#| echo: true
+confint(bootPaired(NonRes ~ Res, data = Tuition2006))
+confint(bootPaired(NonRes ~ Res, data = Tuition2006))
+confint(bootPaired(NonRes ~ Res, data = Tuition2006))
+confint(bootPaired(NonRes ~ Res, data = Tuition2006))
+confint(bootPaired(NonRes ~ Res, data = Tuition2006))
+```
+
+## 
+
+To fix this, add a `seed` argument:
+
+```{r}
+#| echo: true
+confint(bootPaired(NonRes ~ Res, data = Tuition2006, seed = 100924))
+confint(bootPaired(NonRes ~ Res, data = Tuition2006, seed = 100924))
+confint(bootPaired(NonRes ~ Res, data = Tuition2006, seed = 100924))
+```
+
+This is especially important for homework, where you'll want any written answers to match your code! 
+
+## Summary
+
+- StatKey is great for checking your understanding or textbook problems
+- R is better for Lab Manual problems, other non-textbook datasets, and artisinal analyses
+- Remember to use the `seed` argument for homework
+- See Chapter 4 of the Lab Manual for more examples of `boot()` flavored commands
