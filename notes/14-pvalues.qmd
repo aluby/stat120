@@ -1,5 +1,5 @@
 ---
-title: "Notes 14: P-Values and Significance"
+title: "Notes 14: Randomization Tests and P-Values"
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -15,30 +15,52 @@ notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
 ```
 
-Last time, we laid out the following steps for setting up a hypothesis test: 
+**Example:** Resume callbacks. Researchers want to know if unconscious gender bias affects hiring decisions. They created 20 identical, highly qualified resumes. On 10 of the resumes, they put a traditionally male name (like "John"). On the other 10, they put a traditionally female name (like "Emily"). They submitted all 20 resumes to open job postings and waited to see who received a callback for an interview. Of the 20 resumes, 10 received callbacks. 7 of those callbacks went to "John" and 3 went to "Emily". Is this evidence of gender bias? 
 
-1.  Formulate hypotheses in terms of *population parameter*
-2.  Collect data and compute a *sample statistic*
-3.  Use the *sample statistic* to make a claim about the *hypotheses*
+\vspace{.25in}
 
-Today, we're diving into step 3:   
+> - Population parameter:
+> - Sample statistic: 
+> - Hypotheses: 
 
-> 3a. Construct *null/randomization distribution* 
+How do we gauge whether we have strong evidence against the null hypothesis, or if the difference could be due to sampling variability? 
 
-> > If $H_0$ is __________________, what does the range of sample statistics look like?
+\vspace{.25in}
 
-> 3b. Compute *p-value*
+Procedure: 
 
-> > Numeric summary of how extreme _______________________________________ is compared to ________________ distribution
+ >  - 10 cards labeled "Yes" (those that received a callback)
+ >  - 10 cards labeled "No" (did not receive a callback)
+  
+> 1. Verify you have 10 yes's and 10 no's
+> 2. Shuffle the 20 cards together thoroughly
+> 3. Deal the cards face down into two equal piles of 10 (Pile 1 is the "Emily" group, Pile 2 is the "John" group)
+> 4. Flip over the "John" group and count the number of yes's
+> 5. Record your result and then pass the cards to the next person
 
-> 3c. Make a formal decision about $H_0$
+Your group should perform the shuffle and deal 4 times (1 per person). Record the number of "Yes" cards in the Male Name pile for each trial.
 
-> > - Reject $H_0$ if ____________________________________
-> > - Do not Reject $H_0$ ____________________________________
+| Trial Number | Number of Callbacks ("Yes" Cards) in the "John" Pile | Sample Statistic |
+|--------------|------------------------------------------------------|------------------|
+| Trial 1      |                                                      |                  |
+| Trial 2      |                                                      |                  |
+| Trial 3      |                                                      |                  |
+| Trial 4      |                                                      |                  |
 
-\vspace{.5in}
 
-**StatKey Example 1** In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that the true proportion is actually 50%. Is the journalist justified?
+\pagebreak 
+
+**StatKey Example:** Resume callbacks
+
+\vspace{1in}
+
+::: callout-tip
+# Constructing null distribution for a difference in proportions
+
+Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in proportions between the two groups. Do this many times. 
+:::
+
+**StatKey Example** In a random sample of 765 adults in the United States, 322 say they could not cover a \$400 unexpected expense without borrowing money or going into debt. A journalist claims that the true proportion is actually 50%. Is the journalist justified?
 
 \vspace{3in}
 
@@ -48,56 +70,11 @@ Today, we're diving into step 3:
 In this example, flip a coin 765 times and record the proportion that came up heads. Do this many times to construct the randomization distribution
 :::
 
-**StatKey Example 2** In a Pew Research Poll on social media use, 72% of Twitter users (249 out of 346) responded that they visited Twitter a few times a week or more. Among Instagram users, this number was 80%  (424 out of 530). Is there a difference in frequency of use between Twitter and Instagram users?
 
 
-\vspace{3in}
+**R Example** In a study about Universal Basic Income, the SEED institute randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months (the "UBI" group). At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.5 and among the control group was 29.5. Does UBI result in higher well-being scores?
 
-::: callout-tip
-# Constructing null distribution for a difference in proportions
-
-Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in proportions between the two groups. Do this many times. 
-:::
-
-
-**R Example 1** 
-
-Here is what the dataset from the last example might look like in R: 
-
-```{r}
-#| fig-height: 2.5
-social_media = tibble(
-  app = c(rep("twitter", 346), rep("instagram", 530)), 
-  few_times_or_more = c(rep(1, 249), rep(0, 346-249), rep(1, 424), rep(0, 530-424))
-)
-```
-```
-# A tibble: 876 × 2
-   app       few_times_or_more
-   <chr>                 <dbl>
- 1 instagram                 1
- 2 twitter                   1
- 3 twitter                   0
- 4 instagram                 1
- ```
- 
-```{r}
-#| echo: true
-#| fig-height: 2.5
-#| layout-ncol: 2
-library(CarletonStats)
-permTest(few_times_or_more ~ app, data = social_media, seed = 101525)
-```
-
-::: callout-warning
-## Check:
-
-This is a different p-value than StatKey - why?
-:::
-
-**R Example 2** In a study about Universal Basic Income, the (SEED) randomly selected 100 residents and gave them an unrestricted $500 a month for 24 months. At the end of the study period, they were given an emotional well-being assessment and results were compared to 100 control-group residents who did not receive payments. The average well-being score among the UBI group was 31.5 and among the control group was 29.5. Does UBI result in higher well-being scores?
-
-\vspace{.25in}
+\vspace{1in}
 
 ```{r}
 ubi <- tibble::tribble(
@@ -304,20 +281,23 @@ ubi <- tibble::tribble(
              "UBI",            30.3
          )
 
+```
+
+```{r}
+#| echo: true
 ubi |>
   group_by(group) |>
   summarize(
     mean = mean(well_being),
     n = n()
   )
-
 ```
 
 ```{r}
 #| echo: true
 #| fig-height: 2.5
 #| layout-ncol: 2
-
+library(CarletonStats)
 permTest(well_being ~ group, data = ubi, alternative = "greater", seed = 101525)
 ```
 
@@ -326,6 +306,11 @@ permTest(well_being ~ group, data = ubi, alternative = "greater", seed = 101525)
 
 Combine all cases, then randomly assign each case to one of two groups with the same sample sizes as the original data. Record the difference in means between the two groups. Do this many times. 
 :::
+
+**Be careful about direction of hypotheses!**
+
+\vspace{2in}
+
 
 ## Statistical Significance {-}
 
@@ -344,7 +329,7 @@ Default:
 ::: callout-note
 ## Statistical Significance
 
-If p-value is small enough, it's very unlikely to get the results we observed if $H_0$ is true due to random chance. 
+If p-value is small enough, it's very unlikely to get the results we observed if $H_0$ is true due to sampling variability 
 
 Results are statistically significant if they provide convincing evidence against $H_0$
 :::
@@ -358,12 +343,23 @@ Results are statistically significant if they provide convincing evidence agains
 
 ## Summary {-}
 
-Whenever performing a hypothesis test, you should: 
+1.  Formulate hypotheses in terms of *population parameter*
+2.  Collect data and compute a *sample statistic*
+3.  Use the *sample statistic* to make a claim about the *hypotheses*
 
-(1) Perform an appropriate EDA 
-(2) Formulate $H_0$ and $H_A$
-(3) Compute a *test statistic*
-(4) Construct a *null distribution* using `permTest` in R or StatKey
-(5) Compare the test statistic to the null distribution and compute a *p-value*
-(6) Make a decision (reject or fail to reject) about $H_0$ 
-(7) Report your conclusion in context
+Today, we covered step 3:   
+
+> 3a. Construct *null/randomization distribution* using `permTest` in R or StatKey
+
+> > If $H_0$ is __________________, what does the range of sample statistics look like?
+
+> 3b. Compute *p-value*
+
+> > Numeric summary of how extreme _______________________________________ is compared to ________________ distribution
+
+> 3c. Make a formal decision about $H_0$
+
+> > - Reject $H_0$ if ____________________________________
+> > - Do not Reject $H_0$ ____________________________________
+
+> 3d. Report your conclusion in context
