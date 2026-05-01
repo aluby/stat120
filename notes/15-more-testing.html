@@ -180,12 +180,6 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/01-data.pdf" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Notes 01: Data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notes/02-group-expectations.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Academic Honesty &amp; Group Expectations</span></a>
   </div>
@@ -246,6 +240,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notes/10-fingerprints-post.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notes 10 Addendum: Fingerprints Sampling Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notes/10-sampling-distributions.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Notes 10: Sampling Distributions</span></a>
   </div>
@@ -265,7 +265,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/14-pvalues.pdf" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Notes 14: P-Values and Significance</span></a>
+ <span class="menu-text">Notes 14: Randomization Tests and P-Values</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -430,6 +430,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../activities/10-fingerprints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10: Fingerprints Sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../activities/11-activity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">11: Bootstrap Confidence Intervals with StatKey</span></a>
   </div>
@@ -562,6 +568,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../slides/10-midterm-checkin.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm 1 + Check-in</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/12-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12: Percentile CIs + CIs in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -716,8 +728,8 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Reject <span class="math inline">\(H_0\)</span></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">Type I</td>
+<td style="text-align: center;">Correct</td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -731,8 +743,8 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">Correct</td>
+<td style="text-align: center;">Type II</td>
 </tr>
 </tbody>
 </table>
@@ -746,7 +758,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Rejecting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is true</p>
+<p>Rejecting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is true (“false positive” or “false discovery”)</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
@@ -759,7 +771,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Failing to reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is false</p>
+<p>Failing to reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is false (“false negative”)</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
@@ -824,16 +836,19 @@ window.Quarto = {
 <h2 class="unnumbered anchored" data-anchor-id="connection-to-confidence-intervals">Connection to Confidence Intervals</h2>
 <p>If the value of <span class="math inline">\(H_0\)</span> is <em>outside</em> of the confidence interval, we ___________________________________.</p>
 <p>If the value of <span class="math inline">\(H_0\)</span> is <em>inside</em> the confidence interval, we ___________________________________.</p>
-<p><strong>Illustration:</strong> (Social Media Poll Example)</p>
+<p><strong>Illustration:</strong> (Resume callback example)</p>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+
+</div>
 <div class="cell quarto-layout-panel" data-layout-nrow="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="15-more-testing_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="288"></p>
+<p><img src="15-more-testing_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="384"></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="15-more-testing_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="288"></p>
+<p><img src="15-more-testing_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="384"></p>
 </div>
 </div>
 </div>
