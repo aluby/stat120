@@ -35,8 +35,6 @@ theme_set(notes_theme)
     a) Type I Error, Type II Error, and Power
     a) Connection to Confidence Intervals
     a) Pitfalls
-  
-$~$
 
 **Cheat Sheet:** You may bring 1 side of 1 standard 8.5x11 sheet of paper of notes, but no other materials are allowed. 
 
@@ -49,11 +47,5 @@ $~$
 **Additional Practice:** In addition to your notes, R activities in class, and homework; the "Unit B Essential Synthesis"  of the textbook provides a nice overview and some conceptual practice problems. *Note:* don't over-study these practice problems, since the format of the exam will be entirely different. Focus your time and energy on understanding notes and homework problems first.
 
 **Format of the exam:** The exam will be similar to the first exam and follow the "data analysis" format. 
-
-**Overview: difference in means** Suppose you want to find out if reading speed is any different between the print and e-book version of a book. 
-
-\vspace{4in}
-
-**Overview: correlation** Suppose you want to see if there is a relationship between reading speed on an e-book versus the print version. 
 
 
