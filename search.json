@@ -1893,7 +1893,7 @@
     "href": "slides/16-slides.html#on-your-own",
     "title": "16: Hypothesis Test Controversies + Exam II Review",
     "section": "On your own…",
-    "text": "On your own…\nWrite out the population parameter, sample statistic, \\(H_0\\) and \\(H_A\\).\n\nPopulation Parameter: \\(p\\), the proportion of correctly guessed cards in the population\nSample Statistic: \\(\\hat{p}\\), the proportion of correctly guessed cards in our sample (3/14)\n\\(H_0: p = .2\\)\n\\(H_A: p &gt; .2\\)",
+    "text": "On your own…\nWrite out the population parameter, sample statistic, \\(H_0\\) and \\(H_A\\).\n\nPopulation Parameter: \\(p\\), the proportion of correctly guessed cards in the population\nSample Statistic: \\(\\widehat{p}\\), the proportion of correctly guessed cards in our sample (3/14)\n\\(H_0: p = .2\\)\n\\(H_A: p &gt; .2\\)",
     "crumbs": [
       "Home",
       "Slides",
