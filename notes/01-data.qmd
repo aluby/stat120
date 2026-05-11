@@ -2,6 +2,7 @@
 title: "Notes 01: Data"
 execute: 
   echo: false
+draft: true
 ---
 
 ```{r setup, include=FALSE}

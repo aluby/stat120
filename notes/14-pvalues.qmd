@@ -25,7 +25,7 @@ theme_set(notes_theme)
 
 How do we gauge whether we have strong evidence against the null hypothesis, or if the difference could be due to sampling variability? 
 
-\vspace{.25in}
+\vspace{.4in}
 
 Procedure: 
 
@@ -43,12 +43,18 @@ Your group should perform the shuffle and deal 4 times (1 per person). Record th
 | Trial Number | Number of Callbacks ("Yes" Cards) in the "John" Pile | Sample Statistic |
 |--------------|------------------------------------------------------|------------------|
 | Trial 1      |                                                      |                  |
+|              |                                                      |                  |
 | Trial 2      |                                                      |                  |
+|              |                                                      |                  |
 | Trial 3      |                                                      |                  |
+|              |                                                      |                  |
 | Trial 4      |                                                      |                  |
+|              |                                                      |                  |
 
 
 \pagebreak 
+
+\vspace{1.5in}
 
 **StatKey Example:** Resume callbacks
 
