@@ -35,19 +35,16 @@ Answer: ________________
 
 They reported 48.4% in support of the Harris/Walz ticket, and 43.3% in support of the Trump/Vance ticket. 
 
-(a) How do you feel about this summary of a confidence interval (for a public/non-statistician audience)?
+
+(a) What is the standard error for each of these estimates? 
 
 \vspace{1in}
 
-(b) What is the standard error for each of these estimates? 
-
-\vspace{1in}
-
-(c) Build a 95% confidence interval for one of these proportions
+(b) Build a 95% confidence interval for one of these proportions
 
 \vspace{2in}
 
-(d) Use the normal distribution to instead build a 99% confidence interval for one of these proportions
+(dc Use the normal distribution to build a **99%** confidence interval for one of these proportions
 
 \vspace{2in}
 

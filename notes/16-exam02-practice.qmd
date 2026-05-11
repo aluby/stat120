@@ -1,0 +1,182 @@
+---
+title: "Exam 02 Practice Questions"
+format: 
+  docx: default
+---
+
+::: callout-note
+## Note
+
+Solutions can be shared on the collaborative key google doc. 
+:::
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(bookdown)
+library(infer)
+library(ragg)
+library(patchwork)
+library(CarletonStats)
+options(digits = 4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3, dev = ragg::agg_png())
+notes_theme = theme_minimal(
+ # base_family = "Montserrat", 
+  base_size = 14)
+theme_set(notes_theme)
+
+set.seed(050326)
+
+sat <- read.csv("http://math.carleton.edu/Stat120/RLabManual/sat.csv")
+
+sat_sample <- slice_sample(sat, n = 20)
+```
+
+This dataset gives education-related data for a random sample ($n=20$) of states and DC. The variables are: 
+
+ - `region`: West, Northeast, Midwest, South
+ - `pop`: Population, in 1,000's
+ - `verbal` and `math`: average SAT verbal and math scores
+ - `taken`: percent of students taking the SAT
+ - `noHS`: percent of population with no high school diploma
+ - `teachersPay`: median teacher salary, in 1,000's
+
+1. The first research question we'll investigate is: what percentage of states have less than 25% of students take the SAT? 
+
+```{r}
+sat_sample <- sat_sample |>
+  mutate(
+    lt_25 = ifelse(taken < 25, "less than 25", "more than 25"),
+    lt_25_num = as.numeric(lt_25 == "less than 25"),
+    northeast = ifelse(region == "Northeast", "Northeast", "Other")
+  ) 
+  
+sat_sample |>
+  group_by(lt_25) |>
+  summarize(
+    n = n()
+  )
+```
+
+(a) What is the *symbol* for the appropriate sample statistic? 
+
+(b) Show how to compute this quantity. 
+
+(c) What is the *symbol* for the corresponding population parameter? 
+
+(d) Does the table above represent a **population distribution**, **distribution of a sample**, or **sampling distribution**?
+
+```{r}
+boot_lt = boot(~lt_25_num, data = sat_sample, seed = 102324) 
+```
+
+(e) I generated the distribution below by resampling from the original dataset with replacement. The mean of this distribution is `r round(mean(boot_lt), 3)` and the standard deviation is `r round(sd(boot_lt), 3)`. What is the name of this distribution?
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+#| fig-align: 'center'
+plot(boot_lt) + 
+  theme(legend.position = "none") +
+  labs(
+    x = "",
+    title = ""
+  )
+```
+
+(f) Using the appropriate quantities, construct a 95% confidence interval for the population parameter of interest.
+
+(g) Provide an interpretation of this interval in context
+
+2. A friend has said that teacher salaries in the Northeast are higher than the rest of the country. Does the data support this claim? Below are the distribution of teachersPay based on whether the state is in the Northeast. 
+
+```{r}
+sat_sample |>
+  ggplot(aes(x = teachersPay, y = northeast)) + 
+  geom_boxplot() +
+  labs(x = "teachersPay (1,000s)", y = "")
+
+ne_table <- sat_sample |>
+  group_by(northeast) |>
+  summarize(
+    mean = round(mean(teachersPay), 2) ,
+    sd = round(sd(teachersPay), 2)
+  )
+```
+
+(a) For each bullet point below, state which group the sample statistic describes 
+
+- mean = `r ne_table$mean[1]`
+- mean = `r ne_table$mean[2]`
+- sd = `r ne_table$sd[2]`
+- sd = `r ne_table$sd[1]`
+
+(b) Write out appropriate null and alternative hypotheses for your friend's claim. 
+
+(c) Below is the null distribution for this test. Indicate on the graph how the p-value would be calculated
+
+```{r}
+pay_test <- permTest(teachersPay ~ northeast, data = sat_sample)
+
+plot(pay_test) + theme(base_size = 10, title = element_text(size = 9))
+```
+
+
+(d) This p-value is 0.0197.  What *formal statistical decision* would you make? 
+
+(e) Give an interpretation of the p-value
+
+(f) What type of error could we have made in (d)? Justify your answer in 1 sentence. 
+
+(g) What do you conclude about your friend's claim?
+
+3. The next research question we'll look at is: *what is the relationship between teacherPay and average math SAT score?*. Below is an EDA of this relationship along with some R output for a bootstrap distribution (some information hidden). 
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2
+#| layout-ncol: 2
+sat_sample |>
+  ggplot(aes(x = teachersPay, y = math)) + 
+  geom_point(size = .75)
+
+cor_boot = bootCor(math ~ teachersPay, data = sat_sample, seed = 102324)
+cor_perm = permTestCor(math ~ teachersPay, data = sat_sample, seed = 102324)
+plot(cor_boot) + theme(legend.position = "none", base_size = 10)
+
+```
+
+```
+	** Bootstrap interval **
+
+ Observed: -0.5 
+ Mean of bootstrap distribution: -0.4942 
+ Standard error of bootstrap distribution: 0.188 
+
+ Bootstrap percentile interval
+    2.5%    97.5% 
+-0.81645 -0.09011 
+
+		*--------------*
+```
+
+
+(a) What is the sample statistic and population parameter (name and symbols)? 
+
+(b) What is the numeric value of the sample statistic?
+
+(c) Report a 95% confidence interval in context. 
+
+(d) If we instead performed a hypothesis test, would the p-value be higher or lower than 0.05? Explain in 1 sentence how you can tell. 
+
+(e) Give one way that we could make the confidence interval *smaller*
+
+4. For each of the following research questions, indicate whether a *hypothesis test* or *confidence interval* is more appropriate, and the corresponding *population parameter*. If no inference is needed, say no inference needed. 
+
+(a) Is there a difference in average math SAT scores between the Northeast and other states? 
+
+(b) What is the average statewide percentage of students with no high school diploma? 
+
+(c) How many Midwest states are represented in our sample? 
+
+(d) What is the average teacher salary in the US?
+
