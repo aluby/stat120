@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.23">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Prof Amanda Luby">
   <title>stat120 – 19: CLT-based Inference for Proportions</title>
@@ -237,26 +237,80 @@ Prof Amanda Luby
 <h2>Finding <span class="math inline">\(z^*\)</span></h2>
 <p>What is <span class="math inline">\(z^*\)</span> for a 95% confidence interval?</p>
 <div class="fragment">
-<p>What is <span class="math inline">\(z^*\)</span> for a 68% confidence interval?</p>
-</div>
-<div class="fragment">
-<p>What is <span class="math inline">\(z^*\)</span> for a 99% confidence interval?</p>
-</div>
-<div class="fragment">
-<p>What is <span class="math inline">\(z^*\)</span> for a 90% confidence interval?</p>
-</div>
-<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="19-slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="19-slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">qnorm</span>(.<span class="dv">05</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">qnorm</span>(.<span class="dv">025</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.959964</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="finding-z-1" class="slide level2">
+<h2>Finding <span class="math inline">\(z^*\)</span></h2>
+<p>What is <span class="math inline">\(z^*\)</span> for a 68% confidence interval?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="19-slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">qnorm</span>(.<span class="dv">16</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.9944579</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="finding-z-2" class="slide level2">
+<h2>Finding <span class="math inline">\(z^*\)</span></h2>
+<p>What is <span class="math inline">\(z^*\)</span> for a 99% confidence interval?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="19-slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">qnorm</span>(.<span class="dv">005</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.575829</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="finding-z-3" class="slide level2">
+<h2>Finding <span class="math inline">\(z^*\)</span></h2>
+<p>What is <span class="math inline">\(z^*\)</span> for a 90% confidence interval?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="19-slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">qnorm</span>(.<span class="dv">05</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.644854</code></pre>
 </div>
@@ -275,9 +329,9 @@ Prof Amanda Luby
 </section>
 <section id="how-big-is-big-enough" class="slide level2">
 <h2>How big is “big enough”?</h2>
-<p><strong>Example 1:</strong> <span class="math inline">\(\widehat{p} = .5\)</span>. How big is “big enough”?</p>
+<p><strong>Example 1:</strong> <span class="math inline">\(\widehat{p} = .5\)</span>. How big is “big enough”? (StatKey)</p>
 <div class="fragment">
-<p><strong>Example 2:</strong> <span class="math inline">\(\widehat{p} = .05\)</span>. How big is “big enough”?</p>
+<p><strong>Example 2:</strong> <span class="math inline">\(\widehat{p} = .05\)</span>. How big is “big enough”? (StatKey)</p>
 </div>
 <div class="fragment">
 <p>Rule of thumb for proportions:</p>
@@ -311,14 +365,12 @@ Prof Amanda Luby
 <section id="esp-example-again" class="slide level2">
 <h2>ESP Example (again)</h2>
 
-<img data-src="img/zener.png" class="r-stretch"><div class="fragment">
-<ul>
+<img data-src="img/zener.png" class="r-stretch"><ul>
 <li class="fragment">Population Parameter: <span class="math inline">\(p\)</span>, the proportion of correctly guessed cards <em>in the population</em></li>
 <li class="fragment">Sample Statistic: <span class="math inline">\(\widehat{p}\)</span>, the proportion of correctly guessed cards <em>in our sample</em></li>
 <li class="fragment"><span class="math inline">\(H_0: p = .2\)</span></li>
 <li class="fragment"><span class="math inline">\(H_A: p &gt; .2\)</span></li>
 </ul>
-</div>
 </section>
 <section id="n-14-statkey" class="slide level2">
 <h2>n = 14 (StatKey)</h2>
@@ -337,72 +389,75 @@ Prof Amanda Luby
 <ul>
 <li class="fragment">Sample Stat: <span class="math inline">\(\widehat{p} = .214\)</span></li>
 <li class="fragment"><em>Test</em> Statistic (Z-score): <span class="math inline">\(z = \frac{\widehat{p} - p_0}{SE_{\widehat{p}}}\)</span></li>
-<li class="fragment"><span class="math inline">\(SE_{\widehat{p}} = \sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}\)</span></li>
+<li class="fragment"><span class="math inline">\(SE_{\widehat{p}} = \sqrt{\frac{p_0(1-p_0)}{n}}\)</span></li>
 </ul>
 </section>
 <section id="n-14" class="slide level2">
 <h2>n = 14</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>p_hat <span class="ot">=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">14</span></span>
-<span id="cb3-2"><a></a>n <span class="ot">=</span> <span class="dv">14</span></span>
-<span id="cb3-3"><a></a>SE_p <span class="ot">=</span> <span class="fu">sqrt</span>((p_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_hat))<span class="sc">/</span>n)</span>
-<span id="cb3-4"><a></a>SE_p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>p_hat <span class="ot">=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">14</span></span>
+<span id="cb9-2"><a></a>p_0 <span class="ot">=</span> .<span class="dv">2</span></span>
+<span id="cb9-3"><a></a>n <span class="ot">=</span> <span class="dv">14</span></span>
+<span id="cb9-4"><a></a>SE_p <span class="ot">=</span> <span class="fu">sqrt</span>((p_0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_0))<span class="sc">/</span>n)</span>
+<span id="cb9-5"><a></a>SE_p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1096642</code></pre>
+<pre><code>[1] 0.1069045</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>z_score <span class="ot">=</span> (p_hat <span class="sc">-</span> .<span class="dv">2</span>)<span class="sc">/</span>SE_p</span>
-<span id="cb5-2"><a></a>z_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>z_score <span class="ot">=</span> (p_hat <span class="sc">-</span> .<span class="dv">2</span>)<span class="sc">/</span>SE_p</span>
+<span id="cb11-2"><a></a>z_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1302678</code></pre>
+<pre><code>[1] 0.1336306</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>p_val <span class="ot">=</span> <span class="fu">pnorm</span>(z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb7-2"><a></a>p_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p_val <span class="ot">=</span> <span class="fu">pnorm</span>(z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-2"><a></a>p_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4481773</code></pre>
+<pre><code>[1] 0.4468473</code></pre>
 </div>
 </div>
 </section>
 <section id="n1400" class="slide level2">
 <h2>n=1400:</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>p_hat <span class="ot">=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">14</span></span>
-<span id="cb9-2"><a></a>n <span class="ot">=</span> <span class="dv">1400</span></span>
-<span id="cb9-3"><a></a>SE_p <span class="ot">=</span> <span class="fu">sqrt</span>((p_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_hat))<span class="sc">/</span>n)</span>
-<span id="cb9-4"><a></a>SE_p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p_hat <span class="ot">=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">14</span></span>
+<span id="cb15-2"><a></a>p_0 <span class="ot">=</span> .<span class="dv">2</span></span>
+<span id="cb15-3"><a></a>n <span class="ot">=</span> <span class="dv">1400</span></span>
+<span id="cb15-4"><a></a>SE_p <span class="ot">=</span> <span class="fu">sqrt</span>((p_0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_0))<span class="sc">/</span>n)</span>
+<span id="cb15-5"><a></a>SE_p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01096642</code></pre>
+<pre><code>[1] 0.01069045</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>z_score <span class="ot">=</span> (p_hat <span class="sc">-</span> .<span class="dv">2</span>)<span class="sc">/</span>SE_p</span>
-<span id="cb11-2"><a></a>z_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>z_score <span class="ot">=</span> (p_hat <span class="sc">-</span> .<span class="dv">2</span>)<span class="sc">/</span>SE_p</span>
+<span id="cb17-2"><a></a>z_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.302678</code></pre>
+<pre><code>[1] 1.336306</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p_val <span class="ot">=</span> <span class="fu">pnorm</span>(z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb13-2"><a></a>p_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>p_val <span class="ot">=</span> <span class="fu">pnorm</span>(z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-2"><a></a>p_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.09634238</code></pre>
+<pre><code>[1] 0.0907246</code></pre>
 </div>
 </div>
 </section>
 <section id="n14000" class="slide level2">
 <h2>n=14000</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p_hat <span class="ot">=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">14</span></span>
-<span id="cb15-2"><a></a>n <span class="ot">=</span> <span class="dv">14000</span></span>
-<span id="cb15-3"><a></a>SE_p <span class="ot">=</span> <span class="fu">sqrt</span>((p_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_hat))<span class="sc">/</span>n)</span>
-<span id="cb15-4"><a></a>SE_p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>p_hat <span class="ot">=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">14</span></span>
+<span id="cb21-2"><a></a>p_0 <span class="ot">=</span> .<span class="dv">2</span></span>
+<span id="cb21-3"><a></a>n <span class="ot">=</span> <span class="dv">14000</span></span>
+<span id="cb21-4"><a></a>SE_p <span class="ot">=</span> <span class="fu">sqrt</span>((p_0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_0))<span class="sc">/</span>n)</span>
+<span id="cb21-5"><a></a>SE_p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.003467887</code></pre>
+<pre><code>[1] 0.003380617</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>z_score <span class="ot">=</span> (p_hat <span class="sc">-</span> .<span class="dv">2</span>)<span class="sc">/</span>SE_p</span>
-<span id="cb17-2"><a></a>z_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>z_score <span class="ot">=</span> (p_hat <span class="sc">-</span> .<span class="dv">2</span>)<span class="sc">/</span>SE_p</span>
+<span id="cb23-2"><a></a>z_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.119429</code></pre>
+<pre><code>[1] 4.225771</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>p_val <span class="ot">=</span> <span class="fu">pnorm</span>(z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb19-2"><a></a>p_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>p_val <span class="ot">=</span> <span class="fu">pnorm</span>(z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-2"><a></a>p_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.89906e-05</code></pre>
+<pre><code>[1] 1.190619e-05</code></pre>
 </div>
 </div>
 </section>
