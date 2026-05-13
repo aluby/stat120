@@ -56,19 +56,76 @@ What is $z^*$ for a 95% confidence interval?
 
 . . . 
 
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks= -3:3) + 
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(-5, -2)) +
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(2,5)) 
+```
+
+```{r}
+#| echo: true
+qnorm(.025, lower.tail = TRUE)
+```
+
+## Finding $z^*$
+
+
 What is $z^*$ for a 68% confidence interval? 
 
 . . . 
 
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks= -3:3) + 
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(-5, -1)) +
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(1,5)) 
+```
+
+```{r}
+#| echo: true
+qnorm(.16, lower.tail = TRUE)
+```
+
+## Finding $z^*$
+
 What is $z^*$ for a 99% confidence interval? 
 
 . . . 
+
+```{r}
+#| fig-width: 4
+#| fig-height: 2
+ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks= -3:3) + 
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(-5, -2.56)) +
+  geom_area(stat = "function", fun = dnorm, fill = "#ED7953FF", xlim = c(2.56,5)) 
+```
+
+```{r}
+#| echo: true
+qnorm(.005, lower.tail = TRUE)
+```
+
+## Finding $z^*$
 
 What is $z^*$ for a 90% confidence interval? 
 
 . . . 
 
 ```{r}
+#| fig-width: 4
+#| fig-height: 2
 ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
   stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) +
   scale_y_continuous(breaks = NULL) + 
@@ -82,6 +139,8 @@ ggplot(data = data.frame(x = seq(-4,4,by=.1)), aes(x)) +
 qnorm(.05, lower.tail = TRUE)
 ```
 
+
+
 ## Today
 
 - How big of a sample is "big enough"? 
@@ -93,11 +152,11 @@ It turns out, the answer is different depending on which *statistic* we're looki
 
 ## How big is "big enough"? 
 
-**Example 1:** $\widehat{p} = .5$. How big is "big enough"?
+**Example 1:** $\widehat{p} = .5$. How big is "big enough"? (StatKey)
 
 . . . 
 
-**Example 2:** $\widehat{p} = .05$. How big is "big enough"?
+**Example 2:** $\widehat{p} = .05$. How big is "big enough"? (StatKey)
 
 . . . 
 
@@ -136,8 +195,6 @@ Idea: as $n$ gets bigger, the SE gets smaller. If $\widehat p$ is close to .5, t
 
 ![](img/zener.png)
 
-. . . 
-
 - Population Parameter: $p$, the proportion of correctly guessed cards *in the population*
 - Sample Statistic: $\widehat{p}$, the proportion of correctly guessed cards *in our sample* 
 - $H_0: p = .2$
@@ -168,7 +225,7 @@ knitr::include_graphics("img/null-dist-big.png")
 
 - Sample Stat: $\widehat{p} = .214$
 - *Test* Statistic (Z-score): $z = \frac{\widehat{p} - p_0}{SE_{\widehat{p}}}$
-- $SE_{\widehat{p}} = \sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}$
+- $SE_{\widehat{p}} = \sqrt{\frac{p_0(1-p_0)}{n}}$
 
 ## n = 14
 
@@ -177,8 +234,9 @@ knitr::include_graphics("img/null-dist-big.png")
 
 
 p_hat = 3/14
+p_0 = .2
 n = 14
-SE_p = sqrt((p_hat*(1-p_hat))/n)
+SE_p = sqrt((p_0*(1-p_0))/n)
 SE_p
 z_score = (p_hat - .2)/SE_p
 z_score
@@ -193,8 +251,9 @@ p_val
 #| echo: true
 
 p_hat = 3/14
+p_0 = .2
 n = 1400
-SE_p = sqrt((p_hat*(1-p_hat))/n)
+SE_p = sqrt((p_0*(1-p_0))/n)
 SE_p
 z_score = (p_hat - .2)/SE_p
 z_score
@@ -208,8 +267,9 @@ p_val
 #| echo: true
 
 p_hat = 3/14
+p_0 = .2
 n = 14000
-SE_p = sqrt((p_hat*(1-p_hat))/n)
+SE_p = sqrt((p_0*(1-p_0))/n)
 SE_p
 z_score = (p_hat - .2)/SE_p
 z_score
