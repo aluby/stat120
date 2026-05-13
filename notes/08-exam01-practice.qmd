@@ -15,6 +15,7 @@ notes_theme = theme_minimal(
   base_size = 14)
 theme_set(notes_theme)
 ```
+
 This dataset gives education-related data for the 50 states and the District of Columbia. The variables are: 
 
  - `region`: West, Northeast, Midwest, South
