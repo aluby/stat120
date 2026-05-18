@@ -15,9 +15,7 @@ notes_theme = theme_minimal(base_size = 12, base_family = "Source Sans 3")
 theme_set(notes_theme)
 ```
 
-\vspace{-.5in}
-
-## CLT Recap {-}
+\vspace{-.25in}
 
 ::: callout-note
 **CLT for 1 Proportion**
@@ -196,7 +194,7 @@ Here's an excerpt from their methodology report:
 
 \vspace{1in}
 
-(b) Explain why we should *not* use the CLT formula for the difference in proportions between Harris supporters and Trump supporters in this poll
+(b) Explain why we should **not** use the CLT formula for the difference in proportions between Harris supporters and Trump supporters in this poll (*Hint:* do we have independent groups?)
 
 \vspace{1in}
 
@@ -207,13 +205,21 @@ knitr::include_graphics("images/poll-ed-breakdown.png")
 ```
 
 
-\vspace{2in}
+\vspace{3in}
 
 (d) The two ways of computing the standard error should produce similar results. Give two reasons why. 
 
 \vspace{1in}
 
 (e) The R code below makes a confidence interval and performs a hypothesis test for the difference in these two proportions. 
+
+```{r, echo = TRUE}
+prop.test(x = c(192, 194), 
+          n = c(436, 360),
+          correct = FALSE, #tells R not to apply a "continuity correction"
+          conf.level = .90)
+```
+
   i. Where did `x = c(192, 194)` come from?
   
   \vspace{1in}
@@ -226,10 +232,5 @@ knitr::include_graphics("images/poll-ed-breakdown.png")
   
   \vspace{1in}
 
-```{r, echo = TRUE}
-prop.test(x = c(192, 194), 
-          n = c(436, 360),
-          correct = FALSE, #tells R not to apply a "continuity correction"
-          conf.level = .90)
-```
+
 

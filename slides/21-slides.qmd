@@ -90,7 +90,7 @@ $290 \pm 2.35* \times \frac{87.6}{\sqrt{120}}$
 
 ## Setup
 
-Idea: we are interested in the difference in proportions between two groups. Think "How far ahead is one candidate in a political poll?" or "Is disease incidence higher in one treatment group than another?" 
+Idea: we are interested in the difference in proportions between two groups. Think "Is disease incidence higher in one treatment group than another?" or "is candidate A favored more in Group 1 or Group 2?"
 
 - Population parameter: $p_1 - p_2$
 - Sample stat: $\widehat{p}_1 - \widehat{p}_2$
