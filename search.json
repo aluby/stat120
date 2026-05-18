@@ -1211,7 +1211,7 @@
     "href": "slides/21-slides.html#setup",
     "title": "21: CLT-based Inference for Differences",
     "section": "Setup",
-    "text": "Setup\nIdea: we are interested in the difference in proportions between two groups. Think “How far ahead is one candidate in a political poll?” or “Is disease incidence higher in one treatment group than another?”\n\nPopulation parameter: \\(p_1 - p_2\\)\nSample stat: \\(\\widehat{p}_1 - \\widehat{p}_2\\)\nCLT: if sample size is big enough, \\(\\widehat{p}_1 - \\widehat{p}_2 \\sim N(p_1 -p_2, SE_{\\widehat{p}_1 - \\widehat{p}_2})\\)\n\nHow big is “big enough”?\nWhat is the SE?\n\n\n\n\n\n\nImportant!\n\n\nThe two groups are independent",
+    "text": "Setup\nIdea: we are interested in the difference in proportions between two groups. Think “Is disease incidence higher in one treatment group than another?” or “is candidate A favored more in Group 1 or Group 2?”\n\nPopulation parameter: \\(p_1 - p_2\\)\nSample stat: \\(\\widehat{p}_1 - \\widehat{p}_2\\)\nCLT: if sample size is big enough, \\(\\widehat{p}_1 - \\widehat{p}_2 \\sim N(p_1 -p_2, SE_{\\widehat{p}_1 - \\widehat{p}_2})\\)\n\nHow big is “big enough”?\nWhat is the SE?\n\n\n\n\n\n\nImportant!\n\n\nThe two groups are independent",
     "crumbs": [
       "Home",
       "Slides",
