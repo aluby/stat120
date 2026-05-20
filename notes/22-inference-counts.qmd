@@ -50,7 +50,9 @@ $~$
 
 (2) Conditions/Assumptions
 
-\vspace{1in}
+  - Independence
+  - Expected count $\ge 5$
+  - Counts
 
 (3) Test statistic:
 
@@ -94,8 +96,11 @@ When we have two categorical variables, each that could have 2 or more levels, t
 |        | Condition Improved | Did Not Improve |     |
 |--------|--------------------|-----------------|-----|
 | Drug A |                    |                 | 70  |
+|        |                    |                 |     |
 | Drug B |                    |                 | 100 |
+|        |                    |                 |     |
 | Drug C |                    |                 | 150 |
+|        |                    |                 |     |
 |        | 180                | 140             | 320 |
 
 \vspace{.5in}
@@ -106,8 +111,10 @@ When we have two categorical variables, each that could have 2 or more levels, t
 
 (2) Conditions/Assumptions
 
-\vspace{1in}
-
+  - Independent observations
+  - Expected Counts $\ge 5$
+  - Counts
+  
 (3) Test Statistic
 
 \vspace{1in}
@@ -148,19 +155,22 @@ knitr::include_graphics("images/sauce-tweet.png")
       add_header_above(c(" "=1, "sunlight" = 3, " " = 1)) 
 ```
 
-  a.  If the variables describing the habitat and the amount of sunlight are independent, what proportion of lizards (total) would be expected in each of the three sunlight categories?
+  a.  If the `site` and the amount of `sunlight` are independent, what proportion of lizards (total) would be expected in the sun? In partial sun? In shade?
 
 \vspace{.5in}
 
-  b.  Given the proportions of each sunlight condition, how many lizards of each type would you expect to see in the sun?
+  b.  Given the proportions of each sunlight condition, how many lizards *of each type* would you expect to see in the sun?
         in the partial sun?
         in the shade?
         
 |          | sun | partial | shade | Total |
 |----------|-----|---------|-------|-------|
 | desert   |     |         |       | 119   |
+|          |     |         |       |       |
 | mountain |     |         |       | 107   |
+|          |     |         |       |       |
 | valley   |     |         |       | 106   |
+|          |     |         |       |       |
 | Total    | 114 | 108     | 110   | 332   |
 
 
