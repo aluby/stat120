@@ -285,10 +285,10 @@ Prof Amanda Luby
 <h2></h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(CarletonStats)</span>
 <span id="cb4-2"><a></a><span class="fu">boot</span>(<span class="sc">~</span>Delay, <span class="at">data =</span> DelaysAA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 
 </div>
-<div class="cell fragment quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell fragment quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <pre><code>
@@ -323,7 +323,7 @@ Prof Amanda Luby
 <p><code>boot(~ &lt;VARIABLE&gt;, data = &lt;DATASET NAME&gt;)</code></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(CarletonStats)</span>
 <span id="cb6-2"><a></a><span class="fu">boot</span>(<span class="sc">~</span>Delay, <span class="at">data =</span> DelaysAA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <pre><code>
@@ -354,7 +354,7 @@ Prof Amanda Luby
 <p>To change the confidence level:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(CarletonStats)</span>
 <span id="cb8-2"><a></a><span class="fu">boot</span>(<span class="sc">~</span>Delay, <span class="at">data =</span> DelaysAA, <span class="at">conf.level =</span> .<span class="dv">89</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <pre><code>
@@ -415,10 +415,10 @@ Prof Amanda Luby
 <p>This is an example of <em>paired data</em>: the amount a school charges for non-residents is likely related to how much it charges residents <strong>and</strong> the two variables are measuring the same thing (cost).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(Tuition2006, <span class="fu">aes</span>(<span class="at">x =</span> NonRes <span class="sc">-</span> Res)) <span class="sc">+</span> </span>
 <span id="cb11-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">col =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 
 </div>
-<div class="cell fragment quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell fragment quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -434,10 +434,10 @@ Prof Amanda Luby
 <h2></h2>
 <p>For paired data, use <code>bootPaired(&lt;First Variable&gt; ~ &lt;Second Variable&gt;, data = &lt;Dataset Name&gt;)</code></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">bootPaired</span>(NonRes <span class="sc">~</span> Res, <span class="at">data =</span> Tuition2006)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 
 </div>
-<div class="cell fragment quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell fragment quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <pre><code>
