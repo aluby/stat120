@@ -19,8 +19,15 @@ theme_set(notes_theme)
 
 What happens when we have *more* than two categories within a variable? (so response is not Yes/No or True/False)
 
-**Example:** Some people think that children who are the older ones in their class at school naturally perform better in sports and that these children then get more coaching and encouragement. Could that make a difference in who makes it to the professional level in sports? Below is the birth month of 1478 major league players born since 1975, along with the national birth percentage across the same years. 
+**Example:** Some people think that children who are the older ones in their class at school naturally perform better in sports and that these children then get more coaching and encouragement. Could that make a difference in who makes it to the professional level in sports? Below is the birth month of 1478 major league players born since 1975, along with the national birth percentage across the same years. In the US, the cutoff for starting kindergarten is typically Sept 1, meaning children born in Sept, Oct, Nov are usually the oldest in their class, while Jun, Jul, Aug are usually the youngest.
+ 
+Possible research questions: 
 
+  - Are MLB players more likely to be born in Sept, Oct, Nov than the general US population? 
+  - Are MLB players more likely to be born in Sept, Oct, Nov than Jun, July, Aug? 
+  - Is the proportion of MLB players born in Aug lower than the proportion born in Sept? 
+  - Does the birth month of MLB players follow the same distribution as the general US population?
+  
 \begin{table}[h]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lllllllllllll@{}}
@@ -91,7 +98,7 @@ This is a $\chi^2$ **Goodness of Fit** test.
 
 When we have two categorical variables, each that could have 2 or more levels, the only thing that changes is how we compute the *expected* counts within each cell. 
 
-**Example:**
+**Example:** We are assessing the efficacy of three different drugs. If the type of drug does *not* matter, what is the probability of the condition improving for each drug? How does that translate to an expected count?
 
 |        | Condition Improved | Did Not Improve |     |
 |--------|--------------------|-----------------|-----|
@@ -126,6 +133,8 @@ When we have two categorical variables, each that could have 2 or more levels, t
 This is a $\chi^2$ **Test for Association**
 
 \vspace{1in}
+
+\pagebreak 
 
 ## Group Problems 
 

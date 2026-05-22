@@ -20,7 +20,7 @@ theme_set(notes_theme)
 A biology student tested four different hand-washing methods (water only, washing with regular soap, washing with antibacterial soap, and spraying hands with antibacterial spray) and counted the number of bacteria present after two days of growth. They did this eight times for each of the four treatments. 
 
 ```{r}
-#| fig-width: 4
+#| fig-width: 5
 #| fig-height: 3
 #| fig-align: 'center'
 
@@ -72,7 +72,7 @@ $$ F = \frac{\text{Sample variance of means}}{\text{Pooled estimate of variance 
 What would the boxplots look like if there was **no difference between the groups**?
 
 ```{r}
-#| fig-width: 4
+#| fig-width: 4.5
 #| fig-height: 2
 ggplot(Soap, aes(x = Method, y = Bacterial.Counts)) 
 ```
@@ -81,7 +81,7 @@ $$ F = \frac{\text{Across Group}}{\text{Within Group}} =$$
 What would the boxplots look like if there was **extreme differences between the groups**?
 
 ```{r}
-#| fig-width: 4
+#| fig-width: 4.5
 #| fig-height: 2
 ggplot(Soap, aes(x = Method, y = Bacterial.Counts)) 
 ```
@@ -146,24 +146,19 @@ We need to verify some assumptions whenever we fit an ANOVA model.
 2. Equal Variance
 
   + Do the boxplot "whiskers" look roughly the same length across all groups? 
-  + Check the residual vs fitted plot:
 
 3. Normal residuals:
 
-  + Check histogram of residuals
+  + Does each group look roughly normal?
 
 ```{r}
-#| fig-width: 6
-#| fig-height: 2
+#| fig-width: 4
+#| fig-height: 3
 
 
-p1 = ggplot(soap_aov, aes(x = .fitted, y = .resid))+
-  geom_point() 
-
-p2 = ggplot(soap_aov, aes(x = .resid))+
-  geom_histogram(bins = 15, col = "white") 
-
-p1 + p2
+ggplot(Soap, aes(x = Bacterial.Counts)) + 
+  geom_histogram(bins = 10, col = "white") + 
+  facet_wrap(~Method)
 ```
 
 # Post-hoc Testing
