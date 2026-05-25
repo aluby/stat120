@@ -1,0 +1,51 @@
+---
+title: "24: Inference for Regression"
+format: 
+  revealjs: 
+    theme: slides.scss
+    scrollable: true
+    incremental: true
+    title-slide-attributes: 
+      data-background-color: "#1F4257"
+brand: false
+filters:
+  - webr
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+library(patchwork)
+library(palmerpenguins)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+slides_theme = theme_minimal(
+  base_family = "Source Sans 3",
+  base_size = 20)
+theme_set(slides_theme)
+```
+
+## The `palmerpenguins` data
+
+![](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png){fig-align="center"}
+
+Data were collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research Network](https://lternet.edu).
+
+## Prediction and confidence intervals 
+
+```{r}
+library(palmerpenguins)
+library(broom)
+penguins_lm <- lm(flipper_length_mm ~ body_mass_g, data = penguins)
+penguins_aug <- augment(penguins_lm, interval = "prediction")
+
+ggplot(penguins_aug, aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", fill = "darkblue") + 
+  geom_line(aes(y=.lower), color = "darkorange", linetype = "dashed") +
+  geom_line(aes(y=.upper), color = "darkorange", linetype = "dashed")
+```
+
+```{r}
+```
+
