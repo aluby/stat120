@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.23">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Prof Amanda Luby">
   <title>stat120 – 12: Percentile CIs + CIs in R</title>
@@ -295,12 +295,12 @@ Prof Amanda Luby
     ** Bootstrap interval for mean 
 
  Observed  Delay : 4.01243 
- Mean of bootstrap distribution: 4.01396 
- Standard error of bootstrap distribution: 0.74277 
+ Mean of bootstrap distribution: 4.01684 
+ Standard error of bootstrap distribution: 0.73344 
 
  Bootstrap percentile interval
     2.5%    97.5% 
-2.607051 5.502916 
+2.629015 5.493403 
 
         *--------------*</code></pre>
 </div>
@@ -330,12 +330,12 @@ Prof Amanda Luby
     ** Bootstrap interval for mean 
 
  Observed  Delay : 4.01243 
- Mean of bootstrap distribution: 4.01308 
- Standard error of bootstrap distribution: 0.74203 
+ Mean of bootstrap distribution: 4.0129 
+ Standard error of bootstrap distribution: 0.73038 
 
  Bootstrap percentile interval
     2.5%    97.5% 
-2.597514 5.480880 
+2.618523 5.478967 
 
         *--------------*</code></pre>
 </div>
@@ -361,12 +361,12 @@ Prof Amanda Luby
     ** Bootstrap interval for mean 
 
  Observed  Delay : 4.01243 
- Mean of bootstrap distribution: 4.00632 
- Standard error of bootstrap distribution: 0.74013 
+ Mean of bootstrap distribution: 4.00695 
+ Standard error of bootstrap distribution: 0.73582 
 
  Bootstrap percentile interval
     5.5%    94.5% 
-2.865201 5.229498 
+2.851816 5.205545 
 
         *--------------*</code></pre>
 </div>
@@ -444,12 +444,12 @@ Prof Amanda Luby
     **Bootstrap interval for mean of paired difference 
 
  Observed mean of  NonRes - Res : 3584.211 
- Mean of bootstrap distribution: 3579.726 
- Standard error of bootstrap distribution: 460.3641 
+ Mean of bootstrap distribution: 3588.215 
+ Standard error of bootstrap distribution: 460.8926 
 
  Bootstrap percentile interval
     2.5%    97.5% 
-2731.579 4531.579 
+2721.053 4531.579 
 
         *--------------*</code></pre>
 </div>
@@ -470,27 +470,27 @@ Prof Amanda Luby
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">confint</span>(<span class="fu">bootPaired</span>(NonRes <span class="sc">~</span> Res, <span class="at">data =</span> Tuition2006))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
-2731.579 4505.263 </code></pre>
+2710.526 4515.789 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">confint</span>(<span class="fu">bootPaired</span>(NonRes <span class="sc">~</span> Res, <span class="at">data =</span> Tuition2006))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
-2736.842 4536.974 </code></pre>
+2721.053 4489.474 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">confint</span>(<span class="fu">bootPaired</span>(NonRes <span class="sc">~</span> Res, <span class="at">data =</span> Tuition2006))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
-2726.316 4531.711 </code></pre>
+2736.842 4552.632 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">confint</span>(<span class="fu">bootPaired</span>(NonRes <span class="sc">~</span> Res, <span class="at">data =</span> Tuition2006))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
-2721.053 4547.368 </code></pre>
+2699.868 4510.658 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">confint</span>(<span class="fu">bootPaired</span>(NonRes <span class="sc">~</span> Res, <span class="at">data =</span> Tuition2006))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
-2726.184 4536.974 </code></pre>
+2731.579 4542.105 </code></pre>
 </div>
 </div>
 </section>
