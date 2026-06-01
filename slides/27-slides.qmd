@@ -293,16 +293,16 @@ knitr::include_graphics("images/esquisse-labels-title.png")
 
 ::: {.nonincremental}
 
-- Please submit your analysis .rmd file and poster title on gradescope today
+- Please submit poster title on the spreadsheet today
 - (Optional) Rough draft due tonight
 - Poster session on Wed in class
     - If you'd like me to print yours, send a high quality PDF to me by Tuesday @ noon
 - Exam III corrections due Wed (short turnaround!!)
-- Final papers due on Monday 11/24 @ noon (+1% of E.C. for submitting 24 hours in advance)
+- Final papers due last day of finals @ noon (+1 point of E.C. for submitting 24 hours in advance)
     - PDF (knitted or google docs) 
     - analysis .rmd file
     - final version of the dataset you used in the .rmd file
 - Final group eval form (submit with final paper)
-- Anonymous course evaluation form (opens on reading day 1, closes at end of finals period)
+- Anonymous course evaluation form (opens on reading day 1, closes at end of finals period) and prefect feedback form
 
 :::
