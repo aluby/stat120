@@ -1,6 +1,6 @@
 ---
 title: "Stat120: Introduction to Statistics"
-subtitle: "Spring 2026"
+subtitle: "Spring 2027"
 sidebar: false
 execute:
   freeze: true
@@ -16,14 +16,14 @@ format:
 
 | | | |
 |:----------------|:-------------------------------------------|:-----------------|
-| **MEETINGS:** | MWF 3a                                    | **CMC 102** |
-|                 | 11:10-12:20 MW; 12-1 F                     |                  |
-| **PROFESSOR:** | Amanda Luby                               | **CMC 223** |
+| **MEETINGS:** | MWF 1a                                    | **CMC 102** |
+|                 | 8:30-9:40 MW; 8:30-9:30 F                     |                  |
+| **PROFESSOR:** | Amanda Luby                               | **CMC 327** |
 |                 | aluby\@carleton                            |                  |
-| **DROP-IN:** | Mon 3-4pm                                 | **CMC 307** |
-|                 | Tues 2-3                                  |                  |
-|                 | Wed 9:30-10:30 (120 priority)             |                  |
-|                 | Fri 10-11 (230 priority)                  |                  |
+| **DROP-IN:** | TBA                                 | **CMC 307** |
+|                 | TBA                                 |                  |
+|                 | TBA             |                  |
+|                 | TBA                  |                  |
 |                 | Or by appointment!                         |                  |
 | **WEBSITE:** | [moodle.carleton.edu](https://moodle.carleton.edu) |          |
 | **TEXT:** | *Statistics: Unlocking the Power of Data* By Lock, Lock, Lock, Lock, and Lock (yes there's 5 of them!) |                  |
